@@ -1,0 +1,17 @@
+class CityGrid
+  class Reviews < Abstraction::Collection
+    def api
+      CityGrid::API::Content::Reviews
+    end
+
+    def total_hits
+      raw["results"]["total_hits"]
+    end
+
+    private
+
+    def preprocess response
+      response.results.reviews
+    end
+  end
+end
