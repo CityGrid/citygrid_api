@@ -30,7 +30,7 @@ class CityGrid
 
         def request options = {}
           method = (options.delete(:method) || :get).to_sym
-          query  = options.merge :publisher => publisher, :format => "json"
+          query  = options.merge :format => "json"
           response = send method, endpoint, :query => query
 
           if !response["errors"] || response["errors"].empty?
@@ -38,6 +38,10 @@ class CityGrid
           else
             raise Error.new response["errors"], response
           end
+        end
+
+        def request_with_publisher options = {}
+          request options.merge(:publisher => publisher)
         end
 
         private

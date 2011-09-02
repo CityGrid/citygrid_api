@@ -4,6 +4,10 @@ class CityGrid
       CityGrid::API::Content::Places::Search
     end
 
+    def request opts = {}
+      api.request_with_publisher opts
+    end
+
     private
 
     def preprocess response

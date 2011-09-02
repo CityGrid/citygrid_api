@@ -5,7 +5,7 @@ class CityGrid
     end
 
     def request opts = {}
-      api.request opts.merge(:client_ip => "192.168.0.1")
+      api.request_with_publisher opts.merge(:client_ip => "192.168.0.1")
     end
   end
 
