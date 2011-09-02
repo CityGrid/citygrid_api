@@ -1,8 +1,16 @@
-require "citygrid/api/base"
-require "citygrid/api/response"
+def api_require path
+  require "citygrid/api/#{path}"
+end
+
+api_require "base"
+api_require "response"
 
 # Content APIs
-require "citygrid/api/content/offers"
-require "citygrid/api/content/places/detail"
-require "citygrid/api/content/places/search"
-require "citygrid/api/content/reviews"
+api_require "content/offers"
+api_require "content/places/detail"
+api_require "content/places/search"
+api_require "content/reviews"
+
+# AdCenter APIs
+api_require "ad_center/authentication"
+api_require "ad_center/campaign"
