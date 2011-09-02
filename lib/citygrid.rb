@@ -33,6 +33,11 @@ class CityGrid
     def reviews opts
       Reviews.new opts
     end
+
+    def authenticate params
+      API::AdCenter::Authentication.request params.merge(:method => :post)
+    end
+    alias_method :login, :authenticate
   end
 
   # Errors
