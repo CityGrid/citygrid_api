@@ -15,6 +15,11 @@ class CityGrid
       end
 
       module ClassMethods
+        # Accessed by APIs that are still in QA
+        def qa_server
+          "http://lax1qatapi1.test.cs:8080"
+        end
+
         def endpoint
           # Specified for each API
         end
@@ -24,8 +29,9 @@ class CityGrid
         end
 
         def request options = {}
-          query = options.merge :publisher => publisher, :format => "json"
-          response = get endpoint, :query => query
+          method = (options.delete(:method) || :get).to_sym
+          query  = options.merge :publisher => publisher, :format => "json"
+          response = send method, endpoint, :query => query
 
           if !response["errors"] || response["errors"].empty?
             CityGrid::API::Response.new response
