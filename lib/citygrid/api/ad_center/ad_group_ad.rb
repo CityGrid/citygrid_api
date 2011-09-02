@@ -1,13 +1,13 @@
 class CityGrid
   module API
     module AdCenter
-      module Campaign
+      module AdGroupAd
         include CityGrid::API::Base
         base_uri qa_server
 
         class << self
           def endpoint
-            "/campaign/adcenter/campaign/v2"
+            "/adgroupad/adcenter/adgroupad/v2/"
           end
         end
       end
