@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Elpizo Choi"]
-  s.date = %q{2011-07-18}
+  s.date = %q{2011-09-07}
   s.description = %q{Ruby wrapper for CityGrid APIs}
   s.email = %q{fu7iin@gmail.com}
   s.extra_rdoc_files = [
@@ -33,8 +33,18 @@ Gem::Specification.new do |s|
     "lib/citygrid/abstraction/super_array.rb",
     "lib/citygrid/abstraction/super_hash.rb",
     "lib/citygrid/api.rb",
+    "lib/citygrid/api/ad_center/account.rb",
+    "lib/citygrid/api/ad_center/ad_group.rb",
+    "lib/citygrid/api/ad_center/ad_group_ad.rb",
+    "lib/citygrid/api/ad_center/ad_group_criterion.rb",
+    "lib/citygrid/api/ad_center/ad_group_geo.rb",
+    "lib/citygrid/api/ad_center/authentication.rb",
+    "lib/citygrid/api/ad_center/budget.rb",
+    "lib/citygrid/api/ad_center/campaign.rb",
+    "lib/citygrid/api/ad_center/category.rb",
+    "lib/citygrid/api/ad_center/method_of_payment.rb",
+    "lib/citygrid/api/ad_center/reports.rb",
     "lib/citygrid/api/base.rb",
-    "lib/citygrid/api/content.rb",
     "lib/citygrid/api/content/offers.rb",
     "lib/citygrid/api/content/places.rb",
     "lib/citygrid/api/content/places/detail.rb",
@@ -47,6 +57,7 @@ Gem::Specification.new do |s|
     "lib/citygrid/reviews.rb",
     "lib/citygrid/search.rb",
     "lib/citygrid_api.rb",
+    "script/test_qa_apis",
     "test/helper.rb",
     "test/publisher_helper.rb.sample",
     "test/test_citygrid.rb",
