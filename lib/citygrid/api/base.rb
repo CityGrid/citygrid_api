@@ -1,4 +1,5 @@
 require "httparty"
+require "json"
 
 class CityGrid
   module API
@@ -9,7 +10,7 @@ class CityGrid
             include HTTParty
             extend ClassMethods
             base_uri "api.citygridmedia.com/content"
-            format :json
+            headers "Accept" => "application/json", "Content-Type" => "application/json"
           end
         end
       end
@@ -17,7 +18,15 @@ class CityGrid
       module ClassMethods
         # Accessed by APIs that are still in QA
         def qa_server
+          "http://api.qa.citygridmedia.com"
+        end
+
+        def qa_server_1
           "http://lax1qatapi1.test.cs:8080"
+        end
+
+        def qa_server_2
+          "http://lax1qatapi2.test.cs:8080"
         end
 
         def endpoint
@@ -31,8 +40,36 @@ class CityGrid
         def request options = {}
           method = (options.delete(:method) || :get).to_sym
           query  = options.merge :format => "json"
-          response = send method, endpoint, :query => query
+          handle_response send(method, endpoint, :query => query)
+        end
 
+        def request_with_publisher options = {}
+          request options.merge(:publisher => publisher)
+        end
+
+        def mutate options = {}
+          token = extract_auth_token options
+          handle_response post(
+            "#{endpoint}/mutate",
+            :body    => options.to_json,
+            :headers => {"authToken" => token}
+          )
+        end
+
+        def search options = {}
+          token = extract_auth_token options
+          handle_response get(
+            "#{endpoint}/get",
+            :query   => options,
+            :headers => {"authToken" => token}
+          )
+        end
+
+        private
+
+        # Transform response into API::Response object
+        # or throw exception if an error exists
+        def handle_response response
           if !response["errors"] || response["errors"].empty?
             CityGrid::API::Response.new response
           else
@@ -40,11 +77,9 @@ class CityGrid
           end
         end
 
-        def request_with_publisher options = {}
-          request options.merge(:publisher => publisher)
+        def extract_auth_token options = {}
+          options.delete(:token) || raise(AuthError)
         end
-
-        private
 
         def convert_to_querystring hash
           hash.map do |k, v|
@@ -64,6 +99,12 @@ class CityGrid
       def initialize errors, response = nil
         @httparty = response
         super errors.first["error"]
+      end
+    end
+
+    class AuthError < StandardError
+      def message
+        "Missing authToken - token is required"
       end
     end
   end
