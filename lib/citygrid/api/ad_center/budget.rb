@@ -3,7 +3,7 @@ class CityGrid
     module AdCenter
       module Budget
         include CityGrid::API::Base
-        base_uri qa_server
+        base_uri qa_server_1
 
         class << self
           def endpoint

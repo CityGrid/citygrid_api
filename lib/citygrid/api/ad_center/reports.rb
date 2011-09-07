@@ -3,11 +3,11 @@ class CityGrid
     module AdCenter
       module Reports
         include CityGrid::API::Base
-        base_uri qa_server
+        base_uri qa_server_1
 
         class << self
           def endpoint
-            "/report-ws/adcenter/performance/v2/campaign/daily/"
+            "/report-ws/adcenter/performance/v2/campaign/daily"
           end
         end
       end
