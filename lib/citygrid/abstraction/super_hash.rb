@@ -15,6 +15,8 @@ class CityGrid
         # create new SuperHash if value is hash
         if val.is_a? Hash
           SuperHash.new val
+        elsif val.is_a? Array
+          SuperArray.new val
         elsif keys.include?(sym) || keys.include?(sym.to_s)
           val
         else
