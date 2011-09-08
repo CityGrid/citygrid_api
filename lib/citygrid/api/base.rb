@@ -51,11 +51,7 @@ class CityGrid
           handle_response post(
             "#{endpoint}/mutate",
             :body    => options.to_json,
-            :headers => {
-              "authToken"    => token,
-              "Accept"       => "application/json",
-              "Content-Type" => "application/json"
-            }
+            :headers => merge_headers("authToken" => token)
           )
         end
 
@@ -64,11 +60,7 @@ class CityGrid
           handle_response get(
             "#{endpoint}/get",
             :query   => options,
-            :headers => {
-              "authToken"     => token,
-               "Accept"       => "application/json",
-               "Content-Type" => "application/json"
-            }
+            :headers => merge_headers("authToken" => token)
           )
         end
 
@@ -90,6 +82,11 @@ class CityGrid
 
         def extract_auth_token options = {}
           options.delete(:token) || raise(MissingAuthToken)
+        end
+
+        def merge_headers options = {}
+          {"Accept"       => "application/json",
+           "Content-Type" => "application/json"}.merge options
         end
 
         def convert_to_querystring hash
@@ -121,7 +118,11 @@ class CityGrid
 
     class InvalidResponseFormat < GenericError
       def initialize response = nil
-        super "Unexpected response format.  Expected response to be a hash.", response
+        msg = <<-EOS
+Unexpected response format.  Expected response to be a hash, but was instead:
+\n#{response.parsed_response}\n
+        EOS
+        super msg, response
       end
     end
 
