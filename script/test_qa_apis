@@ -201,7 +201,7 @@ run_with_rescue do
       }
     }]
   )
-  if !res.empty && res.adResources.first.response.code == 200
+  if !res.empty? && res.adResources.first.response.code == 200
     puts "succeeded"
   else
     puts "failed"
@@ -243,7 +243,7 @@ run_with_rescue do
       }
     }]
   )
-  if !res.empty? && res.adGroupCriterionResponses.first.response.code == 200
+  if !res.empty? && res.adGroupCriterionResources.first.response.code == 200
     puts "succeeded"
   else
     puts "failed"
