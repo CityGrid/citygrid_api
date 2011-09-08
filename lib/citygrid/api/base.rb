@@ -106,23 +106,30 @@ class CityGrid
     # HTTParty response is available if this class is rescued
     class GenericError < StandardError
       attr_reader :httparty, :message
+
+      def initialize msg, response = nil
+        @message  = msg
+        @httparty = response
+      end
     end
 
     class Error < GenericError
-      def initialize errors, response = nil
-        @httparty = response
-        @message  = errors.first["error"]
+      def initialize errors, response
+        super errors.first["error"], response
       end
     end
 
     class InvalidResponseFormat < GenericError
       def initialize response = nil
-        @httparty = response
-        @message  = "Unexpected response format.  Expected response to be hash."
+        super "Unexpected response format.  Expected response to be a hash.", response
       end
     end
 
     class MissingAuthToken < GenericError
+      def initialize
+        super message
+      end
+
       def message
         "Missing authToken - token is required"
       end
