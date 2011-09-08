@@ -10,7 +10,6 @@ class CityGrid
             include HTTParty
             extend ClassMethods
             base_uri "api.citygridmedia.com/content"
-            headers "Accept" => "application/json", "Content-Type" => "application/json"
           end
         end
       end
@@ -52,7 +51,11 @@ class CityGrid
           handle_response post(
             "#{endpoint}/mutate",
             :body    => options.to_json,
-            :headers => {"authToken" => token}
+            :headers => {
+              "authToken"    => token,
+              "Accept"       => "application/json",
+              "Content-Type" => "application/json"
+            }
           )
         end
 
@@ -61,7 +64,11 @@ class CityGrid
           handle_response get(
             "#{endpoint}/get",
             :query   => options,
-            :headers => {"authToken" => token}
+            :headers => {
+              "authToken"     => token,
+               "Accept"       => "application/json",
+               "Content-Type" => "application/json"
+            }
           )
         end
 
@@ -70,15 +77,19 @@ class CityGrid
         # Transform response into API::Response object
         # or throw exception if an error exists
         def handle_response response
-          if !response["errors"] || response["errors"].empty?
-            CityGrid::API::Response.new response
-          else
+          if !response.parsed_response.is_a?(Hash)
+            raise InvalidResponseFormat.new response
+
+          elsif response["errors"]
             raise Error.new response["errors"], response
+
+          else
+            CityGrid::API::Response.new response
           end
         end
 
         def extract_auth_token options = {}
-          options.delete(:token) || raise(AuthError)
+          options.delete(:token) || raise(MissingAuthToken)
         end
 
         def convert_to_querystring hash
@@ -93,16 +104,25 @@ class CityGrid
 
     # Throws error with message from API
     # HTTParty response is available if this class is rescued
-    class Error < StandardError
-      attr_reader :httparty
+    class GenericError < StandardError
+      attr_reader :httparty, :message
+    end
 
+    class Error < GenericError
       def initialize errors, response = nil
         @httparty = response
-        super errors.first["error"]
+        @message  = errors.first["error"]
       end
     end
 
-    class AuthError < StandardError
+    class InvalidResponseFormat < GenericError
+      def initialize response = nil
+        @httparty = response
+        @message  = "Unexpected response format.  Expected response to be hash."
+      end
+    end
+
+    class MissingAuthToken < GenericError
       def message
         "Missing authToken - token is required"
       end
