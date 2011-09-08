@@ -7,7 +7,7 @@ class CityGrid
 
         class << self
           def endpoint
-            "/account/account/v2/"
+            "/account/account/v2"
           end
 
           def create options = {}
