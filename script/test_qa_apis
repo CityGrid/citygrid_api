@@ -297,7 +297,7 @@ end
 run_with_rescue do
   puts "============Trying MOP: search=============="
   res = CityGrid::API::AdCenter::MethodOfPayment.search(:accountId => 111, :token => auth_token)
-  if !res.empty? && res.mopResources.present?
+  if !res.empty? && !res.mopResources.empty?
     puts "succeeded"
   else
     puts "failed"
@@ -308,7 +308,7 @@ end
 run_with_rescue do
   puts "============Trying MOP: mutate=============="
   res = CityGrid::API::AdCenter::MethodOfPayment.mutate({:token => auth_token, "mutateOperationListResource" => [ { "operator" => "ADD","operand" => { "cardNumber" => "4112344112344113", "expirationMonth" => 12, "expirationYear" => 2012, "cardholderName" => "Ara Tatous", "cardType" => "Visa", "state" => "NY" , "description" => "test addMOP", "firstName" => "Ara", "lastName" => "Tatous", "phoneNumber" => "(818)749-3717", "address1" => "3131 Montrose Ave", "address2" => "Apt. 9", "city" => "LaCrescenta", "postalCode" => "10016", "accountId" => 3440, "securityCode" => "719", "paymentType" => "Credit Card" } } ]})
-  if !res.empty && res.resources.first.response.code == 200
+  if !res.empty? && res.resources.first.response.code == 200
     puts "succeeded"
   else
     puts "failed"
