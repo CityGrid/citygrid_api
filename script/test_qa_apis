@@ -1,4 +1,7 @@
 #!/usr/bin/env ruby
+# This script tests against the APIs to check if they are working.
+# Should be migrated into actual tests once APIs stabilize a bit.
+
 $:<< File.expand_path("./lib")
 
 require "rubygems"
@@ -47,8 +50,8 @@ end
 run_with_rescue do
   puts "============Trying Account/Get_account_info: by ID==============="
   res = CityGrid::API::AdCenter::Account.search(
-    :token      => auth_token,
-    :customerId => 1250702
+    :token => auth_token,
+    :id    => 1250702
   )
   if !res.empty? && res.accountResources.first.response.code.to_i == 200
     puts "succeeded"
@@ -106,6 +109,17 @@ run_with_rescue do
     }]
   )
   if !res.empty? && res.accountResources.first.response.code.to_i == 200
+    puts "succeeded"
+  else
+    puts "failed"
+    ap res
+  end
+end
+
+run_with_rescue do
+  puts "============Trying Place/ADD==============="
+  res = CityGrid::API::Content::Places.mutate({:token => auth_token, "mutateOperationListResource" => [ { "operator" => "ADD", "operand" => {:accountId => 2280872, "name" => "Pi on sunset in LAAAAAAAAAAAAAA", "address_1" => "Jackson 2102", "address_2" => "", "city" => "Los Angeles", "state" => "California", "postal_code" => 90025, "phone_number" => 3103333333, "website_url" => "pi.com", "primary_tag_id" => "3623","bullet1" => "Knoll bullet 1", "tagline" => "my tagline", "primary_tag_id" => 3623, "secondary_tags" => '1776'} } ] })
+  if !res.empty? && res["resources"][0]["response"]["code"].to_i == 200
     puts "succeeded"
   else
     puts "failed"
@@ -259,7 +273,7 @@ run_with_rescue do
     :startIndex    => 0,
     :numberResults => 10
   )
-  if !res.empty? && res.response.code == "200" && !res.resources.empty?
+  if !res.empty? && res.response.code == 200 && !res.resources.empty?
     puts "succeeded"
   else
     puts "failed"
@@ -275,7 +289,7 @@ run_with_rescue do
     :numberResults => 10,
     :token         => auth_token
   )
-  if !res.present? && res.response.code == "200" && res.resources.present?
+  if !res.empty? && res.response.code == 200 && !res.resources.empty?
     puts "succeeded"
   else
     puts "failed"
