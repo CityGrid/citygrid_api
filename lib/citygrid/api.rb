@@ -7,6 +7,7 @@ api_require "response"
 
 # Content APIs
 api_require "content/offers"
+api_require "content/places"
 api_require "content/places/detail"
 api_require "content/places/search"
 api_require "content/reviews"
