@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Elpizo Choi"]
-  s.date = %q{2011-09-07}
+  s.date = %q{2011-09-09}
   s.description = %q{Ruby wrapper for CityGrid APIs}
   s.email = %q{fu7iin@gmail.com}
   s.extra_rdoc_files = [
@@ -57,7 +57,18 @@ Gem::Specification.new do |s|
     "lib/citygrid/reviews.rb",
     "lib/citygrid/search.rb",
     "lib/citygrid_api.rb",
-    "script/test_qa_apis",
+    "test/api/ad_center/test_account.rb",
+    "test/api/ad_center/test_ad_group.rb",
+    "test/api/ad_center/test_ad_group_ad.rb",
+    "test/api/ad_center/test_ad_group_criterion.rb",
+    "test/api/ad_center/test_ad_group_geo.rb",
+    "test/api/ad_center/test_authentication.rb",
+    "test/api/ad_center/test_budget.rb",
+    "test/api/ad_center/test_campaign.rb",
+    "test/api/ad_center/test_category.rb",
+    "test/api/ad_center/test_method_of_payment.rb",
+    "test/api/ad_center/test_places.rb",
+    "test/api/ad_center/test_reports.rb",
     "test/helper.rb",
     "test/publisher_helper.rb.sample",
     "test/test_citygrid.rb",
