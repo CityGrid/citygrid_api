@@ -14,3 +14,25 @@ $LOAD_PATH.unshift(File.join(File.dirname(__FILE__), '..', 'lib'))
 $LOAD_PATH.unshift(File.dirname(__FILE__))
 require "citygrid_api"
 require "publisher_helper"
+
+# Hack to allow storing tokens between tests
+class AuthToken
+  @@token = nil
+
+  class << self
+    def token
+      @@token
+    end
+
+    def token= auth_token
+      @@token = auth_token
+    end
+
+    def generate
+      @@token || token = CityGrid.login(
+        :username => 'QASalesCoord',
+        :password => 'pppppp'
+      ).authToken
+    end
+  end
+end
