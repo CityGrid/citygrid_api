@@ -7,7 +7,16 @@ class CityGrid
 
         class << self
           def endpoint
-            "/report-ws/adcenter/performance/v2/campaign/daily"
+            "/report/adcenter/performance/v2/campaign"
+          end
+
+          def summary type, options = {}
+            token = extract_auth_token options
+            handle_response post(
+              "#{endpoint}/#{type}",
+              :body    => options.to_json,
+              :headers => merge_headers("authToken" => token)
+            )
           end
         end
       end
