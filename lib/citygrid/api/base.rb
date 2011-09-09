@@ -21,6 +21,10 @@ class CityGrid
           "http://api.qa.citygridmedia.com"
         end
 
+        def qa_server_ssl
+          "https://api-qassl.citygridmedia.com"
+        end
+        
         def qa_server_1
           "http://lax1qatapi1.test.cs:8080"
         end
