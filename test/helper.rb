@@ -36,3 +36,16 @@ class AuthToken
     end
   end
 end
+
+# Run code with rescue so that exceptions
+# will be printed, but won't stop test suite
+def run_with_rescue
+  begin
+    yield
+  rescue => ex
+    puts "failed with: #{ex}"
+    puts ex.message
+    puts ex.backtrace
+    false # return false
+  end
+end
