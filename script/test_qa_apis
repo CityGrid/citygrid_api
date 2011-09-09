@@ -73,38 +73,12 @@ run_with_rescue do
         "phone"        => "9001111112",
         "email"        => "goodtry#{rand(10000000)}@a.com",
         "userName"     => "goodtry#{rand(10000000)}",
-        "password"     =>"pppppp",
-        "businessName" =>"businessProveApi",
-        "address1"     =>"dir-api",
-        "city"         =>"montevideo",
-        "state"        =>"Montevideo",
-        "zipCode"      =>"90069"
-      }
-    }]
-  )
-  if !res.empty? && res.accountResources.first.response.code.to_i == 200
-    puts "succeeded"
-  else
-    puts "failed"
-    ap res
-  end
-end
-
-run_with_rescue do
-  puts "============Trying Account/Create_cg_only==============="
-  res = CityGrid::API::AdCenter::Account.create(
-    :token => auth_token,
-    "mutateOperationListResource" => [{
-      "operator" => "ADD",
-      "operand"  => {
-        "firstName"    => "nico-api",
-        "lastName"     => "gomez-api",
-        "phone"        => "9001111112",
-        "businessName" =>"businessProveApi",
-        "address1"     =>"dir-api",
-        "city"         =>"montevideo",
-        "state"        =>"Montevideo",
-        "zipCode"      =>"90069"
+        "password"     => "pppppp",
+        "businessName" => "businessProveApi",
+        "address1"     => "dir-api",
+        "city"         => "montevideo",
+        "state"        => "Montevideo",
+        "zipCode"      => "90069"
       }
     }]
   )
@@ -128,15 +102,34 @@ run_with_rescue do
 end
 
 run_with_rescue do
-  puts "============Trying Report==============="
+  puts "============Trying Report/Daily==============="
   run_with_rescue do
-    res = CityGrid::API::AdCenter::Reports.search(
+    res = CityGrid::API::AdCenter::Reports.summary(
+      :daily,
       :campaignId => 786,
       :period     => 'last30Days',
       :token      => auth_token
     )
     perf_resource = !res.empty? && res.dailyCampaignPerformanceResources
     if perf_resource && perf_resource.length > 0
+      puts "succeed"
+    else
+      puts "failed"
+      ap res
+    end
+  end
+end
+
+run_with_rescue do
+  puts "============Trying Report/Actions==============="
+  run_with_rescue do
+    res = CityGrid::API::AdCenter::Reports.summary(
+      :actions,
+      :campaignId => 786,
+      :period     => 'last30Days',
+      :token      => auth_token
+    )
+    if !res.empty? && !res.userActions.empty?
       puts "succeed"
     else
       puts "failed"
