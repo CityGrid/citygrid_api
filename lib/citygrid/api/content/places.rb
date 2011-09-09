@@ -15,7 +15,7 @@ class CityGrid
 
         def mutate opts = {}
           token = extract_auth_token opts
-          post(
+          handle_response post(
             qa_server_1 + "/places/adcenter/places/v2/mutate",
             :body    => opts.to_json,
             :headers => merge_headers("authToken" => token)
