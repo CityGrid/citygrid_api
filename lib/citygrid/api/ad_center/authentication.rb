@@ -3,11 +3,11 @@ class CityGrid
     module AdCenter
       module Authentication
         include CityGrid::API::Base
-        base_uri qa_server_1
+        base_uri qa_server_ssl
 
         class << self
           def endpoint
-            "/authentication/user/v2/login"
+            "/user/v2/login"
           end
         end
       end
