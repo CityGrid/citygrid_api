@@ -3,11 +3,11 @@ class CityGrid
     module AdCenter
       module Account
         include CityGrid::API::Base
-        base_uri qa_server_2
+        base_uri qa_server_ssl
 
         class << self
           def endpoint
-            "/account/account/v2"
+            "/account/v2"
           end
 
           # Adds new customer account to existing user
