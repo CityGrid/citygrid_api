@@ -37,6 +37,9 @@ class AuthToken
   end
 end
 
+# load default config
+CityGrid.load_config File.join(File.dirname(__FILE__), '..', 'citygrid_api.yml'), "qa"
+
 # Run code with rescue so that exceptions
 # will be printed, but won't stop test suite
 def run_with_rescue

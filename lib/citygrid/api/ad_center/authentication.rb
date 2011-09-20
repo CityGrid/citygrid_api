@@ -1,14 +1,15 @@
 class CityGrid
-  module API
-    module AdCenter
-      module Authentication
-        include CityGrid::API::Base
-        base_uri qa_server_ssl
-
-        class << self
-          def endpoint
-            "/user/v2/login"
-          end
+  class API
+    class AdCenter
+      class Authentication < AdCenter
+        server :ssl
+        endpoint "/user/v2"
+        
+        def self.login options = {}
+          handle_response post(
+            "#{endpoint}/login",
+            :query => options
+          )
         end
       end
     end

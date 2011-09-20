@@ -48,3 +48,6 @@ tmtags
 
 # For rubinius:
 #*.rbc
+
+# ignore default citygrid_api.yml, only citygrid_api.sample.yml is checked in 
+citygrid_api.yml

@@ -1,0 +1,3 @@
+prod: 
+  default: http://api.citygridmedia.com
+  ssl: https://api.ssl.citygridmedia.com

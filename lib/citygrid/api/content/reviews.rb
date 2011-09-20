@@ -1,14 +1,9 @@
 class CityGrid
-  module API
-    module Content
-      module Reviews
-        include CityGrid::API::Base
-
-        class << self
-          def endpoint
-            "/reviews/v2/search/where"
-          end
-        end
+  class API
+    class Content
+      class Reviews < Content
+        base_uri "api.citygridmedia.com"
+        endpoint "/reviews/v2/search/where"
       end
     end
   end

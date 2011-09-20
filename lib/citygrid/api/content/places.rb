@@ -1,27 +1,27 @@
 class CityGrid
-  module API
-    module Content
-      module Places
-        include CityGrid::API::Base
-        extend self
+  class API
+    class Content
+      class Places < Content
+        base_uri "api.qa.citygridmedia.com"
+        endpoint "/adcenter/places/v2"
+        
+        class << self
+          def detail opts
+            Detail.request opts
+          end
 
-        def detail opts
-          Detail.request opts
-        end
-
-        def search opts
-          Search.request opts
-        end
-
-        def mutate opts = {}
-          token = extract_auth_token opts
-          handle_response post(
-            qa_server_1 + "/places/adcenter/places/v2/mutate",
-            :body    => opts.to_json,
-            :headers => merge_headers("authToken" => token)
-          )
+          def search opts
+            Search.request opts
+          end
         end
       end
     end
   end
 end
+
+[
+  "detail", "search"
+].each do |x|
+  require "citygrid/api/content/places/#{x}"  
+end
+

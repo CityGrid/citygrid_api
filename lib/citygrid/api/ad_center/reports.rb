@@ -1,15 +1,10 @@
 class CityGrid
-  module API
-    module AdCenter
-      module Reports
-        include CityGrid::API::Base
-        base_uri qa_server_1
-
+  class API
+    class AdCenter
+      class Reports < AdCenter
+        endpoint "/adcenter/performance/v2/campaign"
+        
         class << self
-          def endpoint
-            "/report/adcenter/performance/v2/campaign"
-          end
-
           def summary type, options = {}
             token = extract_auth_token options
             handle_response post(
