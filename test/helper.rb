@@ -50,9 +50,7 @@ def run_with_rescue
   begin
     yield
   rescue => ex
-    puts "failed with: #{ex}"
-    puts ex.message
-    puts ex.backtrace
+
     false # return false
   end
 end

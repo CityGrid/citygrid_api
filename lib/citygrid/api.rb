@@ -64,7 +64,6 @@ class CityGrid
 
         elsif response["errors"]
           raise Error.new response["errors"], response
-
         else
           CityGrid::API::Response.new response
         end

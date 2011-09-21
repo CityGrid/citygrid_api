@@ -45,21 +45,15 @@ class CityGrid
     end
     alias_method :login, :authenticate
     
-
-    
     def set_endpoints config_file
       File.open config_file, "r" do |file|
         while line = file.gets
           api, endpoint = line.split("=").map{|x| x.chomp}
           endpoint = "/#{endpoint}" unless endpoint.start_with?("/")
           klass = CLASS_MAPPING[api]   
-          unless klass       
-            puts "Unknown API #{api}" 
-            next
-          end
+          next unless klass
           
           klass.endpoint endpoint
-          puts "#{CLASS_MAPPING[api]} => #{endpoint}"
         end
       end
     end
@@ -70,13 +64,9 @@ class CityGrid
           api, host = line.split("=").map{|x| x.chomp}
           host = "http://#{host}" unless host.start_with?("http")
           klass = CLASS_MAPPING[api]
-          unless klass
-            puts "Unknown API #{api}"
-            next
-          end
+          next unless klass
           
           klass.base_uri host
-          puts "#{CLASS_MAPPING[api]} => #{host}"
         end
       end
     end

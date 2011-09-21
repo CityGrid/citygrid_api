@@ -2,8 +2,8 @@ class CityGrid
   class API
     class Content
       class Places < Content
-        base_uri "api.qa.citygridmedia.com"
-        endpoint "/adcenter/places/v2"
+        base_uri "api.citygridmedia.com"
+        endpoint "/content/places/v2"
         
         class << self
           def detail opts

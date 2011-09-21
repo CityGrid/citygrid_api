@@ -3,7 +3,7 @@ class CityGrid
     class Content
       class Places
         class Search < Places
-          endpoint "/places/v2/search/where"
+          endpoint "/content/places/v2/search/where"
         end
       end
     end

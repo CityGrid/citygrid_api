@@ -12,7 +12,7 @@ end
 
 context "A Listing created from search" do
   setup do
-    CityGrid.search(:what => "sushi", :where => "seattle").first
+    CityGrid.search(:what => "food", :where => "seattle").first
   end
 
   # Test loading
@@ -40,17 +40,17 @@ context "A Listing created from search" do
     end
   end
 
-  # Test offers, reviews
-  # -------------------- #
-  should "get offers" do
-    !topic.offers.empty?
-  end
-
-  # Test reviews
-  # -------------------- #
-  should "get reviews" do
-    !topic.reviews.empty?
-  end
+  # # Test offers, reviews
+  # # -------------------- #
+  # should "get offers" do
+  #   !topic.offers.empty?
+  # end
+  # 
+  # # Test reviews
+  # # -------------------- #
+  # should "get reviews" do
+  #   !topic.reviews.empty?
+  # end
 
   context "updating reviews" do
     setup do
