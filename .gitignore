@@ -51,3 +51,10 @@ tmtags
 
 # ignore default citygrid_api.yml, only citygrid_api.sample.yml is checked in 
 citygrid_api.yml
+
+# don't include endpoint settings
+qa-env.properties
+qa-endpoints.properties
+fetch_endpoints.sh
+
+

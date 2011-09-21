@@ -45,6 +45,42 @@ class CityGrid
     end
     alias_method :login, :authenticate
     
+
+    
+    def set_endpoints config_file
+      File.open config_file, "r" do |file|
+        while line = file.gets
+          api, endpoint = line.split("=").map{|x| x.chomp}
+          endpoint = "/#{endpoint}" unless endpoint.start_with?("/")
+          klass = CLASS_MAPPING[api]   
+          unless klass       
+            puts "Unknown API #{api}" 
+            next
+          end
+          
+          klass.endpoint endpoint
+          puts "#{CLASS_MAPPING[api]} => #{endpoint}"
+        end
+      end
+    end
+    
+    def set_env config_file
+      File.open config_file, "r" do |file|
+        while line = file.gets
+          api, host = line.split("=").map{|x| x.chomp}
+          host = "http://#{host}" unless host.start_with?("http")
+          klass = CLASS_MAPPING[api]
+          unless klass
+            puts "Unknown API #{api}"
+            next
+          end
+          
+          klass.base_uri host
+          puts "#{CLASS_MAPPING[api]} => #{host}"
+        end
+      end
+    end
+    
   end
 
   # Errors
@@ -74,3 +110,23 @@ require "citygrid/listing"
 require "citygrid/api/response"
 require "citygrid/api/ad_center"
 require "citygrid/api/content"
+
+class CityGrid
+  CLASS_MAPPING = {
+    "account"               => CityGrid::API::AdCenter::Account,
+    "adgroup"               => CityGrid::API::AdCenter::AdGroup,
+    "adgroupad"             => CityGrid::API::AdCenter::AdGroupAd,
+    "adgroupgeo"            => CityGrid::API::AdCenter::AdGroupGeo,
+    "adgroupcriterion"      => CityGrid::API::AdCenter::AdGroupCriterion,
+    "authentication"        => CityGrid::API::AdCenter::Authentication,      
+    "budget-suggestion"     => CityGrid::API::AdCenter::Budget,
+    "campaign"              => CityGrid::API::AdCenter::Campaign,
+    "category"              => CityGrid::API::AdCenter::Category,
+    # "geolocation"         => CityGrid::API::AdCenter::GeoLocation,
+    "mop"                   => CityGrid::API::AdCenter::MethodOfPayment,
+    # "image"               => CityGrid::API::AdCenter::Image,
+    "report"                => CityGrid::API::AdCenter::Reports,
+    # "reviews"               => CityGrid::API::AdCenter::Reviews
+    # "user"                => CityGrid::API::AdCenter::User
+  }
+end
