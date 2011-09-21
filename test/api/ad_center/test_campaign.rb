@@ -12,8 +12,8 @@ context "Adding a campaign" do
           :operand  => {
             :accountId => "123",
             :name      => "PleaseWork6",
-            :startDate => "20110625",
-            :endDate   => "20111011",
+            :startDate => Date.today.to_s.gsub("-", ""),
+            :endDate   => (Date.today + 10).to_s.gsub("-", ""),
             :product   => "PERFORMANCE",
             :budget    => {:amount => 30000},
             :mopId     => 2961
