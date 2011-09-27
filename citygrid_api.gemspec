@@ -9,11 +9,12 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Elpizo Choi"]
-  s.date = %q{2011-09-09}
+  s.date = %q{2011-09-27}
   s.description = %q{Ruby wrapper for CityGrid APIs}
   s.email = %q{fu7iin@gmail.com}
   s.extra_rdoc_files = [
     "LICENSE.txt",
+    "README",
     "README.rdoc"
   ]
   s.files = [
@@ -21,10 +22,12 @@ Gem::Specification.new do |s|
     "Gemfile",
     "Gemfile.lock",
     "LICENSE.txt",
+    "README",
     "README.rdoc",
     "Rakefile",
     "VERSION",
     "citygrid_api.gemspec",
+    "citygrid_api.yml.sample",
     "lib/citygrid.rb",
     "lib/citygrid/abstraction.rb",
     "lib/citygrid/abstraction/collection.rb",
@@ -33,6 +36,7 @@ Gem::Specification.new do |s|
     "lib/citygrid/abstraction/super_array.rb",
     "lib/citygrid/abstraction/super_hash.rb",
     "lib/citygrid/api.rb",
+    "lib/citygrid/api/ad_center.rb",
     "lib/citygrid/api/ad_center/account.rb",
     "lib/citygrid/api/ad_center/ad_group.rb",
     "lib/citygrid/api/ad_center/ad_group_ad.rb",
@@ -44,7 +48,7 @@ Gem::Specification.new do |s|
     "lib/citygrid/api/ad_center/category.rb",
     "lib/citygrid/api/ad_center/method_of_payment.rb",
     "lib/citygrid/api/ad_center/reports.rb",
-    "lib/citygrid/api/base.rb",
+    "lib/citygrid/api/content.rb",
     "lib/citygrid/api/content/offers.rb",
     "lib/citygrid/api/content/places.rb",
     "lib/citygrid/api/content/places/detail.rb",
@@ -72,6 +76,7 @@ Gem::Specification.new do |s|
     "test/helper.rb",
     "test/publisher_helper.rb.sample",
     "test/test_citygrid.rb",
+    "test/test_config.rb",
     "test/test_details.rb",
     "test/test_listing.rb",
     "test/test_search.rb",
@@ -80,10 +85,11 @@ Gem::Specification.new do |s|
   ]
   s.licenses = ["MIT"]
   s.require_paths = ["lib"]
-  s.rubygems_version = %q{1.7.2}
+  s.rubygems_version = %q{1.3.7}
   s.summary = %q{Ruby wrapper for CityGrid APIs}
 
   if s.respond_to? :specification_version then
+    current_version = Gem::Specification::CURRENT_SPECIFICATION_VERSION
     s.specification_version = 3
 
     if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
