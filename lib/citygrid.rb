@@ -115,6 +115,7 @@ class CityGrid
     # "geolocation"         => CityGrid::API::AdCenter::GeoLocation,
     "mop"                   => CityGrid::API::AdCenter::MethodOfPayment,
     # "image"               => CityGrid::API::AdCenter::Image,
+    "places"                   => CityGrid::API::Content::Places,
     "report"                => CityGrid::API::AdCenter::Reports,
     # "reviews"               => CityGrid::API::AdCenter::Reviews
     # "user"                => CityGrid::API::AdCenter::User
