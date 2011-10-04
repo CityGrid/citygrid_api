@@ -10,7 +10,7 @@ context "Adding a campaign" do
         :mutateOperationListResource => [{
           :operator => "ADD",
           :operand  => {
-            :accountId => "123",
+            # :accountId => "123",
             :name      => "PleaseWork6",
             :startDate => Date.today.to_s.gsub("-", ""),
             :endDate   => (Date.today + 10).to_s.gsub("-", ""),
