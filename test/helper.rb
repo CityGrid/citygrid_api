@@ -47,10 +47,16 @@ CityGrid.set_env File.join(File.dirname(__FILE__), '..', "qa-env.properties")
 # Run code with rescue so that exceptions
 # will be printed, but won't stop test suite
 def run_with_rescue
-  begin
+  # begin
+    puts "doing run_with_rescue"
     yield
-  rescue => ex
-
-    false # return false
-  end
+  # rescue CityGrid::API::InvalidResponseFormat => ex
+  #   x = {"description" => ex.description, "server_msg" => ex.server_msg}
+  #   puts "======= ERROR ======="
+  #   ap x
+  #   false
+  # rescue => ex
+  #   ap ex
+  #   false # return false
+  # end
 end

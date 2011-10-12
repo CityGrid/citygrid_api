@@ -1,4 +1,4 @@
-require "helper"
+require File.expand_path(File.join(File.dirname(__FILE__), 'helper'))
 
 context "A Listing created from scratch" do
   setup do

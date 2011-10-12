@@ -1,4 +1,4 @@
-require "helper"
+require File.expand_path(File.join(File.dirname(__FILE__), 'helper'))
 
 super_array = CityGrid::Abstraction::SuperArray
 super_hash  = CityGrid::Abstraction::SuperHash

@@ -1,8 +1,14 @@
-require "helper"
+require File.expand_path(File.join(File.dirname(__FILE__), 'helper'))
 
 context "Initiating a Details" do
   setup do
-    CityGrid::Details.new :public_id => "philip-marie-restaurant-new-york"
+    begin 
+      run_with_rescue do
+        CityGrid::Details.new :public_id => "philip-marie-restaurant-new-york"
+      end
+    rescue
+      puts "BLAFKASDFASDJFASDF"
+    end
   end
 
   should "return a single Details object" do
@@ -12,7 +18,9 @@ end
 
 context "Initiating new MultiDetails" do
   setup do
-    CityGrid::MultiDetails.new :public_id => "philip-marie-restaurant-new-york"
+    run_with_rescue do    
+      CityGrid::MultiDetails.new :public_id => "philip-marie-restaurant-new-york"
+    end
   end
 
   should "return a MultiDetails object" do
