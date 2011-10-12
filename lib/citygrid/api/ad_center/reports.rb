@@ -7,11 +7,13 @@ class CityGrid
         class << self
           def summary type, options = {}
             token = extract_auth_token options
-            handle_response post(
-              "#{endpoint}/#{type}",
-              :body    => options.to_json,
-              :headers => merge_headers("authToken" => token)
-            )
+            handle_response do 
+              post(
+                "#{endpoint}/#{type}",
+                :body    => options.to_json,
+                :headers => merge_headers("authToken" => token)
+              )
+            end
           end
         end
       end

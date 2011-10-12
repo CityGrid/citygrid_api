@@ -50,7 +50,7 @@ class CityGrid
         while line = file.gets
           api, endpoint = line.split("=").map{|x| x.chomp}
           endpoint = "/#{endpoint}" unless endpoint.start_with?("/")
-          klass = CLASS_MAPPING[api]   
+          klass = CLASS_MAPPING[api]
           next unless klass
           
           klass.endpoint endpoint
@@ -109,15 +109,15 @@ class CityGrid
     "adgroupgeo"            => CityGrid::API::AdCenter::AdGroupGeo,
     "adgroupcriterion"      => CityGrid::API::AdCenter::AdGroupCriterion,
     "authentication"        => CityGrid::API::AdCenter::Authentication,      
-    "budget-suggestion"     => CityGrid::API::AdCenter::Budget,
+    "budget"                => CityGrid::API::AdCenter::Budget,
     "campaign"              => CityGrid::API::AdCenter::Campaign,
     "category"              => CityGrid::API::AdCenter::Category,
-    # "geolocation"         => CityGrid::API::AdCenter::GeoLocation,
+    # "geolocation"           => CityGrid::API::AdCenter::GeoLocation,
     "mop"                   => CityGrid::API::AdCenter::MethodOfPayment,
-    # "image"               => CityGrid::API::AdCenter::Image,
-    "places"                   => CityGrid::API::Content::Places,
-    "report"                => CityGrid::API::AdCenter::Reports,
-    # "reviews"               => CityGrid::API::AdCenter::Reviews
-    # "user"                => CityGrid::API::AdCenter::User
+    "image"                 => CityGrid::API::AdCenter::Image,
+    "places"                => CityGrid::API::Content::Places,
+    "performance"           => CityGrid::API::AdCenter::Reports,
+    # "reviews"             => CityGrid::API::AdCenter::Reviews
+    "user"                  => CityGrid::API::AdCenter::User
   }
 end
