@@ -6,12 +6,9 @@ class CityGrid
         endpoint "/user/v2"
         
         def self.login options = {}
-          handle_response do
-            post(
-              "#{endpoint}/login",
-              :query => options
-            )
-          end
+          request_and_handle :post,
+            "#{endpoint}/login",
+            :query => options
         end
       end
     end
