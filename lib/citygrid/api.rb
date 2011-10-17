@@ -50,7 +50,6 @@ class CityGrid
           "#{endpoint}/get",
           :query   => options,
           :headers => merge_headers("authToken" => token)
-
       end
 
       private
@@ -93,7 +92,6 @@ class CityGrid
           req_options = req_options.merge(options)
 
           req = HTTParty::Request.new http_method, path, req_options
-          
           error = nil
           
           begin 
@@ -105,7 +103,9 @@ class CityGrid
             puts "Something went wrong with Request.perform, Psych:SyntaxError"
             error = StandardError.new "Internal Error"
           end
-          
+
+          puts req.to_curl
+                      
           unless error
             if !response.parsed_response.is_a?(Hash)
               error = InvalidResponseFormat.new response
@@ -121,24 +121,6 @@ class CityGrid
             puts req.to_json
             #raise error
           end
-          
-        end
-      
-        private
-        def perform_request(http_method, path, options) #:nodoc:
-          req_options = default_options.dup
-
-          # if base_uri not set explicitly...
-          unless base_uri 
-          end
-
-          req_options = req_options.merge({:base_uri => CityGrid.config[server]}) if !base_uri && server
-          req_options = req_options.merge(options)
-          req = HTTParty::Request.new http_method, path, req_options
-          puts "**** URI: #{req.uri}"
-          ap req_options
-          req.perform
-          # super http_method, path, req_options
         end
       end
 

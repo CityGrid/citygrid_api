@@ -6,9 +6,6 @@ context "loading config file" do
   end
 
   should "load correctly" do
-    # ap CityGrid.config
-    # puts "adgroup base: "
-    # ap CityGrid::API::AdCenter::AdGroup.base_uri
-    # ap CityGrid::API::AdCenter::AdGroup.endpoint
+    true
   end
 end

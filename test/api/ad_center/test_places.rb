@@ -10,6 +10,7 @@ context "Adding a place" do
         "mutateOperationListResource" => [{
           "operator" => "ADD",
           "operand" => {
+            "accountId" => "123",
             "name" => "Pi on sunset in LAAAAAAAAAAAAAA",
             "address_1" => "Jackson 2102",
             "address_2" => "",
@@ -27,8 +28,9 @@ context "Adding a place" do
       )
     end
   end
-  should("not be empty"){ !topic.empty? }
-  should("return response OK"){ topic.resources.first.response.code == 200 }
+  should("not be empty") { !topic.empty? }
+  should("return code OK") { topic.resources.first.response.code }.equals(200)
+  should("return message OK") { topic.resources.first.response.message.upcase }.equals("OK")  
 end
 
 context "Update a place" do
@@ -39,6 +41,7 @@ context "Update a place" do
         "mutateOperationListResource" => [{
           "operator" => "SET",
           "operand" => {
+            "accountId" => "123",
             "name" => "Pi on sunset in LAAAAAAAAAAAAAA",
             "address_1" => "Jackson 2102",
             "address_2" => "",
@@ -52,11 +55,12 @@ context "Update a place" do
             "tagline" => "my tagline",
             "primary_tag_id" => 3623,
             "secondary_tags" => '1776',
-            "listing_id" => '755498442'}
+            "listing_id" => 755498442}
         }]
       )
     end
   end
   should("not be empty"){ !topic.empty? }
-  should("return response OK"){ topic.resources.first.response.code == 200 }
+  should("return code OK"){ topic.resources.first.response.code }.equals(200)
+  should("return message OK") { topic.resources.first.response.message }.equals("OK")  
 end

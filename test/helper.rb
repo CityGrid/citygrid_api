@@ -21,7 +21,7 @@ class AuthToken
 
   class << self
     def token
-      @@token
+      @@token || generate
     end
 
     def token= auth_token
@@ -29,7 +29,7 @@ class AuthToken
     end
 
     def generate
-      @@token || token = CityGrid.login(
+      @@token ||= CityGrid.login(
         :username => 'QASalesCoord',
         :password => 'pppppp'
       ).authToken

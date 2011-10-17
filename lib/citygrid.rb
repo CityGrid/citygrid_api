@@ -1,3 +1,5 @@
+YAML::ENGINE.yamler= 'syck'
+
 class CityGrid
   class << self
     def publisher= code
@@ -114,7 +116,7 @@ class CityGrid
     "budget"                => CityGrid::API::AdCenter::Budget,
     "campaign"              => CityGrid::API::AdCenter::Campaign,
     "category"              => CityGrid::API::AdCenter::Category,
-    # "geolocation"           => CityGrid::API::AdCenter::GeoLocation,
+    "geolocation"           => CityGrid::API::AdCenter::GeoLocation,
     "mop"                   => CityGrid::API::AdCenter::MethodOfPayment,
     "image"                 => CityGrid::API::AdCenter::Image,
     "places"                => CityGrid::API::Content::Places,
