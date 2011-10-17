@@ -4,14 +4,14 @@
 # -*- encoding: utf-8 -*-
 
 Gem::Specification.new do |s|
-  s.name = %q{citygrid_api}
+  s.name = "citygrid_api"
   s.version = "0.0.5"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Elpizo Choi"]
-  s.date = %q{2011-09-27}
-  s.description = %q{Ruby wrapper for CityGrid APIs}
-  s.email = %q{fu7iin@gmail.com}
+  s.date = "2011-10-17"
+  s.description = "Ruby wrapper for CityGrid APIs"
+  s.email = "fu7iin@gmail.com"
   s.extra_rdoc_files = [
     "LICENSE.txt",
     "README",
@@ -46,8 +46,11 @@ Gem::Specification.new do |s|
     "lib/citygrid/api/ad_center/budget.rb",
     "lib/citygrid/api/ad_center/campaign.rb",
     "lib/citygrid/api/ad_center/category.rb",
+    "lib/citygrid/api/ad_center/geolocation.rb",
+    "lib/citygrid/api/ad_center/image.rb",
     "lib/citygrid/api/ad_center/method_of_payment.rb",
     "lib/citygrid/api/ad_center/reports.rb",
+    "lib/citygrid/api/ad_center/user.rb",
     "lib/citygrid/api/content.rb",
     "lib/citygrid/api/content/offers.rb",
     "lib/citygrid/api/content/places.rb",
@@ -61,6 +64,7 @@ Gem::Specification.new do |s|
     "lib/citygrid/reviews.rb",
     "lib/citygrid/search.rb",
     "lib/citygrid_api.rb",
+    "lib/request_ext.rb",
     "test/api/ad_center/test_account.rb",
     "test/api/ad_center/test_ad_group.rb",
     "test/api/ad_center/test_ad_group_ad.rb",
@@ -70,12 +74,12 @@ Gem::Specification.new do |s|
     "test/api/ad_center/test_budget.rb",
     "test/api/ad_center/test_campaign.rb",
     "test/api/ad_center/test_category.rb",
+    "test/api/ad_center/test_geolocation.rb",
     "test/api/ad_center/test_method_of_payment.rb",
     "test/api/ad_center/test_places.rb",
     "test/api/ad_center/test_reports.rb",
     "test/helper.rb",
     "test/publisher_helper.rb.sample",
-    "test/test_citygrid.rb",
     "test/test_config.rb",
     "test/test_details.rb",
     "test/test_listing.rb",
@@ -85,11 +89,10 @@ Gem::Specification.new do |s|
   ]
   s.licenses = ["MIT"]
   s.require_paths = ["lib"]
-  s.rubygems_version = %q{1.3.7}
-  s.summary = %q{Ruby wrapper for CityGrid APIs}
+  s.rubygems_version = "1.8.10"
+  s.summary = "Ruby wrapper for CityGrid APIs"
 
   if s.respond_to? :specification_version then
-    current_version = Gem::Specification::CURRENT_SPECIFICATION_VERSION
     s.specification_version = 3
 
     if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
