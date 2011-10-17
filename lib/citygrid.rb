@@ -101,6 +101,8 @@ require "citygrid/api/response"
 require "citygrid/api/ad_center"
 require "citygrid/api/content"
 
+require "request_ext"
+
 class CityGrid
   CLASS_MAPPING = {
     "account"               => CityGrid::API::AdCenter::Account,

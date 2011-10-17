@@ -1,7 +1,5 @@
 source "http://rubygems.org"
-# Add dependencies required to use your gem here.
-# Example:
-#   gem "activesupport", ">= 2.3.5"
+
 gem "httparty", "~> 0.7.8"
 gem "json", "1.5.3"
 
