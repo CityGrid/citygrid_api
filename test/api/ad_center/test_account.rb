@@ -13,7 +13,8 @@ context "Getting account info" do
       end
     end
     should("not be empty"){ !topic.empty? }
-    should("return response code OK"){ topic.accountResources.first.response.code.to_i == 200}
+    should("return message OK"){ topic.accountResources.first.response.message }.equals("OK")  
+    should("return response code OK"){ topic.accountResources.first.response.code.to_i }.equals(200)
   end
 
   context "by id" do
@@ -26,8 +27,35 @@ context "Getting account info" do
       end
     end
     should("not be empty"){ !topic.empty? }
-    should("return response code OK"){ topic.accountResources.first.response.code.to_i == 200}
+    should("return message OK"){ topic.accountResources.first.response.message }.equals("OK")  
+    should("return response code OK"){ topic.accountResources.first.response.code.to_i }.equals(200)
   end
+end
+
+context "Import a cg account" do
+  setup do
+    run_with_rescue do
+      CityGrid::API::AdCenter::Account.import_to_cg(
+      :token => token,
+      "mutateOperationListResource" => [{ 
+        "operator" => "ADD", 
+        "operand" => {
+          "firstName" => "nico-api", 
+          "lastName" => "gomez-api", 
+          "phone" => "9001111112", 
+          "businessName" =>"businessProveApi", 
+          "address1" =>"dir-api", 
+          "city" =>"montevideo", 
+          "state" =>"Montevideo", 
+          "zipCode" =>"90069" 
+          } 
+        }]
+      )
+    end
+  end
+  should("not be empty"){ !topic.empty? }
+  should("return message OK"){ topic.accountResources.first.response.message }.equals("OK")  
+  should("return response code OK"){ topic.accountResources.first.response.code.to_i }.equals(200)
 end
 
 context "Creating an account" do
@@ -55,5 +83,6 @@ context "Creating an account" do
     end
   end
   should("not be empty"){ !topic.empty? }
-  should("return response code OK"){ topic.accountResources.first.response.code.to_i == 200 }
+  should("return message OK"){ topic.accountResources.first.response.message }.equals("OK")  
+  should("return response code OK"){ topic.accountResources.first.response.code.to_i }.equals(200)
 end
