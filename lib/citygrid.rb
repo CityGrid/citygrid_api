@@ -1,4 +1,6 @@
-YAML::ENGINE.yamler= 'syck'
+# Ruby 1.9.2 has YAML::ENGINE and will blow up if you don't define yamler
+# Ruby 1.8.7 doesn't have YAML::ENGINE, this should take care of both cases
+YAML::ENGINE.yamler= 'syck' if defined?(YAML::ENGINE)
 
 class CityGrid
   class << self
