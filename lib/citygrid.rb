@@ -55,7 +55,6 @@ class CityGrid
           api, endpoint = line.split("=").map{|x| x.chomp}
           endpoint = "/#{endpoint}" unless endpoint.start_with?("/")
           klass = CLASS_MAPPING[api]
-          puts "#{klass} => #{endpoint}"
           next unless klass
           
           klass.endpoint endpoint

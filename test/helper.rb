@@ -30,7 +30,7 @@ class AuthToken
 
     def generate
       @@token ||= CityGrid.login(
-        :username => 'QASalesCoord',
+        :username => 'kunimom',
         :password => 'pppppp'
       ).authToken
     end

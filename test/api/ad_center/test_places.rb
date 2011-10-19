@@ -13,6 +13,6 @@ context "Adding a place" do
   end
   
   should("not be empty") { !topic.empty? }
-  should("return code OK") { topic.resources.first.response.code }.equals(200)
-  should("return message OK") { topic.resources.first.response.message.upcase }.equals("OK")  
+  should("return code OK") { topic.response.code }.equals(200)
+  should("return message OK") { topic.response.message }.equals("OK")  
 end
