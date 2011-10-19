@@ -55,6 +55,7 @@ class CityGrid
           api, endpoint = line.split("=").map{|x| x.chomp}
           endpoint = "/#{endpoint}" unless endpoint.start_with?("/")
           klass = CLASS_MAPPING[api]
+          puts "#{klass} => #{endpoint}"
           next unless klass
           
           klass.endpoint endpoint
@@ -121,7 +122,7 @@ class CityGrid
     "geolocation"           => CityGrid::API::AdCenter::GeoLocation,
     "mop"                   => CityGrid::API::AdCenter::MethodOfPayment,
     "image"                 => CityGrid::API::AdCenter::Image,
-    "places"                => CityGrid::API::Content::Places,
+    "places"                => CityGrid::API::AdCenter::Places,
     "performance"           => CityGrid::API::AdCenter::Reports,
     # "reviews"             => CityGrid::API::AdCenter::Reviews
     "user"                  => CityGrid::API::AdCenter::User

@@ -2,7 +2,7 @@ require File.expand_path(File.join(File.dirname(__FILE__), '..', '..', 'helper')
 
 token = AuthToken.generate
 
-context "Getting account info" do
+context "Search by username" do
   context "by name" do
     setup do
       run_with_rescue do
@@ -17,7 +17,7 @@ context "Getting account info" do
     should("return response code OK"){ topic.accountResources.first.response.code.to_i }.equals(200)
   end
 
-  context "by id" do
+  context "Search by id" do
     setup do
       run_with_rescue do
         CityGrid::API::AdCenter::Account.search(
@@ -36,18 +36,19 @@ context "Import a cg account" do
   setup do
     run_with_rescue do
       CityGrid::API::AdCenter::Account.import_to_cg(
-      :token => token,
-      "mutateOperationListResource" => [{ 
-        "operator" => "ADD", 
-        "operand" => {
-          "firstName" => "nico-api", 
-          "lastName" => "gomez-api", 
-          "phone" => "9001111112", 
-          "businessName" =>"businessProveApi", 
-          "address1" =>"dir-api", 
-          "city" =>"montevideo", 
-          "state" =>"Montevideo", 
-          "zipCode" =>"90069" 
+        :token => token,
+        "mutateOperationListResource" => [{ 
+          "operator" => "ADD", 
+          "operand" => {
+            "id" => 1000,
+            "firstName" => "nico-api", 
+            "lastName" => "gomez-api", 
+            "phone" => "9001111112", 
+            "businessName" =>"businessProveApi", 
+            "address1" =>"dir-api", 
+            "city" =>"montevideo", 
+            "state" =>"Montevideo", 
+            "zipCode" =>"90069" 
           } 
         }]
       )
