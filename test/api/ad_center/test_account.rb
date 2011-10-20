@@ -35,8 +35,13 @@ end
 context "Import a cg account" do
   setup do
     run_with_rescue do
+      auth_token = CityGrid.login(
+        :username => 'JayG3',
+        :password => 'pppppp'
+      ).authToken
+      
       CityGrid::API::AdCenter::Account.import_to_cg(
-        :token => token,
+        :token => auth_token,
         "mutateOperationListResource" => [{ 
           "operator" => "ADD", 
           "operand" => {
