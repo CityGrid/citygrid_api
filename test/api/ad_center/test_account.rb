@@ -40,7 +40,6 @@ context "Import a cg account" do
         "mutateOperationListResource" => [{ 
           "operator" => "ADD", 
           "operand" => {
-            "id" => 1000,
             "firstName" => "nico-api", 
             "lastName" => "gomez-api", 
             "phone" => "9001111112", 
