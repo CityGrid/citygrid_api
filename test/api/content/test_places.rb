@@ -10,7 +10,7 @@ context "Adding a place" do
         "mutateOperationListResource" => [{
           "operator" => "ADD",
           "operand" => {
-            "accountId" => "123",
+            # "accountId" => "123",
             "name" => "Pi on sunset in LAAAAAAAAAAAAAA",
             "address_1" => "Jackson 2102",
             "address_2" => "",
@@ -41,7 +41,7 @@ context "Update a place" do
         "mutateOperationListResource" => [{
           "operator" => "SET",
           "operand" => {
-            "accountId" => "123",
+            # "accountId" => "123",
             "name" => "Pi on sunset in LAAAAAAAAAAAAAA",
             "address_1" => "Jackson 2102",
             "address_2" => "",

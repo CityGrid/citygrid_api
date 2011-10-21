@@ -31,12 +31,12 @@ context "Method of Payment" do
                "description"     => "test addMOP",
                "firstName"       => "Ara",
                "lastName"        => "Tatous",
-               "phoneNumber"     => "(818)749-3717",
+               "phoneNumber"     => "4252838811",
                "address1"        => "3131 Montrose Ave",
                "address2"        => "Apt. 9",
                "city"            => "LaCrescenta",
                "postalCode"      => "10016",
-               "accountId"       => 3440,
+               "accountId"       => 2458392,
                "securityCode"    => "719",
                "paymentType"     => "Credit Card"
              }

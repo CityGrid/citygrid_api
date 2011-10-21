@@ -36,7 +36,7 @@ context "Import a cg account" do
   setup do
     run_with_rescue do
       auth_token = CityGrid.login(
-        :username => 'JayG3',
+        :username => 'poon',
         :password => 'pppppp'
       ).authToken
       
