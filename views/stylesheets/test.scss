@@ -1,0 +1,27 @@
+body {
+  font-family: Arial;
+  font-size: 14px;
+}
+
+.result {
+  margin-bottom: 20px;
+  .title {
+    font-weight: bold;
+  }
+  
+  .result_content {
+    margin-left: 20px;
+  
+    .passes {
+      .pass {
+        color: green;
+      }
+    }
+  
+    .fails {
+      .fail {
+        color: red; 
+      }
+    }
+  }
+}

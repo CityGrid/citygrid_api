@@ -1,0 +1,27 @@
+%html
+  %head
+    %link{:rel => "stylesheet", :href => "/stylesheets/test.css"}
+  %body
+- @results.each do |result|
+  .result
+    .title= result[:desc]
+    .result_content
+      .passes
+        - result[:passed].each do |desc, result|
+          .pass
+            - if result && result != ""
+              #{desc}: #{result}
+            - else
+              #{desc}
+      .fails
+        - result[:failed].each do |desc, result|
+          .fail
+            - if result && result != ""
+              #{desc}: #{result}
+            - else
+              #{desc}
+      
+      .curls
+        - result[:curls].each do |curl|
+          .curl
+            #{curl}
