@@ -6,7 +6,7 @@ context "Report summary" do
   context "daily" do
     setup do
       run_with_rescue do
-        CityGrid::API::AdCenter::Reports.summary(
+        CityGrid::API::AdCenter::Performance.summary(
           :daily,
           :campaignId => 786,
           :period     => 'last30Days',
@@ -23,7 +23,7 @@ context "Report summary" do
   context "user actions" do
     setup do
       run_with_rescue do
-        CityGrid::API::AdCenter::Reports.summary(
+        CityGrid::API::AdCenter::Performance.summary(
           :actions,
           :campaignId => 786,
           :period     => 'last30Days',

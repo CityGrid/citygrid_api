@@ -11,7 +11,7 @@ end
 
 [
   "account", "ad_group", "ad_group_ad", "ad_group_criterion", "ad_group_geo",
-  "authentication", "budget", "campaign", "category", "geolocation", "method_of_payment", "places", "reports",
+  "authentication", "budget", "campaign", "category", "geolocation", "method_of_payment", "places", "performance",
   "image", "user"
 ].each do |x|
   require "citygrid/api/ad_center/#{x}"  
