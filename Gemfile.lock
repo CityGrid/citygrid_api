@@ -1,8 +1,6 @@
 GEM
   remote: http://rubygems.org/
   specs:
-    ap (0.1.1)
-      httparty (>= 0.7.7)
     awesome_print (0.4.0)
     crack (0.1.8)
     git (1.2.5)
@@ -31,7 +29,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  ap
   awesome_print (~> 0.4.0)
   bundler (~> 1.0.0)
   httparty (~> 0.7.8)
