@@ -8,7 +8,8 @@ IN_DASHBOARD = true
 $LOAD_PATH.unshift(File.join(File.dirname(__FILE__), 'lib'))
 $LOAD_PATH.unshift(File.join(File.dirname(__FILE__), 'test'))
 require "citygrid_api"
-require "publisher_helper"
+
+CityGrid.publisher = "citygrid"
 
 CityGrid.load_config File.join(File.dirname(__FILE__), 'citygrid_api.yml'), "qa"
 
