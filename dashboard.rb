@@ -11,7 +11,7 @@ require "citygrid_api"
 
 CityGrid.publisher = "citygrid"
 
-CityGrid.load_config File.join(File.dirname(__FILE__), 'citygrid_api.yml'), "qa"
+CityGrid.load_config File.join(File.dirname(__FILE__), 'citygrid_api.yml.sample'), "qa"
 
 # Hack to allow storing tokens between tests
 class AuthToken

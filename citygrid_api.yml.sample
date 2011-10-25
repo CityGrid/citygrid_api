@@ -1,3 +1,30 @@
-prod: 
-  default: http://api.citygridmedia.com
-  ssl: https://api.ssl.citygridmedia.com
+defaults:
+  hostname: api.qa.citygridmedia.com
+  ssl_hostname: api-qassl.citygridmedia.com
+
+# endpoint_name: endpoint
+# OR 
+# endpoint_name:
+#   ssl: true/false
+#   endpoint: endpoint
+
+endpoints:
+  account:
+    ssl: true
+    endpoint: accounts/account/v2
+  ad_group: advertising/adgroup/v2
+  ad_group_ad: advertising/adgroupad/v2
+  ad_group_criterion: advertising/adgroupcriterion/v2
+  ad_group_geo: advertising/adgroupgeo/v2  
+  authentication:
+    ssl: true
+    endpoint: accounts/user/v2    
+  budget: advertising/budget/v2
+  campaign: advertising/campaign/v2
+  category: content/category/v2
+  geo_location: content/places/v2
+  image: advertising/image/v2
+  method_of_payment: accounts/mop/v2
+  places: content/places/v2
+  performance: advertising/performance/v2
+  user: accounts/user/v2
