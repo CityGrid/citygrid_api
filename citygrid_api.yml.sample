@@ -19,7 +19,7 @@ endpoints:
   authentication:
     ssl: true
     endpoint: accounts/user/v2    
-  budget: advertising/budget/v2
+  budget: advertising/budget/v2/recommend
   campaign: advertising/campaign/v2
   category: content/category/v2
   geo_location: content/places/v2
