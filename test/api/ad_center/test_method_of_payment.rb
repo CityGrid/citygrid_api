@@ -45,7 +45,7 @@ context "Method of Payment" do
        end
      end
      should("not be empty"){ !topic.empty? }
-     should("return code OK"){ topic.resources.first.response.code == 200 }.equals(200)
+     should("return code OK"){ topic.resources.first.response.code }.equals(200)
      should("return message OK") { topic.resources.first.response.message }.equals("OK")
    end
 end

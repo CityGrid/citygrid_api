@@ -1,12 +1,10 @@
 require File.expand_path(File.join(File.dirname(__FILE__), '..', '..', 'helper'))
 
-token = AuthToken.generate
-
 context "AdGroupCriterion" do
   context "search" do
     setup do
       run_with_rescue do
-        CityGrid::API::AdCenter::AdGroupCriterion.search(:token => token, :adGroupId => 6)
+        CityGrid::API::AdCenter::AdGroupCriterion.search(:token => AuthToken.sales_coord, :adGroupId => 6)
       end
     end
     should("not be empty?"){ !topic.empty? }
@@ -18,7 +16,7 @@ context "AdGroupCriterion" do
     setup do
       run_with_rescue do
         CityGrid::API::AdCenter::AdGroupCriterion.mutate(
-          :token => token,
+          :token => AuthToken.sales_coord,
           "mutateOperationListResource" => [{
             "operator" => "ADD",
             "operand" => {

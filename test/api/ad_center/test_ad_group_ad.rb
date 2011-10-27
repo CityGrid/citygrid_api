@@ -1,12 +1,10 @@
 require File.expand_path(File.join(File.dirname(__FILE__), '..', '..', 'helper'))
 
-token = AuthToken.generate
-
 context "Mutating AdGroup Ads" do
   setup do
     run_with_rescue do
        CityGrid::API::AdCenter::AdGroupAd.mutate(
-        :token => token,
+        :token => AuthToken.sales_coord,
         "mutateOperationListResource" => [{
           "operator" => "ADD",
           "operand" => {

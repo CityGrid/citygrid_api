@@ -24,7 +24,9 @@ endpoints:
   category: content/category/v2
   geo_location: content/places/v2
   image: advertising/image/v2
-  method_of_payment: accounts/mop/v2
+  method_of_payment:
+    ssl: true
+    endpoint: accounts/mop/v2
   places: content/places/v2
   performance: advertising/performance/v2
   user: accounts/user/v2
