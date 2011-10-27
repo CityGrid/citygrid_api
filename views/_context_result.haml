@@ -1,0 +1,25 @@
+.context_result
+  .title= context_result.desc
+  
+  .content
+    .passes
+      - context_result.passes.each do |pass|
+        .pass
+          #{pass.desc}
+          - if pass.result != ""
+            ==: #{pass.result}
+
+    .fails
+      - context_result.fails.each do |fail|
+        .fail
+          #{fail.desc}
+          - if fail.result != ""
+            ==: #{fail.result}
+
+    .curls
+      - context_result.curls.each do |curl|
+        .curl
+          #{curl}
+    
+  .children
+    = partial :context_result, :collection => context_result.children

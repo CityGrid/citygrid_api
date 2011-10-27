@@ -1,13 +1,34 @@
 require 'rubygems'
 require 'sinatra'
-require "ap"
+require "awesome_print"
 require "riot"
+require "haml"
+
+module Sinatra::Partials
+  def partial(template, *args)
+    template_array = template.to_s.split('/')
+    template = template_array[0..-2].join('/') + "/_#{template_array[-1]}"
+    options = args.last.is_a?(Hash) ? args.pop : {}
+    options.merge!(:layout => false)
+    if collection = options.delete(:collection) then
+      collection.inject([]) do |buffer, member|
+        buffer << haml(:"#{template}", options.merge(:layout =>
+        false, :locals => {template_array[-1].to_sym => member}))
+      
+      end.join("\n")
+    else
+      haml(:"#{template}", options)
+    end
+  end
+end
+
+helpers Sinatra::Partials
 
 IN_DASHBOARD = true
 
-$LOAD_PATH.unshift(File.join(File.dirname(__FILE__), 'lib'))
-$LOAD_PATH.unshift(File.join(File.dirname(__FILE__), 'test'))
+$LOAD_PATH.unshift(File.join(File.dirname(__FILE__), 'lib'))  
 require "citygrid_api"
+require File.join(File.dirname(__FILE__), "lib", "dashboard", "stored_reporter.rb")
 
 CityGrid.publisher = "citygrid"
 
@@ -35,47 +56,10 @@ class AuthToken
   end
 end
 
-class StoredReporter < Riot::SilentReporter
-  def passed; @passed; end
-  def failed; @failed; end
-  def curls; @curls; end
-  
-  def curls= v 
-    @curls = v
-  end
-  
-  def initialize
-    @passed = []
-    @failed = []
-    @curls = []
-    
-    super
-  end
-  
-  def pass *args
-    @passed << args
-    puts "got pass: #{args.join(',')}"
-  end
-  
-  def fail *args
-    @failed << args
-    puts "got fail: #{args.join(',')}"
-  end
-end
-
 
 def run_with_rescue
-  begin
-    yield
-  rescue CityGrid::API::InvalidResponseFormat => ex
-    x = {"description" => ex.description, "server_msg" => ex.server_msg}
-    puts "======= ERROR ======="
-    ap x
-    false
-  rescue => ex
-    ap ex
-    false # return false
-  end
+  # don't do anything here, we'll catch
+  yield
 end
 
 require 'stringio'
@@ -99,15 +83,13 @@ get '/stylesheets/:name.css' do
 end
 
 get '/' do
-
   # we want to run tests ourselves
   Riot.alone!
   
   ret = ""
   
   test_paths = Dir.glob "test/**/test_*.rb"  
-  # test_paths = ["test/api/ad_center/test_account.rb", "test/api/ad_center/test_ad_group_geo.rb", "test/test_config.rb"]
-  ap test_paths
+  # test_paths = ["test/test_config.rb"]
   root_contexts = []
   
   Riot.root_contexts.clear
@@ -117,27 +99,28 @@ get '/' do
     Riot.root_contexts.clear
   end
   
-  ap Riot.root_contexts
-  ap root_contexts
-  
-  @results = []
+  @context_results = []
   root_contexts.each do |path, contexts|
-    puts "running #{path}"
     contexts.each do |context|
-      reporter = StoredReporter.new
-      cap = capture_stdout do
+      out = StringIO.new
+      reporter = StoredReporter.new out
+      begin
+        $stdout = out
         context.run reporter
+      rescue CityGrid::API::InvalidResponseFormat => ex
+        puts "CAUGHT AN ERROR!"
+        x = {"description" => ex.description, "server_msg" => ex.server_msg}
+        reporter.fail ex.description, ex.server_msg, "", ""
+      rescue => ex
+        puts "CAUGHT AN ERROR!"
+        reporter.fail ex.to_s, "", "", ""
+      ensure 
+        $stdout = STDOUT  
       end
-    
-      reporter.curls = cap.string.split(/\n/).select{|x| x.index("curl") == 0}
-        
-      @results << {
-        :desc => context.description,
-        :reporter => reporter,
-        :passed => reporter.passed,
-        :failed => reporter.failed,
-        :curls => reporter.curls
-      }
+      
+      reporter.flush_io
+      
+      @context_results += reporter.context_results
     end
   end
 
