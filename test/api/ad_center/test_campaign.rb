@@ -4,7 +4,7 @@ context "Adding a campaign" do
   setup do
     run_with_rescue do
       CityGrid::API::AdCenter::Campaign.mutate(
-        :token => AuthToken.token,
+        :token => AuthToken.sales_coord,
         :mutateOperationListResource => [{
           :operator => "ADD",
           :operand  => {

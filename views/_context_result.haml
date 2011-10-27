@@ -18,10 +18,8 @@
           - if fail.result != ""
             ==: #{fail.result}
 
-    .curls
-      - context_result.requests.each do |request|
-        .curl
-          #{request.to_curl}
+    .requests
+      = partial :request, :collection => context_result.requests
     
     .children
       = partial :context_result, :collection => context_result.children

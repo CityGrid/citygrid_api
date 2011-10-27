@@ -11,6 +11,17 @@ body {
   color: red;
 }
 
+.test_result {
+  .title {
+    font-weight: bold;
+    font-size: 16px;
+    margin-bottom: 5px;
+  }
+  
+  .results {
+    margin-left: 10px;
+  }
+}
 .context_result {
   margin-bottom: 20px;
   .title {
@@ -29,6 +40,13 @@ body {
     .fails {
       .fail {
 //        color: red; 
+      }
+    }
+    
+    .requests {
+      .curl {
+        width: 1000px;
+        height: 60px;
       }
     }
   }

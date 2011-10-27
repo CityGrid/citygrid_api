@@ -10,6 +10,7 @@ IN_DASHBOARD = true
 $LOAD_PATH.unshift(File.join(File.dirname(__FILE__), 'lib', "dashboard"))  
 require "stored_reporter"
 require "sinatra_partial"
+require "test_result"
 
 helpers Sinatra::Partials
 
@@ -52,15 +53,6 @@ module HTTParty
   end
 end
 
-class TestResult
-  attr_accessor :desc, :results
-  
-  def initialize desc
-    self.desc = desc
-    @results = []
-  end
-end
-
 # render stylesheets
 get '/stylesheets/:name.css' do
  content_type 'text/css', :charset => 'utf-8'
@@ -70,11 +62,9 @@ end
 get '/' do
   # we want to run tests ourselves
   Riot.alone!
-  
-  ret = ""
-  
+
   # test_paths = Dir.glob "test/**/test_*.rb"  
-  test_paths = Dir.glob "test/api/ad_center/test_*.rb"  
+  test_paths = Dir.glob("test/api/ad_center/test_*.rb").sort
   # test_paths = ["test/api/ad_center/test_account.rb"]
   
   @results = []

@@ -25,5 +25,6 @@ context "Mutating AdGroup Ads" do
     end
   end
   should("not be empty"){ !topic.empty? }
-  should("respond with OK"){ topic.adResources.first.response.code == 200}
+  should("return code OK"){ topic.adResources.first.response.code }.equals(200)
+  should("return message OK") { topic.adResources.first.response.message }.equals("OK")
 end

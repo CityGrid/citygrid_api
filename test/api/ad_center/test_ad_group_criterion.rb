@@ -10,7 +10,8 @@ context "AdGroupCriterion" do
       end
     end
     should("not be empty?"){ !topic.empty? }
-    should("respond with OK"){ topic.adGroupCriterionResources.first.response.code == 200 }
+    should("return code OK"){ topic.adGroupCriterionResources.first.response.code }.equals(200)
+    should("return message OK") { topic.adGroupCriterionResources.first.response.message }.equals("OK")
   end
 
   context "mutate" do
@@ -40,6 +41,7 @@ context "AdGroupCriterion" do
       end
     end
     should("not be empty"){ !topic.empty? }
-    should("respond with OK"){ topic.adGroupCriterionResources.first.response.code == 200}
+    should("return code OK"){ topic.adGroupCriterionResources.first.response.code }.equals(200)
+    should("return message OK") { topic.adGroupCriterionResources.first.response.message }.equals("OK")
   end
 end
