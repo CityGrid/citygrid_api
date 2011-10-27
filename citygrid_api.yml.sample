@@ -1,6 +1,6 @@
 defaults:
-  hostname: api.qa.citygridmedia.com
-  ssl_hostname: api-qassl.citygridmedia.com
+  hostname: api.qa.citygrid.com
+  ssl_hostname: api-qassl.citygrid.com
 
 # endpoint_name: endpoint
 # OR 
