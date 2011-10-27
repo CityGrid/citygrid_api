@@ -3,6 +3,14 @@ body {
   font-size: 14px;
 }
 
+.passed {
+  color: green;
+}
+
+.failed {
+  color: red;
+}
+
 .context_result {
   margin-bottom: 20px;
   .title {
@@ -14,13 +22,13 @@ body {
   
     .passes {
       .pass {
-        color: green;
+//        color: green;
       }
     }
   
     .fails {
       .fail {
-        color: red; 
+//        color: red; 
       }
     }
   }

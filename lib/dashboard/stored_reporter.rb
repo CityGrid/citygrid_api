@@ -1,11 +1,11 @@
 class StoredReporter < Riot::SilentReporter
   class ContextResult
-    attr_accessor :desc, :children, :passes, :fails, :curls
+    attr_accessor :desc, :children, :passes, :fails, :requests
     
     def initialize context
       @fails = []
       @passes = []
-      @curls = []
+      @requests = []
       @children = []
       
       @desc = context.description
@@ -18,6 +18,17 @@ class StoredReporter < Riot::SilentReporter
     def pass pass
       @passes << pass
     end
+    
+    def passed?
+      return false unless fails.empty?
+      
+      children.each do |c|
+        return false unless c.passed?
+      end
+      
+      return true
+    end
+    
   end
   
   class Fail
@@ -49,16 +60,20 @@ class StoredReporter < Riot::SilentReporter
     super()
   end
   
-  def flush_io
+  def context_finished
     return unless @current_result
-    str = @string_io.string
-    puts "flushing with #{str} inside #{@current_result.desc}"
-    @current_result.curls = str.split(/\n/).select{|x| x.index("curl") == 0} if @current_result
-    @string_io.truncate 0
+    
+    @current_result.requests = RequestTrap.trap.clone
+    RequestTrap.trap.clear
+    # 
+    # str = @string_io.string
+    # # puts "flushing with #{str} inside #{@current_result.desc}"
+    # # @current_result.curls = str.split(/\n/).select{|x| x.index("curl") == 0} if @current_result
+    # @string_io.truncate 0
   end
   
   def describe_context context
-    flush_io
+    context_finished
     @current_result = ContextResult.new context    
     @contexts[context] = @current_result
     

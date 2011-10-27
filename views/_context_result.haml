@@ -1,10 +1,11 @@
 .context_result
-  .title= context_result.desc
+  .title{:class => context_result.passed? ? "passed" : "failed"}= context_result.desc
   
   .content
     .passes
       - context_result.passes.each do |pass|
         .pass
+          == <b style="color:green">+</b>
           #{pass.desc}
           - if pass.result != ""
             ==: #{pass.result}
@@ -12,14 +13,15 @@
     .fails
       - context_result.fails.each do |fail|
         .fail
+          == <b style="color:red">-</b>
           #{fail.desc}
           - if fail.result != ""
             ==: #{fail.result}
 
     .curls
-      - context_result.curls.each do |curl|
+      - context_result.requests.each do |request|
         .curl
-          #{curl}
+          #{request.to_curl}
     
-  .children
-    = partial :context_result, :collection => context_result.children
+    .children
+      = partial :context_result, :collection => context_result.children

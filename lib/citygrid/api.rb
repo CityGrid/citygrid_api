@@ -94,15 +94,15 @@ class CityGrid
           req = HTTParty::Request.new http_method, path, req_options
           error = nil
           
-          begin 
+          # begin 
             response = req.perform
-          rescue => ex
-            puts "Something went wrong with Request.perform"
-            error = StandardError.new "Internal Error"
-          rescue Psych::SyntaxError => ex
-            puts "Something went wrong with Request.perform, Psych:SyntaxError"
-            error = StandardError.new "Internal Error"
-          end
+          # rescue => ex
+          #   puts "Something went wrong with Request.perform"
+          #   error = StandardError.new "Internal Error"
+          # rescue Psych::SyntaxError => ex
+          #   puts "Something went wrong with Request.perform, Psych:SyntaxError"
+          #   error = StandardError.new "Internal Error"
+          # end
 
           puts req.to_curl
                       

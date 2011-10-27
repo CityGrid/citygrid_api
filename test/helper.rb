@@ -1,3 +1,27 @@
+# Hack to allow storing tokens between tests
+class AuthToken
+  class << self
+    def kunimom
+      @@kunimom ||= CityGrid.login(
+        :username => 'kunimom',
+        :password => 'pppppp'
+      ).authToken
+    end
+    
+    def sales_coord
+      @@sales_cord ||= CityGrid.login(
+        :username => 'QASalesCoord',
+        :password => 'pppppp'
+      ).authToken
+    end
+    
+    def generate
+      kunimom
+    end
+  end
+end
+
+# don't do gem setup if we're in the dashboad environment
 unless defined? IN_DASHBOARD 
   require 'rubygems'
   require 'bundler'
@@ -16,28 +40,6 @@ unless defined? IN_DASHBOARD
   require "citygrid_api"
   require "publisher_helper"
 
-  # Hack to allow storing tokens between tests
-  class AuthToken
-    @@token = nil
-
-    class << self
-      def token
-        @@token || generate
-      end
-
-      def token= auth_token
-        @@token = auth_token
-      end
-
-      def generate
-        @@token ||= CityGrid.login(
-          :username => 'kunimom',
-          :password => 'pppppp'
-        ).authToken
-      end
-    end
-  end
-
   # load default config
   CityGrid.load_config File.join(File.dirname(__FILE__), '..', 'citygrid_api.yml'), "qa"
 
@@ -48,16 +50,16 @@ unless defined? IN_DASHBOARD
   # Run code with rescue so that exceptions
   # will be printed, but won't stop test suite
   def run_with_rescue
-    # begin
+    begin
       yield
-    # rescue CityGrid::API::InvalidResponseFormat => ex
-    #   x = {"description" => ex.description, "server_msg" => ex.server_msg}
-    #   puts "======= ERROR ======="
-    #   ap x
-    #   false
-    # rescue => ex
-    #   ap ex
-    #   false # return false
-    # end
+    rescue CityGrid::API::InvalidResponseFormat => ex
+      x = {"description" => ex.description, "server_msg" => ex.server_msg}
+      puts "======= ERROR ======="
+      ap x
+      false
+    rescue => ex
+      ap ex
+      false # return false
+    end
   end
 end
