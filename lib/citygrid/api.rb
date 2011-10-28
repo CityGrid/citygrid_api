@@ -54,7 +54,7 @@ class CityGrid
 
       private
       def extract_auth_token options = {}
-        options.delete(:token) || raise(MissingAuthToken)
+        options.delete(:token) #|| raise(MissingAuthToken)
       end
 
       def merge_headers options = {}
