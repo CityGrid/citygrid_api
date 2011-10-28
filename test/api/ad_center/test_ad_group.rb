@@ -6,10 +6,17 @@ token = AuthToken.generate
 context "Mutating Ad Group" do
   setup do
     run_with_rescue do
-      CityGrid::API::AdCenter::AdGroup.search(
-        :token => token, 
-        :adGroupIds => 30966312 
-      )
+      CityGrid::API::AdCenter::AdGroup.search(:token => token, :adGroupIds => 30966312)
+    end
+  end
+  should("not be empty"){ !topic.empty? }
+  should("respond with OK"){ topic.adGroups.first.responseStatus.code == 200 }
+end
+
+context "Search Ad Group by Campaign Id" do
+  setup do
+    run_with_rescue do
+      CityGrid::API::AdCenter::AdGroup.search(:token => token, :campaignId => 2434702)
     end
   end
   should("not be empty"){ !topic.empty? }
