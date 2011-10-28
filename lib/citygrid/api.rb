@@ -94,6 +94,8 @@ class CityGrid
           req = HTTParty::Request.new http_method, path, req_options
           error = nil
           
+          puts req.to_curl
+          
           begin 
             response = req.perform
           rescue => ex
