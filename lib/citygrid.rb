@@ -7,21 +7,6 @@ class CityGrid
     def publisher= code
       @publisher = code
     end
-
-    def load_config file_path, env = nil
-      config = YAML.load_file(file_path)
-      @config = env ? config[env] : config.first[1]
-      [:default, :ssl].each do |x|
-        @config[x] = HTTParty.normalize_base_uri(@config[x.to_s]) if @config[x.to_s]
-      end
-      
-      @config
-    end
-    
-    def config
-      raise EndpointsNotConfigured unless @config && !@config.nil?
-      @config
-    end
     
     def publisher
       raise PublisherNotConfigured if !defined?(@publisher) || @publisher.nil?
@@ -48,6 +33,40 @@ class CityGrid
       API::AdCenter::Authentication.login params
     end
     alias_method :login, :authenticate
+    
+    # config info
+    def load_config file_path, env = nil
+      config = YAML.load_file(file_path)
+      
+      defaults = config["defaults"]
+      
+      default_hostname = "http://#{defaults["hostname"]}"
+      ssl_hostname = "https://#{defaults["ssl_hostname"]}"
+      
+      config["endpoints"].each do |k, v|
+        # camelcase classname
+        classname = k.gsub(/(_(.))/) { $2.upcase}.gsub(/^(.)/) { $1.upcase }
+        klass = API::AdCenter.const_get(classname)
+        if v.is_a? String
+          endpoint = v.start_with?("/") ? v : "/#{v}"
+          klass.endpoint endpoint
+          klass.base_uri default_hostname
+        elsif v.is_a? Hash
+          hostname = v["hostname"] || (v["ssl"] ? ssl_hostname : default_hostname)
+
+          endpoint = v["endpoint"].start_with?("/") ? v["endpoint"] : "/#{v["endpoint"]}" 
+          klass.endpoint endpoint
+          klass.base_uri hostname
+        else 
+          # should not get here
+        end
+      end
+    end
+    
+    def config
+      raise EndpointsNotConfigured unless @config && !@config.nil?
+      @config
+    end
     
     def set_endpoints config_file
       File.open config_file, "r" do |file|
@@ -122,7 +141,7 @@ class CityGrid
     "mop"                   => CityGrid::API::AdCenter::MethodOfPayment,
     "image"                 => CityGrid::API::AdCenter::Image,
     "places"                => CityGrid::API::AdCenter::Places,
-    "performance"           => CityGrid::API::AdCenter::Reports,
+    "performance"           => CityGrid::API::AdCenter::Performance,
     # "reviews"             => CityGrid::API::AdCenter::Reviews
     "user"                  => CityGrid::API::AdCenter::User
   }

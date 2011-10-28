@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Elpizo Choi"]
-  s.date = "2011-10-19"
+  s.date = "2011-10-27"
   s.description = "Ruby wrapper for CityGrid APIs"
   s.email = "fu7iin@gmail.com"
   s.extra_rdoc_files = [
@@ -28,6 +28,8 @@ Gem::Specification.new do |s|
     "VERSION",
     "citygrid_api.gemspec",
     "citygrid_api.yml.sample",
+    "config.ru",
+    "dashboard.rb",
     "lib/citygrid.rb",
     "lib/citygrid/abstraction.rb",
     "lib/citygrid/abstraction/collection.rb",
@@ -49,8 +51,8 @@ Gem::Specification.new do |s|
     "lib/citygrid/api/ad_center/geolocation.rb",
     "lib/citygrid/api/ad_center/image.rb",
     "lib/citygrid/api/ad_center/method_of_payment.rb",
+    "lib/citygrid/api/ad_center/performance.rb",
     "lib/citygrid/api/ad_center/places.rb",
-    "lib/citygrid/api/ad_center/reports.rb",
     "lib/citygrid/api/ad_center/user.rb",
     "lib/citygrid/api/content.rb",
     "lib/citygrid/api/content/offers.rb",
@@ -65,7 +67,11 @@ Gem::Specification.new do |s|
     "lib/citygrid/reviews.rb",
     "lib/citygrid/search.rb",
     "lib/citygrid_api.rb",
+    "lib/dashboard/sinatra_partial.rb",
+    "lib/dashboard/stored_reporter.rb",
+    "lib/dashboard/test_result.rb",
     "lib/request_ext.rb",
+    "public/javascript/dashboard.js",
     "test/api/ad_center/test_account.rb",
     "test/api/ad_center/test_ad_group.rb",
     "test/api/ad_center/test_ad_group_ad.rb",
@@ -76,6 +82,7 @@ Gem::Specification.new do |s|
     "test/api/ad_center/test_campaign.rb",
     "test/api/ad_center/test_category.rb",
     "test/api/ad_center/test_geolocation.rb",
+    "test/api/ad_center/test_image.rb",
     "test/api/ad_center/test_method_of_payment.rb",
     "test/api/ad_center/test_places.rb",
     "test/api/ad_center/test_reports.rb",
@@ -84,10 +91,16 @@ Gem::Specification.new do |s|
     "test/publisher_helper.rb.sample",
     "test/test_config.rb",
     "test/test_details.rb",
+    "test/test_img.png",
     "test/test_listing.rb",
     "test/test_search.rb",
     "test/test_super_array.rb",
-    "test/test_super_hash.rb"
+    "test/test_super_hash.rb",
+    "views/_context_result.haml",
+    "views/_request.haml",
+    "views/_test_result.haml",
+    "views/stylesheets/test.scss",
+    "views/test.haml"
   ]
   s.licenses = ["MIT"]
   s.require_paths = ["lib"]
@@ -100,16 +113,18 @@ Gem::Specification.new do |s|
     if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
       s.add_runtime_dependency(%q<httparty>, ["~> 0.7.8"])
       s.add_runtime_dependency(%q<json>, ["= 1.5.3"])
-      s.add_development_dependency(%q<awesome_print>, ["~> 0.4.0"])
-      s.add_development_dependency(%q<riot>, ["~> 0.12.4"])
+      s.add_runtime_dependency(%q<riot>, ["~> 0.12.4"])
+      s.add_runtime_dependency(%q<awesome_print>, ["~> 0.4.0"])
+      s.add_runtime_dependency(%q<haml>, [">= 0"])
       s.add_development_dependency(%q<bundler>, ["~> 1.0.0"])
       s.add_development_dependency(%q<jeweler>, ["~> 1.6.2"])
       s.add_development_dependency(%q<rcov>, [">= 0"])
     else
       s.add_dependency(%q<httparty>, ["~> 0.7.8"])
       s.add_dependency(%q<json>, ["= 1.5.3"])
-      s.add_dependency(%q<awesome_print>, ["~> 0.4.0"])
       s.add_dependency(%q<riot>, ["~> 0.12.4"])
+      s.add_dependency(%q<awesome_print>, ["~> 0.4.0"])
+      s.add_dependency(%q<haml>, [">= 0"])
       s.add_dependency(%q<bundler>, ["~> 1.0.0"])
       s.add_dependency(%q<jeweler>, ["~> 1.6.2"])
       s.add_dependency(%q<rcov>, [">= 0"])
@@ -117,8 +132,9 @@ Gem::Specification.new do |s|
   else
     s.add_dependency(%q<httparty>, ["~> 0.7.8"])
     s.add_dependency(%q<json>, ["= 1.5.3"])
-    s.add_dependency(%q<awesome_print>, ["~> 0.4.0"])
     s.add_dependency(%q<riot>, ["~> 0.12.4"])
+    s.add_dependency(%q<awesome_print>, ["~> 0.4.0"])
+    s.add_dependency(%q<haml>, [">= 0"])
     s.add_dependency(%q<bundler>, ["~> 1.0.0"])
     s.add_dependency(%q<jeweler>, ["~> 1.6.2"])
     s.add_dependency(%q<rcov>, [">= 0"])

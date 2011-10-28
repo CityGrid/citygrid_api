@@ -1,12 +1,10 @@
 require File.expand_path(File.join(File.dirname(__FILE__), '..', '..', 'helper'))
 
-token = AuthToken.generate
-
 context "Mutating AdGroup Ads" do
   setup do
     run_with_rescue do
        CityGrid::API::AdCenter::AdGroupAd.mutate(
-        :token => token,
+        :token => AuthToken.sales_coord,
         "mutateOperationListResource" => [{
           "operator" => "ADD",
           "operand" => {
@@ -25,5 +23,6 @@ context "Mutating AdGroup Ads" do
     end
   end
   should("not be empty"){ !topic.empty? }
-  should("respond with OK"){ topic.adResources.first.response.code == 200}
+  should("return code OK"){ topic.adResources.first.response.code }.equals(200)
+  should("return message OK") { topic.adResources.first.response.message }.equals("OK")
 end

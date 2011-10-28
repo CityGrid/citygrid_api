@@ -54,7 +54,7 @@ class CityGrid
 
       private
       def extract_auth_token options = {}
-        options.delete(:token) || raise(MissingAuthToken)
+        options.delete(:token) #|| raise(MissingAuthToken)
       end
 
       def merge_headers options = {}
@@ -94,6 +94,8 @@ class CityGrid
           req = HTTParty::Request.new http_method, path, req_options
           error = nil
           
+          puts req.to_curl
+          
           begin 
             response = req.perform
           rescue => ex
@@ -103,8 +105,6 @@ class CityGrid
             puts "Something went wrong with Request.perform, Psych:SyntaxError"
             error = StandardError.new "Internal Error"
           end
-
-          puts req.to_curl
                       
           unless error
             if !response.parsed_response.is_a?(Hash)

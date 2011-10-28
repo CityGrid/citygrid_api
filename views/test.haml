@@ -1,0 +1,8 @@
+%html
+  %head
+    %link{:rel => "stylesheet", :href => "/stylesheets/test.css"}
+    %script{:language => "javascript", :src =>  "http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"}
+    %script{:language => "javascript", :src => "/javascript/dashboard.js"}
+    
+  %body
+= partial :test_result, :collection => @results

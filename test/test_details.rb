@@ -1,6 +1,6 @@
 require File.expand_path(File.join(File.dirname(__FILE__), 'helper'))
 
-context "Initiating a Details" do
+c = context "Initiating a Details" do
   setup do
     begin 
       run_with_rescue do
@@ -14,8 +14,11 @@ context "Initiating a Details" do
   should "return a single Details object" do
     topic.is_a? CityGrid::Details
   end
+  
+  should("blow up") { false }
+  
 end
-
+ 
 context "Initiating new MultiDetails" do
   setup do
     run_with_rescue do    

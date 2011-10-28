@@ -1,23 +1,22 @@
 require File.expand_path(File.join(File.dirname(__FILE__), '..', '..', 'helper'))
 
-token = AuthToken.generate
-
 context "AdGroupCriterion" do
   context "search" do
     setup do
       run_with_rescue do
-        CityGrid::API::AdCenter::AdGroupCriterion.search(:token => token, :adGroupId => 6)
+        CityGrid::API::AdCenter::AdGroupCriterion.search(:token => AuthToken.sales_coord, :adGroupId => 6)
       end
     end
     should("not be empty?"){ !topic.empty? }
-    should("respond with OK"){ topic.adGroupCriterionResources.first.response.code == 200 }
+    should("return code OK"){ topic.adGroupCriterionResources.first.response.code }.equals(200)
+    should("return message OK") { topic.adGroupCriterionResources.first.response.message }.equals("OK")
   end
 
   context "mutate" do
     setup do
       run_with_rescue do
         CityGrid::API::AdCenter::AdGroupCriterion.mutate(
-          :token => token,
+          :token => AuthToken.sales_coord,
           "mutateOperationListResource" => [{
             "operator" => "ADD",
             "operand" => {
@@ -40,6 +39,7 @@ context "AdGroupCriterion" do
       end
     end
     should("not be empty"){ !topic.empty? }
-    should("respond with OK"){ topic.adGroupCriterionResources.first.response.code == 200}
+    should("return code OK"){ topic.adGroupCriterionResources.first.response.code }.equals(200)
+    should("return message OK") { topic.adGroupCriterionResources.first.response.message }.equals("OK")
   end
 end

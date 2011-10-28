@@ -1,12 +1,10 @@
 require File.expand_path(File.join(File.dirname(__FILE__), '..', '..', 'helper'))
 
-token = AuthToken.generate
-
 context "Searching AdGroup Geo" do
   setup do
     run_with_rescue do
       CityGrid::API::AdCenter::AdGroupGeo.search(
-        :token          => token,
+        :token          => AuthToken.sales_coord,
         "adGroupId"     => 78,
         "streetAddress" => "200 Robertson Blvd",
         "city"          => "Beverly Hills",
