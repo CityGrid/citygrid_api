@@ -3,7 +3,7 @@ require File.expand_path(File.join(File.dirname(__FILE__), '..', '..', 'helper')
 context "Mutating Ad Group" do
   setup do
     run_with_rescue do
-      CityGrid::API::AdCenter::AdGroup.search(:token => token, :adGroupIds => 30966312)
+      CityGrid::API::AdCenter::AdGroup.search(:token => AuthToken.sales_coord, :adGroupIds => 30966312)
     end
   end
   should("not be empty"){ !topic.empty? }
@@ -13,7 +13,7 @@ end
 context "Search Ad Group by Campaign Id" do
   setup do
     run_with_rescue do
-      CityGrid::API::AdCenter::AdGroup.search(:token => token, :campaignId => 2434702)
+      CityGrid::API::AdCenter::AdGroup.search(:token => AuthToken.sales_coord, :campaignId => 2434702)
     end
   end
   should("not be empty"){ !topic.empty? }

@@ -101,3 +101,10 @@ get '/' do
   
   haml :test
 end
+
+get '/evented' do
+  stream(:keep_open) do |out|
+    EventMachine::PeriodicTimer.new(1) { out << "#{Time.now}\n" }
+  end
+end
+
