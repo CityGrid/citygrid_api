@@ -1,13 +1,11 @@
 require File.expand_path(File.join(File.dirname(__FILE__), '..', '..', 'helper'))
 
-token = AuthToken.sales_coord
-
 context "Search for a user" do
   context "by name" do
     setup do
       run_with_rescue do
         CityGrid::API::AdCenter::Account.search(
-          :token    => token,
+          :token    => AuthToken.sales_coord,
           :userName => '25-1'
         )
       end
@@ -21,7 +19,7 @@ context "Search for a user" do
     setup do
       run_with_rescue do
         CityGrid::API::AdCenter::Account.search(
-          :token => token,
+          :token => AuthToken.sales_coord,
           :id    => 1250702
         )
       end
@@ -67,7 +65,7 @@ context "Creating an account" do
   setup do
     run_with_rescue do
       CityGrid::API::AdCenter::Account.mutate(
-        :token => token,
+        :token => AuthToken.sales_coord,
         "mutateOperationListResource" => [{
           "operator" => "ADD",
           "operand"  => {

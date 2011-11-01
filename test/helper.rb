@@ -42,7 +42,6 @@ unless defined? IN_DASHBOARD
 
   # load default config
   CityGrid.load_config File.join(File.dirname(__FILE__), '..', 'citygrid_api.yml'), "qa"
-
   # load endpoints from configs
   # CityGrid.set_endpoints File.join(File.dirname(__FILE__), '..', "qa-endpoints.properties") 
   # CityGrid.set_env File.join(File.dirname(__FILE__), '..', "qa-env.properties")
