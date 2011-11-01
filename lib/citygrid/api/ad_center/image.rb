@@ -16,7 +16,7 @@ class CityGrid
                 	"image_type" => type,
                 	"image_name" => name,
                 	"image_format" => format,
-                	"image" => Base64.strict_encode64(File.open(image_path).read.to_s)
+                	"image" => image_data
                   },
                 "operator" => "ADD",
                 "userId" => user_id
