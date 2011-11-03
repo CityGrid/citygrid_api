@@ -1,6 +1,6 @@
 require File.expand_path(File.join(File.dirname(__FILE__), '..', '..', 'helper'))
 
-token = AuthToken.generate
+token = AuthToken.sales_coord
 
 context "Report summary" do
   context "daily" do

@@ -29,5 +29,5 @@ endpoints:
     ssl: true
     endpoint: accounts/mop/v2
   places: content/places/v2
-  performance: advertising/performance/v2
+  performance: advertising/performance/v2/campaign
   user: accounts/user/v2
