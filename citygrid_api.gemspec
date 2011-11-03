@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Elpizo Choi"]
-  s.date = "2011-10-27"
+  s.date = "2011-11-03"
   s.description = "Ruby wrapper for CityGrid APIs"
   s.email = "fu7iin@gmail.com"
   s.extra_rdoc_files = [
@@ -91,7 +91,7 @@ Gem::Specification.new do |s|
     "test/publisher_helper.rb.sample",
     "test/test_config.rb",
     "test/test_details.rb",
-    "test/test_img.png",
+    "test/test_img.jpg",
     "test/test_listing.rb",
     "test/test_search.rb",
     "test/test_super_array.rb",
