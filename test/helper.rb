@@ -3,7 +3,7 @@ class AuthToken
   class << self
     def kunimom
       @@kunimom ||= CityGrid.login(
-        :username => 'kunimom',
+        :username => 'GARYTEST',
         :password => 'pppppp'
       ).authToken
     end
