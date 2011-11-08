@@ -10,7 +10,7 @@ class AuthToken
     
     def sales_coord
       @@sales_cord ||= CityGrid.login(
-        :username => 'QASalesCoord',
+        :username => 'GARYTEST',
         :password => 'pppppp'
       ).authToken
     end
