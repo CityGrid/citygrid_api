@@ -14,6 +14,10 @@ class AuthToken
         :password => 'pppppp'
       ).authToken
     end
+   
+    def rand_number
+      @@rand_number ||= rand(10000000)
+    end
     
     def generate
       kunimom

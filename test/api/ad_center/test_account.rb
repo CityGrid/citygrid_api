@@ -61,6 +61,7 @@ context "Import a cg account" do
   should("return response code OK"){ topic.accountResources.first.response.code.to_i }.equals(200)
 end
 
+
 context "Creating an account" do
   setup do
     run_with_rescue do
@@ -72,8 +73,8 @@ context "Creating an account" do
             "firstName"    => "nico-api",
             "lastName"     => "gomez-api",
             "phone"        => "9001111112",
-            "email"        => "goodtry#{rand(10000000)}@a.com",
-            "userName"     => "goodtry#{rand(10000000)}",
+            "email"        => "goodtry#{AuthToken.rand_number}@a.com",
+            "userName"     => "goodtry#{AuthToken.rand_number}",
             "password"     => "pppppp",
             "businessName" => "businessProveApi",
             "address1"     => "dir-api",
@@ -88,4 +89,13 @@ context "Creating an account" do
   should("not be empty"){ !topic.empty? }
   should("return message OK"){ topic.accountResources.first.response.message }.equals("OK")  
   should("return response code OK"){ topic.accountResources.first.response.code.to_i }.equals(200)
+end
+
+context "Logging in" do
+  setup do
+    run_with_rescue do
+      CityGrid.login(:username => "goodtry#{AuthToken.rand_number}", :password => 'pppppp')
+    end
+  end
+  should("return an authToken"){ topic.authToken }
 end
