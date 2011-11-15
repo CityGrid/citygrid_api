@@ -3,16 +3,20 @@ class AuthToken
   class << self
     def kunimom
       @@kunimom ||= CityGrid.login(
-        :username => 'kunimom',
+        :username => 'GARYTEST',
         :password => 'pppppp'
       ).authToken
     end
     
     def sales_coord
       @@sales_cord ||= CityGrid.login(
-        :username => 'QASalesCoord',
+        :username => 'GARYTEST',
         :password => 'pppppp'
       ).authToken
+    end
+   
+    def rand_number
+      @@rand_number ||= rand(10000000)
     end
     
     def generate
