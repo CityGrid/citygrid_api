@@ -8,7 +8,7 @@ class CityGrid
       end
 
       def update array
-        replace array
+        replace array if array
       end
     end
   end
