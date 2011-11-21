@@ -3,10 +3,10 @@ class CityGrid
     class AdCenter
       class CallDetail < AdCenter
         class << self
-          def campaign options = {}
+          def get by, options = {}
             token = extract_auth_token options
             request_and_handle :post,
-              "#{endpoint}/campaign",
+              "#{endpoint}/#{by}",
               :body    => options.to_json,
               :headers => merge_headers("authToken" => token)
           end
