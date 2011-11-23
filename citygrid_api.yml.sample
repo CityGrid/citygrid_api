@@ -1,6 +1,6 @@
 defaults:
-  hostname: api.qa.citygrid.com
-  ssl_hostname: api-qassl.citygrid.com
+  hostname: api.citygrid.com
+  ssl_hostname: api.citygrid.com
 
 # endpoint_name: endpoint
 # OR 
@@ -16,7 +16,6 @@ endpoints:
   ad_group_ad: advertising/adgroupad/v2
   ad_group_criterion: advertising/adgroupcriterion/v2
   ad_group_geo: advertising/adgroupgeo/v2  
-  
   authentication:
     ssl: true
     endpoint: accounts/user/v2    

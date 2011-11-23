@@ -12,8 +12,13 @@ class CityGrid
     end
 
     def method_missing meth, *args, &block
-      load unless @loaded
-      send(meth, *args, &block) rescue super
+      if @loaded
+        super
+      else
+        @loaded = true
+        load 
+        send(meth, *args, &block)
+      end
     end
 
     private

@@ -14,6 +14,10 @@ class AuthToken
         :password => 'pppppp'
       ).authToken
     end
+   
+    def rand_number
+      @@rand_number ||= rand(10000000)
+    end
     
     def generate
       kunimom
@@ -41,7 +45,7 @@ unless defined? IN_DASHBOARD
   require "publisher_helper"
 
   # load default config
-  CityGrid.load_config File.join(File.dirname(__FILE__), '..', 'citygrid_api.yml'), "qa"
+  CityGrid.load_config File.expand_path(File.join(File.dirname(__FILE__), '..', 'citygrid_api.yml')), "qa"
   # load endpoints from configs
   # CityGrid.set_endpoints File.join(File.dirname(__FILE__), '..', "qa-endpoints.properties") 
   # CityGrid.set_env File.join(File.dirname(__FILE__), '..', "qa-env.properties")

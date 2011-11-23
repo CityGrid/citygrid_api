@@ -94,7 +94,11 @@ class CityGrid
           req = HTTParty::Request.new http_method, path, req_options
           error = nil
           
-          puts req.to_curl
+          if defined?(Rails.logger)
+            Rails.logger.info req.to_curl
+          else
+            puts req.to_curl
+          end
           
           begin 
             response = req.perform
