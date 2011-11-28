@@ -99,4 +99,3 @@ context "Logging in" do
   end
   should("return an authToken"){ topic.authToken }
 end
-
