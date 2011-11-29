@@ -62,6 +62,7 @@ unless defined? IN_DASHBOARD
       false
     rescue => ex
       ap ex
+      puts ex.backtrace.join("\n")
       false # return false
     end
   end

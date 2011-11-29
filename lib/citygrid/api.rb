@@ -4,6 +4,8 @@ require "json"
 class CityGrid
   class API 
     include HTTParty
+    format :json
+    #debug_output $stderr
 
     class << self   
       # server setting - :default or :ssl       
@@ -28,7 +30,7 @@ class CityGrid
 
       def request options = {}
         method = (options.delete(:method) || :get).to_sym
-        query  = options.merge :format => "json"
+        query  = options.merge :format => :json
         request_and_handle method, endpoint, :query => query
       end
 
@@ -93,13 +95,7 @@ class CityGrid
 
           req = HTTParty::Request.new http_method, path, req_options
           error = nil
-          
-          if defined?(Rails.logger)
-            Rails.logger.info req.to_curl
-          else
-            puts req.to_curl
-          end
-          
+
           begin 
             response = req.perform
           rescue => ex
@@ -109,7 +105,13 @@ class CityGrid
             puts "Something went wrong with Request.perform, Psych:SyntaxError"
             error = StandardError.new "Internal Error"
           end
-                      
+          
+          if defined?(Rails.logger)
+            Rails.logger.info req.to_curl
+          else
+            puts req.to_curl
+          end
+
           unless error
             if !response.parsed_response.is_a?(Hash)
               error = InvalidResponseFormat.new response

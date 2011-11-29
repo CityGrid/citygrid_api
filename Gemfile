@@ -1,6 +1,6 @@
 source "http://rubygems.org"
 
-gem "httparty", "~> 0.7.8"
+gem "httparty", "~> 0.8.1"
 gem "json", "1.5.3"
 gem "riot", "~> 0.12.4"
 gem "awesome_print", "~> 0.4.0", :require => "ap"

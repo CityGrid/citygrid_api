@@ -2,11 +2,17 @@ class CityGrid
   class API
     class Content
       class Offers < Content
-        base_uri "api.citygridmedia.com/content"
-        endpoint "#{base_uri}/offers/v2/search/where"
+        @base_endpoint = "http://api.citygridmedia.com/content/offers/v2/search"
+        endpoint @base_endpoint
         
         def self.where options = {}
-          request_with_publisher options.merge(:method => :get)
+          endpoint "#{@base_endpoint}/where"
+          request_with_publisher options
+        end
+        
+        def self.places options = {}
+          endpoint "#{@base_endpoint}/places"
+          request_with_publisher options
         end
       end
     end

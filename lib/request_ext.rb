@@ -1,21 +1,26 @@
 module HTTParty
   class Request
+
+    def get_uri
+      last_uri || uri
+    end
+    
     def to_json
       {
-        "requestUrl" => self.uri,
-        "requestMethod" => self.http_method.to_s.split("::").last.upcase,
-        "requestBody" => self.send(:body) || "",
+        "requestUrl" => get_uri,
+        "requestMethod" => http_method.to_s.split("::").last.upcase,
+        "requestBody" => send(:body) || "",
         "headers" => options[:headers].to_a.flatten || []
       }.to_json
     end
     
     def to_curl
-      args = ["curl -X #{self.http_method.to_s.split("::").last.upcase}"]
-      args << "-d #{self.send(:body).to_json}" if self.send(:body)
+      args = ["curl -X #{http_method.to_s.split("::").last.upcase}"]
+      args << "-d #{send(:body).to_json}" if self.send(:body)
       
       args << "#{(options[:headers] || []).map{|k, v| "--header \"#{k}:#{v}\""}.join(" ")}" if options[:headers]
       
-      args << "\"#{self.uri}\""
+      args << "\"#{get_uri}\""
       
       return args.join(" ")
     end
