@@ -2,7 +2,11 @@ module HTTParty
   class Request
 
     def get_uri
-      last_uri || uri
+      if (self.respond_to?('last_uri') && last_uri)
+        return last_uri
+      else
+        return uri
+      end
     end
     
     def to_json
