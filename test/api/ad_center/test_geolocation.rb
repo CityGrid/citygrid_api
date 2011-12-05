@@ -15,5 +15,5 @@ context "Geo" do
   
   should("not be empty") { !topic.empty? }
   should("return message OK") { topic.message }.equals("OK")
-  should("return code 200") { topic.code }.equals(200)  
+  should("return code 200") { !topic.geocodeResponse.first.geoAccuracy.nil? }  
 end

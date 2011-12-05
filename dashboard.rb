@@ -16,7 +16,7 @@ helpers Sinatra::Partials
 
 $LOAD_PATH.unshift(File.join(File.dirname(__FILE__), 'lib'))  
 require "citygrid_api"
-CityGrid.publisher = "citygrid"
+CityGrid.publisher = "test"
 CityGrid.load_config File.join(File.dirname(__FILE__), 'citygrid_api.yml.sample'), "qa"
 
 def run_with_rescue

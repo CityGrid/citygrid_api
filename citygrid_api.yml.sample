@@ -30,3 +30,4 @@ endpoints:
   places: content/places/v2
   performance: advertising/performance/v2/campaign
   user: accounts/user/v2
+  call_detail: advertising/calldetail/v2

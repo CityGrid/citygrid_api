@@ -7,7 +7,7 @@ context "Mutating Ad Group" do
     end
   end
   should("not be empty"){ !topic.empty? }
-  should("respond with OK"){ topic.adGroups.first.responseStatus.code == 200 }
+  should("have campaignId"){ !topic.adGroups.first.campaignId.nil? }
 end
 
 context "Search Ad Group by Campaign Id" do
@@ -17,7 +17,7 @@ context "Search Ad Group by Campaign Id" do
     end
   end
   should("not be empty"){ !topic.empty? }
-  should("respond with OK"){ topic.adGroups.first.responseStatus.code == 200 }
+  should("have campaignId"){ !topic.adGroups.first.campaignId.nil? }
 end
 
 
@@ -43,6 +43,6 @@ context "Mutating Ad Group" do
     end
   end
   should("not be empty"){ !topic.empty? }
-  should("respond with OK"){ topic.adGroups.first.responseStatus.code == 200 }
+  should("have campaignId"){ !topic.adGroups.first.campaignId.nil? }
 end
 
