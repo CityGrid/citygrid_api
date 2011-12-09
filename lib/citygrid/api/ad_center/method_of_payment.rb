@@ -3,7 +3,8 @@ class CityGrid
     class AdCenter
       class MethodOfPayment < AdCenter
         server :ssl
-        endpoint "/adcenter/account/v2/mop"
+        extend Mutatable
+        extend Searchable
       end
     end
   end

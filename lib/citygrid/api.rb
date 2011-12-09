@@ -36,38 +36,14 @@ class CityGrid
         request options.merge(:publisher => publisher)
       end
 
-      def mutate options = {}
-        token = extract_auth_token options
-        request_and_handle :post,
-          "#{endpoint}/mutate",
-          :body    => options.to_json,
-          :headers => merge_headers("authToken" => token)
-      end
-
-      def search options = {}
-        token = extract_auth_token options
-        request_and_handle :get, 
-          "#{endpoint}/get",
-          :query   => options,
-          :headers => merge_headers("authToken" => token)
-      end
-
       private
-      def extract_auth_token options = {}
-        options.delete(:token) #|| raise(MissingAuthToken)
-      end
-
-      def merge_headers options = {}
-        {"Accept"       => "application/json",
-          "Content-Type" => "Application/JSON"}.merge options
+        def extract_auth_token options = {}
+          options.delete(:token) #|| raise(MissingAuthToken)
         end
 
-        def convert_to_querystring hash
-          hash.map do |k, v|
-            key = URI.escape k.to_s, Regexp.new("[^#{URI::PATTERN::UNRESERVED}]")
-            val = URI.escape v.to_s, Regexp.new("[^#{URI::PATTERN::UNRESERVED}]")
-            !value.empty? && !key.empty? ? "#{key}=#{value}" : nil
-          end.compact.join("&")
+        def merge_headers options = {}
+          {"Accept"       => "application/json",
+          "Content-Type" => "Application/JSON"}.merge options
         end
 
         HTTP_METHODS = {
