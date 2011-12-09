@@ -8,6 +8,13 @@ class AuthToken
       ).authToken
     end
     
+    def dou
+      @@sales_cord ||= CityGrid.login(
+        :username => 'doushen2',
+        :password => 'abcd1234'
+      ).authToken
+    end
+    
     def sales_coord
       @@sales_cord ||= CityGrid.login(
         :username => 'QASalesCoord',
@@ -45,10 +52,7 @@ unless defined? IN_DASHBOARD
   require "publisher_helper"
 
   # load default config
-  CityGrid.load_config File.expand_path(File.join(File.dirname(__FILE__), '..', 'citygrid_api.yml')), "qa"
-  # load endpoints from configs
-  # CityGrid.set_endpoints File.join(File.dirname(__FILE__), '..', "qa-endpoints.properties") 
-  # CityGrid.set_env File.join(File.dirname(__FILE__), '..', "qa-env.properties")
+  CityGrid.load_config File.expand_path(File.join(File.dirname(__FILE__), '..', 'citygrid_api.yml.sample')), "qa"
 
   # Run code with rescue so that exceptions
   # will be printed, but won't stop test suite
