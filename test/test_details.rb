@@ -7,15 +7,13 @@ c = context "Initiating a Details" do
         CityGrid::Details.new :public_id => "philip-marie-restaurant-new-york"
       end
     rescue
-      puts "BLAFKASDFASDJFASDF"
+      puts "An error occurred while fetch philip-marie-restaurant-new-york details"
     end
   end
 
   should "return a single Details object" do
     topic.is_a? CityGrid::Details
   end
-  
-  should("blow up") { false }
   
 end
  

@@ -1,6 +1,6 @@
 defaults:
-  hostname: api.citygrid.com
-  ssl_hostname: api.citygrid.com
+  hostname: api.qa.citygrid.com
+  ssl_hostname: api-qassl.citygrid.com
 
 # endpoint_name: endpoint
 # OR 
@@ -30,3 +30,4 @@ endpoints:
   places: content/places/v2
   performance: advertising/performance/v2/campaign
   user: accounts/user/v2
+  call_detail: advertising/calldetail/v2
