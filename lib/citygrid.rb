@@ -132,6 +132,7 @@ class CityGrid
     "adgroup"               => CityGrid::API::AdCenter::AdGroup,
     "adgroupad"             => CityGrid::API::AdCenter::AdGroupAd,
     "adgroupgeo"            => CityGrid::API::AdCenter::AdGroupGeo,
+    "billing"               => CityGrid::API::AdCenter::Billing,
     "adgroupcriterion"      => CityGrid::API::AdCenter::AdGroupCriterion,
     "authentication"        => CityGrid::API::AdCenter::Authentication,      
     "budget"                => CityGrid::API::AdCenter::Budget,
