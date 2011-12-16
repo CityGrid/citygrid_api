@@ -30,6 +30,24 @@ context "Search for a user" do
   end
 end
 
+
+context "Search for account type" do
+  context "Search by id" do
+    setup do
+      run_with_rescue do
+        CityGrid::API::AdCenter::Account.account_type(
+          :token => AuthToken.sales_coord,
+          :id    => 1250702
+        )
+      end
+    end
+    should("not be empty"){ !topic.empty? }
+    should("return message OK"){ topic.response.message }.equals("OK")  
+    should("return response code OK"){ topic.response.code.to_i }.equals(200)
+    should("return type s CYB code OK"){ topic.accountType }.equals("CYB")
+  end
+end
+
 context "Import a cg account" do
   setup do
     run_with_rescue do

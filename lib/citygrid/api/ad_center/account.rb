@@ -11,6 +11,15 @@ class CityGrid
             :body    => options.to_json,
             :headers => merge_headers("authToken" => token)
         end
+        
+        #http://docs-dev.prod.cs/display/citygridv2/Internal+-+Account+Type
+        def self.account_type options = {}
+          token = extract_auth_token options
+          request_and_handle :get,
+            "#{endpoint}/get/type",
+            :query => options,
+            :headers => merge_headers("authToken" => token)
+        end
       end
     end
   end
