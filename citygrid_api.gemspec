@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Elpizo Choi"]
-  s.date = "2011-11-03"
+  s.date = "2011-12-17"
   s.description = "Ruby wrapper for CityGrid APIs"
   s.email = "fu7iin@gmail.com"
   s.extra_rdoc_files = [
@@ -19,6 +19,7 @@ Gem::Specification.new do |s|
   ]
   s.files = [
     ".document",
+    ".sass-cache/7a5a675d951455410512a59af5ab2d160bd1735c/test.scssc",
     "Gemfile",
     "Gemfile.lock",
     "LICENSE.txt",
@@ -45,7 +46,9 @@ Gem::Specification.new do |s|
     "lib/citygrid/api/ad_center/ad_group_criterion.rb",
     "lib/citygrid/api/ad_center/ad_group_geo.rb",
     "lib/citygrid/api/ad_center/authentication.rb",
+    "lib/citygrid/api/ad_center/billing.rb",
     "lib/citygrid/api/ad_center/budget.rb",
+    "lib/citygrid/api/ad_center/call_detail.rb",
     "lib/citygrid/api/ad_center/campaign.rb",
     "lib/citygrid/api/ad_center/category.rb",
     "lib/citygrid/api/ad_center/geolocation.rb",
@@ -78,7 +81,9 @@ Gem::Specification.new do |s|
     "test/api/ad_center/test_ad_group_criterion.rb",
     "test/api/ad_center/test_ad_group_geo.rb",
     "test/api/ad_center/test_authentication.rb",
+    "test/api/ad_center/test_billing.rb",
     "test/api/ad_center/test_budget.rb",
+    "test/api/ad_center/test_call_detail.rb",
     "test/api/ad_center/test_campaign.rb",
     "test/api/ad_center/test_category.rb",
     "test/api/ad_center/test_geolocation.rb",
@@ -86,12 +91,14 @@ Gem::Specification.new do |s|
     "test/api/ad_center/test_method_of_payment.rb",
     "test/api/ad_center/test_places.rb",
     "test/api/ad_center/test_reports.rb",
+    "test/api/content/test_offers.rb",
     "test/api/content/test_places.rb",
     "test/helper.rb",
     "test/publisher_helper.rb.sample",
     "test/test_config.rb",
     "test/test_details.rb",
     "test/test_img.jpg",
+    "test/test_img_big.png",
     "test/test_listing.rb",
     "test/test_search.rb",
     "test/test_super_array.rb",
@@ -104,14 +111,14 @@ Gem::Specification.new do |s|
   ]
   s.licenses = ["MIT"]
   s.require_paths = ["lib"]
-  s.rubygems_version = "1.8.10"
+  s.rubygems_version = "1.8.12"
   s.summary = "Ruby wrapper for CityGrid APIs"
 
   if s.respond_to? :specification_version then
     s.specification_version = 3
 
     if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
-      s.add_runtime_dependency(%q<httparty>, ["~> 0.7.8"])
+      s.add_runtime_dependency(%q<httparty>, ["~> 0.8.1"])
       s.add_runtime_dependency(%q<json>, ["= 1.5.3"])
       s.add_runtime_dependency(%q<riot>, ["~> 0.12.4"])
       s.add_runtime_dependency(%q<awesome_print>, ["~> 0.4.0"])
@@ -120,7 +127,7 @@ Gem::Specification.new do |s|
       s.add_development_dependency(%q<jeweler>, ["~> 1.6.2"])
       s.add_development_dependency(%q<rcov>, [">= 0"])
     else
-      s.add_dependency(%q<httparty>, ["~> 0.7.8"])
+      s.add_dependency(%q<httparty>, ["~> 0.8.1"])
       s.add_dependency(%q<json>, ["= 1.5.3"])
       s.add_dependency(%q<riot>, ["~> 0.12.4"])
       s.add_dependency(%q<awesome_print>, ["~> 0.4.0"])
@@ -130,7 +137,7 @@ Gem::Specification.new do |s|
       s.add_dependency(%q<rcov>, [">= 0"])
     end
   else
-    s.add_dependency(%q<httparty>, ["~> 0.7.8"])
+    s.add_dependency(%q<httparty>, ["~> 0.8.1"])
     s.add_dependency(%q<json>, ["= 1.5.3"])
     s.add_dependency(%q<riot>, ["~> 0.12.4"])
     s.add_dependency(%q<awesome_print>, ["~> 0.4.0"])
