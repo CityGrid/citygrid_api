@@ -5,9 +5,7 @@ context "Upload an image" do
     setup do
       run_with_rescue do
         image_path = File.expand_path(File.join(File.dirname(__FILE__), '..', '..', 'test_img.jpg'))
-        resp = CityGrid::API::AdCenter::Image.upload(68, "a pic", "PROFILE_IMAGE", image_path, :token => AuthToken.sales_coord)
-        ap resp
-        resp
+        CityGrid::API::AdCenter::Image.upload(68, "a pic", "PROFILE_IMAGE", image_path, :token => AuthToken.sales_coord)
       end
     end
     should("not be empty"){ !topic.empty? }

@@ -3,7 +3,7 @@ class CityGrid
     class AdCenter
       class AdGroup < AdCenter
         extend CityGrid::API::Mutatable
-        extend Searchable
+        extend CityGrid::API::Searchable
       end
     end
   end

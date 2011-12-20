@@ -3,8 +3,8 @@ class CityGrid
     class AdCenter
       class MethodOfPayment < AdCenter
         server :ssl
-        extend Mutatable
-        extend Searchable
+        extend CityGrid::API::Mutatable
+        extend CityGrid::API::Searchable
       end
     end
   end

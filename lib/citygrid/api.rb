@@ -76,10 +76,10 @@ class CityGrid
             response = req.perform
           rescue => ex
             puts "Something went wrong with Request.perform"
-            error = StandardError.new "Internal Error"
+            error = ex
           rescue Psych::SyntaxError => ex
             puts "Something went wrong with Request.perform, Psych:SyntaxError"
-            error = StandardError.new "Internal Error"
+            error = ex
           end
           
           if defined?(Rails.logger)
@@ -100,7 +100,7 @@ class CityGrid
           
           if error 
             puts "an error happened"
-            puts req.to_json
+            ap error
             #raise error
           end
         end
