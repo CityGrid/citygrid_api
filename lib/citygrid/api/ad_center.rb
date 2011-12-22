@@ -10,7 +10,7 @@ class CityGrid
 end
 
 [
-  "account", "ad_group", "ad_group_ad", "ad_group_criterion", "ad_group_geo",
+  "account", "account_manager", "ad_group", "ad_group_ad", "ad_group_criterion", "ad_group_geo",
   "authentication", "budget", "campaign", "category", "geolocation", "method_of_payment", "places", "performance",
   "image", "user", "call_detail", "billing"
 ].each do |x|
