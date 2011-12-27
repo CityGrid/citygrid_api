@@ -129,6 +129,7 @@ require "request_ext"
 class CityGrid
   CLASS_MAPPING = {
     "account"               => CityGrid::API::AdCenter::Account,
+    "accountmanager"        => CityGrid::API::AdCenter::AccountManager,
     "adgroup"               => CityGrid::API::AdCenter::AdGroup,
     "adgroupad"             => CityGrid::API::AdCenter::AdGroupAd,
     "adgroupgeo"            => CityGrid::API::AdCenter::AdGroupGeo,

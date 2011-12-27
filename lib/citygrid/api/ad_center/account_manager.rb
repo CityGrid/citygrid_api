@@ -1,7 +1,7 @@
 class CityGrid
   class API
     class AdCenter
-      class Billing <  AdCenter
+      class AccountManager <  AdCenter
       end
     end
   end
