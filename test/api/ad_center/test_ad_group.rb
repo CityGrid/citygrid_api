@@ -1,9 +1,11 @@
 require File.expand_path(File.join(File.dirname(__FILE__), '..', '..', 'helper'))
 
+token = AuthToken.generate
+
 context "Mutating Ad Group" do
   setup do
     run_with_rescue do
-      CityGrid::API::AdCenter::AdGroup.search(:token => AuthToken.sales_coord, :adGroupIds => 30966312)
+      CityGrid::API::AdCenter::AdGroup.search(:token => token, :adGroupIds => 30966312)
     end
   end
   should("not be empty"){ !topic.empty? }
@@ -25,7 +27,7 @@ context "Mutating Ad Group" do
   setup do
     run_with_rescue do
       CityGrid::API::AdCenter::AdGroup.mutate(
-        :token => AuthToken.sales_coord,
+        :token => token,
         "mutateOperationListResource" => [{
           "operator" => "ADD",
           "operand"  => {
@@ -33,7 +35,7 @@ context "Mutating Ad Group" do
             "campaignId"         => "456",
             "contractTermMonths" =>"12",
             "monthlyServiceFee"  => "19.95",
-            "budgetBids" => [{
+            "bids" => [{
               "actionTargetName" => "map & directions",
               "ppe"              => "1.80"
             }]
