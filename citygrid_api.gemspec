@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = "citygrid_api"
-  s.version = "0.0.5"
+  s.version = "0.0.6"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Elpizo Choi"]
-  s.date = "2011-12-17"
+  s.date = "2011-12-28"
   s.description = "Ruby wrapper for CityGrid APIs"
   s.email = "fu7iin@gmail.com"
   s.extra_rdoc_files = [
@@ -20,6 +20,7 @@ Gem::Specification.new do |s|
   s.files = [
     ".document",
     ".sass-cache/7a5a675d951455410512a59af5ab2d160bd1735c/test.scssc",
+    ".sass-cache/c6f2c767b164f077e5b9fb1f18a7886d7c755211/test.scssc",
     "Gemfile",
     "Gemfile.lock",
     "LICENSE.txt",
@@ -41,6 +42,7 @@ Gem::Specification.new do |s|
     "lib/citygrid/api.rb",
     "lib/citygrid/api/ad_center.rb",
     "lib/citygrid/api/ad_center/account.rb",
+    "lib/citygrid/api/ad_center/account_manager.rb",
     "lib/citygrid/api/ad_center/ad_group.rb",
     "lib/citygrid/api/ad_center/ad_group_ad.rb",
     "lib/citygrid/api/ad_center/ad_group_criterion.rb",
@@ -60,10 +62,10 @@ Gem::Specification.new do |s|
     "lib/citygrid/api/content.rb",
     "lib/citygrid/api/content/offers.rb",
     "lib/citygrid/api/content/places.rb",
-    "lib/citygrid/api/content/places/detail.rb",
-    "lib/citygrid/api/content/places/search.rb",
     "lib/citygrid/api/content/reviews.rb",
+    "lib/citygrid/api/mutatable.rb",
     "lib/citygrid/api/response.rb",
+    "lib/citygrid/api/searchable.rb",
     "lib/citygrid/details.rb",
     "lib/citygrid/listing.rb",
     "lib/citygrid/offers.rb",
@@ -74,8 +76,10 @@ Gem::Specification.new do |s|
     "lib/dashboard/stored_reporter.rb",
     "lib/dashboard/test_result.rb",
     "lib/request_ext.rb",
+    "lib/string_ext.rb",
     "public/javascript/dashboard.js",
     "test/api/ad_center/test_account.rb",
+    "test/api/ad_center/test_account_manager.rb",
     "test/api/ad_center/test_ad_group.rb",
     "test/api/ad_center/test_ad_group_ad.rb",
     "test/api/ad_center/test_ad_group_criterion.rb",
@@ -91,16 +95,16 @@ Gem::Specification.new do |s|
     "test/api/ad_center/test_method_of_payment.rb",
     "test/api/ad_center/test_places.rb",
     "test/api/ad_center/test_reports.rb",
+    "test/api/content/test_details.rb",
     "test/api/content/test_offers.rb",
     "test/api/content/test_places.rb",
+    "test/api/content/test_search.rb",
     "test/helper.rb",
     "test/publisher_helper.rb.sample",
     "test/test_config.rb",
-    "test/test_details.rb",
     "test/test_img.jpg",
     "test/test_img_big.png",
     "test/test_listing.rb",
-    "test/test_search.rb",
     "test/test_super_array.rb",
     "test/test_super_hash.rb",
     "views/_context_result.haml",
