@@ -7,25 +7,43 @@ class CityGrid
     format :json
     #debug_output $stderr
 
+    DEFAULT_HEADERS = {
+      "Accept" => "application/json",
+      "Content-Type" => "Application/JSON"}
+    
     class << self   
-      # server setting - :default or :ssl       
-      def server val=nil
-        return @server || (superclass.respond_to?(:server) ? superclass.server : nil) unless val
-        @server = val
-      end
+      def define_action name, method, action, auth_required = true, publisher_required = false, ip_required = false
+        
+        define_singleton_method name.intern do |*args|
+          options = args.first.clone || {}
+          params = {}
+          
+          token = options.delete :token
+          
+          headers = API::DEFAULT_HEADERS.clone
+          
+          headers.merge! "authToken" => token if auth_required
 
-      def hostname val=nil
-        return @hostname || (superclass.respond_to?(:hostname) ? superclass.hostname : nil) unless val
-        @hostname = val
+          options.merge! "format" => "json"
+          options.merge! "publisher" => CityGrid.publisher if publisher_required  
+          options.merge! "client_ip" => "192.168.0.1" if ip_required  
+          
+          params[:headers] = headers
+          
+          case method
+          when :post
+            params[:body] = options.to_json
+          when :get
+            params[:query] = options
+          end
+          
+          request_and_handle method.intern, "#{endpoint}/#{action}", params
+        end
       end
-
-      def endpoint val=nil
+      
+      def endpoint val = nil
         return @endpoint unless val
         @endpoint = val
-      end
-
-      def publisher
-        CityGrid.publisher
       end
 
       def request options = {}
@@ -34,18 +52,13 @@ class CityGrid
         request_and_handle method, endpoint, :query => query
       end
 
-      def request_with_publisher options = {}
-        request options.merge(:publisher => publisher)
-      end
-
       private
         def extract_auth_token options = {}
           options.delete(:token) #|| raise(MissingAuthToken)
         end
-
+        
         def merge_headers options = {}
-          {"Accept"       => "application/json",
-          "Content-Type" => "Application/JSON"}.merge options
+          DEFAULT_HEADERS.merge options
         end
 
         HTTP_METHODS = {
@@ -66,7 +79,6 @@ class CityGrid
           end
 
           req_options = default_options.dup
-          req_options = req_options.merge({:base_uri => CityGrid.config[server]}) if !base_uri && server
           req_options = req_options.merge(options)
 
           req = HTTParty::Request.new http_method, path, req_options

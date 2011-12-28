@@ -1,3 +1,5 @@
+# /get endpoint
+
 class CityGrid
   class API
     module Searchable

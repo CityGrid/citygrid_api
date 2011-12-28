@@ -1,4 +1,4 @@
-require File.expand_path(File.join(File.dirname(__FILE__), 'helper'))
+require File.expand_path(File.join(File.dirname(__FILE__), '..', '..', 'helper'))
 
 context "searching for a CityGrid listing" do
   setup do
@@ -22,7 +22,7 @@ end
 
 context "searching for a special CityGrid listing" do
   setup do
-    CityGrid.search :what => "Divine Dynasty Cleaners", :where => "84129"
+    CityGrid.search :what => "el gaucho", :where => "seattle, wa"
   end
 
   should "create an array" do

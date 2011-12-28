@@ -5,8 +5,4 @@ class CityGrid
   end
 end
 
-[
-  "offers", "places", "reviews"
-].each do |x|
-  require "citygrid/api/content/#{x}"  
-end
+Dir[File.dirname(__FILE__) + '/content/*.rb'].each {|file| require file }

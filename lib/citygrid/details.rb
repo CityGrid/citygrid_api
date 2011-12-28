@@ -1,11 +1,8 @@
 class CityGrid
   module DetailsMethods
-    def api
-      CityGrid::API::Content::Places::Detail
-    end
-
-    def request opts = {}
-      api.request_with_publisher opts.merge(:client_ip => "192.168.0.1")
+    
+    def request options = {}
+      CityGrid::API::Content::Places.detail options
     end
   end
 

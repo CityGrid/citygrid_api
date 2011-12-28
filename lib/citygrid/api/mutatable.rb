@@ -1,3 +1,5 @@
+# /mutate endpoint
+
 class CityGrid
   class API
     module Mutatable

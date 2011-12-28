@@ -13,6 +13,9 @@ api:
     account:
       ssl: true
       endpoint: accounts/account/v2
+    account_manager:
+      ssl: true
+      endpoint: accounts/account/v2
     ad_group: advertising/adgroup/v2
     ad_group_ad: advertising/adgroupad/v2
     ad_group_criterion: advertising/adgroupcriterion/v2
@@ -32,3 +35,10 @@ api:
     places: content/places/v2
     performance: advertising/performance/v2
     user: accounts/user/v2
+  content:
+    offers:
+      endpoint: content/offers/v2
+      hostname: api.citygridmedia.com
+    places: 
+      endpoint: content/places/v2
+      hostname: api.citygridmedia.com

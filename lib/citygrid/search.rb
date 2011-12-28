@@ -1,11 +1,8 @@
 class CityGrid
   class Search < Abstraction::Collection
-    def api
-      CityGrid::API::Content::Places::Search
-    end
-
-    def request opts = {}
-      api.request_with_publisher opts
+    
+    def request options = {}
+      CityGrid::API::Content::Places.search options
     end
 
     private

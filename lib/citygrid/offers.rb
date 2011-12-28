@@ -1,11 +1,7 @@
 class CityGrid
   class Offers < Abstraction::Collection
-    def api
-      CityGrid::API::Content::Offers
-    end
-
     def request opts = {}
-      api.request_with_publisher opts
+      CityGrid::API::Content::Offers.search opts
     end
 
     private

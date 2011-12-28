@@ -1,14 +1,13 @@
 module HTTParty
   class Request
 
+    # HTTParty::Request does some weird things with url params (namely, repeating them)
+    # use last_uri if it exists
     def get_uri
-      if (self.respond_to?('last_uri') && last_uri)
-        return last_uri
-      else
-        return uri
-      end
+      (self.respond_to?('last_uri') && last_uri) ? last_uri : uri
     end
     
+    # monkey patch to_json and to_curl methods into Request
     def to_json
       {
         "requestUrl" => get_uri,

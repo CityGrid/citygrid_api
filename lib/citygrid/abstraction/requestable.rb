@@ -21,6 +21,7 @@ class CityGrid
       # def update
       #
       # end
+      
       def request_and_update opts = {}
         @raw = request opts
         update preprocess(@raw)

@@ -2,35 +2,15 @@ class CityGrid
   class API
     class Content
       class Places < Content
-        base_uri "api.citygridmedia.com"
         endpoint "/content/places/v2"
         
-        class << self
-          def detail opts
-            Detail.request opts
-          end
-
-          def search opts
-            Search.request opts
-          end
-          
-          def mutate options = {}
-            token = extract_auth_token options
-            request_and_handle :post,
-              "#{endpoint}/mutate",
-              :body    => options.to_json,
-              :headers => merge_headers("authToken" => token)
-          end
-          
-        end
+        extend CityGrid::API::Mutatable
+        
+        define_action :detail, :get, "detail", false, true, true
+        define_action :search, :get, "search/where", false, true, true
       end
     end
   end
 end
 
-[
-  "detail", "search"
-].each do |x|
-  require "citygrid/api/content/places/#{x}"  
-end
-
+Dir[File.dirname(__FILE__) + '/places/*.rb'].each {|file| require file }
