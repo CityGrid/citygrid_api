@@ -110,3 +110,5 @@ require "citygrid/listing"
 require "citygrid/api/response"
 require "citygrid/api/ad_center"
 require "citygrid/api/content"
+
+require "request_ext"
