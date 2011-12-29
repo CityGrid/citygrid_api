@@ -15,7 +15,7 @@ api:
       endpoint: accounts/account/v2
     account_manager:
       ssl: true
-      endpoint: accounts/account/v2
+      endpoint: advertising/campaign/v2/accountmanager
     ad_group: advertising/adgroup/v2
     ad_group_ad: advertising/adgroupad/v2
     ad_group_criterion: advertising/adgroupcriterion/v2
