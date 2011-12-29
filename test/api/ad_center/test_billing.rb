@@ -7,8 +7,9 @@ context "Search Billing by Campaign Id" do
       CityGrid::API::AdCenter::Billing.search(:token => AuthToken.sales_coord, :campaignId => 16631)
     end
   end
+  puts "YEEEEHWAAAAWWW!"
   should("not be empty"){ !topic.empty? }
-  should("have campaignId"){ !topic.campaignId.nil? }
+  should("have campaignId"){ !topic.billing.campaignId.nil? }
 end
 
 

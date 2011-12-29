@@ -24,6 +24,7 @@ api:
       ssl: true
       endpoint: accounts/user/v2    
     budget: advertising/budget/v2/recommend
+    billing: advertising/billing/v2
     call_detail: advertising/calldetail/v2
     campaign: advertising/campaign/v2
     category: content/category/v2
