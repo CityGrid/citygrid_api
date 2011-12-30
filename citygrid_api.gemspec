@@ -27,7 +27,6 @@ Gem::Specification.new do |s|
     "Rakefile",
     "VERSION",
     "citygrid_api.gemspec",
-    "citygrid_api.yml.backup",
     "citygrid_api.yml.sample",
     "config.ru",
     "dashboard.rb",
