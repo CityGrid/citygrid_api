@@ -21,7 +21,7 @@ unless defined? IN_DASHBOARD
   require "publisher_helper"
 
   # load default config
-  CityGrid.load_config File.expand_path(File.join(File.dirname(__FILE__), '..', 'citygrid_api.yml.sample')), "qa"
+  CityGrid.load_config File.expand_path(File.join(File.dirname(__FILE__), '..', 'citygrid_api.yml.sample'))
 
   # Run code with rescue so that exceptions
   # will be printed, but won't stop test suite
