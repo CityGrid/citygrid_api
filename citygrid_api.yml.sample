@@ -34,6 +34,7 @@ api:
     category: content/category/v2
     geo_location: content/places/v2/geocode
     image: advertising/image/v2
+    offers: advertising/offer/v2
     places: content/places/v2
     performance: advertising/performance/v2
   content:

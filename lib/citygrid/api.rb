@@ -4,7 +4,6 @@ require "json"
 class CityGrid
   class API 
     include HTTParty
-    format :json
     #debug_output $stderr
 
     DEFAULT_HEADERS = {
@@ -27,7 +26,7 @@ class CityGrid
         #    format: pass JSON flag 
         
         define_options = DEFAULT_DEFINE_OPTIONS.merge define_options
-        
+
         define_singleton_method name.intern do |*args|
           options = args.first.clone || {}
           params = {}
@@ -36,7 +35,7 @@ class CityGrid
           
           headers = API::DEFAULT_HEADERS.clone
           
-          headers.merge! "authToken" => token if define_options[:auth_token]
+          headers.merge! "authToken" => token if define_options[:auth_token] && token
 
           options.merge! "format"     => "json" if define_options[:format]
           options.merge! "publisher"  => CityGrid.publisher if define_options[:publisher]
@@ -94,7 +93,10 @@ class CityGrid
 
           req_options = default_options.dup
           req_options = req_options.merge(options)
-
+          
+          # vars = {:http_method => http_method, :path => path, :req_options => req_options}
+          # ap vars
+          
           req = HTTParty::Request.new http_method, path, req_options
           error = nil
 
@@ -114,6 +116,13 @@ class CityGrid
             puts req.to_curl
           end
 
+          if error 
+            puts "an error happened, curl is:"
+            puts error.message
+            puts error.backtrace
+            #raise error
+          end
+          
           unless error
             if !response.parsed_response.is_a?(Hash)
               error = InvalidResponseFormat.new response

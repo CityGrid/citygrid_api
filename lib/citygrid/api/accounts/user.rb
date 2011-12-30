@@ -5,13 +5,8 @@ class CityGrid
         extend CityGrid::API::Mutatable
         extend CityGrid::API::Searchable
         
-        def self.login options = {}
-          request_and_handle :post,
-            "#{endpoint}/login",
-            :query => options
-        end
-        
-        define_action :validate, :get, "validate", :auth_token => true
+        define_action :login, :post, "login", :auth_token => false, :format => false        
+        define_action :validate, :get, "validate", :auth_token => true, :format => false
       end
     end
   end

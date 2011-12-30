@@ -26,7 +26,7 @@ class CityGrid
     end
     
     def login username, password
-      res = CityGrid::API::Accounts::Authentication.login :username => username, :password => password
+      res = CityGrid::API::Accounts::User.login :username => username, :password => password
       self.username = username
 
       case res.code
