@@ -1,21 +1,50 @@
 = citygrid
 
-Don't use this.  NOT PRODUCTION READY
+Not stable yet. Use at your own risk!
 
-Description goes here.
+== Getting Started
 
-== Contributing to citygrid
+=== Installation
 
-* Check out the latest master to make sure the feature hasn't been implemented or the bug hasn't been fixed yet
-* Check out the issue tracker to make sure someone already hasn't requested it and/or contributed it
-* Fork the project
-* Start a feature/bugfix branch
-* Commit and push until you are happy with your contribution
-* Make sure to add tests for it. This is important so I don't break it in a future version unintentionally.
-* Please try not to mess with the Rakefile, version, or history. If you want to have your own version, or is otherwise necessary, that is fine, but please isolate to its own commit so I can cherry-pick around it.
+This gem is still under very active development. As such, you can obtain the latest by directly installing from github:
 
-== Copyright
+   gem "citygrid_api", :git => "git://github.com/CityGrid/citygrid_api.git"
 
-Copyright (c) 2011 Elpizo Choi. See LICENSE.txt for
-further details.
+You can get a relatively stable build from rubygems.org. Specifying a version number is highly recommended as there will be breaking changes until we stabilize. 
 
+   gem "citygrid_api", "0.0.6" 
+
+=== Configuration
+
+Add a file called citygrid_api.rb under config/initializers. 
+
+Configure the gem to use your publisher code with:
+
+   CityGrid.publisher = 'your_publisher_code'
+   
+If you don't have a publisher code, you can obtain one at http://developer.citygridmedia.com
+
+Move citygrid_api.yml.sample into your project. This file configures the API endpoints. Load the configuration with:
+
+   CityGrid.load_config 'path/to/config/yml'
+
+== Sessions
+
+Most methods require an AuthToken. This is obtained by either using the CityGrid::Session class (preferred) or CityGrid::API::Accounts::Account.login, which would require managing your own AuthToken.
+
+An authenticated session can be obtained with
+
+   session = CityGrid.session 'username', 'password'
+   
+Once authenticated, the session will automatically pass along the AuthToken to API methods that require it when you use the call_api method
+
+  session.call_api CityGrid::API::Advertising::Category,
+    :search,
+    :keywords => "pizza"
+    
+This corresponds to
+
+  auth_token = 'my_auth_token' # obtained by calling CityGrid::API::Accounts::Account.login
+  CityGrid::API::Advertising::Category.search :token => auth_token, :keywords => "pizza"
+
+In the future, AuthTokens may be invalidated and there may be other methods to log in. Session and call_api will handle that for you.
