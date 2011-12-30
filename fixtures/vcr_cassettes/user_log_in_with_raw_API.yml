@@ -11,7 +11,7 @@
       message: OK
     headers:
       date:
-      - Fri, 30 Dec 2011 19:41:00 GMT
+      - Fri, 30 Dec 2011 19:52:58 GMT
       server:
       - Apache-Coyote/1.1
       content-type:
@@ -20,5 +20,5 @@
       - Accept-Encoding
       transfer-encoding:
       - chunked
-    body: ! '{"code":201,"authToken":"51d5c35130ea083e80ef2383af9151bc"}'
+    body: ! '{"code":201,"authToken":"1f556246c85edb228cc0f2438bc76cd7"}'
     http_version: '1.1'

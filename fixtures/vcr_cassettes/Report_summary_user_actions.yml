@@ -10,14 +10,14 @@
       content-type:
       - Application/JSON
       authtoken:
-      - 563da3d1cfa3a8e75f6a09e89f542d67
+      - 90c4e1da3460cc162dca10c0d3a56f4b
   response: !ruby/struct:VCR::Response
     status: !ruby/struct:VCR::ResponseStatus
       code: 200
       message: OK
     headers:
       date:
-      - Fri, 30 Dec 2011 01:06:14 GMT
+      - Fri, 30 Dec 2011 19:53:19 GMT
       server:
       - Apache-Coyote/1.1
       content-type:
@@ -26,11 +26,11 @@
       - Accept-Encoding
       transfer-encoding:
       - chunked
-    body: ! '{"totalNumEntries":"6","userActions":[{"response":{"code":200,"message":"OK"},"campaignId":"786","cpc":"0.55","externalCampaignId":"","totalConnections":"25","totalSpend":"6.05","userAction":"View
-      User Reviews","totalBillableConnections":"11"},{"response":{"code":200,"message":"OK"},"campaignId":"786","cpc":"0.00","externalCampaignId":"","totalConnections":"5","totalSpend":"0.00","userAction":"Request
-      Driving Directions","totalBillableConnections":"0"},{"response":{"code":200,"message":"OK"},"campaignId":"786","cpc":"0.55","externalCampaignId":"","totalConnections":"105","totalSpend":"30.25","userAction":"View
-      Profile Page","totalBillableConnections":"55"},{"response":{"code":200,"message":"OK"},"campaignId":"786","cpc":"0.00","externalCampaignId":"","totalConnections":"12","totalSpend":"0.00","userAction":"View
+    body: ! '{"totalNumEntries":"6","userActions":[{"response":{"code":200,"message":"OK"},"campaignId":"786","cpc":"0.55","externalCampaignId":"","totalConnections":"22","totalSpend":"4.40","userAction":"View
+      User Reviews","totalBillableConnections":"8"},{"response":{"code":200,"message":"OK"},"campaignId":"786","cpc":"0.00","externalCampaignId":"","totalConnections":"5","totalSpend":"0.00","userAction":"Request
+      Driving Directions","totalBillableConnections":"0"},{"response":{"code":200,"message":"OK"},"campaignId":"786","cpc":"0.55","externalCampaignId":"","totalConnections":"109","totalSpend":"32.45","userAction":"View
+      Profile Page","totalBillableConnections":"59"},{"response":{"code":200,"message":"OK"},"campaignId":"786","cpc":"0.00","externalCampaignId":"","totalConnections":"13","totalSpend":"0.00","userAction":"View
       Map","totalBillableConnections":"0"},{"response":{"code":200,"message":"OK"},"campaignId":"786","cpc":"0.00","externalCampaignId":"","totalConnections":"1","totalSpend":"0.00","userAction":"View
-      Menu - MenuPages","totalBillableConnections":"0"},{"response":{"code":200,"message":"OK"},"campaignId":"786","cpc":"0.55","externalCampaignId":"","totalConnections":"34","totalSpend":"10.45","userAction":"Trackable
-      Phone Call","totalBillableConnections":"19"}],"response":{"code":200,"message":"OK"}}'
+      Menu - MenuPages","totalBillableConnections":"0"},{"response":{"code":200,"message":"OK"},"campaignId":"786","cpc":"0.55","externalCampaignId":"","totalConnections":"37","totalSpend":"12.10","userAction":"Trackable
+      Phone Call","totalBillableConnections":"22"}],"response":{"code":200,"message":"OK"}}'
     http_version: '1.1'

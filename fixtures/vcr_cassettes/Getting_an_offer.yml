@@ -15,7 +15,7 @@
       message: OK
     headers:
       date:
-      - Fri, 30 Dec 2011 19:04:26 GMT
+      - Fri, 30 Dec 2011 19:53:23 GMT
       server:
       - Apache-Coyote/1.1
       content-type:
@@ -28,7 +28,7 @@
       page="1" last_hit="15" first_hit="1"><uri>http://api.citygridmedia.com/search/offers/v2/search/where?has_budget=true&amp;format=json%2Cjson&amp;page=1&amp;rpp=20&amp;histograms=false&amp;what=restaurant&amp;where=98033&amp;publisher=citygrid&amp;region_type=circle</uri><did_you_mean
       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/><regions><region
       type="market"><name>Seattle, WA Metro</name><latitude>47.761743</latitude><longitude>-121.780798</longitude><default_radius>67.1000</default_radius></region></regions><histograms/><offers><offer><attribution_logo>http://images.citysearch.net/assets/imgdb/custom/ue-357/CS_logo88x31.jpg</attribution_logo><attribution_source>CUSTOMER</attribution_source><attribution_text>Citysearch</attribution_text><attribution_url
-      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/><id>cg_60276412</id><reference_id>1</reference_id><impression_id>000b00000278e8c7423a3b4bd6be3e29ce6dc4971d</impression_id><title>Free
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/><id>cg_60276412</id><reference_id>1</reference_id><impression_id>000b000002be1f6c59af50431dba693816478794a0</impression_id><title>Free
       Meal</title><description>1 Free Meal if you purchase 4 or more entrees</description><redemption_type_id>1</redemption_type_id><redemption_type>Print</redemption_type><terms>Does
       not include drinks; valid from 10am - 4pm, Monday - Friday.  Make sure to say
       you heard about this offer at CityGrid.</terms><redemption_url>http://www.tropicosbreeze.com</redemption_url><offer_source>CUSTOMER</offer_source><offer_types><offer_type>free</offer_type></offer_types><image_url
@@ -55,7 +55,7 @@
       id="11333" primary="false">American Express</tag><tag id="11263" primary="false">Family-Friendly
       Dining</tag></tags><public_id>tropicos-breeze-seattle</public_id></location></locations><offer_collapse_count
       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/></offer><offer><attribution_logo>http://images.citysearch.net/assets/imgdb/custom/ue-357/CS_logo88x31.jpg</attribution_logo><attribution_source>CUSTOMER</attribution_source><attribution_text>Citysearch</attribution_text><attribution_url
-      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/><id>cg_60308852</id><reference_id>1</reference_id><impression_id>000b0000022d39f30f7beb4aa6be46e03ed43d11ec</impression_id><title>NEW
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/><id>cg_60308852</id><reference_id>1</reference_id><impression_id>000b000002bd31f272d72d4bd38c1c127c61c54763</impression_id><title>NEW
       Pupusas only $2.99!  Choose From Cheese &amp; Jalapeno, Shrimp, or Tilapia.</title><description>
 
       When You Mention This Offer From CityGrid Media!</description><redemption_type_id>1</redemption_type_id><redemption_type>Print</redemption_type><terms>Must
@@ -85,7 +85,7 @@
       id="11333" primary="false">American Express</tag><tag id="11263" primary="false">Family-Friendly
       Dining</tag></tags><public_id>tropicos-breeze-seattle</public_id></location></locations><offer_collapse_count
       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/></offer><offer><attribution_logo>http://images.citysearch.net/assets/imgdb/custom/ue-357/CS_logo88x31.jpg</attribution_logo><attribution_source>CUSTOMER</attribution_source><attribution_text>Citysearch</attribution_text><attribution_url
-      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/><id>cg_71416982</id><reference_id>1</reference_id><impression_id>000b00000233974f6ff6e34b6da97661197f80b00a</impression_id><title>Free
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/><id>cg_71416982</id><reference_id>1</reference_id><impression_id>000b0000023e8b9a249d87449c94b6d31936cd4fe1</impression_id><title>Free
       Shipping on Volterra Signature Products</title><description>Free Shipping when
       you order Volterra Signature Products online.  Visit http://volterraproducts.net/index.html</description><redemption_type_id>1</redemption_type_id><redemption_type>Print</redemption_type><terms>For
       online orders.</terms><redemption_url xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -115,7 +115,7 @@
       id="11333" primary="false">American Express</tag><tag id="11263" primary="false">Family-Friendly
       Dining</tag><tag id="11307" primary="false">Romantic Dining</tag></tags><public_id>volterra-seattle</public_id></location></locations><offer_collapse_count
       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/></offer><offer><attribution_logo>http://images.citysearch.net/assets/imgdb/custom/ue-357/CS_logo88x31.jpg</attribution_logo><attribution_source>CUSTOMER</attribution_source><attribution_text>Citysearch</attribution_text><attribution_url
-      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/><id>cg_75384112</id><reference_id>1</reference_id><impression_id>000b000002ec031c929cd04290be033d216513c6a2</impression_id><title>Citysearch
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/><id>cg_75384112</id><reference_id>1</reference_id><impression_id>000b000002e847ebed54ca4516ba730df5db5c972b</impression_id><title>Citysearch
       Special- Try One, Get One FREE!</title><description>Mention this Citysearch
       ad when you try any one of our menu items and get a FREE Yellow Plate! For more
       info, please stop by and see us, or call us for more info: (206) 452-1359</description><redemption_type_id>1</redemption_type_id><redemption_type>Print</redemption_type><terms>To
@@ -138,7 +138,7 @@
       id="13670" primary="false">Corporate Catering</tag><tag id="11271" primary="false">Happy
       Hour</tag><tag id="11263" primary="false">Family-Friendly Dining</tag></tags><public_id>blue-c-sushi-seattle</public_id></location></locations><offer_collapse_count
       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/></offer><offer><attribution_logo>http://images.citysearch.net/assets/imgdb/custom/ue-357/CS_logo88x31.jpg</attribution_logo><attribution_source>CUSTOMER</attribution_source><attribution_text>Citysearch</attribution_text><attribution_url
-      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/><id>cg_52438892</id><reference_id>1</reference_id><impression_id>000b0000021905823f7b124a52a94f89180c90340f</impression_id><title>happy
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/><id>cg_52438892</id><reference_id>1</reference_id><impression_id>000b000002c4aedd0ae2a440c295a153f1cfc48412</impression_id><title>happy
       hour at umi sake house 4-6pm every day!</title><description>4-6pm every day,
       4-8pm every day in front porch and cocktail bar.
 
@@ -164,7 +164,7 @@
       id="11333" primary="false">American Express</tag><tag id="11271" primary="false">Happy
       Hour</tag></tags><public_id>umi-sake-house-seattle-2</public_id></location></locations><offer_collapse_count
       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/></offer><offer><attribution_logo>http://images.citysearch.net/assets/imgdb/custom/ue-357/CS_logo88x31.jpg</attribution_logo><attribution_source>CUSTOMER</attribution_source><attribution_text>Citysearch</attribution_text><attribution_url
-      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/><id>cg_75679652</id><reference_id>1</reference_id><impression_id>000b000002f62b8d44afc64e3c88386089e9fba022</impression_id><title>Buy
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/><id>cg_75679652</id><reference_id>1</reference_id><impression_id>000b0000023891d5b2f30c4262828b851661aa98f3</impression_id><title>Buy
       1, Get 1 FREE</title><description>Buy any 1 food item and get 1 of equal or
       lesser value FREE.</description><redemption_type_id>1</redemption_type_id><redemption_type>Print</redemption_type><terms>Offer
       valid with the purchase of 2 beverages.  Dine-in only.  Valid from 7pm - 9pm.  Make
@@ -188,7 +188,7 @@
       &amp; Pubs</tag><tag id="1722" primary="false">Restaurants</tag><tag id="11333"
       primary="false">American Express</tag></tags><public_id>the-blarney-stone-seattle</public_id></location></locations><offer_collapse_count
       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/></offer><offer><attribution_logo>http://images.citysearch.net/assets/imgdb/custom/ue-357/CS_logo88x31.jpg</attribution_logo><attribution_source>CUSTOMER</attribution_source><attribution_text>Citysearch</attribution_text><attribution_url
-      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/><id>cg_50312462</id><reference_id>1</reference_id><impression_id>000b000002d11251cec77f49f894b06e2fa76ce283</impression_id><title>4
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/><id>cg_50312462</id><reference_id>1</reference_id><impression_id>000b0000024a62eb6cc4bc480491d56130e942513a</impression_id><title>4
       Complimentary Small Plates with a $3 Beer or $4 Glass of Wine during Happy Hour</title><description>Happy
       Hour is 5-6:30 p.m. Mondays-Fridays and also 11-midnight Fridays and Saturdays</description><redemption_type_id>1</redemption_type_id><redemption_type>Print</redemption_type><terms>Mention
       you found us on Citysearch</terms><redemption_url xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -215,7 +215,7 @@
       id="11271" primary="false">Happy Hour</tag><tag id="11307" primary="false">Romantic
       Dining</tag></tags><public_id>osteria-la-spiga-seattle</public_id></location></locations><offer_collapse_count
       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/></offer><offer><attribution_logo>http://images.citysearch.net/assets/imgdb/custom/ue-357/CS_logo88x31.jpg</attribution_logo><attribution_source>CUSTOMER</attribution_source><attribution_text>Citysearch</attribution_text><attribution_url
-      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/><id>cg_87977152</id><reference_id>1</reference_id><impression_id>000b000002e22758c4edd04924b82502c5fe55d4e1</impression_id><title>Mon-Fri
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/><id>cg_87977152</id><reference_id>1</reference_id><impression_id>000b0000029df57e1958914d24accce5a6e610f3db</impression_id><title>Mon-Fri
       Lunch Special!</title><description>Have Lunch at Super China Buffet for only
       $6.33 (Reg. $7.45)</description><redemption_type_id>1</redemption_type_id><redemption_type>Print</redemption_type><terms>Lunch
       Special valid Mon-Fri only.</terms><redemption_url xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -239,7 +239,7 @@
       id="11241" primary="false">Buffet</tag><tag id="11252" primary="false">Chinese</tag><tag
       id="11263" primary="false">Family-Friendly Dining</tag></tags><public_id>super-china-buffet-shoreline</public_id></location></locations><offer_collapse_count
       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/></offer><offer><attribution_logo>http://images.citysearch.net/assets/imgdb/custom/ue-357/CS_logo88x31.jpg</attribution_logo><attribution_source>CUSTOMER</attribution_source><attribution_text>Citysearch</attribution_text><attribution_url
-      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/><id>cg_87977372</id><reference_id>1</reference_id><impression_id>000b000002735ca624ab7f446c95e3565dafe0263c</impression_id><title>Mon-Thu
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/><id>cg_87977372</id><reference_id>1</reference_id><impression_id>000b000002faf700111ac1475ca4e88b80dbb1923c</impression_id><title>Mon-Thu
       Dinner Special!</title><description>Have DINNER at Super China Buffet for only
       $8.36 (Reg. $10.45); Mon-Thu</description><redemption_type_id>1</redemption_type_id><redemption_type>Print</redemption_type><terms>Dinner
       Special valid Mon-Thu only.</terms><redemption_url xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -263,7 +263,7 @@
       id="11241" primary="false">Buffet</tag><tag id="11252" primary="false">Chinese</tag><tag
       id="11263" primary="false">Family-Friendly Dining</tag></tags><public_id>super-china-buffet-shoreline</public_id></location></locations><offer_collapse_count
       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/></offer><offer><attribution_logo>http://images.citysearch.net/assets/imgdb/custom/ue-357/CS_logo88x31.jpg</attribution_logo><attribution_source>CUSTOMER</attribution_source><attribution_text>Citysearch</attribution_text><attribution_url
-      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/><id>cg_87977412</id><reference_id>1</reference_id><impression_id>000b00000271b90ba4aad341aa8b6fd2f4e1d23a84</impression_id><title>Fri
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/><id>cg_87977412</id><reference_id>1</reference_id><impression_id>000b000002e6618868a8e34d8abe29b7b0fb8c5c7f</impression_id><title>Fri
       &amp; Sat Dinner Special!</title><description>Have Dinner at Super China Buffet
       for only $9.73 (Reg. $11.45); Fri &amp; All Day Sat</description><redemption_type_id>1</redemption_type_id><redemption_type>Print</redemption_type><terms>Dinner
       Special valid Fri &amp; Sat only.</terms><redemption_url xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -287,7 +287,7 @@
       id="11241" primary="false">Buffet</tag><tag id="11252" primary="false">Chinese</tag><tag
       id="11263" primary="false">Family-Friendly Dining</tag></tags><public_id>super-china-buffet-shoreline</public_id></location></locations><offer_collapse_count
       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/></offer><offer><attribution_logo>http://images.citysearch.net/assets/imgdb/custom/ue-357/CS_logo88x31.jpg</attribution_logo><attribution_source>CUSTOMER</attribution_source><attribution_text>Citysearch</attribution_text><attribution_url
-      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/><id>cg_87977432</id><reference_id>1</reference_id><impression_id>000b00000222b0f8b7357a423ba649d020850ea2cf</impression_id><title>Sunday
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/><id>cg_87977432</id><reference_id>1</reference_id><impression_id>000b000002adf1dff80c334f42aa8bf945ba2ae246</impression_id><title>Sunday
       Dinner Special!</title><description>Have DINNER at Super China Buffet for only
       $10.99 (Reg. $12.95) on Sunday</description><redemption_type_id>1</redemption_type_id><redemption_type>Print</redemption_type><terms>Dinner
       Special valid Sunday only</terms><redemption_url xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -311,7 +311,7 @@
       id="11241" primary="false">Buffet</tag><tag id="11252" primary="false">Chinese</tag><tag
       id="11263" primary="false">Family-Friendly Dining</tag></tags><public_id>super-china-buffet-shoreline</public_id></location></locations><offer_collapse_count
       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/></offer><offer><attribution_logo>http://images.citysearch.net/assets/imgdb/custom/ue-357/CS_logo88x31.jpg</attribution_logo><attribution_source>CUSTOMER</attribution_source><attribution_text>Citysearch</attribution_text><attribution_url
-      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/><id>cg_87977512</id><reference_id>1</reference_id><impression_id>000b00000240b738b8c5f34a269bbbf68aac5d2b75</impression_id><title>Senior
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/><id>cg_87977512</id><reference_id>1</reference_id><impression_id>000b000002009ec29c3efa4898ace5a3e159bbe9b3</impression_id><title>Senior
       Citizen Special!</title><description>Senior Citizens can purchase one meal and
       get the second one half price at Super China Buffet on Tuesdays</description><redemption_type_id>1</redemption_type_id><redemption_type>Print</redemption_type><terms>Valid
       for Senior Citizens only. Offer good on Tuesdays only.</terms><redemption_url
@@ -335,7 +335,7 @@
       id="11241" primary="false">Buffet</tag><tag id="11252" primary="false">Chinese</tag><tag
       id="11263" primary="false">Family-Friendly Dining</tag></tags><public_id>super-china-buffet-shoreline</public_id></location></locations><offer_collapse_count
       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/></offer><offer><attribution_logo>http://images.citysearch.net/assets/imgdb/custom/ue-357/CS_logo88x31.jpg</attribution_logo><attribution_source>CUSTOMER</attribution_source><attribution_text>Citysearch</attribution_text><attribution_url
-      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/><id>cg_79709072</id><reference_id>1</reference_id><impression_id>000b00000250832447bcf24a1cb814fc2a4c7dd7ab</impression_id><title>$15.00
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/><id>cg_79709072</id><reference_id>1</reference_id><impression_id>000b00000260b3e8b87dab443e897b83db20eafe22</impression_id><title>$15.00
       Gift Certificate</title><description>$15.00 gift certificate when you celebrate
       your birthday with us</description><redemption_type_id>1</redemption_type_id><redemption_type>Print</redemption_type><terms>Celebrate
       your birthday with us and receive a $15.00 gift certificate! (proof ID required).
@@ -358,7 +358,7 @@
       primary="false">Noodle Shop</tag><tag id="1722" primary="true">Restaurants</tag><tag
       id="11333" primary="false">American Express</tag><tag id="11341" primary="false">Check</tag></tags><public_id>dozo-cafe-bellevue</public_id></location></locations><offer_collapse_count
       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/></offer><offer><attribution_logo>http://images.citysearch.net/assets/imgdb/custom/ue-357/CS_logo88x31.jpg</attribution_logo><attribution_source>CUSTOMER</attribution_source><attribution_text>Citysearch</attribution_text><attribution_url
-      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/><id>cg_88701012</id><reference_id>1</reference_id><impression_id>000b000002e0936d5c09e749ca92698899e6fd3ac5</impression_id><title>Free
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/><id>cg_88701012</id><reference_id>1</reference_id><impression_id>000b0000022313a3725ff64d4e8d5010f8d4b3592b</impression_id><title>Free
       Shipping Special</title><description>If you spend over $150 on supplies, you
       can receive FREE shipping by just mentioning this offer</description><redemption_type_id>1</redemption_type_id><redemption_type>Print</redemption_type><terms>Please
       call for further details</terms><redemption_url xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -384,7 +384,7 @@
       primary="false">Weight Loss Products</tag><tag id="12551" primary="false">Exercise
       Programs</tag></tags><public_id>health-coach-heather-everett</public_id></location></locations><offer_collapse_count
       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/></offer><offer><attribution_logo>http://images.citysearch.net/assets/imgdb/custom/ue-357/CS_logo88x31.jpg</attribution_logo><attribution_source>CUSTOMER</attribution_source><attribution_text>Citysearch</attribution_text><attribution_url
-      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/><id>cg_88700982</id><reference_id>1</reference_id><impression_id>000b0000025b47b10427ad46d2ae2c845ed3cbba7f</impression_id><title>Free
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/><id>cg_88700982</id><reference_id>1</reference_id><impression_id>000b00000243058ffcbb0742459c9d14dbdfe6c87d</impression_id><title>Free
       Two Weeks!</title><description>Become a member of the BeSLim club and receive
       2 weeks free of coaching</description><redemption_type_id>1</redemption_type_id><redemption_type>Print</redemption_type><terms>*Please
       call for further details</terms><redemption_url xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"

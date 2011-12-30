@@ -11,7 +11,7 @@
       message: OK
     headers:
       date:
-      - Fri, 30 Dec 2011 01:05:56 GMT
+      - Fri, 30 Dec 2011 19:52:53 GMT
       server:
       - Apache-Coyote/1.1
       content-type:
@@ -20,7 +20,7 @@
       - Accept-Encoding
       transfer-encoding:
       - chunked
-    body: ! '{"code":201,"authToken":"93920c4e2a1a93900685eef9f55bfb01"}'
+    body: ! '{"code":201,"authToken":"bbe02eb5c9b9cdff85a96996af85af26"}'
     http_version: '1.1'
 - !ruby/struct:VCR::HTTPInteraction
   request: !ruby/struct:VCR::Request
@@ -33,14 +33,14 @@
       content-type:
       - Application/JSON
       authtoken:
-      - 93920c4e2a1a93900685eef9f55bfb01
+      - bbe02eb5c9b9cdff85a96996af85af26
   response: !ruby/struct:VCR::Response
     status: !ruby/struct:VCR::ResponseStatus
       code: 200
       message: OK
     headers:
       date:
-      - Fri, 30 Dec 2011 01:05:57 GMT
+      - Fri, 30 Dec 2011 19:52:54 GMT
       server:
       - Apache-Coyote/1.1
       content-type:

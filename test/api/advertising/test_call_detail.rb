@@ -1,6 +1,6 @@
 require File.expand_path(File.join(File.dirname(__FILE__), '..', '..', 'helper'))
 
-context "Call Detail" do
+context "search for call detail" do
   context "by campaign" do
     setup do
       SessionHelper.sales_coord.call_api CityGrid::API::Advertising::CallDetail,

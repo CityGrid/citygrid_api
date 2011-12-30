@@ -10,14 +10,14 @@
       content-type:
       - Application/JSON
       authtoken:
-      - 563da3d1cfa3a8e75f6a09e89f542d67
+      - 90c4e1da3460cc162dca10c0d3a56f4b
   response: !ruby/struct:VCR::Response
     status: !ruby/struct:VCR::ResponseStatus
       code: 200
       message: OK
     headers:
       date:
-      - Fri, 30 Dec 2011 01:05:59 GMT
+      - Fri, 30 Dec 2011 19:53:00 GMT
       server:
       - Apache-Coyote/1.1
       content-type:

@@ -10,14 +10,14 @@
       content-type:
       - Application/JSON
       authtoken:
-      - 563da3d1cfa3a8e75f6a09e89f542d67
+      - 90c4e1da3460cc162dca10c0d3a56f4b
   response: !ruby/struct:VCR::Response
     status: !ruby/struct:VCR::ResponseStatus
       code: 200
       message: OK
     headers:
       date:
-      - Fri, 30 Dec 2011 01:06:05 GMT
+      - Fri, 30 Dec 2011 19:53:09 GMT
       server:
       - Apache-Coyote/1.1
       content-type:
@@ -39,6 +39,7 @@
       Y Mas, Inc.","callId":"1F08AC674B4E4611AD2515A875DBDD6E","callStartTime":1323207661000,"ringToNumber":"5124677100","trackableNumber":"5123716495","callerPhone":"","duration":8,"rating":null,"classification":null,"notes":null,"audioUrl":""},{"accountId":111,"accountName":"Enchiladas
       Y Mas, Inc.","callId":"C6A070D2D2294544A817588404AA4229","callStartTime":1323640826000,"ringToNumber":"5124677100","trackableNumber":"5123716495","callerPhone":"5122286580","duration":0,"rating":null,"classification":null,"notes":null,"audioUrl":""},{"accountId":111,"accountName":"Enchiladas
       Y Mas, Inc.","callId":"1539CEFCAB59474AA21BA9BB0E4D3D7D","callStartTime":1323876268000,"ringToNumber":"5124677100","trackableNumber":"5123716495","callerPhone":"8066790115","duration":0,"rating":null,"classification":null,"notes":null,"audioUrl":""},{"accountId":111,"accountName":"Enchiladas
+      Y Mas, Inc.","callId":"167F79892FD043689E02DFAF8CF4E893","callStartTime":1325174050000,"ringToNumber":"5124677100","trackableNumber":"5123716495","callerPhone":"5128377258","duration":77,"rating":null,"classification":null,"notes":null,"audioUrl":""},{"accountId":111,"accountName":"Enchiladas
       Y Mas, Inc.","callId":"D493D71D3EE5453086E4BD32663144E7","callStartTime":1323547023000,"ringToNumber":"5124677100","trackableNumber":"5123716495","callerPhone":"5126659137","duration":10,"rating":null,"classification":null,"notes":null,"audioUrl":""},{"accountId":111,"accountName":"Enchiladas
       Y Mas, Inc.","callId":"2D5F77A94B894CF495FB5C83BA21C26E","callStartTime":1323181615000,"ringToNumber":"5124677100","trackableNumber":"5123716495","callerPhone":"5127861118","duration":39,"rating":null,"classification":null,"notes":null,"audioUrl":""},{"accountId":111,"accountName":"Enchiladas
       Y Mas, Inc.","callId":"439BF2DA64BB4204AAF5F9AADA29C835","callStartTime":1323963549000,"ringToNumber":"5124677100","trackableNumber":"5123716495","callerPhone":"5129185602","duration":30,"rating":null,"classification":null,"notes":null,"audioUrl":""},{"accountId":111,"accountName":"Enchiladas
@@ -67,6 +68,8 @@
       Y Mas, Inc.","callId":"124163A136544C769BF6047279377D26","callStartTime":1324134173000,"ringToNumber":"5124677100","trackableNumber":"5123716495","callerPhone":"5126898625","duration":28,"rating":null,"classification":null,"notes":null,"audioUrl":""},{"accountId":111,"accountName":"Enchiladas
       Y Mas, Inc.","callId":"BE0C25C8A2EB46529DAB094E252990EE","callStartTime":1325114868000,"ringToNumber":"5124677100","trackableNumber":"5123716495","callerPhone":"5124614381","duration":11,"rating":null,"classification":null,"notes":null,"audioUrl":""},{"accountId":111,"accountName":"Enchiladas
       Y Mas, Inc.","callId":"184E5E0C7D09419D95801CB567F98550","callStartTime":1323612923000,"ringToNumber":"5124677100","trackableNumber":"5123716495","callerPhone":"5127960637","duration":29,"rating":null,"classification":null,"notes":null,"audioUrl":""},{"accountId":111,"accountName":"Enchiladas
+      Y Mas, Inc.","callId":"E4A847772FA84C67BFC23A36FB5D7B6C","callStartTime":1325210175000,"ringToNumber":"5124677100","trackableNumber":"5123716495","callerPhone":"5122934899","duration":9,"rating":null,"classification":null,"notes":null,"audioUrl":""},{"accountId":111,"accountName":"Enchiladas
+      Y Mas, Inc.","callId":"E629FBD98CE14FF6A81A1A525399A46F","callStartTime":1325198938000,"ringToNumber":"5124677100","trackableNumber":"5123716495","callerPhone":"5129229120","duration":34,"rating":null,"classification":null,"notes":null,"audioUrl":""},{"accountId":111,"accountName":"Enchiladas
       Y Mas, Inc.","callId":"586B9865604C484CAC89D2D88C3E2E95","callStartTime":1322846363000,"ringToNumber":"5124677100","trackableNumber":"5123716495","callerPhone":"5125523365","duration":18,"rating":null,"classification":null,"notes":null,"audioUrl":""},{"accountId":111,"accountName":"Enchiladas
       Y Mas, Inc.","callId":"2EFE17BDD29E44C9B5E5B59FD15F53D2","callStartTime":1324686900000,"ringToNumber":"5124677100","trackableNumber":"5123716495","callerPhone":"5124134037","duration":82,"rating":null,"classification":null,"notes":null,"audioUrl":""},{"accountId":111,"accountName":"Enchiladas
       Y Mas, Inc.","callId":"0D53F7BF0351430CA0510D2673304922","callStartTime":1323531469000,"ringToNumber":"5124677100","trackableNumber":"5123716495","callerPhone":"5126898625","duration":51,"rating":null,"classification":null,"notes":null,"audioUrl":""},{"accountId":111,"accountName":"Enchiladas

@@ -2,30 +2,7 @@
 - !ruby/struct:VCR::HTTPInteraction
   request: !ruby/struct:VCR::Request
     method: :post
-    uri: https://api-qassl.citygrid.com:443/accounts/user/v2/login?password=pppppp&username=GARYTEST
-    body: !!null 
-    headers: !!null 
-  response: !ruby/struct:VCR::Response
-    status: !ruby/struct:VCR::ResponseStatus
-      code: 200
-      message: OK
-    headers:
-      date:
-      - Fri, 30 Dec 2011 19:35:44 GMT
-      server:
-      - Apache-Coyote/1.1
-      content-type:
-      - application/json
-      vary:
-      - Accept-Encoding
-      transfer-encoding:
-      - chunked
-    body: ! '{"code":201,"authToken":"bc77e96c11f02c86f60c7e6c098e6ece"}'
-    http_version: '1.1'
-- !ruby/struct:VCR::HTTPInteraction
-  request: !ruby/struct:VCR::Request
-    method: :post
-    uri: http://api.qa.citygrid.com:80/content/offers/v2/mutate
+    uri: http://api.qa.citygrid.com:80/advertising/offer/v2/mutate
     body: ! '{"mutateOperationListResource":[{"operator":"ADD","operand":{"listingIds":"41420733","offer":{"accountId":"3440","name":"offerTest","text":"some
       texts","description":"some description","offerStatus":"Active","type":"Percent_Off","redemptionType":"Print","termsAndConditions":"terms
       and conditions test","redemptionCode":"22","redemptionURL":"http://www.fakeurl.com","image":"http://images.citysearch.net/assets/imgdb/image_ws/2011/10/27/0/BPYAbvWF1.jpeg","startDate":"20111028","neverExpires":"true"}}}]}'
@@ -35,39 +12,24 @@
       content-type:
       - Application/JSON
       authtoken:
-      - bc77e96c11f02c86f60c7e6c098e6ece
+      - ab602fd7d00a382d6af6a86eecbc689d
   response: !ruby/struct:VCR::Response
     status: !ruby/struct:VCR::ResponseStatus
-      code: 403
-      message: Forbidden
+      code: 200
+      message: OK
     headers:
       date:
-      - Fri, 30 Dec 2011 19:35:45 GMT
+      - Fri, 30 Dec 2011 19:53:18 GMT
       server:
-      - Apache/2.2.4 (Unix)
-      content-length:
-      - '308'
+      - Apache-Coyote/1.1
       content-type:
-      - text/html; charset=iso-8859-1
-    body: ! '<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
-
-      <html><head>
-
-      <title>403 Forbidden</title>
-
-      </head><body>
-
-      <h1>Forbidden</h1>
-
-      <p>You don''t have permission to access /content/offers/v2/mutate
-
-      on this server.</p>
-
-      <hr>
-
-      <address>Apache/2.2.4 (Unix) Server at api.qa.citygrid.com Port 80</address>
-
-      </body></html>
-
-'
+      - application/json
+      vary:
+      - Accept-Encoding
+      transfer-encoding:
+      - chunked
+    body: ! '{"offers":[{"campaignId":"","listingId":"","responseStatus":{"message":"Invalid
+      Request: The logged in user already has an Account Asociated.","code":400},"offer":{"name":"offerTest","type":"Percent_Off","text":"some
+      texts","description":"some description","startDate":"20111028","accountId":"3440","imageName":"","redemptionType":"Print","redemptionCode":"22","termsAndConditions":"terms
+      and conditions test","image":"http://images.citysearch.net/assets/imgdb/image_ws/2011/10/27/0/BPYAbvWF1.jpeg","expirationDate":"","offerId":"","offerStatus":"Active","redemptionURL":"http://www.fakeurl.com","neverExpires":"true","isHidden":""}}]}'
     http_version: '1.1'
