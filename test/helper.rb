@@ -57,7 +57,7 @@ unless defined? IN_DASHBOARD
         if option(:vcr) != nil && option(:vcr) == false
           old_run reporter
         else
-          VCR.use_cassette self.detailed_description do
+          VCR.use_cassette self.detailed_description[0..70] do
             old_run reporter 
           end
         end

@@ -2,29 +2,6 @@
 - !ruby/struct:VCR::HTTPInteraction
   request: !ruby/struct:VCR::Request
     method: :post
-    uri: https://api-qassl.citygrid.com:443/accounts/user/v2/login?password=pppppp&username=QASalesCoord
-    body: !!null 
-    headers: !!null 
-  response: !ruby/struct:VCR::Response
-    status: !ruby/struct:VCR::ResponseStatus
-      code: 200
-      message: OK
-    headers:
-      date:
-      - Fri, 30 Dec 2011 00:28:45 GMT
-      server:
-      - Apache-Coyote/1.1
-      content-type:
-      - application/json
-      vary:
-      - Accept-Encoding
-      transfer-encoding:
-      - chunked
-    body: ! '{"code":201,"authToken":"6078c5435cbdfea57b31f9b3ea73a5a1"}'
-    http_version: '1.1'
-- !ruby/struct:VCR::HTTPInteraction
-  request: !ruby/struct:VCR::Request
-    method: :post
     uri: http://api.qa.citygrid.com:80/advertising/calldetail/v2/campaign
     body: ! '{"campaignId":786,"period":"last30Days"}'
     headers:
@@ -33,14 +10,14 @@
       content-type:
       - Application/JSON
       authtoken:
-      - 6078c5435cbdfea57b31f9b3ea73a5a1
+      - 563da3d1cfa3a8e75f6a09e89f542d67
   response: !ruby/struct:VCR::Response
     status: !ruby/struct:VCR::ResponseStatus
       code: 200
       message: OK
     headers:
       date:
-      - Fri, 30 Dec 2011 00:28:47 GMT
+      - Fri, 30 Dec 2011 01:06:05 GMT
       server:
       - Apache-Coyote/1.1
       content-type:

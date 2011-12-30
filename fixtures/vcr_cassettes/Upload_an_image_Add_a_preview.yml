@@ -11,14 +11,14 @@
       content-type:
       - Application/JSON
       authtoken:
-      - e19158769923691a0dcd7ebee85878a8
+      - 664f6bf013500c5627f2d302e08bb524
   response: !ruby/struct:VCR::Response
     status: !ruby/struct:VCR::ResponseStatus
       code: 200
       message: OK
     headers:
       date:
-      - Fri, 30 Dec 2011 00:29:26 GMT
+      - Fri, 30 Dec 2011 01:06:12 GMT
       server:
       - Apache-Coyote/1.1
       content-type:
@@ -27,5 +27,5 @@
       - Accept-Encoding
       transfer-encoding:
       - chunked
-    body: ! '{"resources":[{"response":{"message":"OK","code":200},"imagePath":"http://images.citysearch.net/assets/imgdb/merchant/2011/12/29/0/aBYeTmkU427.jpeg"}]}'
+    body: ! '{"resources":[{"response":{"message":"OK","code":200},"imagePath":"http://images.citysearch.net/assets/imgdb/merchant/2011/12/29/0/KoLHqtuv436.jpeg"}]}'
     http_version: '1.1'

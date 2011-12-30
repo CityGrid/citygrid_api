@@ -1,6 +1,6 @@
 require File.expand_path(File.join(File.dirname(__FILE__), '..', '..', 'helper'))
 
-context "create a campaign" do
+context "create campaign" do
   setup do    
     SessionHelper.kunimom.call_api CityGrid::API::Advertising::Campaign,
       :mutate,
@@ -21,7 +21,7 @@ context "create a campaign" do
   should("return code OK"){ topic.campaigns.first.response.code }.equals(200)
   should("return message OK") { topic.campaigns.first.response.message }.equals("OK")
   
-  context "create an ad_group belonging to the campaign" do
+  context "then create ad_group belonging to campaign" do
     setup do
       SessionHelper.kunimom.call_api CityGrid::API::Advertising::AdGroup,
         :mutate,
@@ -42,7 +42,7 @@ context "create a campaign" do
     should("not be empty"){ !topic.empty? }
     should("have campaignId"){ !topic.adGroups.first.campaignId.nil? }
 
-    context "search for an ad_group that belongs to the user" do
+    context "then search for ad_group belonging to the user" do
       setup do
         SessionHelper.kunimom.call_api CityGrid::API::Advertising::AdGroup,
           :search,

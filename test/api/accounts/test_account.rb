@@ -69,7 +69,6 @@ context "import a cg account" do
   should("return response code OK"){ topic.accountList.first.response.code.to_i }.equals(200)
 end
 
-
 context "create an account" do
   set :vcr, false
   

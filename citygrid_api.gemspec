@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Elpizo Choi"]
-  s.date = "2011-12-28"
+  s.date = "2011-12-30"
   s.description = "Ruby wrapper for CityGrid APIs"
   s.email = "fu7iin@gmail.com"
   s.extra_rdoc_files = [
@@ -29,9 +29,40 @@ Gem::Specification.new do |s|
     "Rakefile",
     "VERSION",
     "citygrid_api.gemspec",
+    "citygrid_api.yml.backup",
     "citygrid_api.yml.sample",
     "config.ru",
     "dashboard.rb",
+    "fixtures/vcr_cassettes/AdGroupCriterion_mutate.yml",
+    "fixtures/vcr_cassettes/AdGroupCriterion_search.yml",
+    "fixtures/vcr_cassettes/Adding_a_place.yml",
+    "fixtures/vcr_cassettes/Call_Detail_by_campaign.yml",
+    "fixtures/vcr_cassettes/Geo.yml",
+    "fixtures/vcr_cassettes/Getting_an_offer_by_listing_ID.yml",
+    "fixtures/vcr_cassettes/Import_a_cg_account.yml",
+    "fixtures/vcr_cassettes/Initiating_a_Details.yml",
+    "fixtures/vcr_cassettes/Initiating_new_MultiDetails.yml",
+    "fixtures/vcr_cassettes/Method_of_Payment_mutate.yml",
+    "fixtures/vcr_cassettes/Method_of_Payment_search.yml",
+    "fixtures/vcr_cassettes/Mutating_AdGroup_Ads.yml",
+    "fixtures/vcr_cassettes/Report_summary_daily.yml",
+    "fixtures/vcr_cassettes/Report_summary_user_actions.yml",
+    "fixtures/vcr_cassettes/Search_Ad_Group_by_Campaign_Id.yml",
+    "fixtures/vcr_cassettes/Search_Billing_by_Campaign_Id.yml",
+    "fixtures/vcr_cassettes/Search_account_manager_by_Campaign_Id.yml",
+    "fixtures/vcr_cassettes/Searching_AdGroup_Geo.yml",
+    "fixtures/vcr_cassettes/Searching_budgets.yml",
+    "fixtures/vcr_cassettes/Searching_categories_by_listing_id.yml",
+    "fixtures/vcr_cassettes/Searching_categories_by_query.yml",
+    "fixtures/vcr_cassettes/Upload_an_image_Add_a_preview.yml",
+    "fixtures/vcr_cassettes/create_campaign.yml",
+    "fixtures/vcr_cassettes/log_in_a_session.yml",
+    "fixtures/vcr_cassettes/log_in_a_session_mutate_places.yml",
+    "fixtures/vcr_cassettes/query_account_type_by_id.yml",
+    "fixtures/vcr_cassettes/search_for_an_account_by_id.yml",
+    "fixtures/vcr_cassettes/search_for_an_account_by_name.yml",
+    "fixtures/vcr_cassettes/searching_for_a_CityGrid_listing.yml",
+    "fixtures/vcr_cassettes/searching_for_a_special_CityGrid_listing.yml",
     "lib/citygrid.rb",
     "lib/citygrid/abstraction.rb",
     "lib/citygrid/abstraction/collection.rb",
@@ -40,25 +71,26 @@ Gem::Specification.new do |s|
     "lib/citygrid/abstraction/super_array.rb",
     "lib/citygrid/abstraction/super_hash.rb",
     "lib/citygrid/api.rb",
-    "lib/citygrid/api/ad_center.rb",
-    "lib/citygrid/api/ad_center/account.rb",
-    "lib/citygrid/api/ad_center/account_manager.rb",
-    "lib/citygrid/api/ad_center/ad_group.rb",
-    "lib/citygrid/api/ad_center/ad_group_ad.rb",
-    "lib/citygrid/api/ad_center/ad_group_criterion.rb",
-    "lib/citygrid/api/ad_center/ad_group_geo.rb",
-    "lib/citygrid/api/ad_center/authentication.rb",
-    "lib/citygrid/api/ad_center/billing.rb",
-    "lib/citygrid/api/ad_center/budget.rb",
-    "lib/citygrid/api/ad_center/call_detail.rb",
-    "lib/citygrid/api/ad_center/campaign.rb",
-    "lib/citygrid/api/ad_center/category.rb",
-    "lib/citygrid/api/ad_center/geolocation.rb",
-    "lib/citygrid/api/ad_center/image.rb",
-    "lib/citygrid/api/ad_center/method_of_payment.rb",
-    "lib/citygrid/api/ad_center/performance.rb",
-    "lib/citygrid/api/ad_center/places.rb",
-    "lib/citygrid/api/ad_center/user.rb",
+    "lib/citygrid/api/accounts.rb",
+    "lib/citygrid/api/accounts/account.rb",
+    "lib/citygrid/api/accounts/authentication.rb",
+    "lib/citygrid/api/accounts/method_of_payment.rb",
+    "lib/citygrid/api/accounts/user.rb",
+    "lib/citygrid/api/advertising.rb",
+    "lib/citygrid/api/advertising/account_manager.rb",
+    "lib/citygrid/api/advertising/ad_group.rb",
+    "lib/citygrid/api/advertising/ad_group_ad.rb",
+    "lib/citygrid/api/advertising/ad_group_criterion.rb",
+    "lib/citygrid/api/advertising/ad_group_geo.rb",
+    "lib/citygrid/api/advertising/billing.rb",
+    "lib/citygrid/api/advertising/budget.rb",
+    "lib/citygrid/api/advertising/call_detail.rb",
+    "lib/citygrid/api/advertising/campaign.rb",
+    "lib/citygrid/api/advertising/category.rb",
+    "lib/citygrid/api/advertising/geolocation.rb",
+    "lib/citygrid/api/advertising/image.rb",
+    "lib/citygrid/api/advertising/performance.rb",
+    "lib/citygrid/api/advertising/places.rb",
     "lib/citygrid/api/content.rb",
     "lib/citygrid/api/content/offers.rb",
     "lib/citygrid/api/content/places.rb",
@@ -71,6 +103,7 @@ Gem::Specification.new do |s|
     "lib/citygrid/offers.rb",
     "lib/citygrid/reviews.rb",
     "lib/citygrid/search.rb",
+    "lib/citygrid/session.rb",
     "lib/citygrid_api.rb",
     "lib/dashboard/sinatra_partial.rb",
     "lib/dashboard/stored_reporter.rb",
@@ -78,33 +111,34 @@ Gem::Specification.new do |s|
     "lib/request_ext.rb",
     "lib/string_ext.rb",
     "public/javascript/dashboard.js",
-    "test/api/ad_center/test_account.rb",
-    "test/api/ad_center/test_account_manager.rb",
-    "test/api/ad_center/test_ad_group.rb",
-    "test/api/ad_center/test_ad_group_ad.rb",
-    "test/api/ad_center/test_ad_group_criterion.rb",
-    "test/api/ad_center/test_ad_group_geo.rb",
-    "test/api/ad_center/test_authentication.rb",
-    "test/api/ad_center/test_billing.rb",
-    "test/api/ad_center/test_budget.rb",
-    "test/api/ad_center/test_call_detail.rb",
-    "test/api/ad_center/test_campaign.rb",
-    "test/api/ad_center/test_category.rb",
-    "test/api/ad_center/test_geolocation.rb",
-    "test/api/ad_center/test_image.rb",
-    "test/api/ad_center/test_method_of_payment.rb",
-    "test/api/ad_center/test_places.rb",
-    "test/api/ad_center/test_reports.rb",
+    "test/api/accounts/test_account.rb",
+    "test/api/accounts/test_method_of_payment.rb",
+    "test/api/advertising/test_account_manager.rb",
+    "test/api/advertising/test_ad_group.rb",
+    "test/api/advertising/test_ad_group_ad.rb",
+    "test/api/advertising/test_ad_group_criterion.rb",
+    "test/api/advertising/test_ad_group_geo.rb",
+    "test/api/advertising/test_billing.rb",
+    "test/api/advertising/test_budget.rb",
+    "test/api/advertising/test_call_detail.rb",
+    "test/api/advertising/test_category.rb",
+    "test/api/advertising/test_create_campaign_and_ad_group.rb",
+    "test/api/advertising/test_geolocation.rb",
+    "test/api/advertising/test_image.rb",
+    "test/api/advertising/test_performance.rb",
+    "test/api/advertising/test_places.rb",
     "test/api/content/test_details.rb",
     "test/api/content/test_offers.rb",
-    "test/api/content/test_places.rb",
     "test/api/content/test_search.rb",
+    "test/auth_token.rb",
     "test/helper.rb",
     "test/publisher_helper.rb.sample",
+    "test/session_helper.rb",
     "test/test_config.rb",
     "test/test_img.jpg",
     "test/test_img_big.png",
     "test/test_listing.rb",
+    "test/test_session.rb",
     "test/test_super_array.rb",
     "test/test_super_hash.rb",
     "views/_context_result.haml",
@@ -126,29 +160,32 @@ Gem::Specification.new do |s|
       s.add_runtime_dependency(%q<json>, ["= 1.5.3"])
       s.add_runtime_dependency(%q<riot>, ["~> 0.12.4"])
       s.add_runtime_dependency(%q<awesome_print>, ["~> 0.4.0"])
-      s.add_runtime_dependency(%q<haml>, [">= 0"])
       s.add_development_dependency(%q<bundler>, ["~> 1.0.0"])
       s.add_development_dependency(%q<jeweler>, ["~> 1.6.2"])
       s.add_development_dependency(%q<rcov>, [">= 0"])
+      s.add_development_dependency(%q<vcr>, [">= 0"])
+      s.add_development_dependency(%q<webmock>, [">= 0"])
     else
       s.add_dependency(%q<httparty>, ["~> 0.8.1"])
       s.add_dependency(%q<json>, ["= 1.5.3"])
       s.add_dependency(%q<riot>, ["~> 0.12.4"])
       s.add_dependency(%q<awesome_print>, ["~> 0.4.0"])
-      s.add_dependency(%q<haml>, [">= 0"])
       s.add_dependency(%q<bundler>, ["~> 1.0.0"])
       s.add_dependency(%q<jeweler>, ["~> 1.6.2"])
       s.add_dependency(%q<rcov>, [">= 0"])
+      s.add_dependency(%q<vcr>, [">= 0"])
+      s.add_dependency(%q<webmock>, [">= 0"])
     end
   else
     s.add_dependency(%q<httparty>, ["~> 0.8.1"])
     s.add_dependency(%q<json>, ["= 1.5.3"])
     s.add_dependency(%q<riot>, ["~> 0.12.4"])
     s.add_dependency(%q<awesome_print>, ["~> 0.4.0"])
-    s.add_dependency(%q<haml>, [">= 0"])
     s.add_dependency(%q<bundler>, ["~> 1.0.0"])
     s.add_dependency(%q<jeweler>, ["~> 1.6.2"])
     s.add_dependency(%q<rcov>, [">= 0"])
+    s.add_dependency(%q<vcr>, [">= 0"])
+    s.add_dependency(%q<webmock>, [">= 0"])
   end
 end
 

@@ -13,14 +13,14 @@
       content-type:
       - Application/JSON
       authtoken:
-      - ad2338f42980a4da7ad2293e2e329471
+      - 93920c4e2a1a93900685eef9f55bfb01
   response: !ruby/struct:VCR::Response
     status: !ruby/struct:VCR::ResponseStatus
       code: 200
       message: OK
     headers:
       date:
-      - Fri, 30 Dec 2011 00:23:25 GMT
+      - Fri, 30 Dec 2011 01:05:58 GMT
       server:
       - Apache-Coyote/1.1
       content-type:
@@ -29,5 +29,5 @@
       - Accept-Encoding
       transfer-encoding:
       - chunked
-    body: ! '{"resources":[{"id":395012,"response":{"message":"OK","code":200}}]}'
+    body: ! '{"resources":[{"id":395032,"response":{"message":"OK","code":200}}]}'
     http_version: '1.1'

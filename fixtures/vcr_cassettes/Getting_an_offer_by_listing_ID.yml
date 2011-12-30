@@ -15,7 +15,7 @@
       message: OK
     headers:
       date:
-      - Fri, 30 Dec 2011 00:29:32 GMT
+      - Fri, 30 Dec 2011 01:06:18 GMT
       server:
       - Apache-Coyote/1.1
       content-type:
@@ -24,16 +24,7 @@
       - '6066'
       vary:
       - Accept-Encoding
-    body: ! '{"results":{"query_id":null,"uri":"http://api.citygridmedia.com/search/offers/v2/search/places?listing_id=628554020&has_budget=false&format=json&page=1&rpp=20&radius=5.0&histograms=false&publisher=citygrid&region_type=circle","first_hit":1,"last_hit":3,"total_hits":3,"page":1,"rpp":20,"did_you_mean":null,"regions":[],"histograms":[],"offers":[{"attribution_logo":"http://images.citysearch.net/assets/imgdb/custom/ue-357/CS_logo88x31.jpg","attribution_source":"CUSTOMER","attribution_text":"Citysearch","attribution_url":null,"id":"cg_49335912","reference_id":null,"impression_id":"000b000002c6c6031053d84b08a916c413833195e9","title":"Office
-      Pack for 6 to 8 people for $36      (Regular Price $48.30)\n","description":"Office
-      Pack for 6 to 8 people $36 (Reg. $48.30)\n- Two Large 2-topping Pizza''s\n-
-      One 2 Litre Soda\n- Caesar Salad Bowl\n","redemption_type_id":1,"redemption_type":"Print","terms":"Not
-      valid with any other offers. Mentioning Citysearch is required.","image_url":"http://images.citysearch.net/assets/imgdb/merchant/2011/2/23/0/QrAXPXEW105_100x100.jpeg","start_date":"2010-01-06T00:00:00Z","redemption_url":null,"offer_source":"CUSTOMER","offer_types":["other"],"expiration_date":null,"popularity":null,"face_value":null,"discount_value":null,"locations":[{"id":628554020,"infousa_id":null,"rating":8.0,"name":"Bella
-      Kitchen","address":{"street":"8556 122nd Ave NE Ste A2","city":"Kirkland","state":"WA","postal_code":"98033"},"phone":"4252424764","latitude":47.0,"longitude":-122.0,"image_url":"http://images.citysearch.net/assets/imgdb/merchant/2009/12/18/0/PmwVniqn32_100x100.jpeg","business_hours":"Sunday-Thursday
-      10am-10pm\nFriday-Saturday 10am-2am","tags":[{"id":11361,"name":"MasterCard","primary":false},{"id":11267,"name":"Food
-      Delivery","primary":false},{"id":11247,"name":"Carry Out","primary":false},{"id":11279,"name":"Italian","primary":false},{"id":1684,"name":"Food
-      & Dining","primary":false},{"id":11382,"name":"Visa","primary":false},{"id":1738,"name":"Global","primary":false},{"id":1722,"name":"Restaurants","primary":true},{"id":11333,"name":"American
-      Express","primary":false},{"id":1736,"name":"Sandwich Shops","primary":false},{"id":11299,"name":"Pizza","primary":false}],"public_id":"bella-kitchen-kirkland"}],"offer_collapse_count":null},{"attribution_logo":"http://images.citysearch.net/assets/imgdb/custom/ue-357/CS_logo88x31.jpg","attribution_source":"CUSTOMER","attribution_text":"Citysearch","attribution_url":null,"id":"cg_49335902","reference_id":null,"impression_id":"000b00000255201bc79c3444ca9dddf3bbb4054afd","title":"Family
+    body: ! '{"results":{"query_id":null,"uri":"http://api.citygridmedia.com/search/offers/v2/search/places?listing_id=628554020&has_budget=false&format=json&page=1&rpp=20&radius=5.0&histograms=false&publisher=citygrid&region_type=circle","first_hit":1,"last_hit":3,"total_hits":3,"page":1,"rpp":20,"did_you_mean":null,"regions":[],"histograms":[],"offers":[{"attribution_logo":"http://images.citysearch.net/assets/imgdb/custom/ue-357/CS_logo88x31.jpg","attribution_source":"CUSTOMER","attribution_text":"Citysearch","attribution_url":null,"id":"cg_49335902","reference_id":null,"impression_id":"000b000002d637e49a4d1c480b8adc1a47eda099ff","title":"Family
       Special - for 4 to 6 people $26    (Regular Price $32.14)\n","description":"Family
       Special for 4-6 people. $26 (Reg. $32.14)\n-One Large 2-topping pizza\n-One
       Med 2-topping pizza\n- One 2 Litre soda\n","redemption_type_id":1,"redemption_type":"Print","terms":"Not
@@ -42,10 +33,19 @@
       10am-10pm\nFriday-Saturday 10am-2am","tags":[{"id":11361,"name":"MasterCard","primary":false},{"id":11267,"name":"Food
       Delivery","primary":false},{"id":11247,"name":"Carry Out","primary":false},{"id":11279,"name":"Italian","primary":false},{"id":1684,"name":"Food
       & Dining","primary":false},{"id":11382,"name":"Visa","primary":false},{"id":1738,"name":"Global","primary":false},{"id":1722,"name":"Restaurants","primary":true},{"id":11333,"name":"American
-      Express","primary":false},{"id":1736,"name":"Sandwich Shops","primary":false},{"id":11299,"name":"Pizza","primary":false}],"public_id":"bella-kitchen-kirkland"}],"offer_collapse_count":null},{"attribution_logo":"http://images.citysearch.net/assets/imgdb/custom/ue-357/CS_logo88x31.jpg","attribution_source":"CUSTOMER","attribution_text":"Citysearch","attribution_url":null,"id":"cg_49335922","reference_id":null,"impression_id":"000b0000022187bc63c0074fcdbdd2f75b509b6049","title":"10\"
+      Express","primary":false},{"id":1736,"name":"Sandwich Shops","primary":false},{"id":11299,"name":"Pizza","primary":false}],"public_id":"bella-kitchen-kirkland"}],"offer_collapse_count":null},{"attribution_logo":"http://images.citysearch.net/assets/imgdb/custom/ue-357/CS_logo88x31.jpg","attribution_source":"CUSTOMER","attribution_text":"Citysearch","attribution_url":null,"id":"cg_49335922","reference_id":null,"impression_id":"000b000002d67511042861450a9b01d6f1b13f6534","title":"10\"
       1-topping pizza for $5 when mentioning Citysearch!\n","description":"10\" 1-topping
       pizza for $5! Mentioning Citysearch is required.\n","redemption_type_id":1,"redemption_type":"Print","terms":"Not
       to be combined with other offers.","image_url":"http://images.citysearch.net/assets/imgdb/merchant/2011/2/23/0/ZrgRhGee78_100x100.jpeg","start_date":"2010-01-06T00:00:00Z","redemption_url":null,"offer_source":"CUSTOMER","offer_types":["other"],"expiration_date":null,"popularity":null,"face_value":null,"discount_value":null,"locations":[{"id":628554020,"infousa_id":null,"rating":8.0,"name":"Bella
+      Kitchen","address":{"street":"8556 122nd Ave NE Ste A2","city":"Kirkland","state":"WA","postal_code":"98033"},"phone":"4252424764","latitude":47.0,"longitude":-122.0,"image_url":"http://images.citysearch.net/assets/imgdb/merchant/2009/12/18/0/PmwVniqn32_100x100.jpeg","business_hours":"Sunday-Thursday
+      10am-10pm\nFriday-Saturday 10am-2am","tags":[{"id":11361,"name":"MasterCard","primary":false},{"id":11267,"name":"Food
+      Delivery","primary":false},{"id":11247,"name":"Carry Out","primary":false},{"id":11279,"name":"Italian","primary":false},{"id":1684,"name":"Food
+      & Dining","primary":false},{"id":11382,"name":"Visa","primary":false},{"id":1738,"name":"Global","primary":false},{"id":1722,"name":"Restaurants","primary":true},{"id":11333,"name":"American
+      Express","primary":false},{"id":1736,"name":"Sandwich Shops","primary":false},{"id":11299,"name":"Pizza","primary":false}],"public_id":"bella-kitchen-kirkland"}],"offer_collapse_count":null},{"attribution_logo":"http://images.citysearch.net/assets/imgdb/custom/ue-357/CS_logo88x31.jpg","attribution_source":"CUSTOMER","attribution_text":"Citysearch","attribution_url":null,"id":"cg_49335912","reference_id":null,"impression_id":"000b000002429f3cafee1b4c3f9337696665f83a6a","title":"Office
+      Pack for 6 to 8 people for $36      (Regular Price $48.30)\n","description":"Office
+      Pack for 6 to 8 people $36 (Reg. $48.30)\n- Two Large 2-topping Pizza''s\n-
+      One 2 Litre Soda\n- Caesar Salad Bowl\n","redemption_type_id":1,"redemption_type":"Print","terms":"Not
+      valid with any other offers. Mentioning Citysearch is required.","image_url":"http://images.citysearch.net/assets/imgdb/merchant/2011/2/23/0/QrAXPXEW105_100x100.jpeg","start_date":"2010-01-06T00:00:00Z","redemption_url":null,"offer_source":"CUSTOMER","offer_types":["other"],"expiration_date":null,"popularity":null,"face_value":null,"discount_value":null,"locations":[{"id":628554020,"infousa_id":null,"rating":8.0,"name":"Bella
       Kitchen","address":{"street":"8556 122nd Ave NE Ste A2","city":"Kirkland","state":"WA","postal_code":"98033"},"phone":"4252424764","latitude":47.0,"longitude":-122.0,"image_url":"http://images.citysearch.net/assets/imgdb/merchant/2009/12/18/0/PmwVniqn32_100x100.jpeg","business_hours":"Sunday-Thursday
       10am-10pm\nFriday-Saturday 10am-2am","tags":[{"id":11361,"name":"MasterCard","primary":false},{"id":11267,"name":"Food
       Delivery","primary":false},{"id":11247,"name":"Carry Out","primary":false},{"id":11279,"name":"Italian","primary":false},{"id":1684,"name":"Food
