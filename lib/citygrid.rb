@@ -32,9 +32,13 @@ class CityGrid
     def reviews opts
       Reviews.new opts
     end
-
+    
+    def session username, password
+      Session.login username, password
+    end
+    
     def authenticate params
-      API::AdCenter::Authentication.login params
+      API::Accounts::User.login params
     end
     alias_method :login, :authenticate
     
@@ -106,9 +110,12 @@ require "citygrid/reviews"
 require "citygrid/offers"
 require "citygrid/details"
 require "citygrid/listing"
+require "citygrid/session"
 
 require "citygrid/api/response"
-require "citygrid/api/ad_center"
+
+require "citygrid/api/accounts"
+require "citygrid/api/advertising"
 require "citygrid/api/content"
 
 require "request_ext"

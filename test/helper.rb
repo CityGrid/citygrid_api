@@ -1,39 +1,8 @@
-# Hack to allow storing tokens between tests
-class AuthToken
-  class << self
-    def kunimom
-      @@kunimom ||= CityGrid.login(
-        :username => 'kunimom',
-        :password => 'pppppp'
-      ).authToken
-    end
-    
-    def dou
-      @@sales_cord ||= CityGrid.login(
-        :username => 'doushen2',
-        :password => 'abcd1234'
-      ).authToken
-    end
-    
-    def sales_coord
-      @@sales_cord ||= CityGrid.login(
-        :username => 'QASalesCoord',
-        :password => 'pppppp'
-      ).authToken
-    end
-   
-    def rand_number
-      @@rand_number ||= rand(10000000)
-    end
-    
-    def generate
-      kunimom
-    end
-  end
-end
+require File.join(File.dirname(__FILE__), "auth_token")
+require File.join(File.dirname(__FILE__), "session_helper")
 
 # don't do gem setup if we're in the dashboad environment
-unless defined? IN_DASHBOARD 
+unless defined? IN_DASHBOARD
   require 'rubygems'
   require 'bundler'
   begin
@@ -70,4 +39,31 @@ unless defined? IN_DASHBOARD
       false # return false
     end
   end
+  
+  # patch in VCR
+  require 'vcr'
+  
+  VCR.config do |c|
+    c.cassette_library_dir = 'fixtures/vcr_cassettes'
+    c.stub_with :webmock
+    c.allow_http_connections_when_no_cassette = true
+  end
+
+  # contexts now use VCR, with a cassette named by the description
+  module Riot
+    class Context
+      alias_method :old_run, :run
+      def run reporter
+        if option(:vcr) != nil && option(:vcr) == false
+          old_run reporter
+        else
+          VCR.use_cassette self.detailed_description do
+            old_run reporter 
+          end
+        end
+      end
+      
+    end
+  end
+  
 end

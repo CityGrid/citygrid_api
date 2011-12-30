@@ -11,8 +11,22 @@ class CityGrid
       "Accept" => "application/json",
       "Content-Type" => "Application/JSON"}
     
+    DEFAULT_DEFINE_OPTIONS = {
+      :auth_token => false,
+      :format     => true,
+      :publisher  => false,
+      :client_ip  => false
+    }
+    
     class << self   
-      def define_action name, method, action, auth_required = true, publisher_required = false, ip_required = false
+      def define_action name, method, action, define_options = {}
+        # options: 
+        #    auth_token: pass along auth_token
+        #    publisher: pass CityGrid.publisher, currently needed for content APIs
+        #    ip: pass IP, needed for content
+        #    format: pass JSON flag 
+        
+        define_options = DEFAULT_DEFINE_OPTIONS.merge define_options
         
         define_singleton_method name.intern do |*args|
           options = args.first.clone || {}
@@ -22,11 +36,11 @@ class CityGrid
           
           headers = API::DEFAULT_HEADERS.clone
           
-          headers.merge! "authToken" => token if auth_required
+          headers.merge! "authToken" => token if define_options[:auth_token]
 
-          options.merge! "format" => "json"
-          options.merge! "publisher" => CityGrid.publisher if publisher_required  
-          options.merge! "client_ip" => "192.168.0.1" if ip_required  
+          options.merge! "format"     => "json" if define_options[:format]
+          options.merge! "publisher"  => CityGrid.publisher if define_options[:publisher]
+          options.merge! "client_ip"  => "192.168.0.1" if define_options[:client_ip]
           
           params[:headers] = headers
           

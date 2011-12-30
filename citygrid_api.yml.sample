@@ -9,10 +9,17 @@ defaults:
 #   endpoint: endpoint
 
 api:
-  ad_center:
+  accounts:
     account:
       ssl: true
-      endpoint: accounts/account/v2
+      endpoint: accounts/account/v2      
+    method_of_payment:
+      ssl: true
+      endpoint: accounts/mop/v2
+    user: 
+      ssl: true
+      endpoint: accounts/user/v2
+  advertising:
     account_manager:
       ssl: true
       endpoint: advertising/campaign/v2/accountmanager
@@ -20,9 +27,6 @@ api:
     ad_group_ad: advertising/adgroupad/v2
     ad_group_criterion: advertising/adgroupcriterion/v2
     ad_group_geo: advertising/adgroupgeo/v2  
-    authentication:
-      ssl: true
-      endpoint: accounts/user/v2    
     budget: advertising/budget/v2/recommend
     billing: advertising/billing/v2
     call_detail: advertising/calldetail/v2
@@ -30,12 +34,8 @@ api:
     category: content/category/v2
     geo_location: content/places/v2/geocode
     image: advertising/image/v2
-    method_of_payment:
-      ssl: true
-      endpoint: accounts/mop/v2
     places: content/places/v2
     performance: advertising/performance/v2
-    user: accounts/user/v2
   content:
     offers:
       endpoint: content/offers/v2

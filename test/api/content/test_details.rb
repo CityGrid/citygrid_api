@@ -1,6 +1,6 @@
-require File.expand_path(File.join(File.dirname(__FILE__), 'helper'))
+require File.expand_path(File.join(File.dirname(__FILE__), '..', '..', 'helper'))
 
-c = context "Initiating a Details" do
+context "Initiating a Details" do
   setup do
     begin 
       run_with_rescue do
@@ -14,7 +14,6 @@ c = context "Initiating a Details" do
   should "return a single Details object" do
     topic.is_a? CityGrid::Details
   end
-  
 end
  
 context "Initiating new MultiDetails" do

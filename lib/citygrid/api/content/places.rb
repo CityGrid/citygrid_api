@@ -2,12 +2,10 @@ class CityGrid
   class API
     class Content
       class Places < Content
-        endpoint "/content/places/v2"
-        
         extend CityGrid::API::Mutatable
         
-        define_action :detail, :get, "detail", false, true, true
-        define_action :search, :get, "search/where", false, true, true
+        define_action :detail, :get, "detail", :auth_token => false, :publisher => true, :client_ip => true
+        define_action :search, :get, "search/where", :auth_token => false, :publisher => true, :client_ip => true
       end
     end
   end
