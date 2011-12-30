@@ -1,0 +1,30 @@
+---
+- !ruby/struct:VCR::HTTPInteraction
+  request: !ruby/struct:VCR::Request
+    method: :get
+    uri: https://api-qassl.citygrid.com:443/advertising/campaign/v2/accountmanager/get?campaignId=16631
+    body: !!null 
+    headers:
+      accept:
+      - application/json
+      content-type:
+      - Application/JSON
+      authtoken:
+      - 209774d9ad48e5a0ebca58b892f808c6
+  response: !ruby/struct:VCR::Response
+    status: !ruby/struct:VCR::ResponseStatus
+      code: 200
+      message: OK
+    headers:
+      date:
+      - Fri, 30 Dec 2011 00:23:25 GMT
+      server:
+      - Apache-Coyote/1.1
+      content-type:
+      - application/json
+      vary:
+      - Accept-Encoding
+      transfer-encoding:
+      - chunked
+    body: ! '{"response":{"message":"OK","code":200},"firstName":"Account","lastName":"Managers","phoneNumber":"866-332-2499","email":"accountmanagers@citygridmedia.com"}'
+    http_version: '1.1'

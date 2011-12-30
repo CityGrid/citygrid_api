@@ -1,0 +1,60 @@
+---
+- !ruby/struct:VCR::HTTPInteraction
+  request: !ruby/struct:VCR::Request
+    method: :post
+    uri: http://api.qa.citygrid.com:80/advertising/performance/v2/campaign/daily
+    body: ! '{"campaignId":786,"period":"last30Days"}'
+    headers:
+      accept:
+      - application/json
+      content-type:
+      - Application/JSON
+      authtoken:
+      - 209774d9ad48e5a0ebca58b892f808c6
+  response: !ruby/struct:VCR::Response
+    status: !ruby/struct:VCR::ResponseStatus
+      code: 200
+      message: OK
+    headers:
+      date:
+      - Fri, 30 Dec 2011 00:29:27 GMT
+      server:
+      - Apache-Coyote/1.1
+      content-type:
+      - application/json
+      vary:
+      - Accept-Encoding
+      transfer-encoding:
+      - chunked
+    body: ! '{"totalNumEntries":"30","dailyCampaignPerformanceResources":[{"date":"20111129","response":{"code":200,"message":"OK"},"campaignName":"CampaignRest1stTest-786","campaignId":"786","externalAccountId":"","accountId":"111","cpc":"0.55","externalCampaignId":"","totalConnections":"4","accountName":"Enchiladas
+      Y Mas, Inc.","totalBilledConnections":"4","totalSpend":"2.20"},{"date":"20111130","response":{"code":200,"message":"OK"},"campaignName":"CampaignRest1stTest-786","campaignId":"786","externalAccountId":"","accountId":"111","cpc":"0.55","externalCampaignId":"","totalConnections":"7","accountName":"Enchiladas
+      Y Mas, Inc.","totalBilledConnections":"6","totalSpend":"3.30"},{"date":"20111201","response":{"code":200,"message":"OK"},"campaignName":"CampaignRest1stTest-786","campaignId":"786","externalAccountId":"","accountId":"111","cpc":"0.55","externalCampaignId":"","totalConnections":"16","accountName":"Enchiladas
+      Y Mas, Inc.","totalBilledConnections":"11","totalSpend":"6.05"},{"date":"20111202","response":{"code":200,"message":"OK"},"campaignName":"CampaignRest1stTest-786","campaignId":"786","externalAccountId":"","accountId":"111","cpc":"0.55","externalCampaignId":"","totalConnections":"12","accountName":"Enchiladas
+      Y Mas, Inc.","totalBilledConnections":"9","totalSpend":"4.95"},{"date":"20111203","response":{"code":200,"message":"OK"},"campaignName":"CampaignRest1stTest-786","campaignId":"786","externalAccountId":"","accountId":"111","cpc":"0.00","externalCampaignId":"","totalConnections":"0","accountName":"Enchiladas
+      Y Mas, Inc.","totalBilledConnections":"0","totalSpend":"0.00"},{"date":"20111204","response":{"code":200,"message":"OK"},"campaignName":"CampaignRest1stTest-786","campaignId":"786","externalAccountId":"","accountId":"111","cpc":"0.55","externalCampaignId":"","totalConnections":"6","accountName":"Enchiladas
+      Y Mas, Inc.","totalBilledConnections":"6","totalSpend":"3.30"},{"date":"20111205","response":{"code":200,"message":"OK"},"campaignName":"CampaignRest1stTest-786","campaignId":"786","externalAccountId":"","accountId":"111","cpc":"0.55","externalCampaignId":"","totalConnections":"2","accountName":"Enchiladas
+      Y Mas, Inc.","totalBilledConnections":"2","totalSpend":"1.10"},{"date":"20111206","response":{"code":200,"message":"OK"},"campaignName":"CampaignRest1stTest-786","campaignId":"786","externalAccountId":"","accountId":"111","cpc":"0.55","externalCampaignId":"","totalConnections":"7","accountName":"Enchiladas
+      Y Mas, Inc.","totalBilledConnections":"7","totalSpend":"3.85"},{"date":"20111207","response":{"code":200,"message":"OK"},"campaignName":"CampaignRest1stTest-786","campaignId":"786","externalAccountId":"","accountId":"111","cpc":"0.55","externalCampaignId":"","totalConnections":"2","accountName":"Enchiladas
+      Y Mas, Inc.","totalBilledConnections":"2","totalSpend":"1.10"},{"date":"20111208","response":{"code":200,"message":"OK"},"campaignName":"CampaignRest1stTest-786","campaignId":"786","externalAccountId":"","accountId":"111","cpc":"0.55","externalCampaignId":"","totalConnections":"11","accountName":"Enchiladas
+      Y Mas, Inc.","totalBilledConnections":"7","totalSpend":"3.85"},{"date":"20111209","response":{"code":200,"message":"OK"},"campaignName":"CampaignRest1stTest-786","campaignId":"786","externalAccountId":"","accountId":"111","cpc":"0.55","externalCampaignId":"","totalConnections":"4","accountName":"Enchiladas
+      Y Mas, Inc.","totalBilledConnections":"4","totalSpend":"2.20"},{"date":"20111210","response":{"code":200,"message":"OK"},"campaignName":"CampaignRest1stTest-786","campaignId":"786","externalAccountId":"","accountId":"111","cpc":"0.55","externalCampaignId":"","totalConnections":"8","accountName":"Enchiladas
+      Y Mas, Inc.","totalBilledConnections":"8","totalSpend":"4.40"},{"date":"20111211","response":{"code":200,"message":"OK"},"campaignName":"CampaignRest1stTest-786","campaignId":"786","externalAccountId":"","accountId":"111","cpc":"0.55","externalCampaignId":"","totalConnections":"5","accountName":"Enchiladas
+      Y Mas, Inc.","totalBilledConnections":"4","totalSpend":"2.20"},{"date":"20111212","response":{"code":200,"message":"OK"},"campaignName":"CampaignRest1stTest-786","campaignId":"786","externalAccountId":"","accountId":"111","cpc":"0.55","externalCampaignId":"","totalConnections":"5","accountName":"Enchiladas
+      Y Mas, Inc.","totalBilledConnections":"2","totalSpend":"1.10"},{"date":"20111213","response":{"code":200,"message":"OK"},"campaignName":"CampaignRest1stTest-786","campaignId":"786","externalAccountId":"","accountId":"111","cpc":"0.55","externalCampaignId":"","totalConnections":"6","accountName":"Enchiladas
+      Y Mas, Inc.","totalBilledConnections":"3","totalSpend":"1.65"},{"date":"20111214","response":{"code":200,"message":"OK"},"campaignName":"CampaignRest1stTest-786","campaignId":"786","externalAccountId":"","accountId":"111","cpc":"0.00","externalCampaignId":"","totalConnections":"4","accountName":"Enchiladas
+      Y Mas, Inc.","totalBilledConnections":"0","totalSpend":"0.00"},{"date":"20111215","response":{"code":200,"message":"OK"},"campaignName":"CampaignRest1stTest-786","campaignId":"786","externalAccountId":"","accountId":"111","cpc":"0.00","externalCampaignId":"","totalConnections":"3","accountName":"Enchiladas
+      Y Mas, Inc.","totalBilledConnections":"0","totalSpend":"0.00"},{"date":"20111216","response":{"code":200,"message":"OK"},"campaignName":"CampaignRest1stTest-786","campaignId":"786","externalAccountId":"","accountId":"111","cpc":"0.00","externalCampaignId":"","totalConnections":"3","accountName":"Enchiladas
+      Y Mas, Inc.","totalBilledConnections":"0","totalSpend":"0.00"},{"date":"20111217","response":{"code":200,"message":"OK"},"campaignName":"CampaignRest1stTest-786","campaignId":"786","externalAccountId":"","accountId":"111","cpc":"0.00","externalCampaignId":"","totalConnections":"4","accountName":"Enchiladas
+      Y Mas, Inc.","totalBilledConnections":"0","totalSpend":"0.00"},{"date":"20111218","response":{"code":200,"message":"OK"},"campaignName":"CampaignRest1stTest-786","campaignId":"786","externalAccountId":"","accountId":"111","cpc":"0.00","externalCampaignId":"","totalConnections":"0","accountName":"Enchiladas
+      Y Mas, Inc.","totalBilledConnections":"0","totalSpend":"0.00"},{"date":"20111219","response":{"code":200,"message":"OK"},"campaignName":"CampaignRest1stTest-786","campaignId":"786","externalAccountId":"","accountId":"111","cpc":"0.00","externalCampaignId":"","totalConnections":"2","accountName":"Enchiladas
+      Y Mas, Inc.","totalBilledConnections":"0","totalSpend":"0.00"},{"date":"20111220","response":{"code":200,"message":"OK"},"campaignName":"CampaignRest1stTest-786","campaignId":"786","externalAccountId":"","accountId":"111","cpc":"0.00","externalCampaignId":"","totalConnections":"5","accountName":"Enchiladas
+      Y Mas, Inc.","totalBilledConnections":"0","totalSpend":"0.00"},{"date":"20111221","response":{"code":200,"message":"OK"},"campaignName":"CampaignRest1stTest-786","campaignId":"786","externalAccountId":"","accountId":"111","cpc":"0.00","externalCampaignId":"","totalConnections":"6","accountName":"Enchiladas
+      Y Mas, Inc.","totalBilledConnections":"0","totalSpend":"0.00"},{"date":"20111222","response":{"code":200,"message":"OK"},"campaignName":"CampaignRest1stTest-786","campaignId":"786","externalAccountId":"","accountId":"111","cpc":"0.00","externalCampaignId":"","totalConnections":"4","accountName":"Enchiladas
+      Y Mas, Inc.","totalBilledConnections":"0","totalSpend":"0.00"},{"date":"20111223","response":{"code":200,"message":"OK"},"campaignName":"CampaignRest1stTest-786","campaignId":"786","externalAccountId":"","accountId":"111","cpc":"0.00","externalCampaignId":"","totalConnections":"6","accountName":"Enchiladas
+      Y Mas, Inc.","totalBilledConnections":"0","totalSpend":"0.00"},{"date":"20111224","response":{"code":200,"message":"OK"},"campaignName":"CampaignRest1stTest-786","campaignId":"786","externalAccountId":"","accountId":"111","cpc":"0.00","externalCampaignId":"","totalConnections":"3","accountName":"Enchiladas
+      Y Mas, Inc.","totalBilledConnections":"0","totalSpend":"0.00"},{"date":"20111225","response":{"code":200,"message":"OK"},"campaignName":"CampaignRest1stTest-786","campaignId":"786","externalAccountId":"","accountId":"111","cpc":"0.00","externalCampaignId":"","totalConnections":"0","accountName":"Enchiladas
+      Y Mas, Inc.","totalBilledConnections":"0","totalSpend":"0.00"},{"date":"20111226","response":{"code":200,"message":"OK"},"campaignName":"CampaignRest1stTest-786","campaignId":"786","externalAccountId":"","accountId":"111","cpc":"0.00","externalCampaignId":"","totalConnections":"0","accountName":"Enchiladas
+      Y Mas, Inc.","totalBilledConnections":"0","totalSpend":"0.00"},{"date":"20111227","response":{"code":200,"message":"OK"},"campaignName":"CampaignRest1stTest-786","campaignId":"786","externalAccountId":"","accountId":"111","cpc":"0.00","externalCampaignId":"","totalConnections":"3","accountName":"Enchiladas
+      Y Mas, Inc.","totalBilledConnections":"0","totalSpend":"0.00"},{"date":"20111228","response":{"code":200,"message":"OK"},"campaignName":"CampaignRest1stTest-786","campaignId":"786","externalAccountId":"","accountId":"111","cpc":"0.55","externalCampaignId":"","totalConnections":"44","accountName":"Enchiladas
+      Y Mas, Inc.","totalBilledConnections":"10","totalSpend":"5.50"}],"response":{"code":200,"message":"OK"}}'
+    http_version: '1.1'

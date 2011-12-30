@@ -1,0 +1,33 @@
+---
+- !ruby/struct:VCR::HTTPInteraction
+  request: !ruby/struct:VCR::Request
+    method: :post
+    uri: https://api-qassl.citygrid.com:443/accounts/mop/v2/mutate
+    body: ! '{"mutateOperationListResource":[{"operator":"ADD","operand":{"cardNumber":"4112344112344113","expirationMonth":12,"expirationYear":2012,"nameOnAccount":"Ara
+      Tatous","cardType":"Visa","state":"NY","description":"test addMOP","firstName":"Ara","lastName":"Tatous","phoneNumber":"4252838811","address1":"3131
+      Montrose Ave","address2":"Apt. 9","city":"LaCrescenta","postalCode":"10016","accountId":2458392,"securityCode":"719","paymentType":"Credit
+      Card"}}]}'
+    headers:
+      accept:
+      - application/json
+      content-type:
+      - Application/JSON
+      authtoken:
+      - ad2338f42980a4da7ad2293e2e329471
+  response: !ruby/struct:VCR::Response
+    status: !ruby/struct:VCR::ResponseStatus
+      code: 200
+      message: OK
+    headers:
+      date:
+      - Fri, 30 Dec 2011 00:23:25 GMT
+      server:
+      - Apache-Coyote/1.1
+      content-type:
+      - application/json
+      vary:
+      - Accept-Encoding
+      transfer-encoding:
+      - chunked
+    body: ! '{"resources":[{"id":395012,"response":{"message":"OK","code":200}}]}'
+    http_version: '1.1'

@@ -1,0 +1,59 @@
+---
+- !ruby/struct:VCR::HTTPInteraction
+  request: !ruby/struct:VCR::Request
+    method: :post
+    uri: https://api-qassl.citygrid.com:443/accounts/user/v2/login?password=pppppp&username=kunimom
+    body: !!null 
+    headers: !!null 
+  response: !ruby/struct:VCR::Response
+    status: !ruby/struct:VCR::ResponseStatus
+      code: 200
+      message: OK
+    headers:
+      date:
+      - Fri, 30 Dec 2011 00:23:22 GMT
+      server:
+      - Apache-Coyote/1.1
+      content-type:
+      - application/json
+      vary:
+      - Accept-Encoding
+      transfer-encoding:
+      - chunked
+    body: ! '{"code":201,"authToken":"ad2338f42980a4da7ad2293e2e329471"}'
+    http_version: '1.1'
+- !ruby/struct:VCR::HTTPInteraction
+  request: !ruby/struct:VCR::Request
+    method: :get
+    uri: https://api-qassl.citygrid.com:443/accounts/mop/v2/get?accountId=111
+    body: !!null 
+    headers:
+      accept:
+      - application/json
+      content-type:
+      - Application/JSON
+      authtoken:
+      - ad2338f42980a4da7ad2293e2e329471
+  response: !ruby/struct:VCR::Response
+    status: !ruby/struct:VCR::ResponseStatus
+      code: 200
+      message: OK
+    headers:
+      date:
+      - Fri, 30 Dec 2011 00:23:23 GMT
+      server:
+      - Apache-Coyote/1.1
+      content-type:
+      - application/json
+      vary:
+      - Accept-Encoding
+      transfer-encoding:
+      - chunked
+    body: ! '{"totalNumEntries":2,"mopResources":[{"paymentType":"ACH","accountNumber":"[locked]d6EEySDBLAR+RA==","routingNumber":"031200730","id":13351,"state":"TX","country":"united
+      states","description":null,"active":false,"firstName":"Mary","lastName":"Martinez","phoneNumber":"(512)478-9222","address1":"1300
+      Belonia Terrace","city":"Austin","postalCode":"78741","address2":null,"accountId":111,"securityCode":null,"paymentType":"ACH","nameOnAccount":"Enchiladas
+      Y Mas, Inc."},{"paymentType":"Check","id":12211,"state":"TX","country":"united
+      states","description":null,"active":true,"firstName":"Mary","lastName":"Martinez","phoneNumber":"(512)478-9222","address1":"1300
+      Belonia Terrace","city":"Austin","postalCode":"78741","address2":null,"accountId":111,"securityCode":null,"paymentType":"Check","nameOnAccount":"Enchiladas
+      Y Mas, Inc."}],"response":{"message":"OK","code":200}}'
+    http_version: '1.1'

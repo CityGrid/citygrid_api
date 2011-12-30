@@ -1,0 +1,31 @@
+---
+- !ruby/struct:VCR::HTTPInteraction
+  request: !ruby/struct:VCR::Request
+    method: :get
+    uri: https://api-qassl.citygrid.com:443/accounts/account/v2/get?id=1250702
+    body: !!null 
+    headers:
+      accept:
+      - application/json
+      content-type:
+      - Application/JSON
+      authtoken:
+      - f57c804e46013bb254638814daf25733
+  response: !ruby/struct:VCR::Response
+    status: !ruby/struct:VCR::ResponseStatus
+      code: 200
+      message: OK
+    headers:
+      date:
+      - Fri, 30 Dec 2011 00:36:09 GMT
+      server:
+      - Apache-Coyote/1.1
+      content-type:
+      - application/json
+      vary:
+      - Accept-Encoding
+      transfer-encoding:
+      - chunked
+    body: ! '{"totalNumEntries":1,"accountList":[{"id":"1250702","state":"IA","response":{"message":"OK","code":200},"status":"ACTIVE","firstName":"Ara","lastName":"Ebrahimi","address1":"9831
+      P Ave","city":"Maynard","businessName":"A F Farms Ltd","phone":"(563)637-2857","zipCode":"50655"}]}'
+    http_version: '1.1'

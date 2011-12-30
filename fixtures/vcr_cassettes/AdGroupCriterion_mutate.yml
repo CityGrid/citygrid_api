@@ -1,0 +1,30 @@
+---
+- !ruby/struct:VCR::HTTPInteraction
+  request: !ruby/struct:VCR::Request
+    method: :post
+    uri: http://api.qa.citygrid.com:80/advertising/adgroupcriterion/v2/mutate
+    body: ! '{"mutateOperationListResource":[{"operator":"ADD","operand":{"adGroupId":"2","adGroupAdId":"1","adGroupCriterionId":"1722","type":"2"}},{"operator":"REMOVE","operand":{"adGroupId":"2","adGroupAdId":"1","adGroupCriterionId":"1722","type":"2"}}]}'
+    headers:
+      accept:
+      - application/json
+      content-type:
+      - Application/JSON
+      authtoken:
+      - 209774d9ad48e5a0ebca58b892f808c6
+  response: !ruby/struct:VCR::Response
+    status: !ruby/struct:VCR::ResponseStatus
+      code: 200
+      message: OK
+    headers:
+      date:
+      - Fri, 30 Dec 2011 00:23:28 GMT
+      server:
+      - Apache-Coyote/1.1
+      content-type:
+      - application/json
+      vary:
+      - Accept-Encoding
+      transfer-encoding:
+      - chunked
+    body: ! '{"totalNumEntries":2,"adGroupCriterions":[{"type":"SECONDARY","response":{"message":"OK","code":200},"adGroupId":"2","keyword":"Restaurants","adGroupCriterionId":"1722"},{"type":"SECONDARY","response":{"message":"OK","code":200},"adGroupId":"2","keyword":"Restaurants","adGroupCriterionId":"1722"}]}'
+    http_version: '1.1'

@@ -1,0 +1,133 @@
+---
+- !ruby/struct:VCR::HTTPInteraction
+  request: !ruby/struct:VCR::Request
+    method: :get
+    uri: http://api.citygridmedia.com:80/content/places/v2/detail?client_ip=192.168.0.1&format=json&public_id=philip-marie-restaurant-new-york&publisher=citygrid
+    body: !!null 
+    headers:
+      accept:
+      - application/json
+      content-type:
+      - Application/JSON
+  response: !ruby/struct:VCR::Response
+    status: !ruby/struct:VCR::ResponseStatus
+      code: 200
+      message: OK
+    headers:
+      date:
+      - Fri, 30 Dec 2011 00:29:31 GMT
+      server:
+      - Apache-Coyote/1.1
+      content-type:
+      - application/json
+      vary:
+      - Accept-Encoding
+      transfer-encoding:
+      - chunked
+    body: ! '{"locations":[{"id":7117426,"reference_id":"1","impression_id":"0009000000da7fb839e0fc43708847845eca94dfda","display_ad":false,"infousa_id":508613312,"name":"Philip
+      Marie Restaurant","teaser":null,"address":{"street":"569 Hudson Street","delivery_point":null,"city":"New
+      York","state":"NY","postal_code":"10014","cross_street":"W 11th Street","latitude":40.735910,"longitude":-74.005940},"contact_info":{"display_phone":"2122426200","display_url":"http://www.philipmarie.com","social_media":{"twitter_username":{"image_icon":null,"text":"philipmarie","url":null},"facebook_fanpage":{"image_icon":null,"text":"philipmarienyc?ref=ts#!pagesPhilip-Marie-Restaurant136344239721051","url":null}}},"markets":["New
+      York, NY Metro"],"neighborhoods":["West Village","Downtown"],"urls":{"profile_url":"http://www.citysearch.com/profile/7117426/new_york_ny/philip_marie_restaurant.html","reviews_url":"http://www.citysearch.com/review/7117426","video_url":null,"website_url":"http://pfpc.citygridmedia.com/content/places/v2/click?q=Eg5LbGeFZEmz9alMRG3UqHCSHTWWqqpiUFE37OfVvOS1dvm1TGN35zIlLdjDlmLJMzgHaA_hF40a2FiH2wUsba1Ddc1BEcYolVEXmdG9NrPIDt_JNbCaAf1kaYQYoiMSB9wjKnNLFxZqslrLuzx9QdyQdZUnFDFrWvPo8EBXrbi4fwpcI6B_32PCFZJk7gIKtSyiDda874y9mxYfaoj40LZ-gHgylp2_Bz5wpKUfiedl3pe7Zds8Z4tzbTLe2DbsfEK2bBXffgqUYWQmCKVfI1AkihbnpxataK6MlqsV7-WR3mQmQBW42Ubrr7EnVQbKUS30RWAPhUBT6o4ocfcx6gmDKfl0JzGlqoqIZl7sNyCzT_9o3eTA3w","menu_url":"http://pfpc.citygridmedia.com/content/places/v2/click?q=Eg5LbGeFZEmz9alMRG3UqDvpvBTRaDvne9EXlpV4zuxiZCUUPQTt3dJXfuAq2xw-1ky1Hr8QDm_tkbi14Jc1JqoYDNmKG_Tp274YGz3T_atrkhGnD-8wSboC-FG1T68OBSB-mpj7imOs2feexSf5tmQyrmXpgqqkvMfIbkGfDvs0aaafXEZmU7u7tPeO8UT_WkmJOGnC0pVFqZPun_N2fTxFaMv0HEJaUKkm-mFHBDnk5sHf6_Q4U9pDlQW6NcEtU8L6-tdxYuZI7mqObJzjWqghuu1cbQSGs0LCYe66q3_p7sPXuY5gacfbrsolWSUATJKcc0Oqhd_X4uO5ThJ6DCHszJSwR3SUsHIVxiNNEzR3vb-DfpRuJlkUycbJjUXuww8xj0q52fhojHyap0NxFA","reservation_url":"http://pfpc.citygridmedia.com/content/places/v2/click?q=Eg5LbGeFZEmz9alMRG3UqDvpvBTRaDvngS7pST9QDCo0vDVrAHdLCfltd4H5A7GHPMknNycX67o9spbXDeFDtROovE0g4AdYKV0Rj6P3jsdxs--_S47Uu3NOLjSzoAdNsgGOCPovb70orJdWxR9-jtfjsQBFj78JShUfmbsQGzZLACas1DAYuiN6aAwZO0mDsKhihfIwjTglCU3FwTT9Jt4REb5YGjAQC5o9boobXpw4FE8c5FKHqN2gkKLjkH_4S874BqwsnIGcx9TnIN1FiNKLIBiCvNba5cmXL12JQPoxyW-CE5ix9jfjLYSKU_xEPS-AfOkD3JOpp8J8APOlLdCCXEBt22UdbkbUMEThtKWn7LLOCSplc9epUJx5RI9pdoGHc0jo1dcCf0iw1iuU6BCf4WIz3aBiqRy3VPx1luVJJl5c-8zq7Q","map_url":"http://www.citysearch.com/profile/map/7117426/new_york_ny/philip_marie_restaurant.html","send_to_friend_url":"http://www.citysearch.com/profile/sendto/7117426/new_york_ny/philip_marie_restaurant.html","email_link":"http://www.citysearch.com/profile/email_business/7117426/new_york_ny/philip_marie_restaurant.html","custom_link_1":null,"custom_link_2":null,"web_comment_url":null,"web_article_url":null,"web_profile_url":null,"web_rates_url":null,"gift_url":null,"request_quote_url":null,"virtual_tour_url":null,"book_limo_url":null,"order_url":null,"custom_link_3":null,"custom_link_4":null},"customer_content":{"customer_message":{"attribution_source":"CUSTOMER","attribution_logo":"http://images.citysearch.net/assets/imgdb/custom/ue-357/CS_logo88x31.jpg","attribution_text":"Citysearch","value":"At
+      Philip Marie, located in the West Village of NYC, our main dining room is fashioned
+      as an upscale American bistro. The lower level offers a glimpse of the unique
+      style that separates Philip Marie Restaurant from any other historic or American
+      cuisine restaurant in NYC. We pride ourselves in making sure your dining experience
+      is nothing less than exceptional. Our brunch is fantastic!\\n\\nChef John Philip
+      Greco''s inventive American cuisine is a fusion of familiar American tastes
+      and flavors joined with an assortment of various influences associated with
+      fine American cuisine. Meals like Smoked Chicken Gumbo, Grilled Organic New
+      Zealand Mint Glazed Lamb Chops and Pumpkin Fritters with Wet Walnuts are an
+      example of Greco''s creative fusion.\\n\\nGo to www.philipmarie.com to see our
+      daily specials!"},"bullets":["Freshest and highest quality food in NYC","Organic
+      seafood. meats. and wild game","Private dining and wine pairing dinners"],"customer_message_url":"http://www.citysearch.com/profile/7117426/new_york_ny/philip_marie_restaurant.html#profileTab-owner"},"offers":[],"categories":[{"name_id":11258,"name":"Dine
+      At The Bar","parent_id":1722,"parent":"Restaurants","primary":false,"groups":[{"group_id":148,"name":"Restaurant
+      Special Features"}]},{"name_id":11099,"name":"Martinis","parent_id":1686,"parent":"Bars
+      & Pubs","primary":false,"groups":[{"group_id":133,"name":"Bar & Pub Special
+      Features"}]},{"name_id":11190,"name":"Traditional American","parent_id":1722,"parent":"Restaurants","primary":false,"groups":[{"group_id":146,"name":"Cuisine"}]},{"name_id":11228,"name":"Seafood","parent_id":1722,"parent":"Restaurants","primary":false,"groups":[{"group_id":146,"name":"Cuisine"}]},{"name_id":11294,"name":"Notable
+      Wine List","parent_id":1722,"parent":"Restaurants","primary":false,"groups":[{"group_id":148,"name":"Restaurant
+      Special Features"}]},{"name_id":11293,"name":"Notable Chef","parent_id":1722,"parent":"Restaurants","primary":false,"groups":[{"group_id":148,"name":"Restaurant
+      Special Features"}]},{"name_id":11296,"name":"Outdoor Dining","parent_id":1722,"parent":"Restaurants","primary":false,"groups":[{"group_id":148,"name":"Restaurant
+      Special Features"}]},{"name_id":11295,"name":"Online Reservations","parent_id":1722,"parent":"Restaurants","primary":false,"groups":[{"group_id":148,"name":"Restaurant
+      Special Features"}]},{"name_id":1724,"name":"Barbecue Restaurants","parent_id":1722,"parent":"Restaurants","primary":false,"groups":[]},{"name_id":1722,"name":"Restaurants","parent_id":1684,"parent":"Food
+      & Dining","primary":true,"groups":[]},{"name_id":11324,"name":"Upscale Casual
+      Dining","parent_id":1722,"parent":"Restaurants","primary":false,"groups":[{"group_id":148,"name":"Restaurant
+      Special Features"}]},{"name_id":11248,"name":"Celeb Hangout","parent_id":1722,"parent":"Restaurants","primary":false,"groups":[{"group_id":148,"name":"Restaurant
+      Special Features"}]},{"name_id":11238,"name":"Bar Scene","parent_id":1722,"parent":"Restaurants","primary":false,"groups":[{"group_id":148,"name":"Restaurant
+      Special Features"}]},{"name_id":11247,"name":"Carry Out","parent_id":1722,"parent":"Restaurants","primary":false,"groups":[{"group_id":148,"name":"Restaurant
+      Special Features"}]},{"name_id":12821,"name":"Casual Date Spot","parent_id":1722,"parent":"Restaurants","primary":false,"groups":[{"group_id":148,"name":"Restaurant
+      Special Features"}]},{"name_id":11244,"name":"Business Dining","parent_id":1722,"parent":"Restaurants","primary":false,"groups":[{"group_id":148,"name":"Restaurant
+      Special Features"}]},{"name_id":12822,"name":"Dining Discounts","parent_id":1722,"parent":"Restaurants","primary":false,"groups":[{"group_id":148,"name":"Restaurant
+      Special Features"}]},{"name_id":11243,"name":"Business Breakfast","parent_id":1722,"parent":"Restaurants","primary":false,"groups":[{"group_id":148,"name":"Restaurant
+      Special Features"}]},{"name_id":11232,"name":"$$","parent_id":1722,"parent":"Restaurants","primary":false,"groups":[{"group_id":147,"name":"Restaurant
+      Meal Price"}]},{"name_id":12824,"name":"Margaritas","parent_id":1722,"parent":"Restaurants","primary":false,"groups":[{"group_id":148,"name":"Restaurant
+      Special Features"}]},{"name_id":1086,"name":"Thanksgiving Dinners","parent_id":1085,"parent":"Thanksgiving
+      Day Events","primary":false,"groups":[]},{"name_id":11184,"name":"Wine Tasting","parent_id":1720,"parent":"Liquor
+      Stores","primary":false,"groups":[{"group_id":145,"name":"Liquor Store Special
+      Features"}]},{"name_id":11286,"name":"Lunch Spot","parent_id":1722,"parent":"Restaurants","primary":false,"groups":[{"group_id":148,"name":"Restaurant
+      Special Features"}]},{"name_id":11189,"name":"New American","parent_id":1722,"parent":"Restaurants","primary":false,"groups":[{"group_id":146,"name":"Cuisine"}]},{"name_id":11284,"name":"Local
+      Favorite","parent_id":1722,"parent":"Restaurants","primary":false,"groups":[{"group_id":148,"name":"Restaurant
+      Special Features"}]},{"name_id":11283,"name":"Live Music","parent_id":1722,"parent":"Restaurants","primary":false,"groups":[{"group_id":148,"name":"Restaurant
+      Special Features"}]},{"name_id":11382,"name":"Visa","parent_id":1738,"parent":"Global","primary":false,"groups":[{"group_id":152,"name":"Payment
+      Methods"}]},{"name_id":11240,"name":"Brunch","parent_id":1722,"parent":"Restaurants","primary":false,"groups":[{"group_id":148,"name":"Restaurant
+      Special Features"}]},{"name_id":11333,"name":"American Express","parent_id":1738,"parent":"Global","primary":false,"groups":[{"group_id":152,"name":"Payment
+      Methods"}]},{"name_id":11086,"name":"Drink Specials","parent_id":1686,"parent":"Bars
+      & Pubs","primary":false,"groups":[{"group_id":133,"name":"Bar & Pub Special
+      Features"}]},{"name_id":11200,"name":"Health Food","parent_id":1722,"parent":"Restaurants","primary":false,"groups":[{"group_id":146,"name":"Cuisine"}]},{"name_id":12839,"name":"Chicken","parent_id":1722,"parent":"Restaurants","primary":false,"groups":[{"group_id":146,"name":"Cuisine"}]},{"name_id":11100,"name":"Mojitos","parent_id":1686,"parent":"Bars
+      & Pubs","primary":false,"groups":[{"group_id":133,"name":"Bar & Pub Special
+      Features"}]},{"name_id":1704,"name":"Wine Bars","parent_id":1686,"parent":"Bars
+      & Pubs","primary":false,"groups":[]},{"name_id":1698,"name":"Neighborhood Bars","parent_id":1686,"parent":"Bars
+      & Pubs","primary":false,"groups":[]},{"name_id":11304,"name":"Private Rooms","parent_id":1722,"parent":"Restaurants","primary":false,"groups":[{"group_id":148,"name":"Restaurant
+      Special Features"}]},{"name_id":11303,"name":"Private Parties","parent_id":1722,"parent":"Restaurants","primary":false,"groups":[{"group_id":148,"name":"Restaurant
+      Special Features"}]},{"name_id":11349,"name":"Discover","parent_id":1738,"parent":"Global","primary":false,"groups":[{"group_id":152,"name":"Payment
+      Methods"}]},{"name_id":11348,"name":"Diners Club","parent_id":1738,"parent":"Global","primary":false,"groups":[{"group_id":152,"name":"Payment
+      Methods"}]},{"name_id":11272,"name":"Hidden Find","parent_id":1722,"parent":"Restaurants","primary":false,"groups":[{"group_id":148,"name":"Restaurant
+      Special Features"}]},{"name_id":11305,"name":"Prix Fixe Menu","parent_id":1722,"parent":"Restaurants","primary":false,"groups":[{"group_id":148,"name":"Restaurant
+      Special Features"}]},{"name_id":11273,"name":"Historic Setting","parent_id":1722,"parent":"Restaurants","primary":false,"groups":[{"group_id":148,"name":"Restaurant
+      Special Features"}]},{"name_id":11307,"name":"Romantic Dining","parent_id":1722,"parent":"Restaurants","primary":false,"groups":[{"group_id":148,"name":"Restaurant
+      Special Features"}]},{"name_id":11267,"name":"Food Delivery","parent_id":1722,"parent":"Restaurants","primary":false,"groups":[{"group_id":148,"name":"Restaurant
+      Special Features"}]},{"name_id":11265,"name":"Fine Dining","parent_id":1722,"parent":"Restaurants","primary":false,"groups":[{"group_id":148,"name":"Restaurant
+      Special Features"}]},{"name_id":10035,"name":"Live Music","parent_id":164,"parent":"Bars
+      & Clubs","primary":false,"groups":[{"group_id":11,"name":"Bar & Club Special
+      Features"}]},{"name_id":11065,"name":"Bar Menu","parent_id":1686,"parent":"Bars
+      & Pubs","primary":false,"groups":[{"group_id":133,"name":"Bar & Pub Special
+      Features"}]},{"name_id":11269,"name":"Group Dining","parent_id":1722,"parent":"Restaurants","primary":false,"groups":[{"group_id":148,"name":"Restaurant
+      Special Features"}]},{"name_id":1065,"name":"Memorial Day Events","parent_id":1024,"parent":"Holiday
+      Events","primary":false,"groups":[]},{"name_id":11315,"name":"Special Occasion
+      Dining","parent_id":1722,"parent":"Restaurants","primary":false,"groups":[{"group_id":148,"name":"Restaurant
+      Special Features"}]},{"name_id":11361,"name":"MasterCard","parent_id":1738,"parent":"Global","primary":false,"groups":[{"group_id":152,"name":"Payment
+      Methods"}]},{"name_id":11262,"name":"Family Style Dining","parent_id":1722,"parent":"Restaurants","primary":false,"groups":[{"group_id":148,"name":"Restaurant
+      Special Features"}]},{"name_id":11263,"name":"Family-Friendly Dining","parent_id":1722,"parent":"Restaurants","primary":false,"groups":[{"group_id":148,"name":"Restaurant
+      Special Features"}]}],"attributes":[{"attribute_id":null,"name":"Services","value":"Booking
+      Advisable"},{"attribute_id":null,"name":"Cards Accepted","value":"visa"},{"attribute_id":null,"name":"Cards
+      Accepted","value":"amex"},{"attribute_id":null,"name":"Cards Accepted","value":"mastercard"}],"business_hours":"Tue-Thu
+      12pm-11:30pm\nFri 12pm-1am\nSat 10am-1am\nSun 10am-11:30pm","parking":"","tips":[{"tip_name":"Private
+      Rooms","tip_text":"Couples can opt for the most private experience: a room to
+      themselves for two and a half hours, a five course dinner for two (including
+      wine) for $195 per couple."},{"tip_name":"The Extras","tip_text":"Weekly events
+      include Clam Bake Tuesdays, occasional wine tastings and Sunday jazz brunch.
+      Saturdays, get unlimited mimosas with brunch ($16.95)."},{"tip_name":"Know Before
+      You Go","tip_text":"The Tasting Room is a renovated 18th-century farmhouse kitchen
+      with original stone walls, fireplaces and window frames. It can be reserved
+      for parties of four to 20 for customized menu tastings."},{"tip_name":"What
+      to Drink","tip_text":"Along with an extensive wine list, there''s a Martini
+      Madness menu with out-of-this-world cocktails like the Chocolate Raz and Banana
+      Squirt and the Cotton Candy martini."},{"tip_name":"The Extras","tip_text":"Weekly
+      events include Clam Bake Tuesdays, occasional wine tastings and Sunday jazz
+      brunch. Saturdays, get unlimited mimosas with brunch ($17.95)."}],"images":[{"type":"GENERIC_IMAGE","height":null,"width":null,"image_url":"http://wcities.com/img/infoimg/restaurant/restaurant_American_Burgers.png","primary":false,"attribution_source":"wcities.com","attribution_logo":null,"attribution_text":"wcities.com"},{"type":"GENERIC_IMAGE","height":216,"width":252,"image_url":"http://images.citysearch.net/assets/imgdb/guide/2011/8/13/0/aYcBKroK63.jpeg","primary":false,"attribution_source":"CITYSEARCH","attribution_logo":"http://images.citysearch.net/assets/imgdb/custom/ue-357/CS_logo88x31.jpg","attribution_text":"Citysearch"},{"type":"GENERIC_IMAGE","height":216,"width":384,"image_url":"http://images.citysearch.net/assets/imgdb/merchant/2010/3/10/0/adTQCdCS10.jpeg","primary":false,"attribution_source":"CUSTOMER","attribution_logo":"http://images.citysearch.net/assets/imgdb/custom/ue-357/CS_logo88x31.jpg","attribution_text":"Citysearch"},{"type":"GENERIC_IMAGE","height":216,"width":384,"image_url":"http://images.citysearch.net/assets/imgdb/merchant/2010/3/10/0/QCDVPsZZ11.jpeg","primary":true,"attribution_source":"CUSTOMER","attribution_logo":"http://images.citysearch.net/assets/imgdb/custom/ue-357/CS_logo88x31.jpg","attribution_text":"Citysearch"},{"type":"GENERIC_IMAGE","height":216,"width":384,"image_url":"http://images.citysearch.net/assets/imgdb/merchant/2010/3/10/0/msjHfJdJ6.jpeg","primary":false,"attribution_source":"CUSTOMER","attribution_logo":"http://images.citysearch.net/assets/imgdb/custom/ue-357/CS_logo88x31.jpg","attribution_text":"Citysearch"},{"type":"WEBSITE_THUMBNAIL","height":120,"width":150,"image_url":"http://images.citysearch.net/assets/imgdb/website_thumbnails/6/26/7117426.png","primary":false,"attribution_source":"CITYSEARCH","attribution_logo":"http://images.citysearch.net/assets/imgdb/custom/ue-357/CS_logo88x31.jpg","attribution_text":"Citysearch"},{"type":"GENERIC_IMAGE","height":240,"width":320,"image_url":"http://images.citysearch.net/assets/imgdb/profile/fa/82/7117426p1.jpg","primary":false,"attribution_source":"CITYSEARCH","attribution_logo":"http://images.citysearch.net/assets/imgdb/custom/ue-357/CS_logo88x31.jpg","attribution_text":"Citysearch"},{"type":"GENERIC_IMAGE","height":216,"width":143,"image_url":"http://images.citysearch.net/assets/imgdb/guide/2010/6/15/0/dXiDWljY249.jpeg","primary":false,"attribution_source":"CITYSEARCH","attribution_logo":"http://images.citysearch.net/assets/imgdb/custom/ue-357/CS_logo88x31.jpg","attribution_text":"Citysearch"},{"type":"GENERIC_IMAGE","height":216,"width":322,"image_url":"http://images.citysearch.net/assets/imgdb/guide/2010/6/15/0/ExavhKgF259.jpeg","primary":false,"attribution_source":"CITYSEARCH","attribution_logo":"http://images.citysearch.net/assets/imgdb/custom/ue-357/CS_logo88x31.jpg","attribution_text":"Citysearch"}],"editorials":[{"attribution_source":null,"attribution_logo":"","attribution_text":"Citysearch","editorial_id":"cg_33701301","editorial_url":"http://newyork.citysearch.com/review/7117426?reviewId=33701301","editorial_title":"An
+      upscale country kitchen with a devoted clientele in the West Village heartland.","editorial_author":"Contributor","editorial_review":"<b>The
+      Scene</b><br>Owner/chef John Philip Greco and his wife Suzanne Marie Lonzar
+      put together their middle names to create the French-sounding moniker for their
+      wholly American restaurant. The space is cozy and welcoming: Large murals…","pros":"","cons":"","editorial_date":"2006-08-11T03:18:12-07:00","review_rating":6.0,"helpfulness_total_count":0,"helpful_count":0,"unhelpful_count":0}],"years_in_business":null,"last_update_time":"2011-10-21T00:00:00-07:00","public_id":"philip-marie-restaurant-new-york","business_operation_status":"open","review_info":{"overall_review_rating":9,"total_user_reviews":125,"total_user_reviews_shown":3,"reviews":[{"attribution_source":null,"attribution_logo":"","attribution_text":"Citysearch","review_id":"cg_479165261","review_url":"http://newyork.citysearch.com/review/7117426?reviewId=479165261","review_title":"food
+      is good ;amazing wine selection for conosuiers","review_author":"kimscott516","review_text":"cuisine
+      was refined and well cultured, the chicken was seasoned vibrantly, but slightly
+      dry from being overcooked. however, me being a somewhat of a wine critic in
+      my personal life, have to say that the selection was one of the most…","pros":"","cons":"","review_date":"2011-12-04T07:33:14-08:00","review_rating":8.0,"helpfulness_total_count":0,"helpful_count":0,"unhelpful_count":0,"review_type":"user_review"},{"attribution_source":null,"attribution_logo":"","attribution_text":"Citysearch","review_id":"cg_478585621","review_url":"http://newyork.citysearch.com/review/7117426?reviewId=478585621","review_title":"Stay
+      Away","review_author":"PanchoD","review_text":"Honestly its not a bad looking
+      place, but behind it all the food does not speak for itself... Mediocre at best
+      and thats being generous... Im not for bashing restaurants but this place is
+      not what it appears to be.. For starters i ordered…","pros":"","cons":"","review_date":"2011-11-03T05:08:03-07:00","review_rating":2.0,"helpfulness_total_count":0,"helpful_count":0,"unhelpful_count":0,"review_type":"user_review"},{"attribution_source":null,"attribution_logo":"","attribution_text":"Citysearch","review_id":"cg_478375071","review_url":"http://newyork.citysearch.com/review/7117426?reviewId=478375071","review_title":"ABSOLUTELY
+      WONDERFUL!!!","review_author":"ladynrg","review_text":"Last week my husband
+      & I had the pleasure of dining in the private Wine Room for 2 at Philip Marie.
+      Our custom tailored 5 course menu was exactly what we were looking for at an
+      unbelievable price.  Not only was each item we enjoyed cooked…","pros":"","cons":"","review_date":"2011-10-22T02:11:01-07:00","review_rating":10.0,"helpfulness_total_count":0,"helpful_count":0,"unhelpful_count":0,"review_type":"user_review"}]}}]}'
+    http_version: '1.1'

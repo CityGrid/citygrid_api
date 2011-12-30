@@ -1,0 +1,53 @@
+---
+- !ruby/struct:VCR::HTTPInteraction
+  request: !ruby/struct:VCR::Request
+    method: :post
+    uri: https://api-qassl.citygrid.com:443/accounts/user/v2/login?password=pppppp&username=kunimom
+    body: !!null 
+    headers: !!null 
+  response: !ruby/struct:VCR::Response
+    status: !ruby/struct:VCR::ResponseStatus
+      code: 200
+      message: OK
+    headers:
+      date:
+      - Fri, 30 Dec 2011 00:16:00 GMT
+      server:
+      - Apache-Coyote/1.1
+      content-type:
+      - application/json
+      vary:
+      - Accept-Encoding
+      transfer-encoding:
+      - chunked
+    body: ! '{"code":201,"authToken":"c8ccacb0dc9608a11d1ae885aca4b4c9"}'
+    http_version: '1.1'
+- !ruby/struct:VCR::HTTPInteraction
+  request: !ruby/struct:VCR::Request
+    method: :post
+    uri: http://api.qa.citygrid.com:80/advertising/campaign/v2/mutate
+    body: ! '{"mutateOperationListResource":[{"operator":"ADD","operand":{"name":"PleaseWork6","startDate":"20111230","endDate":"20120108","product":"PERFORMANCE","budget":{"amount":30000},"mopId":386742}}]}'
+    headers:
+      accept:
+      - application/json
+      content-type:
+      - Application/JSON
+      authtoken:
+      - c8ccacb0dc9608a11d1ae885aca4b4c9
+  response: !ruby/struct:VCR::Response
+    status: !ruby/struct:VCR::ResponseStatus
+      code: 200
+      message: OK
+    headers:
+      date:
+      - Fri, 30 Dec 2011 00:16:00 GMT
+      server:
+      - Apache-Coyote/1.1
+      content-type:
+      - application/json
+      vary:
+      - Accept-Encoding
+      transfer-encoding:
+      - chunked
+    body: ! '{"campaigns":[{"name":"PleaseWork6","id":3663852,"response":{"message":"OK","code":200},"budgetAmount":"30000","startDate":"","endDate":"20120108","externalId":"","servingStatus":"PENDING"}]}'
+    http_version: '1.1'

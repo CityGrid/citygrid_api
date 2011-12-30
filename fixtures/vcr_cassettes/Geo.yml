@@ -1,0 +1,32 @@
+---
+- !ruby/struct:VCR::HTTPInteraction
+  request: !ruby/struct:VCR::Request
+    method: :get
+    uri: http://api.qa.citygrid.com:80/content/places/v2/geocode/get?city=seattle&state=wa&streetAddress=720%203rd%20ave&zipCode=98007
+    body: !!null 
+    headers:
+      accept:
+      - application/json
+      content-type:
+      - Application/JSON
+      authtoken:
+      - ''
+  response: !ruby/struct:VCR::Response
+    status: !ruby/struct:VCR::ResponseStatus
+      code: 200
+      message: OK
+    headers:
+      date:
+      - Fri, 30 Dec 2011 00:29:25 GMT
+      server:
+      - Apache-Coyote/1.1
+      content-type:
+      - application/json
+      vary:
+      - Accept-Encoding
+      transfer-encoding:
+      - chunked
+    body: ! '{"totalNumEntries":1,"geocodeResponse":[{"address":{"state":"WA","city":"Seattle","streetAddress":"720
+      3rd Ave","zipCode":"98104-1868"},"geoAccuracy":"ADDRESS","postalConfidence":"APPROXIMATE","streetConfidence":"EXACT","lat":47.603618,"lon":-122.332203}],"message":"OK","searchAddress":"720
+      3rd ave, seattle, wa 98007"}'
+    http_version: '1.1'

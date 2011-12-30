@@ -1,0 +1,35 @@
+---
+- !ruby/struct:VCR::HTTPInteraction
+  request: !ruby/struct:VCR::Request
+    method: :get
+    uri: http://api.qa.citygrid.com:80/content/category/v2/get?listingId=3680332&numberResults=10&startIndex=0
+    body: !!null 
+    headers:
+      accept:
+      - application/json
+      content-type:
+      - Application/JSON
+      authtoken:
+      - ad2338f42980a4da7ad2293e2e329471
+  response: !ruby/struct:VCR::Response
+    status: !ruby/struct:VCR::ResponseStatus
+      code: 200
+      message: OK
+    headers:
+      date:
+      - Fri, 30 Dec 2011 00:29:24 GMT
+      server:
+      - Apache-Coyote/1.1
+      content-type:
+      - application/json
+      vary:
+      - Accept-Encoding
+      transfer-encoding:
+      - chunked
+    body: ! '{"totalNumEntries":14,"response":{"message":"OK","code":200},"categories":[{"categoryId":1722,"categoryName":"Restaurants","categoryType":"Primary"},{"categoryId":11284,"categoryName":"Local
+      Favorite","categoryType":"Secondary"},{"categoryId":1724,"categoryName":"Barbecue
+      Restaurants","categoryType":"Secondary"},{"categoryId":1722,"categoryName":"Restaurants","categoryType":"Secondary"},{"categoryId":6019,"categoryName":"Unclassified","categoryType":"Secondary"},{"categoryId":11190,"categoryName":"Traditional
+      American","categoryType":"Secondary"},{"categoryId":11272,"categoryName":"Hidden
+      Find","categoryType":"Secondary"},{"categoryId":11231,"categoryName":"$","categoryType":"Secondary"},{"categoryId":11339,"categoryName":"Cash","categoryType":"Secondary"},{"categoryId":11267,"categoryName":"Food
+      Delivery","categoryType":"Secondary"}]}'
+    http_version: '1.1'

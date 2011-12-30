@@ -1,0 +1,57 @@
+---
+- !ruby/struct:VCR::HTTPInteraction
+  request: !ruby/struct:VCR::Request
+    method: :post
+    uri: https://api-qassl.citygrid.com:443/accounts/user/v2/login?password=pppppp&username=QASalesCoord
+    body: !!null 
+    headers: !!null 
+  response: !ruby/struct:VCR::Response
+    status: !ruby/struct:VCR::ResponseStatus
+      code: 200
+      message: OK
+    headers:
+      date:
+      - Fri, 30 Dec 2011 00:23:29 GMT
+      server:
+      - Apache-Coyote/1.1
+      content-type:
+      - application/json
+      vary:
+      - Accept-Encoding
+      transfer-encoding:
+      - chunked
+    body: ! '{"code":201,"authToken":"e19158769923691a0dcd7ebee85878a8"}'
+    http_version: '1.1'
+- !ruby/struct:VCR::HTTPInteraction
+  request: !ruby/struct:VCR::Request
+    method: :get
+    uri: http://api.qa.citygrid.com:80/advertising/adgroupgeo/v2/get?adGroupId=78&city=Beverly%20Hills&state=CA&streetAddress=200%20Robertson%20Blvd&zipCode=90211
+    body: !!null 
+    headers:
+      accept:
+      - application/json
+      content-type:
+      - Application/JSON
+      authtoken:
+      - e19158769923691a0dcd7ebee85878a8
+  response: !ruby/struct:VCR::Response
+    status: !ruby/struct:VCR::ResponseStatus
+      code: 200
+      message: OK
+    headers:
+      date:
+      - Fri, 30 Dec 2011 00:23:30 GMT
+      server:
+      - Apache-Coyote/1.1
+      content-type:
+      - application/json
+      vary:
+      - Accept-Encoding
+      transfer-encoding:
+      - chunked
+    body: ! '{"totalNumEntries":21,"adGroupGeos":[{"adGroupId":"78","geographyId":"2122","adGroupGeoType":"SECONDARY","geographyName":"Nob
+      Hill"},{"adGroupId":"78","geographyId":"2226","adGroupGeoType":"SECONDARY","geographyName":"SoMa
+      (South of Market)"},{"adGroupId":"78","geographyId":"2286","adGroupGeoType":"PRIMARY","geographyName":"Tenderloin"},{"adGroupId":"78","geographyId":"2289","adGroupGeoType":"SECONDARY","geographyName":"Union
+      Square"},{"adGroupId":"78","geographyId":"2376","adGroupGeoType":"SECONDARY","geographyName":"Chinatown"},{"adGroupId":"78","geographyId":"2409","adGroupGeoType":"SECONDARY","geographyName":"Civic
+      Center"},{"adGroupId":"78","geographyId":"2415","adGroupGeoType":"SECONDARY","geographyName":"Downtown"},{"adGroupId":"78","geographyId":"23358","adGroupGeoType":"PRIMARY","geographyName":"94102"},{"adGroupId":"78","geographyId":"23741","adGroupGeoType":"SECONDARY","geographyName":"94103"},{"adGroupId":"78","geographyId":"23756","adGroupGeoType":"SECONDARY","geographyName":"94108"}]}'
+    http_version: '1.1'

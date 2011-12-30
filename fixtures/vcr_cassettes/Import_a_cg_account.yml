@@ -1,0 +1,54 @@
+---
+- !ruby/struct:VCR::HTTPInteraction
+  request: !ruby/struct:VCR::Request
+    method: :post
+    uri: https://api-qassl.citygrid.com:443/accounts/user/v2/login?password=pppppp&username=GARYTEST
+    body: !!null 
+    headers: !!null 
+  response: !ruby/struct:VCR::Response
+    status: !ruby/struct:VCR::ResponseStatus
+      code: 200
+      message: OK
+    headers:
+      date:
+      - Fri, 30 Dec 2011 00:23:19 GMT
+      server:
+      - Apache-Coyote/1.1
+      content-type:
+      - application/json
+      vary:
+      - Accept-Encoding
+      transfer-encoding:
+      - chunked
+    body: ! '{"code":201,"authToken":"c9e1b4c2e9f4c01f128f360fd1bc83b5"}'
+    http_version: '1.1'
+- !ruby/struct:VCR::HTTPInteraction
+  request: !ruby/struct:VCR::Request
+    method: :post
+    uri: https://api-qassl.citygrid.com:443/accounts/account/v2/customer/mutate
+    body: ! '{"mutateOperationListResource":[{"operator":"ADD","operand":{"firstName":"nico-api","lastName":"gomez-api","phone":"9001111112","businessName":"businessProveApi","address1":"dir-api","city":"montevideo","state":"Montevideo","zipCode":"90069"}}]}'
+    headers:
+      accept:
+      - application/json
+      content-type:
+      - Application/JSON
+      authtoken:
+      - c9e1b4c2e9f4c01f128f360fd1bc83b5
+  response: !ruby/struct:VCR::Response
+    status: !ruby/struct:VCR::ResponseStatus
+      code: 200
+      message: OK
+    headers:
+      date:
+      - Fri, 30 Dec 2011 00:23:20 GMT
+      server:
+      - Apache-Coyote/1.1
+      content-type:
+      - application/json
+      vary:
+      - Accept-Encoding
+      transfer-encoding:
+      - chunked
+    body: ! '{"totalNumEntries":1,"accountList":[{"id":"","state":"","response":{"message":"UserName
+      is required.","code":400},"status":"","firstName":"","lastName":"","address1":"","city":"","businessName":"","phone":"","zipCode":""}]}'
+    http_version: '1.1'

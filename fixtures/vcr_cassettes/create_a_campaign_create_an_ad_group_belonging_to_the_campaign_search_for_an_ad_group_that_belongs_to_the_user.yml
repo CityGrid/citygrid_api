@@ -1,0 +1,91 @@
+---
+- !ruby/struct:VCR::HTTPInteraction
+  request: !ruby/struct:VCR::Request
+    method: :post
+    uri: http://api.qa.citygrid.com:80/advertising/campaign/v2/mutate
+    body: ! '{"mutateOperationListResource":[{"operator":"ADD","operand":{"name":"PleaseWork6","startDate":"20111230","endDate":"20120108","product":"PERFORMANCE","budget":{"amount":30000},"mopId":386742}}]}'
+    headers:
+      accept:
+      - application/json
+      content-type:
+      - Application/JSON
+      authtoken:
+      - c8ccacb0dc9608a11d1ae885aca4b4c9
+  response: !ruby/struct:VCR::Response
+    status: !ruby/struct:VCR::ResponseStatus
+      code: 200
+      message: OK
+    headers:
+      date:
+      - Fri, 30 Dec 2011 00:16:02 GMT
+      server:
+      - Apache-Coyote/1.1
+      content-type:
+      - application/json
+      vary:
+      - Accept-Encoding
+      transfer-encoding:
+      - chunked
+    body: ! '{"campaigns":[{"name":"PleaseWork6","id":3663872,"response":{"message":"OK","code":200},"budgetAmount":"30000","startDate":"","endDate":"20120108","externalId":"","servingStatus":"PENDING"}]}'
+    http_version: '1.1'
+- !ruby/struct:VCR::HTTPInteraction
+  request: !ruby/struct:VCR::Request
+    method: :post
+    uri: http://api.qa.citygrid.com:80/advertising/adgroup/v2/mutate
+    body: ! '{"mutateOperationListResource":[{"operator":"ADD","operand":{"placeId":"10728522","campaignId":3663872,"contractTermMonths":"12","monthlyServiceFee":"19.95","bids":[{"actionTargetName":"map
+      & directions","ppe":"1.80"}]}}]}'
+    headers:
+      accept:
+      - application/json
+      content-type:
+      - Application/JSON
+      authtoken:
+      - c8ccacb0dc9608a11d1ae885aca4b4c9
+  response: !ruby/struct:VCR::Response
+    status: !ruby/struct:VCR::ResponseStatus
+      code: 200
+      message: OK
+    headers:
+      date:
+      - Fri, 30 Dec 2011 00:16:03 GMT
+      server:
+      - Apache-Coyote/1.1
+      content-type:
+      - application/json
+      vary:
+      - Accept-Encoding
+      transfer-encoding:
+      - chunked
+    body: ! '{"adGroups":[{"id":"32021892","placeId":"10728522","campaignId":"3663872","productId":"6","contractTermMonths":"12","monthlyServiceFee":"19.95","businessPhone":"","displayPhone":"","meteredPhoneType":"","recordCalls":"","email":"","assignMeteredLine":"","bids":[{"actionTargetName":"map
+      & directions","ppe":"1.8"}],"name":"","status":"","responseStatus":{"message":"OK","code":200}}]}'
+    http_version: '1.1'
+- !ruby/struct:VCR::HTTPInteraction
+  request: !ruby/struct:VCR::Request
+    method: :get
+    uri: http://api.qa.citygrid.com:80/advertising/adgroup/v2/get?adGroupIds=32021892
+    body: !!null 
+    headers:
+      accept:
+      - application/json
+      content-type:
+      - Application/JSON
+      authtoken:
+      - c8ccacb0dc9608a11d1ae885aca4b4c9
+  response: !ruby/struct:VCR::Response
+    status: !ruby/struct:VCR::ResponseStatus
+      code: 200
+      message: OK
+    headers:
+      date:
+      - Fri, 30 Dec 2011 00:16:03 GMT
+      server:
+      - Apache-Coyote/1.1
+      content-type:
+      - application/json
+      vary:
+      - Accept-Encoding
+      transfer-encoding:
+      - chunked
+    body: ! '{"totalNumEntries":1,"adGroups":[{"id":32021892,"placeId":10728522,"campaignId":3663872,"businessPhone":"","displayPhone":"","meteredPhoneType":"","recordCalls":"","email":"","name":"","status":"","bids":[{"actionTargetName":"map
+      & directions","ppe":1.8}]}]}'
+    http_version: '1.1'

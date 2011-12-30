@@ -1,0 +1,30 @@
+---
+- !ruby/struct:VCR::HTTPInteraction
+  request: !ruby/struct:VCR::Request
+    method: :post
+    uri: http://api.qa.citygrid.com:80/advertising/adgroupad/v2/mutate
+    body: ! '{"mutateOperationListResource":[{"operator":"ADD","operand":{"groupId":"2861","ad":{"type":"PERFORMANCE_AD","tagline":"myTagline","imageUrl":"http://some_url.com"}}}]}'
+    headers:
+      accept:
+      - application/json
+      content-type:
+      - Application/JSON
+      authtoken:
+      - 209774d9ad48e5a0ebca58b892f808c6
+  response: !ruby/struct:VCR::Response
+    status: !ruby/struct:VCR::ResponseStatus
+      code: 200
+      message: OK
+    headers:
+      date:
+      - Fri, 30 Dec 2011 00:23:27 GMT
+      server:
+      - Apache-Coyote/1.1
+      content-type:
+      - application/json
+      vary:
+      - Accept-Encoding
+      transfer-encoding:
+      - chunked
+    body: ! '{"adGroupAds":[{"adGroupId":"2861","id":"89355162","adType":"PERFORMANCE_AD","status":"ACTIVE","tagline":"myTagline","imageUrl":"http://some_url.com","response":{"message":"OK","code":200}}]}'
+    http_version: '1.1'

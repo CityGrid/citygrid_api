@@ -1,0 +1,168 @@
+---
+- !ruby/struct:VCR::HTTPInteraction
+  request: !ruby/struct:VCR::Request
+    method: :get
+    uri: http://api.citygridmedia.com:80/content/places/v2/search/where?client_ip=192.168.0.1&format=json&publisher=citygrid&what=sushi&where=Seattle
+    body: !!null 
+    headers:
+      accept:
+      - application/json
+      content-type:
+      - Application/JSON
+  response: !ruby/struct:VCR::Response
+    status: !ruby/struct:VCR::ResponseStatus
+      code: 200
+      message: OK
+    headers:
+      date:
+      - Fri, 30 Dec 2011 00:29:33 GMT
+      server:
+      - Apache-Coyote/1.1
+      content-type:
+      - application/json
+      vary:
+      - Accept-Encoding
+      transfer-encoding:
+      - chunked
+    body: ! '{"results":{"query_id":null,"uri":"http://api.citygridmedia.com/search/places/v2/search/where?has_offers=false&format=json&page=1&rpp=20&histograms=false&what=sushi&where=Seattle&publisher=citygrid&region_type=circle","first_hit":1,"last_hit":20,"total_hits":52,"page":1,"rpp":20,"did_you_mean":null,"regions":[{"type":"city","name":"Seattle,
+      WA","latitude":47.620434,"longitude":-122.35101,"default_radius":11.9400}],"histograms":[],"locations":[{"id":11349395,"featured":false,"name":"Wasabi
+      Bistro","address":{"street":"2311 2nd Ave","city":"Seattle","state":"WA","postal_code":"98121"},"neighborhood":"Belltown,
+      Downtown","latitude":47.6141,"longitude":-122.346,"distance":null,"image":"http://images.citysearch.net/assets/imgdb/profile/95/0d/11349395p1.jpg","phone_number":"2064416044","fax_number":null,"rating":9.0,"tagline":null,"profile":"http://seattle.citysearch.com/profile/11349395/seattle_wa/wasabi_bistro.html","website":null,"has_video":false,"has_offers":false,"offers":null,"user_review_count":101,"sample_categories":"Restaurants,
+      Dine At The Bar, MasterCard, Sushi, Japanese","impression_id":"000b00000078db6bc339a94c459dd4c8e448110160","expansion":{"count":null,"uri":null},"tags":[{"id":1722,"name":"Restaurants","primary":false},{"id":11258,"name":"Dine
+      At The Bar","primary":false},{"id":11361,"name":"MasterCard","primary":false},{"id":11201,"name":"Sushi","primary":false},{"id":11202,"name":"Japanese","primary":false},{"id":11269,"name":"Group
+      Dining","primary":false},{"id":11232,"name":"$$","primary":false},{"id":11382,"name":"Visa","primary":false},{"id":11219,"name":"French","primary":false},{"id":11333,"name":"American
+      Express","primary":false},{"id":11298,"name":"People Watching","primary":false}],"public_id":"wasabi-bistro-seattle"},{"id":41928927,"featured":true,"name":"Umi
+      Sake House","address":{"street":"2230 First Ave","city":"Seattle","state":"WA","postal_code":"98121"},"neighborhood":"Downtown,
+      Belltown","latitude":47.612844,"longitude":-122.345644,"distance":null,"image":"http://images.citysearch.net/assets/imgdb/advertorial_profile/f2/7a/V-SEAWA-55089002_ID162741_guide_inclusion.jpg","phone_number":"2069737789","fax_number":null,"rating":8.0,"tagline":null,"profile":"http://seattle.citysearch.com/profile/41928927/seattle_wa/umi_sake_house.html","website":"http://seattle.citysearch.com/profile/external/41928927/seattle_wa/umi_sake_house.html","has_video":false,"has_offers":true,"offers":"happy
+      hour at umi sake house 4-6pm every day!","user_review_count":90,"sample_categories":"Catering,
+      Bars & Pubs, Restaurants, Bar Scene, Sushi","impression_id":"000b0000009e7e6df0d17b428d973ce44fdc365bbd","expansion":{"count":null,"uri":null},"tags":[{"id":1705,"name":"Catering","primary":false},{"id":1686,"name":"Bars
+      & Pubs","primary":false},{"id":1722,"name":"Restaurants","primary":false},{"id":11238,"name":"Bar
+      Scene","primary":false},{"id":11201,"name":"Sushi","primary":false},{"id":11202,"name":"Japanese","primary":false},{"id":11269,"name":"Group
+      Dining","primary":false},{"id":11232,"name":"$$","primary":false},{"id":11367,"name":"Open
+      7 Days","primary":false},{"id":11361,"name":"MasterCard","primary":false},{"id":11304,"name":"Private
+      Rooms","primary":false},{"id":11282,"name":"Late Night Dining","primary":false},{"id":11382,"name":"Visa","primary":false},{"id":11333,"name":"American
+      Express","primary":false},{"id":11271,"name":"Happy Hour","primary":false}],"public_id":"umi-sake-house-seattle-2"},{"id":36913040,"featured":true,"name":"Kisaku
+      Sushi Restaurant","address":{"street":"2101 N 55th St","city":"Seattle","state":"WA","postal_code":"98103"},"neighborhood":"Wallingford,
+      Lake Union","latitude":47.66867,"longitude":-122.333652,"distance":null,"image":"http://images.citysearch.net/assets/imgdb/merchant/2010/9/2/0/ZCDLBSLz149.jpeg","phone_number":"4253361689","fax_number":null,"rating":9.0,"tagline":null,"profile":"http://seattle.citysearch.com/profile/36913040/seattle_wa/kisaku_sushi_restaurant.html","website":"http://seattle.citysearch.com/profile/external/36913040/seattle_wa/kisaku_sushi_restaurant.html","has_video":false,"has_offers":false,"offers":null,"user_review_count":52,"sample_categories":"Restaurants,
+      Sushi, Seafood, Lunch Spot","impression_id":"000b0000000844823e5dde491fa02c365b6d59b6aa","expansion":{"count":null,"uri":null},"tags":[{"id":1722,"name":"Restaurants","primary":false},{"id":11201,"name":"Sushi","primary":false},{"id":11228,"name":"Seafood","primary":false},{"id":11286,"name":"Lunch
+      Spot","primary":false}],"public_id":"kisaku-sushi-restaurant-seattle"},{"id":15088428,"featured":false,"name":"Ototo
+      Sushi","address":{"street":"7 Boston St","city":"Seattle","state":"WA","postal_code":"98109"},"neighborhood":"Magnolia
+      - Queen Anne, East Queen Anne, Magnolia / Queen Anne","latitude":47.6383,"longitude":-122.3567,"distance":null,"image":"http://images.citysearch.net/assets/imgdb/profile/13/7b/15088428p1.jpg","phone_number":"2066913838","fax_number":null,"rating":8.0,"tagline":null,"profile":"http://seattle.citysearch.com/profile/15088428/seattle_wa/ototo_sushi.html","website":null,"has_video":false,"has_offers":false,"offers":null,"user_review_count":80,"sample_categories":"Restaurants,
+      MasterCard, Local Favorite, Outdoor Dining, Sushi","impression_id":"000b000000dffdeef0c5984c4380b97d8233a64855","expansion":{"count":null,"uri":null},"tags":[{"id":1722,"name":"Restaurants","primary":false},{"id":11361,"name":"MasterCard","primary":false},{"id":11284,"name":"Local
+      Favorite","primary":false},{"id":11296,"name":"Outdoor Dining","primary":false},{"id":11201,"name":"Sushi","primary":false},{"id":11202,"name":"Japanese","primary":false},{"id":11232,"name":"$$","primary":false},{"id":11382,"name":"Visa","primary":false},{"id":11262,"name":"Family
+      Style Dining","primary":false},{"id":11286,"name":"Lunch Spot","primary":false},{"id":11307,"name":"Romantic
+      Dining","primary":false}],"public_id":"ototo-sushi-seattle"},{"id":10789937,"featured":false,"name":"Nishino","address":{"street":"3130
+      E Madison St","city":"Seattle","state":"WA","postal_code":"98112"},"neighborhood":"Capitol
+      Hill, Washington Park","latitude":47.62662,"longitude":-122.29167,"distance":null,"image":null,"phone_number":"2063225800","fax_number":null,"rating":9.0,"tagline":null,"profile":"http://seattle.citysearch.com/profile/10789937/seattle_wa/nishino.html","website":null,"has_video":false,"has_offers":false,"offers":null,"user_review_count":68,"sample_categories":"Restaurants,
+      Dine At The Bar, MasterCard, Local Favorite, Sushi","impression_id":"000b0000000ac89be02d04430bb99d42b5b5610c3e","expansion":{"count":null,"uri":null},"tags":[{"id":1722,"name":"Restaurants","primary":false},{"id":11258,"name":"Dine
+      At The Bar","primary":false},{"id":11361,"name":"MasterCard","primary":false},{"id":11284,"name":"Local
+      Favorite","primary":false},{"id":11201,"name":"Sushi","primary":false},{"id":11202,"name":"Japanese","primary":false},{"id":11233,"name":"$$$","primary":false},{"id":11269,"name":"Group
+      Dining","primary":false},{"id":11382,"name":"Visa","primary":false},{"id":11333,"name":"American
+      Express","primary":false},{"id":11367,"name":"Open 7 Days","primary":false}],"public_id":"nishino-seattle"},{"id":41662071,"featured":true,"name":"Nijo","address":{"street":"83
+      Spring St","city":"Seattle","state":"WA","postal_code":"98104"},"neighborhood":"Central
+      Business District, Downtown","latitude":47.605,"longitude":-122.3376,"distance":null,"image":"http://images.citysearch.net/assets/imgdb/advertorial_profile/41/a7/V-SEAWA-55058479_ID90112_guide_inclusion.gif","phone_number":"2063884119","fax_number":null,"rating":8.0,"tagline":null,"profile":"http://seattle.citysearch.com/profile/41662071/seattle_wa/nijo.html","website":"http://seattle.citysearch.com/profile/external/41662071/seattle_wa/nijo.html","has_video":false,"has_offers":false,"offers":null,"user_review_count":37,"sample_categories":"Bars
+      & Pubs, Restaurants, Dine At The Bar, Bar Scene, Sushi","impression_id":"000b0000008f4d0af6232348a39578e93b9e2c525b","expansion":{"count":null,"uri":null},"tags":[{"id":1686,"name":"Bars
+      & Pubs","primary":false},{"id":1722,"name":"Restaurants","primary":false},{"id":11258,"name":"Dine
+      At The Bar","primary":false},{"id":11238,"name":"Bar Scene","primary":false},{"id":11201,"name":"Sushi","primary":false},{"id":11202,"name":"Japanese","primary":false},{"id":11231,"name":"$","primary":false},{"id":11286,"name":"Lunch
+      Spot","primary":false},{"id":11361,"name":"MasterCard","primary":false},{"id":11296,"name":"Outdoor
+      Dining","primary":false},{"id":11349,"name":"Discover","primary":false},{"id":11382,"name":"Visa","primary":false},{"id":11333,"name":"American
+      Express","primary":false},{"id":11271,"name":"Happy Hour","primary":false}],"public_id":"nijo-seattle"},{"id":10776750,"featured":false,"name":"Maneki
+      Restaurant","address":{"street":"304 6th Ave S","city":"Seattle","state":"WA","postal_code":"98104"},"neighborhood":"Downtown,
+      International District","latitude":47.5998,"longitude":-122.3261,"distance":null,"image":null,"phone_number":"2066222631","fax_number":null,"rating":9.0,"tagline":null,"profile":"http://seattle.citysearch.com/profile/10776750/seattle_wa/maneki_restaurant.html","website":null,"has_video":false,"has_offers":false,"offers":null,"user_review_count":54,"sample_categories":"Banquet
+      Rooms, Restaurants, MasterCard, Local Favorite, Cash","impression_id":"000b000000d62038695dcf4b3fa19abf2294a596c4","expansion":{"count":null,"uri":null},"tags":[{"id":3495,"name":"Banquet
+      Rooms","primary":false},{"id":1722,"name":"Restaurants","primary":false},{"id":11361,"name":"MasterCard","primary":false},{"id":11284,"name":"Local
+      Favorite","primary":false},{"id":11339,"name":"Cash","primary":false},{"id":11201,"name":"Sushi","primary":false},{"id":11202,"name":"Japanese","primary":false},{"id":11231,"name":"$","primary":false},{"id":11382,"name":"Visa","primary":false},{"id":11333,"name":"American
+      Express","primary":false},{"id":11272,"name":"Hidden Find","primary":false}],"public_id":"maneki-restaurant-seattle"},{"id":10767399,"featured":false,"name":"Dragonfish
+      Asian Cafe","address":{"street":"722 Pine St","city":"Seattle","state":"WA","postal_code":"98101"},"neighborhood":"Central
+      Business District, Downtown","latitude":47.6128,"longitude":-122.334,"distance":null,"image":"http://images.citysearch.net/assets/imgdb/advertorial_profile/e3/a8/V-SEAWA-00041525_ID62618_guide_inclusion.jpg","phone_number":"2064677777","fax_number":null,"rating":7.0,"tagline":null,"profile":"http://seattle.citysearch.com/profile/10767399/seattle_wa/dragonfish_asian_cafe.html","website":null,"has_video":false,"has_offers":false,"offers":null,"user_review_count":69,"sample_categories":"Catering,
+      Banquet Rooms, Restaurants, Cheap Eats, Dine At The Bar","impression_id":"000b000000987d43ca55014f07ada06607fbaa1337","expansion":{"count":null,"uri":null},"tags":[{"id":1705,"name":"Catering","primary":false},{"id":3495,"name":"Banquet
+      Rooms","primary":false},{"id":1722,"name":"Restaurants","primary":false},{"id":11249,"name":"Cheap
+      Eats","primary":false},{"id":11258,"name":"Dine At The Bar","primary":false},{"id":11238,"name":"Bar
+      Scene","primary":false},{"id":11275,"name":"Hotel Restaurants","primary":false},{"id":11235,"name":"Asian","primary":false},{"id":11201,"name":"Sushi","primary":false},{"id":11244,"name":"Business
+      Dining","primary":false},{"id":11256,"name":"Date Spot","primary":false},{"id":11269,"name":"Group
+      Dining","primary":false},{"id":11232,"name":"$$","primary":false},{"id":11297,"name":"Pan-Asian
+      & Pacific Rim","primary":false},{"id":11298,"name":"People Watching","primary":false},{"id":11286,"name":"Lunch
+      Spot","primary":false},{"id":11315,"name":"Special Occasion Dining","primary":false},{"id":11361,"name":"MasterCard","primary":false},{"id":11282,"name":"Late
+      Night Dining","primary":false},{"id":11382,"name":"Visa","primary":false},{"id":11240,"name":"Brunch","primary":false},{"id":11333,"name":"American
+      Express","primary":false}],"public_id":"dragonfish-asian-cafe-seattle"},{"id":10792523,"featured":false,"name":"Mashiko
+      Japanese Restaurant","address":{"street":"4725 California Ave SW","city":"Seattle","state":"WA","postal_code":"98116"},"neighborhood":"West
+      Seattle, Junction","latitude":47.5606,"longitude":-122.3868,"distance":null,"image":"http://images.citysearch.net/assets/imgdb/profile/07/a6/10792523p1.jpg","phone_number":"2069354339","fax_number":null,"rating":7.0,"tagline":null,"profile":"http://seattle.citysearch.com/profile/10792523/seattle_wa/mashiko_japanese_restaurant.html","website":null,"has_video":false,"has_offers":false,"offers":null,"user_review_count":66,"sample_categories":"Restaurants,
+      MasterCard, Cash, Sushi, Japanese","impression_id":"000b000000c89717bbf50a4fa9be78c83372377da4","expansion":{"count":null,"uri":null},"tags":[{"id":1722,"name":"Restaurants","primary":false},{"id":11361,"name":"MasterCard","primary":false},{"id":11339,"name":"Cash","primary":false},{"id":11201,"name":"Sushi","primary":false},{"id":11202,"name":"Japanese","primary":false},{"id":11231,"name":"$","primary":false},{"id":11382,"name":"Visa","primary":false}],"public_id":"mashiko-japanese-restaurant-seattle"},{"id":10796501,"featured":false,"name":"Shiro''s","address":{"street":"2401
+      2nd Ave","city":"Seattle","state":"WA","postal_code":"98121"},"neighborhood":"Belltown,
+      Downtown","latitude":47.6148,"longitude":-122.347,"distance":null,"image":"http://images.citysearch.net/assets/imgdb/advertorial_profile/93/93/V-SEAWA-00067333_ID150695_guide_inclusion.jpg","phone_number":"2064439844","fax_number":"2064439974","rating":8.0,"tagline":null,"profile":"http://seattle.citysearch.com/profile/10796501/seattle_wa/shiro_s.html","website":null,"has_video":false,"has_offers":false,"offers":null,"user_review_count":57,"sample_categories":"Restaurants,
+      Dine At The Bar, Sushi, Japanese, Date Spot","impression_id":"000b0000004e58c393d9bc435293bc7d4587e7f600","expansion":{"count":null,"uri":null},"tags":[{"id":1722,"name":"Restaurants","primary":false},{"id":11258,"name":"Dine
+      At The Bar","primary":false},{"id":11201,"name":"Sushi","primary":false},{"id":11202,"name":"Japanese","primary":false},{"id":11256,"name":"Date
+      Spot","primary":false},{"id":11269,"name":"Group Dining","primary":false},{"id":11232,"name":"$$","primary":false},{"id":11361,"name":"MasterCard","primary":false},{"id":11284,"name":"Local
+      Favorite","primary":false},{"id":11293,"name":"Notable Chef","primary":false},{"id":11382,"name":"Visa","primary":false},{"id":11333,"name":"American
+      Express","primary":false},{"id":11251,"name":"Chef''s Table","primary":false}],"public_id":"shiros-seattle"},{"id":41916621,"featured":true,"name":"Liberty","address":{"street":"517
+      15th Ave E","city":"Seattle","state":"WA","postal_code":"98102"},"neighborhood":"Capitol
+      Hill, Broadway","latitude":47.623421,"longitude":-122.312622,"distance":null,"image":"http://images.citysearch.net/assets/imgdb/profile/7b/e4/41916621p1.jpg","phone_number":"2069730073","fax_number":null,"rating":9.0,"tagline":null,"profile":"http://seattle.citysearch.com/profile/41916621/seattle_wa/liberty.html","website":"http://seattle.citysearch.com/profile/external/41916621/seattle_wa/liberty.html","has_video":false,"has_offers":false,"offers":null,"user_review_count":25,"sample_categories":"Ski
+      Resorts, Neighborhood Bars, Whiskey Bars, Lounges, Bars & Pubs","impression_id":"000b000000d1fbf4aaf879407e801a998a6064899f","expansion":{"count":null,"uri":null},"tags":[{"id":4309,"name":"Ski
+      Resorts","primary":false},{"id":1698,"name":"Neighborhood Bars","primary":false},{"id":1703,"name":"Whiskey
+      Bars","primary":false},{"id":1697,"name":"Lounges","primary":false},{"id":1686,"name":"Bars
+      & Pubs","primary":false},{"id":1722,"name":"Restaurants","primary":false},{"id":11237,"name":"Bar
+      Menu","primary":false},{"id":10038,"name":"Private Parties","primary":false},{"id":11201,"name":"Sushi","primary":false},{"id":11065,"name":"Bar
+      Menu","primary":false},{"id":11202,"name":"Japanese","primary":false},{"id":11256,"name":"Date
+      Spot","primary":false},{"id":11099,"name":"Martinis","primary":false},{"id":11090,"name":"Happy
+      Hour","primary":false},{"id":11304,"name":"Private Rooms","primary":false},{"id":11085,"name":"Draft
+      Beer","primary":false},{"id":11086,"name":"Drink Specials","primary":false},{"id":10041,"name":"Specialty
+      Cocktails","primary":false},{"id":11271,"name":"Happy Hour","primary":false},{"id":11324,"name":"Upscale
+      Casual Dining","primary":false},{"id":11307,"name":"Romantic Dining","primary":false},{"id":10015,"name":"After
+      Work","primary":false}],"public_id":"liberty-seattle-2"},{"id":41514976,"featured":false,"name":"Rain
+      Modern Infusion Cuisine","address":{"street":"2208 N 45th St","city":"Seattle","state":"WA","postal_code":"98103"},"neighborhood":"Lake
+      Union, Wallingford","latitude":47.6615,"longitude":-122.3322,"distance":null,"image":null,"phone_number":"2065457848","fax_number":null,"rating":8.0,"tagline":null,"profile":"http://seattle.citysearch.com/profile/41514976/seattle_wa/rain_modern_infusion_cuisine.html","website":null,"has_video":false,"has_offers":false,"offers":null,"user_review_count":49,"sample_categories":"Catering,
+      Restaurants, Bar Menu, Dine At The Bar, Asian","impression_id":"000b000000d136c678ac1c452a91b3cbb57eea1f71","expansion":{"count":null,"uri":null},"tags":[{"id":1705,"name":"Catering","primary":false},{"id":1722,"name":"Restaurants","primary":false},{"id":11237,"name":"Bar
+      Menu","primary":false},{"id":11258,"name":"Dine At The Bar","primary":false},{"id":11235,"name":"Asian","primary":false},{"id":11201,"name":"Sushi","primary":false},{"id":11202,"name":"Japanese","primary":false},{"id":11231,"name":"$","primary":false},{"id":11256,"name":"Date
+      Spot","primary":false},{"id":12838,"name":"Asian Fusion","primary":false},{"id":11367,"name":"Open
+      7 Days","primary":false},{"id":11286,"name":"Lunch Spot","primary":false},{"id":11361,"name":"MasterCard","primary":false},{"id":11349,"name":"Discover","primary":false},{"id":11382,"name":"Visa","primary":false},{"id":11333,"name":"American
+      Express","primary":false},{"id":11271,"name":"Happy Hour","primary":false}],"public_id":"rain-modern-infusion-cuisine-seattle"},{"id":38584648,"featured":false,"name":"Blue
+      C Sushi","address":{"street":"3411 Fremont Ave N","city":"Seattle","state":"WA","postal_code":"98103"},"neighborhood":"Lake
+      Union, Fremont","latitude":47.6498,"longitude":-122.35,"distance":null,"image":"http://images.citysearch.net/assets/imgdb/profile/08/f4/38584648p1.jpg","phone_number":"4257743719","fax_number":null,"rating":7.0,"tagline":null,"profile":"http://seattle.citysearch.com/profile/38584648/seattle_wa/blue_c_sushi.html","website":null,"has_video":false,"has_offers":false,"offers":null,"user_review_count":52,"sample_categories":"Restaurants,
+      MasterCard, Dine At The Bar, Local Favorite, Sushi","impression_id":"000b000000bedcaa5d6ce94c29af7367d91ed708f5","expansion":{"count":null,"uri":null},"tags":[{"id":1722,"name":"Restaurants","primary":false},{"id":11361,"name":"MasterCard","primary":false},{"id":11258,"name":"Dine
+      At The Bar","primary":false},{"id":11284,"name":"Local Favorite","primary":false},{"id":11201,"name":"Sushi","primary":false},{"id":11202,"name":"Japanese","primary":false},{"id":11256,"name":"Date
+      Spot","primary":false},{"id":11231,"name":"$","primary":false},{"id":11382,"name":"Visa","primary":false},{"id":11286,"name":"Lunch
+      Spot","primary":false}],"public_id":"blue-c-sushi-seattle-4"},{"id":10800218,"featured":false,"name":"Toyota
+      Tsusho America Inc","address":{"street":"12543 Lake City Way NE","city":"Seattle","state":"WA","postal_code":"98125"},"neighborhood":"North,
+      Olympic Hills, North Seattle","latitude":47.7202,"longitude":-122.295,"distance":null,"image":null,"phone_number":"2063677972","fax_number":null,"rating":7.0,"tagline":null,"profile":"http://seattle.citysearch.com/profile/10800218/seattle_wa/toyota_tsusho_america_inc.html","website":null,"has_video":false,"has_offers":false,"offers":null,"user_review_count":48,"sample_categories":"Investments,
+      Restaurants, MasterCard, Local Favorite, Sushi","impression_id":"000b0000006758d16f71c945f0bb750e6d552ffd54","expansion":{"count":null,"uri":null},"tags":[{"id":1636,"name":"Investments","primary":false},{"id":1722,"name":"Restaurants","primary":false},{"id":11361,"name":"MasterCard","primary":false},{"id":11284,"name":"Local
+      Favorite","primary":false},{"id":11201,"name":"Sushi","primary":false},{"id":11202,"name":"Japanese","primary":false},{"id":11231,"name":"$","primary":false},{"id":11382,"name":"Visa","primary":false},{"id":11341,"name":"Check","primary":false},{"id":11286,"name":"Lunch
+      Spot","primary":false}],"public_id":"toyota-tsusho-america-inc-seattle"},{"id":11621610,"featured":false,"name":"Chiso
+      Restaurant","address":{"street":"3520 Fremont Ave N","city":"Seattle","state":"WA","postal_code":"98103"},"neighborhood":"Lake
+      Union, Fremont","latitude":47.650618,"longitude":-122.349884,"distance":null,"image":null,"phone_number":"2066323430","fax_number":null,"rating":9.0,"tagline":null,"profile":"http://seattle.citysearch.com/profile/11621610/seattle_wa/chiso_restaurant.html","website":null,"has_video":false,"has_offers":false,"offers":null,"user_review_count":35,"sample_categories":"Restaurants,
+      MasterCard, Cash, Sushi, Japanese","impression_id":"000b0000002075df578ce548e485bce52577504d85","expansion":{"count":null,"uri":null},"tags":[{"id":1722,"name":"Restaurants","primary":false},{"id":11361,"name":"MasterCard","primary":false},{"id":11339,"name":"Cash","primary":false},{"id":11201,"name":"Sushi","primary":false},{"id":11202,"name":"Japanese","primary":false},{"id":11382,"name":"Visa","primary":false},{"id":11333,"name":"American
+      Express","primary":false},{"id":11347,"name":"Debit Card","primary":false},{"id":11271,"name":"Happy
+      Hour","primary":false}],"public_id":"chiso-restaurant-seattle"},{"id":10774459,"featured":false,"name":"Musashi","address":{"street":"1400
+      N 45th St","city":"Seattle","state":"WA","postal_code":"98103"},"neighborhood":"Lake
+      Union, Wallingford","latitude":47.6615,"longitude":-122.3404,"distance":null,"image":null,"phone_number":"2066330212","fax_number":null,"rating":8.0,"tagline":null,"profile":"http://seattle.citysearch.com/profile/10774459/seattle_wa/musashi.html","website":null,"has_video":false,"has_offers":false,"offers":null,"user_review_count":40,"sample_categories":"Restaurants,
+      Cheap Eats, Local Favorite, Sushi, Cash","impression_id":"000b000000e93eb4b99c36488cb2987eb207faf0de","expansion":{"count":null,"uri":null},"tags":[{"id":1722,"name":"Restaurants","primary":false},{"id":11249,"name":"Cheap
+      Eats","primary":false},{"id":11284,"name":"Local Favorite","primary":false},{"id":11201,"name":"Sushi","primary":false},{"id":11339,"name":"Cash","primary":false},{"id":11202,"name":"Japanese","primary":false},{"id":11231,"name":"$","primary":false},{"id":11341,"name":"Check","primary":false}],"public_id":"musashi-seattle"},{"id":41873269,"featured":false,"name":"Red
+      Fin Japanese Restaurant & Sushi Bar","address":{"street":"612 Stewart St","city":"Seattle","state":"WA","postal_code":"98101"},"neighborhood":"Belltown,
+      Downtown","latitude":47.6137,"longitude":-122.336906,"distance":null,"image":"http://images.citysearch.net/assets/imgdb/profile/b9/cc/41873269p1.jpg","phone_number":"2064414340","fax_number":null,"rating":9.0,"tagline":null,"profile":"http://seattle.citysearch.com/profile/41873269/seattle_wa/red_fin_japanese_restaurant_sushi_bar.html","website":null,"has_video":false,"has_offers":false,"offers":null,"user_review_count":32,"sample_categories":"Restaurants,
+      Dine At The Bar, Bar Scene, Hotel Restaurants, Asian","impression_id":"000b000000d0f2b91ef40c4e429ed7e00afe029943","expansion":{"count":null,"uri":null},"tags":[{"id":1722,"name":"Restaurants","primary":false},{"id":11258,"name":"Dine
+      At The Bar","primary":false},{"id":11238,"name":"Bar Scene","primary":false},{"id":11275,"name":"Hotel
+      Restaurants","primary":false},{"id":11235,"name":"Asian","primary":false},{"id":11201,"name":"Sushi","primary":false},{"id":11202,"name":"Japanese","primary":false},{"id":11233,"name":"$$$","primary":false},{"id":11244,"name":"Business
+      Dining","primary":false},{"id":11243,"name":"Business Breakfast","primary":false},{"id":11367,"name":"Open
+      7 Days","primary":false},{"id":11298,"name":"People Watching","primary":false},{"id":11239,"name":"Breakfast","primary":false},{"id":11286,"name":"Lunch
+      Spot","primary":false},{"id":11361,"name":"MasterCard","primary":false},{"id":11282,"name":"Late
+      Night Dining","primary":false},{"id":11382,"name":"Visa","primary":false},{"id":11333,"name":"American
+      Express","primary":false},{"id":11271,"name":"Happy Hour","primary":false}],"public_id":"red-fin-japanese-restaurant-sushi-bar-seattle"},{"id":41419346,"featured":false,"name":"Yamashiro
+      Sushi Broker","address":{"street":"13754 Aurora Ave N","city":"Seattle","state":"WA","postal_code":"98133"},"neighborhood":"Northwest
+      Seattle, Northwest, Haller Lake","latitude":47.7297,"longitude":-122.3449,"distance":null,"image":"http://images.citysearch.net/assets/imgdb/advertorial_profile/fa/44/V-SEAWA-55051003_ID73619_guide_inclusion.jpg","phone_number":"2063612620","fax_number":null,"rating":8.0,"tagline":null,"profile":"http://seattle.citysearch.com/profile/41419346/seattle_wa/yamashiro_sushi_broker.html","website":null,"has_video":false,"has_offers":false,"offers":null,"user_review_count":36,"sample_categories":"Restaurants,
+      MasterCard, Asian, Cash, Late Night Dining","impression_id":"000b000000e3fb1f40086042749f43d9ed6ba5b2be","expansion":{"count":null,"uri":null},"tags":[{"id":1722,"name":"Restaurants","primary":false},{"id":11361,"name":"MasterCard","primary":false},{"id":11235,"name":"Asian","primary":false},{"id":11339,"name":"Cash","primary":false},{"id":11282,"name":"Late
+      Night Dining","primary":false},{"id":11201,"name":"Sushi","primary":false},{"id":11202,"name":"Japanese","primary":false},{"id":11269,"name":"Group
+      Dining","primary":false},{"id":11231,"name":"$","primary":false},{"id":11382,"name":"Visa","primary":false}],"public_id":"yamashiro-sushi-broker-seattle"},{"id":10772953,"featured":false,"name":"Hana
+      Restaurant","address":{"street":"219 Broadway E","city":"Seattle","state":"WA","postal_code":"98102"},"neighborhood":"Broadway,
+      Capitol Hill","latitude":47.6202,"longitude":-122.3211,"distance":null,"image":null,"phone_number":"2063281187","fax_number":null,"rating":8.0,"tagline":null,"profile":"http://seattle.citysearch.com/profile/10772953/seattle_wa/hana_restaurant.html","website":null,"has_video":false,"has_offers":false,"offers":null,"user_review_count":35,"sample_categories":"Restaurants,
+      MasterCard, Local Favorite, Sushi, Japanese","impression_id":"000b00000090e85fcc85864295830eacd662d381d8","expansion":{"count":null,"uri":null},"tags":[{"id":1722,"name":"Restaurants","primary":false},{"id":11361,"name":"MasterCard","primary":false},{"id":11284,"name":"Local
+      Favorite","primary":false},{"id":11201,"name":"Sushi","primary":false},{"id":11202,"name":"Japanese","primary":false},{"id":11232,"name":"$$","primary":false},{"id":11382,"name":"Visa","primary":false}],"public_id":"hana-restaurant-seattle"},{"id":10766503,"featured":false,"name":"Benihana","address":{"street":"1200
+      5th Ave","city":"Seattle","state":"WA","postal_code":"98101"},"neighborhood":"Downtown,
+      Central Business District","latitude":47.6081,"longitude":-122.3331,"distance":null,"image":"http://images.citysearch.net/assets/imgdb/advertorial_profile/f6/8b/V-SEAWA-00041473_ID94551_guide_inclusion.jpg","phone_number":"2066824686","fax_number":null,"rating":8.0,"tagline":null,"profile":"http://seattle.citysearch.com/profile/10766503/seattle_wa/benihana.html","website":null,"has_video":false,"has_offers":false,"offers":null,"user_review_count":34,"sample_categories":"Restaurants,
+      Sushi, Japanese, Travelers Check, Chicken","impression_id":"000b000000b1385add8f454e31b57918f392a64304","expansion":{"count":null,"uri":null},"tags":[{"id":1722,"name":"Restaurants","primary":false},{"id":11201,"name":"Sushi","primary":false},{"id":11202,"name":"Japanese","primary":false},{"id":11379,"name":"Travelers
+      Check","primary":false},{"id":12839,"name":"Chicken","primary":false},{"id":12645,"name":"Romantic","primary":false},{"id":11228,"name":"Seafood","primary":false},{"id":10977,"name":"Japanese
+      Lessons","primary":false},{"id":11348,"name":"Diners Club","primary":false},{"id":10038,"name":"Private
+      Parties","primary":false},{"id":11238,"name":"Bar Scene","primary":false},{"id":11235,"name":"Asian","primary":false},{"id":11247,"name":"Carry
+      Out","primary":false},{"id":11244,"name":"Business Dining","primary":false},{"id":11269,"name":"Group
+      Dining","primary":false},{"id":11232,"name":"$$","primary":false},{"id":11361,"name":"MasterCard","primary":false},{"id":11339,"name":"Cash","primary":false},{"id":11382,"name":"Visa","primary":false},{"id":11241,"name":"Buffet","primary":false},{"id":11333,"name":"American
+      Express","primary":false},{"id":11262,"name":"Family Style Dining","primary":false},{"id":11263,"name":"Family-Friendly
+      Dining","primary":false},{"id":11352,"name":"Gift Certificate","primary":false},{"id":11316,"name":"Steakhouse","primary":false}],"public_id":"benihana-seattle"}]}}'
+    http_version: '1.1'

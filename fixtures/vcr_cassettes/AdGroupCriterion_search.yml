@@ -1,0 +1,35 @@
+---
+- !ruby/struct:VCR::HTTPInteraction
+  request: !ruby/struct:VCR::Request
+    method: :get
+    uri: http://api.qa.citygrid.com:80/advertising/adgroupcriterion/v2/get?adGroupId=6
+    body: !!null 
+    headers:
+      accept:
+      - application/json
+      content-type:
+      - Application/JSON
+      authtoken:
+      - 209774d9ad48e5a0ebca58b892f808c6
+  response: !ruby/struct:VCR::Response
+    status: !ruby/struct:VCR::ResponseStatus
+      code: 200
+      message: OK
+    headers:
+      date:
+      - Fri, 30 Dec 2011 00:23:28 GMT
+      server:
+      - Apache-Coyote/1.1
+      content-type:
+      - application/json
+      vary:
+      - Accept-Encoding
+      transfer-encoding:
+      - chunked
+    body: ! '{"totalNumEntries":21,"adGroupCriterions":[{"type":"PRIMARY","response":{"message":"OK","code":200},"adGroupId":"6","keyword":"Bars
+      & Clubs","adGroupCriterionId":"164"},{"type":"PRIMARY","response":{"message":"OK","code":200},"adGroupId":"6","keyword":"Restaurants","adGroupCriterionId":"1722"},{"type":"PRIMARY","response":{"message":"OK","code":200},"adGroupId":"6","keyword":"Barbecue
+      Restaurants","adGroupCriterionId":"1724"},{"type":"PRIMARY","response":{"message":"OK","code":200},"adGroupId":"6","keyword":"Banquet
+      Rooms","adGroupCriterionId":"3495"},{"type":"PRIMARY","response":{"message":"OK","code":200},"adGroupId":"6","keyword":"Bars
+      & Pubs","adGroupCriterionId":"1686"},{"type":"PRIMARY","response":{"message":"OK","code":200},"adGroupId":"6","keyword":"Taverns","adGroupCriterionId":"1702"},{"type":"PRIMARY","response":{"message":"OK","code":200},"adGroupId":"6","keyword":"Traditional
+      American","adGroupCriterionId":"11190"},{"type":"SECONDARY","response":{"message":"OK","code":200},"adGroupId":"6","keyword":"Sushi","adGroupCriterionId":"11201"},{"type":"PRIMARY","response":{"message":"OK","code":200},"adGroupId":"6","keyword":"$","adGroupCriterionId":"11231"},{"type":"PRIMARY","response":{"message":"OK","code":200},"adGroupId":"6","keyword":"Brunch","adGroupCriterionId":"11240"}]}'
+    http_version: '1.1'

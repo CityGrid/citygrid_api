@@ -1,0 +1,33 @@
+---
+- !ruby/struct:VCR::HTTPInteraction
+  request: !ruby/struct:VCR::Request
+    method: :get
+    uri: http://api.qa.citygrid.com:80/content/category/v2/get?keywords=pizza&numberResults=10&startIndex=0
+    body: !!null 
+    headers:
+      accept:
+      - application/json
+      content-type:
+      - Application/JSON
+      authtoken:
+      - ad2338f42980a4da7ad2293e2e329471
+  response: !ruby/struct:VCR::Response
+    status: !ruby/struct:VCR::ResponseStatus
+      code: 200
+      message: OK
+    headers:
+      date:
+      - Fri, 30 Dec 2011 00:29:24 GMT
+      server:
+      - Apache-Coyote/1.1
+      content-type:
+      - application/json
+      vary:
+      - Accept-Encoding
+      transfer-encoding:
+      - chunked
+    body: ! '{"totalNumEntries":2,"response":{"message":"OK","code":200},"categories":[{"categoryId":2321,"categoryName":"Frozen
+      Food Manufacturers","isPrimaryEligible":"true","categoryTree":[{"categoryId":2325,"categoryName":"Frozen
+      Pizza Manufacturers","isPrimaryEligible":"true"}]},{"categoryId":1684,"categoryName":"Food
+      & Dining","isPrimaryEligible":"true","categoryTree":[{"categoryId":1722,"categoryName":"Restaurants","isPrimaryEligible":"true"}]}]}'
+    http_version: '1.1'

@@ -1,0 +1,36 @@
+---
+- !ruby/struct:VCR::HTTPInteraction
+  request: !ruby/struct:VCR::Request
+    method: :post
+    uri: http://api.qa.citygrid.com:80/advertising/performance/v2/campaign/actions
+    body: ! '{"campaignId":786,"period":"last30Days"}'
+    headers:
+      accept:
+      - application/json
+      content-type:
+      - Application/JSON
+      authtoken:
+      - 209774d9ad48e5a0ebca58b892f808c6
+  response: !ruby/struct:VCR::Response
+    status: !ruby/struct:VCR::ResponseStatus
+      code: 200
+      message: OK
+    headers:
+      date:
+      - Fri, 30 Dec 2011 00:29:28 GMT
+      server:
+      - Apache-Coyote/1.1
+      content-type:
+      - application/json
+      vary:
+      - Accept-Encoding
+      transfer-encoding:
+      - chunked
+    body: ! '{"totalNumEntries":"6","userActions":[{"response":{"code":200,"message":"OK"},"campaignId":"786","cpc":"0.55","externalCampaignId":"","totalConnections":"25","totalSpend":"6.05","userAction":"View
+      User Reviews","totalBillableConnections":"11"},{"response":{"code":200,"message":"OK"},"campaignId":"786","cpc":"0.00","externalCampaignId":"","totalConnections":"5","totalSpend":"0.00","userAction":"Request
+      Driving Directions","totalBillableConnections":"0"},{"response":{"code":200,"message":"OK"},"campaignId":"786","cpc":"0.55","externalCampaignId":"","totalConnections":"105","totalSpend":"30.25","userAction":"View
+      Profile Page","totalBillableConnections":"55"},{"response":{"code":200,"message":"OK"},"campaignId":"786","cpc":"0.00","externalCampaignId":"","totalConnections":"12","totalSpend":"0.00","userAction":"View
+      Map","totalBillableConnections":"0"},{"response":{"code":200,"message":"OK"},"campaignId":"786","cpc":"0.00","externalCampaignId":"","totalConnections":"1","totalSpend":"0.00","userAction":"View
+      Menu - MenuPages","totalBillableConnections":"0"},{"response":{"code":200,"message":"OK"},"campaignId":"786","cpc":"0.55","externalCampaignId":"","totalConnections":"34","totalSpend":"10.45","userAction":"Trackable
+      Phone Call","totalBillableConnections":"19"}],"response":{"code":200,"message":"OK"}}'
+    http_version: '1.1'

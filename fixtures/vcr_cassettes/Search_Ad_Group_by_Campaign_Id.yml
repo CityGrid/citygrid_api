@@ -1,0 +1,31 @@
+---
+- !ruby/struct:VCR::HTTPInteraction
+  request: !ruby/struct:VCR::Request
+    method: :get
+    uri: http://api.qa.citygrid.com:80/advertising/adgroup/v2/get?campaignId=2434702
+    body: !!null 
+    headers:
+      accept:
+      - application/json
+      content-type:
+      - Application/JSON
+      authtoken:
+      - 209774d9ad48e5a0ebca58b892f808c6
+  response: !ruby/struct:VCR::Response
+    status: !ruby/struct:VCR::ResponseStatus
+      code: 200
+      message: OK
+    headers:
+      date:
+      - Fri, 30 Dec 2011 00:23:26 GMT
+      server:
+      - Apache-Coyote/1.1
+      content-type:
+      - application/json
+      vary:
+      - Accept-Encoding
+      transfer-encoding:
+      - chunked
+    body: ! '{"totalNumEntries":1,"adGroups":[{"id":31067682,"placeId":0,"campaignId":2434702,"businessPhone":"","displayPhone":"","meteredPhoneType":"","recordCalls":"","email":"a@b.com","name":"","status":"","bids":[{"actionTargetName":"map
+      & directions","ppe":1.8}]}]}'
+    http_version: '1.1'

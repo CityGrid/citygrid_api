@@ -1,0 +1,67 @@
+---
+- !ruby/struct:VCR::HTTPInteraction
+  request: !ruby/struct:VCR::Request
+    method: :get
+    uri: http://api.citygridmedia.com:80/content/places/v2/search/where?client_ip=192.168.0.1&format=json&publisher=citygrid&what=el%20gaucho&where=seattle,%20wa
+    body: !!null 
+    headers:
+      accept:
+      - application/json
+      content-type:
+      - Application/JSON
+  response: !ruby/struct:VCR::Response
+    status: !ruby/struct:VCR::ResponseStatus
+      code: 200
+      message: OK
+    headers:
+      date:
+      - Fri, 30 Dec 2011 00:29:34 GMT
+      server:
+      - Apache-Coyote/1.1
+      content-type:
+      - application/json
+      vary:
+      - Accept-Encoding
+      transfer-encoding:
+      - chunked
+    body: ! '{"results":{"query_id":null,"uri":"http://api.citygridmedia.com/search/places/v2/search/where?has_offers=false&format=json&page=1&rpp=20&histograms=false&what=el+gaucho&where=seattle%2C+wa&publisher=citygrid&region_type=circle","first_hit":1,"last_hit":8,"total_hits":8,"page":1,"rpp":20,"did_you_mean":null,"regions":[{"type":"city","name":"Seattle,
+      WA","latitude":47.620434,"longitude":-122.35101,"default_radius":11.9400}],"histograms":[],"locations":[{"id":41280457,"featured":false,"name":"El
+      Gaucho","address":{"street":"2505 1st Ave","city":"Seattle","state":"WA","postal_code":"98121"},"neighborhood":"Downtown,
+      Belltown","latitude":47.6147,"longitude":-122.349,"distance":null,"image":"http://images.citysearch.net/assets/imgdb/advertorial_profile/6e/18/V-SEAWA-55044086_ID51753_guide_inclusion.jpg","phone_number":"2067281337","fax_number":null,"rating":8.0,"tagline":null,"profile":"http://seattle.citysearch.com/profile/41280457/seattle_wa/el_gaucho.html","website":null,"has_video":false,"has_offers":false,"offers":null,"user_review_count":125,"sample_categories":"Bars
+      & Clubs, Restaurants, Dine At The Bar, Bar Scene, Celeb Hangout","impression_id":"000b0000005f090d959f8b47948dde08536ab83349","expansion":{"count":null,"uri":null},"tags":[{"id":164,"name":"Bars
+      & Clubs","primary":false},{"id":1722,"name":"Restaurants","primary":false},{"id":11258,"name":"Dine
+      At The Bar","primary":false},{"id":11238,"name":"Bar Scene","primary":false},{"id":11248,"name":"Celeb
+      Hangout","primary":false},{"id":11265,"name":"Fine Dining","primary":false},{"id":11234,"name":"$$$$","primary":false},{"id":11244,"name":"Business
+      Dining","primary":false},{"id":11256,"name":"Date Spot","primary":false},{"id":11379,"name":"Travelers
+      Check","primary":false},{"id":11298,"name":"People Watching","primary":false},{"id":11361,"name":"MasterCard","primary":false},{"id":11294,"name":"Notable
+      Wine List","primary":false},{"id":10015,"name":"After Work","primary":false},{"id":11284,"name":"Local
+      Favorite","primary":false},{"id":11282,"name":"Late Night Dining","primary":false},{"id":15490,"name":"South
+      American","primary":false},{"id":10013,"name":"21 & Over","primary":false},{"id":11382,"name":"Visa","primary":false},{"id":11333,"name":"American
+      Express","primary":false},{"id":11348,"name":"Diners Club","primary":false},{"id":11341,"name":"Check","primary":false},{"id":11352,"name":"Gift
+      Certificate","primary":false},{"id":11316,"name":"Steakhouse","primary":false}],"public_id":"el-gaucho-seattle-2"},{"id":45403893,"featured":false,"name":"El
+      Gaucho","address":{"street":"10 Harrison St","city":"Seattle","state":"WA","postal_code":"98109"},"neighborhood":"Magnolia
+      - Queen Anne, Magnolia / Queen Anne, Lower Queen Anne","latitude":47.6222,"longitude":-122.3565,"distance":null,"image":null,"phone_number":"2063521539","fax_number":null,"rating":null,"tagline":null,"profile":"http://seattle.citysearch.com/profile/45403893/seattle_wa/el_gaucho.html","website":null,"has_video":false,"has_offers":false,"offers":null,"user_review_count":0,"sample_categories":"Unclassified,
+      Hydroponics","impression_id":"000b0000007a80fa7e167e476ea1d175030f0e19c1","expansion":{"count":null,"uri":null},"tags":[{"id":6019,"name":"Unclassified","primary":false},{"id":22,"name":"Hydroponics","primary":false}],"public_id":"el-gaucho-seattle"},{"id":601947329,"featured":false,"name":"Inn
+      At El Gaucho","address":{"street":"2507 1st Ave","city":"Seattle","state":"WA","postal_code":"98121"},"neighborhood":"Downtown,
+      Belltown","latitude":47.614799,"longitude":-122.34893,"distance":null,"image":null,"phone_number":"2062670500","fax_number":null,"rating":8.0,"tagline":null,"profile":"http://seattle.citysearch.com/profile/601947329/seattle_wa/inn_at_el_gaucho.html","website":null,"has_video":false,"has_offers":false,"offers":null,"user_review_count":1,"sample_categories":"Hotels
+      & Motels","impression_id":"000b0000002c741b16eaa94cf68be881d460de332a","expansion":{"count":null,"uri":null},"tags":[{"id":4295,"name":"Hotels
+      & Motels","primary":false}],"public_id":"inn-at-el-gaucho-seattle"},{"id":44963930,"featured":false,"name":"Inn
+      At El Gaucho","address":{"street":"2505 1st Ave","city":"Seattle","state":"WA","postal_code":"98121"},"neighborhood":"Belltown,
+      Downtown","latitude":47.6147,"longitude":-122.349,"distance":null,"image":null,"phone_number":"2067281133","fax_number":null,"rating":8.0,"tagline":null,"profile":"http://seattle.citysearch.com/profile/44963930/seattle_wa/inn_at_el_gaucho.html","website":null,"has_video":false,"has_offers":false,"offers":null,"user_review_count":0,"sample_categories":"Hotels
+      & Motels, MasterCard, Visa","impression_id":"000b000000e5552dfbaee747b99849627d9a999d56","expansion":{"count":null,"uri":null},"tags":[{"id":4295,"name":"Hotels
+      & Motels","primary":false},{"id":11361,"name":"MasterCard","primary":false},{"id":11382,"name":"Visa","primary":false}],"public_id":"inn-at-el-gaucho-seattle-3"},{"id":41791006,"featured":false,"name":"Inn
+      at El Gaucho","address":{"street":"2505 First Avenue","city":"Seattle","state":"WA","postal_code":"98121"},"neighborhood":"Belltown,
+      Downtown","latitude":47.6147,"longitude":-122.349,"distance":null,"image":"http://images.citysearch.net/assets/imgdb/profile/9c/60/41791006p1.jpg","phone_number":"2062370758","fax_number":null,"rating":6.0,"tagline":null,"profile":"http://seattle.citysearch.com/profile/41791006/seattle_wa/inn_at_el_gaucho.html","website":null,"has_video":false,"has_offers":false,"offers":null,"user_review_count":14,"sample_categories":"Tourist
+      Hotels, Lodging, Business Hotels, Hotels & Motels, Boutique Hotels","impression_id":"000b0000006b407fd11c514f41ba1cc0004766b4d5","expansion":{"count":null,"uri":null},"tags":[{"id":4303,"name":"Tourist
+      Hotels","primary":false},{"id":4287,"name":"Lodging","primary":false},{"id":4300,"name":"Business
+      Hotels","primary":false},{"id":4295,"name":"Hotels & Motels","primary":false},{"id":4298,"name":"Boutique
+      Hotels","primary":false},{"id":11361,"name":"MasterCard","primary":false},{"id":12636,"name":"Hotel
+      Dining","primary":false},{"id":11382,"name":"Visa","primary":false},{"id":11333,"name":"American
+      Express","primary":false},{"id":12645,"name":"Romantic","primary":false}],"public_id":"inn-at-el-gaucho-seattle-2"},{"id":681408060,"featured":false,"name":"El
+      Gaucho Belltown","address":{"street":"2505 1st Ave","city":"Seattle","state":"WA","postal_code":"98121"},"neighborhood":"Belltown,
+      Downtown","latitude":47.614747,"longitude":-122.348845,"distance":null,"image":null,"phone_number":"2067281337","fax_number":null,"rating":null,"tagline":null,"profile":"http://seattle.citysearch.com/profile/681408060/seattle_wa/el_gaucho_belltown.html","website":null,"has_video":false,"has_offers":false,"offers":null,"user_review_count":11,"sample_categories":"Unclassified","impression_id":"000b00000044f58ac2450b423b9a41e2a122e66d4f","expansion":{"count":null,"uri":null},"tags":[{"id":6019,"name":"Unclassified","primary":false}],"public_id":"el-gaucho-belltown-seattle"},{"id":711406320,"featured":false,"name":"El
+      Gaucho Seattle","address":{"street":"2505 1st Ave","city":"Seattle","state":"WA","postal_code":"98121"},"neighborhood":"Downtown,
+      Belltown","latitude":47.614747,"longitude":-122.348845,"distance":null,"image":null,"phone_number":"2067281337","fax_number":null,"rating":null,"tagline":null,"profile":"http://seattle.citysearch.com/profile/711406320/seattle_wa/el_gaucho_seattle.html","website":null,"has_video":false,"has_offers":false,"offers":null,"user_review_count":11,"sample_categories":"Unclassified","impression_id":"000b00000032d82496f5f948928e7cc63d8abcae7f","expansion":{"count":null,"uri":null},"tags":[{"id":6019,"name":"Unclassified","primary":false}],"public_id":"el-gaucho-seattle-seattle"},{"id":659438890,"featured":false,"name":"EL
+      GAUCHO PRIVATE DINING","address":{"street":"2505 1st Ave","city":"Seattle","state":"WA","postal_code":"98121"},"neighborhood":"Belltown,
+      Downtown","latitude":47.614749,"longitude":-122.348847,"distance":null,"image":null,"phone_number":"2067281337","fax_number":null,"rating":null,"tagline":null,"profile":"http://seattle.citysearch.com/profile/659438890/seattle_wa/el_gaucho_private_dining.html","website":null,"has_video":false,"has_offers":false,"offers":null,"user_review_count":0,"sample_categories":"Restaurants","impression_id":"000b000000fd7d7cfa76364df1adf6b142b527ab64","expansion":{"count":null,"uri":null},"tags":[{"id":1722,"name":"Restaurants","primary":false}],"public_id":"el-gaucho-private-dining-seattle"}]}}'
+    http_version: '1.1'
