@@ -14,7 +14,6 @@ Gem::Specification.new do |s|
   s.email = "fu7iin@gmail.com"
   s.extra_rdoc_files = [
     "LICENSE.txt",
-    "README",
     "README.rdoc"
   ]
   s.files = [
@@ -24,11 +23,9 @@ Gem::Specification.new do |s|
     "Gemfile",
     "Gemfile.lock",
     "LICENSE.txt",
-    "README",
     "README.rdoc",
     "Rakefile",
     "VERSION",
-    "citygrid_api-0.0.6.gem",
     "citygrid_api.gemspec",
     "citygrid_api.yml.backup",
     "citygrid_api.yml.sample",
