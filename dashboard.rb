@@ -64,7 +64,7 @@ get '/' do
   Riot.alone!
 
   # test_paths = Dir.glob "test/**/test_*.rb"  
-  test_paths = Dir.glob("test/api/ad_center/test_*.rb").sort
+  test_paths = Dir.glob("test/**/test_*.rb").sort
   # test_paths = ["test/api/ad_center/test_account.rb"]
   
   @results = []
