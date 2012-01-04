@@ -1,0 +1,91 @@
+---
+- !ruby/struct:VCR::HTTPInteraction
+  request: !ruby/struct:VCR::Request
+    method: :get
+    uri: http://api.citygridmedia.com:80/content/reviews/v2/search/where?client_ip=192.168.0.1&format=json&listing_id=628554020&publisher=citygrid
+    body: !!null 
+    headers:
+      accept:
+      - application/json
+      content-type:
+      - Application/JSON
+  response: !ruby/struct:VCR::Response
+    status: !ruby/struct:VCR::ResponseStatus
+      code: 200
+      message: OK
+    headers:
+      date:
+      - Wed, 04 Jan 2012 01:30:57 GMT
+      server:
+      - Apache-Coyote/1.1
+      content-type:
+      - application/json
+      vary:
+      - Accept-Encoding
+      transfer-encoding:
+      - chunked
+    body: ! '{"results":{"query_id":null,"uri":"http://api.citygridmedia.com/reviews/reviews/v2/search/where?listing_id=628554020&format=json&page=1&rpp=20&radius=5.0&histograms=false&publisher=citygrid&region_type=circle","first_hit":1,"last_hit":11,"total_hits":11,"page":1,"rpp":20,"did_you_mean":null,"regions":[],"histograms":[],"reviews":[{"review_id":"judy_-2059525145","review_title":"Gourmet
+      and NY Style","review_text":"How can it go wrong with those two combination?
+      Gourmet and NY Style thin crust.  New ownership and it''s no longer shady like
+      the old place.  Cleaner, much friendlier, completely new.  Bella Kitchen is
+      here to stay and I would go there…","pros":null,"cons":null,"review_rating":10,"review_date":"2010-01-25T23:19:21Z","review_author":"Guest
+      G.","helpful_count":null,"unhelpful_count":null,"type":"external_user_review","source":"Judy''sBook","reference_id":"1","source_id":"13","attribution_logo":"http://static2.judysbook.com/img/partners/citygrid/jb_iab_88_31.jpg","attribution_text":"Judy''sBook","attribution_url":"http://www.judysbook.com/","listing_id":628554020,"business_name":"Bella
+      Kitchen","impression_id":"000b00000317ae5788f0d048d7b52d4fdec0b27fba","review_author_url":null,"review_url":"http://www.judysbook.com/members/101311/posts/2010/1/4927819/","public_id":"bella-kitchen-kirkland"},{"review_id":"cg_203303941","review_title":"Bella
+      Kitchen","review_text":"Experience a wholesome pizza hot from the oven, handcrafted
+      from real, fresh ingredients. Worlds apart from the oily, bland pizzas out there.
+      It''s all about the fresh ingredients! This is what a pizza should be. They
+      make fantastic…","pros":null,"cons":null,"review_rating":0,"review_date":"2011-01-13T18:02:31Z","review_author":"CS
+      Contributor","helpful_count":0,"unhelpful_count":0,"type":"editorial_review","source":"CITYSEARCH","reference_id":"1","source_id":"5","attribution_logo":null,"attribution_text":"Citysearch","attribution_url":"
+      ","listing_id":628554020,"business_name":"Bella Kitchen","impression_id":"000b000003aba8ef4536b64387aefb5bae48aeca97","review_author_url":"http://my.citysearch.com/members/public/profile/CS+Contributor?i=000b000003aba8ef4536b64387aefb5bae48aeca97","review_url":"http://seattle.citysearch.com/review/628554020?reviewId=203303941","public_id":"bella-kitchen-kirkland"},{"review_id":"cg_51216721","review_title":"Delicious","review_text":"I
+      tried this place recently for the first time and i found out it was under new
+      ownership. I ordered a personal Hawaiian pizza (Tropicali) and it was extremely
+      good! The new owner was super friendly! After that, i took my girlfriend…","pros":"Best
+      pizza and salad in town!","cons":"In the middle of renovation","review_rating":10,"review_date":"2009-12-11T17:02:54Z","review_author":"Peter
+      Robertson","helpful_count":0,"unhelpful_count":0,"type":"user_review","source":"CITYSEARCH","reference_id":"1","source_id":"5","attribution_logo":null,"attribution_text":"Citysearch","attribution_url":"
+      ","listing_id":628554020,"business_name":"Bella Kitchen","impression_id":"000b00000321940e2470c74b81a5ce82574b99f4f4","review_author_url":"http://my.citysearch.com/members/public/profile/Peter+Robertson?i=000b00000321940e2470c74b81a5ce82574b99f4f4","review_url":"http://seattle.citysearch.com/review/628554020?reviewId=51216721","public_id":"bella-kitchen-kirkland"},{"review_id":"cg_51255921","review_title":"Great
+      pizza place","review_text":"I''ve seen signs saying slice and soda for 5$. i
+      wanted to try it out and found out that they didnt have this deal because of
+      new ownership. They now have a 10\" personal pan pizza for 5$. Even better deal.
+      I looked at this menu and…","pros":"Best gourmet pizza at a low price","cons":"nothing","review_rating":10,"review_date":"2009-12-14T22:45:39Z","review_author":"BLAM","helpful_count":0,"unhelpful_count":0,"type":"user_review","source":"CITYSEARCH","reference_id":"1","source_id":"5","attribution_logo":null,"attribution_text":"Citysearch","attribution_url":"
+      ","listing_id":628554020,"business_name":"Bella Kitchen","impression_id":"000b0000034718cea32d1648c4bb3dfa228b742fc4","review_author_url":"http://my.citysearch.com/members/public/profile/BLAM?i=000b0000034718cea32d1648c4bb3dfa228b742fc4","review_url":"http://seattle.citysearch.com/review/628554020?reviewId=51255921","public_id":"bella-kitchen-kirkland"},{"review_id":"cg_51314721","review_title":"Good
+      NY style pizza","review_text":"Really good New York style pizza in Kirkland.
+      The delivery guy made it quickly and he was polite young dude. They take a credit
+      card over the phone. Small lunch pizza''s for dine in or take out too.","pros":"Good
+      sauce on the pizza. Fast delivery.","cons":null,"review_rating":8,"review_date":"2009-12-18T19:35:13Z","review_author":"DasCoug","helpful_count":0,"unhelpful_count":0,"type":"user_review","source":"CITYSEARCH","reference_id":"1","source_id":"5","attribution_logo":null,"attribution_text":"Citysearch","attribution_url":"
+      ","listing_id":628554020,"business_name":"Bella Kitchen","impression_id":"000b000003202cb72e9c2643468557c95627d494af","review_author_url":"http://my.citysearch.com/members/public/profile/DasCoug?i=000b000003202cb72e9c2643468557c95627d494af","review_url":"http://seattle.citysearch.com/review/628554020?reviewId=51314721","public_id":"bella-kitchen-kirkland"},{"review_id":"cg_51329631","review_title":"Great
+      Price Better Pizza","review_text":"New ownership only made this place more efficient.  I''m
+      a very picker eater coming from 6 years of restaurant management.  These guys
+      have a good thing going on.  The price is perfect.  This is a place I recommend
+      to everyone.","pros":"Great Pizza not just run of the mill Pizza.  Friendly
+      Staff","cons":"None thus far.","review_rating":10,"review_date":"2009-12-20T18:13:27Z","review_author":"brjackbauer","helpful_count":0,"unhelpful_count":0,"type":"user_review","source":"CITYSEARCH","reference_id":"1","source_id":"5","attribution_logo":null,"attribution_text":"Citysearch","attribution_url":"
+      ","listing_id":628554020,"business_name":"Bella Kitchen","impression_id":"000b000003a77c576c3b4644ad8799ba4d3c3cebd9","review_author_url":"http://my.citysearch.com/members/public/profile/brjackbauer?i=000b000003a77c576c3b4644ad8799ba4d3c3cebd9","review_url":"http://seattle.citysearch.com/review/628554020?reviewId=51329631","public_id":"bella-kitchen-kirkland"},{"review_id":"cg_51487211","review_title":"Citysearch
+      Editorial Review","review_text":"Formerly known as Top Pizza, this Kirkland
+      pizzeria dishes out New York-style pies at affordable prices.","pros":null,"cons":null,"review_rating":0,"review_date":"2010-01-05T15:35:08Z","review_author":"Chelsea
+      Lin","helpful_count":0,"unhelpful_count":0,"type":"editorial_review","source":"CITYSEARCH","reference_id":"1","source_id":"5","attribution_logo":null,"attribution_text":"Citysearch","attribution_url":"
+      ","listing_id":628554020,"business_name":"Bella Kitchen","impression_id":"000b000003b487503d9dba48f9beb5f45e9d427618","review_author_url":"http://my.citysearch.com/members/public/profile/Chelsea+Lin?i=000b000003b487503d9dba48f9beb5f45e9d427618","review_url":"http://seattle.citysearch.com/review/628554020?reviewId=51487211","public_id":"bella-kitchen-kirkland"},{"review_id":"cg_53138011","review_title":"A
+      Wonderful Find","review_text":"The pizza is good and the pastas and salads are
+      outstanding.  This is true gourmet food at very reasonable prices served out
+      of a small, unpretentious location.  The best vegetarian lasagna I have ever
+      eaten.  Ilya has served us when we…","pros":"Terrific Food","cons":"No Beer
+      or Wine","review_rating":10,"review_date":"2010-01-18T13:26:18Z","review_author":"KirklandFrank","helpful_count":0,"unhelpful_count":0,"type":"user_review","source":"CITYSEARCH","reference_id":"1","source_id":"5","attribution_logo":null,"attribution_text":"Citysearch","attribution_url":"
+      ","listing_id":628554020,"business_name":"Bella Kitchen","impression_id":"000b0000036c7d09ea4a134b519f3e316f8d4dc3a0","review_author_url":"http://my.citysearch.com/members/public/profile/KirklandFrank?i=000b0000036c7d09ea4a134b519f3e316f8d4dc3a0","review_url":"http://seattle.citysearch.com/review/628554020?reviewId=53138011","public_id":"bella-kitchen-kirkland"},{"review_id":"cg_60586521","review_title":"not
+      good","review_text":"my husband ordered from here a week ago and i was amazed
+      by how poorly he was treated. people were texting on their phone while my husband
+      was ordering, they were occupied by the tv and computer it seemed. the place
+      is beautiful inside, …","pros":"thin crust was good","cons":"people there are
+      rude","review_rating":2,"review_date":"2010-02-28T18:19:40Z","review_author":"MALINA
+      JACOBS","helpful_count":0,"unhelpful_count":0,"type":"user_review","source":"CITYSEARCH","reference_id":"1","source_id":"5","attribution_logo":null,"attribution_text":"Citysearch","attribution_url":"
+      ","listing_id":628554020,"business_name":"Bella Kitchen","impression_id":"000b0000033a2fd06b72fd4f369e6121d505312ef3","review_author_url":"http://my.citysearch.com/members/public/profile/MALINA+JACOBS?i=000b0000033a2fd06b72fd4f369e6121d505312ef3","review_url":"http://seattle.citysearch.com/review/628554020?reviewId=60586521","public_id":"bella-kitchen-kirkland"},{"review_id":"cg_63936251","review_title":"Awesome
+      Food!","review_text":"This place is awesome! I have eatten here many times and
+      enjoy the food very much. The pizza''s have soooo much flavor in them it''s
+      amazing. I was talking with one of the chef''s their about the pizza (Very friendly
+      staff) they said that…","pros":"Best Pizza, Great Calzones, Friendly, GOOD PRICE","cons":"None
+      really","review_rating":10,"review_date":"2010-03-18T10:33:29Z","review_author":"dbacon11223","helpful_count":0,"unhelpful_count":0,"type":"user_review","source":"CITYSEARCH","reference_id":"1","source_id":"5","attribution_logo":null,"attribution_text":"Citysearch","attribution_url":"
+      ","listing_id":628554020,"business_name":"Bella Kitchen","impression_id":"000b000003adc40b552f5c47e6a442bcb3d0e6a6b3","review_author_url":"http://my.citysearch.com/members/public/profile/dbacon11223?i=000b000003adc40b552f5c47e6a442bcb3d0e6a6b3","review_url":"http://seattle.citysearch.com/review/628554020?reviewId=63936251","public_id":"bella-kitchen-kirkland"},{"review_id":"cg_79945861","review_title":"Pizza
+      - Not horrible","review_text":"When here with 2 sons and brother.  My sons are
+      pizza guys and know good from bad.  This pizza was not so good as the person
+      who made it obviously over-docked it making it paper thin and did not give the
+      dough time to rise after docking…","pros":"clean store, great cheese and toppings","cons":"dough
+      and sauce","review_rating":4,"review_date":"2010-06-16T17:11:31Z","review_author":"bunniboo","helpful_count":0,"unhelpful_count":0,"type":"user_review","source":"CITYSEARCH","reference_id":"1","source_id":"5","attribution_logo":null,"attribution_text":"Citysearch","attribution_url":"
+      ","listing_id":628554020,"business_name":"Bella Kitchen","impression_id":"000b0000038e5ccbc3cef34749b045806f5ed5d717","review_author_url":"http://my.citysearch.com/members/public/profile/bunniboo?i=000b0000038e5ccbc3cef34749b045806f5ed5d717","review_url":"http://seattle.citysearch.com/review/628554020?reviewId=79945861","public_id":"bella-kitchen-kirkland"}]}}'
+    http_version: '1.1'

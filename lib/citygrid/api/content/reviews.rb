@@ -2,8 +2,11 @@ class CityGrid
   class API
     class Content
       class Reviews < Content
-        base_uri "api.citygridmedia.com"
-        endpoint "/content/reviews/v2/search/where"
+        define_action :where, :get, "search/where",
+          :auth_token => false, 
+          :publisher => true, 
+          :client_ip => true, 
+          :format => true
       end
     end
   end

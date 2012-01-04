@@ -2,7 +2,7 @@
 - !ruby/struct:VCR::HTTPInteraction
   request: !ruby/struct:VCR::Request
     method: :get
-    uri: http://api.qa.citygrid.com:80/advertising/budget/v2/recommend/get?listingId=833372
+    uri: http://sandbox-api.citygrid.com:80/advertising/budget/v2/recommend/get?listingId=833372
     body: !!null 
     headers:
       accept:
@@ -10,21 +10,40 @@
       content-type:
       - Application/JSON
       authtoken:
-      - bbe02eb5c9b9cdff85a96996af85af26
+      - ea42560cc6365e5ad550e61bc6059471
   response: !ruby/struct:VCR::Response
     status: !ruby/struct:VCR::ResponseStatus
-      code: 200
-      message: OK
+      code: 403
+      message: Forbidden
     headers:
       date:
-      - Fri, 30 Dec 2011 19:53:08 GMT
+      - Sat, 31 Dec 2011 01:12:46 GMT
       server:
-      - Apache-Coyote/1.1
+      - Apache/2.2.4 (Unix) mod_perl/2.0.5 Perl/v5.8.5
+      content-length:
+      - '351'
       content-type:
-      - application/json
-      vary:
-      - Accept-Encoding
-      transfer-encoding:
-      - chunked
-    body: ! '{"totalNumEntries":3,"budgetSuggestionResources":[{"budgetType":"Aggressive","monthlyFee":19.95,"costPerConnection":2.65,"budget1":657,"budget2":1000,"trackedCalls":19,"mapViews":32,"websiteViews":103,"pageViews":1147},{"budgetType":"Competitive","monthlyFee":19.95,"costPerConnection":2.65,"budget1":313,"budget2":656,"trackedCalls":13,"mapViews":21,"websiteViews":67,"pageViews":752},{"budgetType":"Conservative","monthlyFee":19.95,"costPerConnection":2.65,"budget1":299,"budget2":312,"trackedCalls":6,"mapViews":10,"websiteViews":32,"pageViews":357}],"response":{"message":"OK","code":200}}'
+      - text/html; charset=iso-8859-1
+    body: ! '<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+
+      <html><head>
+
+      <title>403 Forbidden</title>
+
+      </head><body>
+
+      <h1>Forbidden</h1>
+
+      <p>You don''t have permission to access /advertising/budget/v2/recommend/get
+
+      on this server.</p>
+
+      <hr>
+
+      <address>Apache/2.2.4 (Unix) mod_perl/2.0.5 Perl/v5.8.5 Server at sandbox-api.citygrid.com
+      Port 80</address>
+
+      </body></html>
+
+'
     http_version: '1.1'

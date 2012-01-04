@@ -2,7 +2,7 @@
 - !ruby/struct:VCR::HTTPInteraction
   request: !ruby/struct:VCR::Request
     method: :get
-    uri: https://api-qassl.citygrid.com:443/accounts/account/v2/get?id=1250702
+    uri: https://sandbox-api.citygrid.com:443/accounts/account/v2/get?id=1250702
     body: !!null 
     headers:
       accept:
@@ -10,22 +10,33 @@
       content-type:
       - Application/JSON
       authtoken:
-      - 90c4e1da3460cc162dca10c0d3a56f4b
+      - 20f1918ababef692f0b7e71940acbe4b
   response: !ruby/struct:VCR::Response
     status: !ruby/struct:VCR::ResponseStatus
-      code: 200
-      message: OK
+      code: 404
+      message: Not Found
     headers:
       date:
-      - Fri, 30 Dec 2011 19:52:42 GMT
+      - Sat, 31 Dec 2011 01:11:08 GMT
       server:
-      - Apache-Coyote/1.1
+      - Apache/2.2.16 (Unix) mod_ssl/2.2.16 OpenSSL/0.9.8e-fips-rhel5
+      content-length:
+      - '221'
       content-type:
-      - application/json
-      vary:
-      - Accept-Encoding
-      transfer-encoding:
-      - chunked
-    body: ! '{"totalNumEntries":1,"accountList":[{"id":"1250702","state":"IA","response":{"message":"OK","code":200},"status":"ACTIVE","firstName":"Ara","lastName":"Ebrahimi","address1":"9831
-      P Ave","city":"Maynard","businessName":"A F Farms Ltd","phone":"(563)637-2857","zipCode":"50655"}]}'
+      - text/html; charset=iso-8859-1
+    body: ! '<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+
+      <html><head>
+
+      <title>404 Not Found</title>
+
+      </head><body>
+
+      <h1>Not Found</h1>
+
+      <p>The requested URL /accounts/account/v2/get was not found on this server.</p>
+
+      </body></html>
+
+'
     http_version: '1.1'

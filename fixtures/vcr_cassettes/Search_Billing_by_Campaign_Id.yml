@@ -2,7 +2,7 @@
 - !ruby/struct:VCR::HTTPInteraction
   request: !ruby/struct:VCR::Request
     method: :get
-    uri: http://api.qa.citygrid.com:80/advertising/billing/v2/get?campaignId=16631
+    uri: http://sandbox-api.citygrid.com:80/advertising/billing/v2/get?campaignId=16631
     body: !!null 
     headers:
       accept:
@@ -10,21 +10,40 @@
       content-type:
       - Application/JSON
       authtoken:
-      - 90c4e1da3460cc162dca10c0d3a56f4b
+      - 20f1918ababef692f0b7e71940acbe4b
   response: !ruby/struct:VCR::Response
     status: !ruby/struct:VCR::ResponseStatus
-      code: 200
-      message: OK
+      code: 403
+      message: Forbidden
     headers:
       date:
-      - Fri, 30 Dec 2011 19:53:07 GMT
+      - Sat, 31 Dec 2011 01:12:46 GMT
       server:
-      - Apache-Coyote/1.1
+      - Apache/2.2.4 (Unix) mod_perl/2.0.5 Perl/v5.8.5
+      content-length:
+      - '342'
       content-type:
-      - application/json
-      vary:
-      - Accept-Encoding
-      transfer-encoding:
-      - chunked
-    body: ! '{"totalNumEntries":1,"billing":{"campaignId":"16631","amountDue":"0","nextBillingDate":"20110930","lastPaymentAttempted":"309.95","lastPaymentDate":"20110822","response":{"code":200,"message":"OK"}}}'
+      - text/html; charset=iso-8859-1
+    body: ! '<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+
+      <html><head>
+
+      <title>403 Forbidden</title>
+
+      </head><body>
+
+      <h1>Forbidden</h1>
+
+      <p>You don''t have permission to access /advertising/billing/v2/get
+
+      on this server.</p>
+
+      <hr>
+
+      <address>Apache/2.2.4 (Unix) mod_perl/2.0.5 Perl/v5.8.5 Server at sandbox-api.citygrid.com
+      Port 80</address>
+
+      </body></html>
+
+'
     http_version: '1.1'

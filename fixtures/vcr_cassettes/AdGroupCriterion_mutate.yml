@@ -2,7 +2,7 @@
 - !ruby/struct:VCR::HTTPInteraction
   request: !ruby/struct:VCR::Request
     method: :post
-    uri: http://api.qa.citygrid.com:80/advertising/adgroupcriterion/v2/mutate
+    uri: http://sandbox-api.citygrid.com:80/advertising/adgroupcriterion/v2/mutate
     body: ! '{"mutateOperationListResource":[{"operator":"ADD","operand":{"adGroupId":"2","adGroupAdId":"1","adGroupCriterionId":"1722","type":"2"}},{"operator":"REMOVE","operand":{"adGroupId":"2","adGroupAdId":"1","adGroupCriterionId":"1722","type":"2"}}]}'
     headers:
       accept:
@@ -10,14 +10,14 @@
       content-type:
       - Application/JSON
       authtoken:
-      - 90c4e1da3460cc162dca10c0d3a56f4b
+      - 20f1918ababef692f0b7e71940acbe4b
   response: !ruby/struct:VCR::Response
     status: !ruby/struct:VCR::ResponseStatus
       code: 200
       message: OK
     headers:
       date:
-      - Fri, 30 Dec 2011 19:53:05 GMT
+      - Sat, 31 Dec 2011 01:12:36 GMT
       server:
       - Apache-Coyote/1.1
       content-type:

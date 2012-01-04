@@ -2,7 +2,7 @@
 - !ruby/struct:VCR::HTTPInteraction
   request: !ruby/struct:VCR::Request
     method: :post
-    uri: https://api-qassl.citygrid.com:443/accounts/user/v2/login?password=pppppp&username=kunimom
+    uri: https://sandbox-api.citygrid.com:443/accounts/user/v2/login?password=pppppp&username=kunimom
     body: !!null 
     headers: !!null 
   response: !ruby/struct:VCR::Response
@@ -11,7 +11,7 @@
       message: OK
     headers:
       date:
-      - Fri, 30 Dec 2011 19:52:53 GMT
+      - Sat, 31 Dec 2011 01:12:22 GMT
       server:
       - Apache-Coyote/1.1
       content-type:
@@ -20,12 +20,12 @@
       - Accept-Encoding
       transfer-encoding:
       - chunked
-    body: ! '{"code":201,"authToken":"bbe02eb5c9b9cdff85a96996af85af26"}'
+    body: ! '{"code":201,"authToken":"ea42560cc6365e5ad550e61bc6059471"}'
     http_version: '1.1'
 - !ruby/struct:VCR::HTTPInteraction
   request: !ruby/struct:VCR::Request
     method: :get
-    uri: https://api-qassl.citygrid.com:443/accounts/mop/v2/get?accountId=111
+    uri: https://sandbox-api.citygrid.com:443/accounts/mop/v2/get?accountId=111
     body: !!null 
     headers:
       accept:
@@ -33,27 +33,33 @@
       content-type:
       - Application/JSON
       authtoken:
-      - bbe02eb5c9b9cdff85a96996af85af26
+      - ea42560cc6365e5ad550e61bc6059471
   response: !ruby/struct:VCR::Response
     status: !ruby/struct:VCR::ResponseStatus
-      code: 200
-      message: OK
+      code: 404
+      message: Not Found
     headers:
       date:
-      - Fri, 30 Dec 2011 19:52:54 GMT
+      - Sat, 31 Dec 2011 01:12:23 GMT
       server:
-      - Apache-Coyote/1.1
+      - Apache/2.2.16 (Unix) mod_ssl/2.2.16 OpenSSL/0.9.8e-fips-rhel5
+      content-length:
+      - '217'
       content-type:
-      - application/json
-      vary:
-      - Accept-Encoding
-      transfer-encoding:
-      - chunked
-    body: ! '{"totalNumEntries":2,"mopResources":[{"paymentType":"ACH","accountNumber":"[locked]d6EEySDBLAR+RA==","routingNumber":"031200730","id":13351,"state":"TX","country":"united
-      states","description":null,"active":false,"firstName":"Mary","lastName":"Martinez","phoneNumber":"(512)478-9222","address1":"1300
-      Belonia Terrace","city":"Austin","postalCode":"78741","address2":null,"accountId":111,"securityCode":null,"paymentType":"ACH","nameOnAccount":"Enchiladas
-      Y Mas, Inc."},{"paymentType":"Check","id":12211,"state":"TX","country":"united
-      states","description":null,"active":true,"firstName":"Mary","lastName":"Martinez","phoneNumber":"(512)478-9222","address1":"1300
-      Belonia Terrace","city":"Austin","postalCode":"78741","address2":null,"accountId":111,"securityCode":null,"paymentType":"Check","nameOnAccount":"Enchiladas
-      Y Mas, Inc."}],"response":{"message":"OK","code":200}}'
+      - text/html; charset=iso-8859-1
+    body: ! '<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+
+      <html><head>
+
+      <title>404 Not Found</title>
+
+      </head><body>
+
+      <h1>Not Found</h1>
+
+      <p>The requested URL /accounts/mop/v2/get was not found on this server.</p>
+
+      </body></html>
+
+'
     http_version: '1.1'

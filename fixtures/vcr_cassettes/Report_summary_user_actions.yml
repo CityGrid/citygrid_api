@@ -2,7 +2,7 @@
 - !ruby/struct:VCR::HTTPInteraction
   request: !ruby/struct:VCR::Request
     method: :post
-    uri: http://api.qa.citygrid.com:80/advertising/performance/v2/campaign/actions
+    uri: http://sandbox-api.citygrid.com:80/advertising/performance/v2/campaign/actions
     body: ! '{"campaignId":786,"period":"last30Days"}'
     headers:
       accept:
@@ -10,14 +10,14 @@
       content-type:
       - Application/JSON
       authtoken:
-      - 90c4e1da3460cc162dca10c0d3a56f4b
+      - 20f1918ababef692f0b7e71940acbe4b
   response: !ruby/struct:VCR::Response
     status: !ruby/struct:VCR::ResponseStatus
       code: 200
       message: OK
     headers:
       date:
-      - Fri, 30 Dec 2011 19:53:19 GMT
+      - Sat, 31 Dec 2011 01:13:17 GMT
       server:
       - Apache-Coyote/1.1
       content-type:
@@ -26,11 +26,15 @@
       - Accept-Encoding
       transfer-encoding:
       - chunked
-    body: ! '{"totalNumEntries":"6","userActions":[{"response":{"code":200,"message":"OK"},"campaignId":"786","cpc":"0.55","externalCampaignId":"","totalConnections":"22","totalSpend":"4.40","userAction":"View
-      User Reviews","totalBillableConnections":"8"},{"response":{"code":200,"message":"OK"},"campaignId":"786","cpc":"0.00","externalCampaignId":"","totalConnections":"5","totalSpend":"0.00","userAction":"Request
-      Driving Directions","totalBillableConnections":"0"},{"response":{"code":200,"message":"OK"},"campaignId":"786","cpc":"0.55","externalCampaignId":"","totalConnections":"109","totalSpend":"32.45","userAction":"View
-      Profile Page","totalBillableConnections":"59"},{"response":{"code":200,"message":"OK"},"campaignId":"786","cpc":"0.00","externalCampaignId":"","totalConnections":"13","totalSpend":"0.00","userAction":"View
-      Map","totalBillableConnections":"0"},{"response":{"code":200,"message":"OK"},"campaignId":"786","cpc":"0.00","externalCampaignId":"","totalConnections":"1","totalSpend":"0.00","userAction":"View
-      Menu - MenuPages","totalBillableConnections":"0"},{"response":{"code":200,"message":"OK"},"campaignId":"786","cpc":"0.55","externalCampaignId":"","totalConnections":"37","totalSpend":"12.10","userAction":"Trackable
-      Phone Call","totalBillableConnections":"22"}],"response":{"code":200,"message":"OK"}}'
+    body: ! '{"totalNumEntries":"10","userActions":[{"response":{"code":200,"message":"OK"},"campaignId":"786","cpc":"1.86","externalCampaignId":"","totalConnections":"860","totalSpend":"160.00","userAction":"Click
+      to website","totalBillableConnections":"86"},{"response":{"code":200,"message":"OK"},"campaignId":"786","cpc":"2.05","externalCampaignId":"","totalConnections":"660","totalSpend":"135.00","userAction":"View
+      Profile Page","totalBillableConnections":"66"},{"response":{"code":200,"message":"OK"},"campaignId":"786","cpc":"2.39","externalCampaignId":"","totalConnections":"460","totalSpend":"110.00","userAction":"View
+      menu - menu pages","totalBillableConnections":"46"},{"response":{"code":200,"message":"OK"},"campaignId":"786","cpc":"2.29","externalCampaignId":"","totalConnections":"720","totalSpend":"165.00","userAction":"Send
+      Profile Page to Email","totalBillableConnections":"72"},{"response":{"code":200,"message":"OK"},"campaignId":"786","cpc":"2.40","externalCampaignId":"","totalConnections":"750","totalSpend":"180.00","userAction":"View
+      Map","totalBillableConnections":"75"},{"response":{"code":200,"message":"OK"},"campaignId":"786","cpc":"1.92","externalCampaignId":"","totalConnections":"780","totalSpend":"150.00","userAction":"Watch
+      Video","totalBillableConnections":"78"},{"response":{"code":200,"message":"OK"},"campaignId":"786","cpc":"2.04","externalCampaignId":"","totalConnections":"810","totalSpend":"165.00","userAction":"Trackable
+      Phone Call","totalBillableConnections":"81"},{"response":{"code":200,"message":"OK"},"campaignId":"786","cpc":"2.14","externalCampaignId":"","totalConnections":"840","totalSpend":"180.00","userAction":"View
+      Offer","totalBillableConnections":"84"},{"response":{"code":200,"message":"OK"},"campaignId":"786","cpc":"2.24","externalCampaignId":"","totalConnections":"870","totalSpend":"195.00","userAction":"View
+      User Reviews","totalBillableConnections":"87"},{"response":{"code":200,"message":"OK"},"campaignId":"786","cpc":"2.33","externalCampaignId":"","totalConnections":"900","totalSpend":"210.00","userAction":"Request
+      Driving Directions","totalBillableConnections":"90"}],"response":{"code":200,"message":"OK"}}'
     http_version: '1.1'

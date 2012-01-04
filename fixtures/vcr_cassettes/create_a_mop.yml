@@ -2,7 +2,7 @@
 - !ruby/struct:VCR::HTTPInteraction
   request: !ruby/struct:VCR::Request
     method: :post
-    uri: https://api-qassl.citygrid.com:443/accounts/mop/v2/mutate
+    uri: https://sandbox-api.citygrid.com:443/accounts/mop/v2/mutate
     body: ! '{"mutateOperationListResource":[{"operator":"ADD","operand":{"cardNumber":"4112344112344113","expirationMonth":12,"expirationYear":2012,"nameOnAccount":"Ara
       Tatous","cardType":"Visa","state":"NY","description":"test addMOP","firstName":"Ara","lastName":"Tatous","phoneNumber":"4252838811","address1":"3131
       Montrose Ave","address2":"Apt. 9","city":"LaCrescenta","postalCode":"10016","accountId":2458392,"securityCode":"719","paymentType":"Credit
@@ -13,21 +13,33 @@
       content-type:
       - Application/JSON
       authtoken:
-      - bbe02eb5c9b9cdff85a96996af85af26
+      - ea42560cc6365e5ad550e61bc6059471
   response: !ruby/struct:VCR::Response
     status: !ruby/struct:VCR::ResponseStatus
-      code: 200
-      message: OK
+      code: 404
+      message: Not Found
     headers:
       date:
-      - Fri, 30 Dec 2011 19:52:58 GMT
+      - Sat, 31 Dec 2011 01:12:23 GMT
       server:
-      - Apache-Coyote/1.1
+      - Apache/2.2.16 (Unix) mod_ssl/2.2.16 OpenSSL/0.9.8e-fips-rhel5
+      content-length:
+      - '220'
       content-type:
-      - application/json
-      vary:
-      - Accept-Encoding
-      transfer-encoding:
-      - chunked
-    body: ! '{"resources":[{"id":395102,"response":{"message":"OK","code":200}}]}'
+      - text/html; charset=iso-8859-1
+    body: ! '<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+
+      <html><head>
+
+      <title>404 Not Found</title>
+
+      </head><body>
+
+      <h1>Not Found</h1>
+
+      <p>The requested URL /accounts/mop/v2/mutate was not found on this server.</p>
+
+      </body></html>
+
+'
     http_version: '1.1'

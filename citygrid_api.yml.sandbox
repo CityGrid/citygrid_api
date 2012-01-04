@@ -1,6 +1,6 @@
 defaults:
-  hostname: api.qa.citygrid.com
-  ssl_hostname: api-qassl.citygrid.com
+  hostname: sandbox-api.citygrid.com
+  ssl_hostname: sandbox-api.citygrid.com
 
 # endpoint_name: endpoint
 # OR 
@@ -43,7 +43,4 @@ api:
       hostname: api.citygridmedia.com
     places: 
       endpoint: content/places/v2
-      hostname: api.citygridmedia.com
-    reviews:
-      endpoint: content/reviews/v2
       hostname: api.citygridmedia.com

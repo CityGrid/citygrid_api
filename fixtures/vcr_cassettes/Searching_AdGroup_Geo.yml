@@ -2,7 +2,7 @@
 - !ruby/struct:VCR::HTTPInteraction
   request: !ruby/struct:VCR::Request
     method: :post
-    uri: https://api-qassl.citygrid.com:443/accounts/user/v2/login?password=pppppp&username=QASalesCoord
+    uri: https://sandbox-api.citygrid.com:443/accounts/user/v2/login?password=pppppp&username=QASalesCoord
     body: !!null 
     headers: !!null 
   response: !ruby/struct:VCR::Response
@@ -11,7 +11,7 @@
       message: OK
     headers:
       date:
-      - Fri, 30 Dec 2011 19:53:05 GMT
+      - Sat, 31 Dec 2011 01:12:44 GMT
       server:
       - Apache-Coyote/1.1
       content-type:
@@ -20,12 +20,12 @@
       - Accept-Encoding
       transfer-encoding:
       - chunked
-    body: ! '{"code":201,"authToken":"9785494bd24cd3f8f5f34a46de8bf674"}'
+    body: ! '{"code":201,"authToken":"477b6b68041e20ea065bdcd2eaf1169f"}'
     http_version: '1.1'
 - !ruby/struct:VCR::HTTPInteraction
   request: !ruby/struct:VCR::Request
     method: :get
-    uri: http://api.qa.citygrid.com:80/advertising/adgroupgeo/v2/get?adGroupId=78&city=Beverly%20Hills&state=CA&streetAddress=200%20Robertson%20Blvd&zipCode=90211
+    uri: http://sandbox-api.citygrid.com:80/advertising/adgroupgeo/v2/get?adGroupId=78&city=Beverly%20Hills&state=CA&streetAddress=200%20Robertson%20Blvd&zipCode=90211
     body: !!null 
     headers:
       accept:
@@ -33,14 +33,14 @@
       content-type:
       - Application/JSON
       authtoken:
-      - 9785494bd24cd3f8f5f34a46de8bf674
+      - 477b6b68041e20ea065bdcd2eaf1169f
   response: !ruby/struct:VCR::Response
     status: !ruby/struct:VCR::ResponseStatus
       code: 200
       message: OK
     headers:
       date:
-      - Fri, 30 Dec 2011 19:53:07 GMT
+      - Sat, 31 Dec 2011 01:12:44 GMT
       server:
       - Apache-Coyote/1.1
       content-type:

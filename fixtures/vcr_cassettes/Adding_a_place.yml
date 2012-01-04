@@ -2,7 +2,7 @@
 - !ruby/struct:VCR::HTTPInteraction
   request: !ruby/struct:VCR::Request
     method: :post
-    uri: http://api.qa.citygrid.com:80/content/places/v2/mutate
+    uri: http://sandbox-api.citygrid.com:80/content/places/v2/mutate
     body: ! '{"mutateOperationListResource":[{"operator":"ADD","operand":{"name":"Pi
       on sunset in LAAAAAAAAAAAAAA","address_1":"Jackson 2102","address_2":"","city":"Los
       Angeles","state":"California","postal_code":90025,"phone_number":3103333333,"website_url":"pi.com","primary_tag_id":3623,"bullet1":"Knoll
@@ -13,14 +13,14 @@
       content-type:
       - Application/JSON
       authtoken:
-      - ab602fd7d00a382d6af6a86eecbc689d
+      - 2f45061f07f7e61a9f3953d7bfbd904b
   response: !ruby/struct:VCR::Response
     status: !ruby/struct:VCR::ResponseStatus
       code: 200
       message: OK
     headers:
       date:
-      - Fri, 30 Dec 2011 19:53:20 GMT
+      - Sat, 31 Dec 2011 01:13:18 GMT
       server:
       - Apache-Coyote/1.1
       content-type:
@@ -29,5 +29,5 @@
       - Accept-Encoding
       transfer-encoding:
       - chunked
-    body: ! '{"resources":[{"response":{"message":"OK","code":200},"listingId":904202170}]}'
+    body: ! '{"resources":[{"response":{"message":"OK","code":200},"listingId":904202230}]}'
     http_version: '1.1'

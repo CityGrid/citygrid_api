@@ -2,7 +2,7 @@
 - !ruby/struct:VCR::HTTPInteraction
   request: !ruby/struct:VCR::Request
     method: :get
-    uri: http://api.qa.citygrid.com:80/content/category/v2/get?listingId=3680332&numberResults=10&startIndex=0
+    uri: http://sandbox-api.citygrid.com:80/content/category/v2/get?listingId=3680332&numberResults=10&startIndex=0
     body: !!null 
     headers:
       accept:
@@ -10,14 +10,14 @@
       content-type:
       - Application/JSON
       authtoken:
-      - bbe02eb5c9b9cdff85a96996af85af26
+      - ea42560cc6365e5ad550e61bc6059471
   response: !ruby/struct:VCR::Response
     status: !ruby/struct:VCR::ResponseStatus
       code: 200
       message: OK
     headers:
       date:
-      - Fri, 30 Dec 2011 19:53:11 GMT
+      - Sat, 31 Dec 2011 01:12:47 GMT
       server:
       - Apache-Coyote/1.1
       content-type:

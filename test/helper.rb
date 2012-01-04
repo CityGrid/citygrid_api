@@ -22,7 +22,9 @@ unless defined? IN_DASHBOARD
 
   # load default config
   CityGrid.load_config File.expand_path(File.join(File.dirname(__FILE__), '..', 'citygrid_api.yml.sample'))
-
+  
+  # CityGrid.load_config File.expand_path(File.join(File.dirname(__FILE__), '..', 'citygrid_api.yml.sandbox'))
+  
   # Run code with rescue so that exceptions
   # will be printed, but won't stop test suite
   def run_with_rescue
@@ -58,7 +60,7 @@ unless defined? IN_DASHBOARD
           old_run reporter
         else
           VCR.use_cassette self.detailed_description[0..70] do
-            old_run reporter 
+            old_run reporter
           end
         end
       end

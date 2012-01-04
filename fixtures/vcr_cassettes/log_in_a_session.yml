@@ -2,7 +2,7 @@
 - !ruby/struct:VCR::HTTPInteraction
   request: !ruby/struct:VCR::Request
     method: :post
-    uri: https://api-qassl.citygrid.com:443/accounts/user/v2/login?password=pppppp&username=GARYTEST
+    uri: https://sandbox-api.citygrid.com:443/accounts/user/v2/login?password=pppppp&username=GARYTEST
     body: !!null 
     headers: !!null 
   response: !ruby/struct:VCR::Response
@@ -11,7 +11,7 @@
       message: OK
     headers:
       date:
-      - Fri, 30 Dec 2011 19:53:27 GMT
+      - Sat, 31 Dec 2011 01:13:30 GMT
       server:
       - Apache-Coyote/1.1
       content-type:
@@ -20,5 +20,5 @@
       - Accept-Encoding
       transfer-encoding:
       - chunked
-    body: ! '{"code":201,"authToken":"18dc1c0c0e6d71fe964cdba24997ceaf"}'
+    body: ! '{"code":201,"authToken":"aa153f928ca9930301aa07761dd084bf"}'
     http_version: '1.1'

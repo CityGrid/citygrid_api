@@ -2,7 +2,7 @@
 - !ruby/struct:VCR::HTTPInteraction
   request: !ruby/struct:VCR::Request
     method: :post
-    uri: https://api-qassl.citygrid.com:443/accounts/user/v2/login?password=pppppp&username=GARYTEST
+    uri: https://sandbox-api.citygrid.com:443/accounts/user/v2/login?password=pppppp&username=GARYTEST
     body: !!null 
     headers: !!null 
   response: !ruby/struct:VCR::Response
@@ -11,7 +11,7 @@
       message: OK
     headers:
       date:
-      - Fri, 30 Dec 2011 19:52:43 GMT
+      - Sat, 31 Dec 2011 01:11:10 GMT
       server:
       - Apache-Coyote/1.1
       content-type:
@@ -20,12 +20,12 @@
       - Accept-Encoding
       transfer-encoding:
       - chunked
-    body: ! '{"code":201,"authToken":"ab602fd7d00a382d6af6a86eecbc689d"}'
+    body: ! '{"code":201,"authToken":"2f45061f07f7e61a9f3953d7bfbd904b"}'
     http_version: '1.1'
 - !ruby/struct:VCR::HTTPInteraction
   request: !ruby/struct:VCR::Request
     method: :post
-    uri: https://api-qassl.citygrid.com:443/accounts/account/v2/customer/mutate
+    uri: https://sandbox-api.citygrid.com:443/accounts/account/v2/customer/mutate
     body: ! '{"mutateOperationListResource":[{"operator":"ADD","operand":{"firstName":"nico-api","lastName":"gomez-api","phone":"9001111112","businessName":"businessProveApi","address1":"dir-api","city":"montevideo","state":"Montevideo","zipCode":"90069"}}]}'
     headers:
       accept:
@@ -33,22 +33,34 @@
       content-type:
       - Application/JSON
       authtoken:
-      - ab602fd7d00a382d6af6a86eecbc689d
+      - 2f45061f07f7e61a9f3953d7bfbd904b
   response: !ruby/struct:VCR::Response
     status: !ruby/struct:VCR::ResponseStatus
-      code: 200
-      message: OK
+      code: 404
+      message: Not Found
     headers:
       date:
-      - Fri, 30 Dec 2011 19:52:44 GMT
+      - Sat, 31 Dec 2011 01:11:10 GMT
       server:
-      - Apache-Coyote/1.1
+      - Apache/2.2.16 (Unix) mod_ssl/2.2.16 OpenSSL/0.9.8e-fips-rhel5
+      content-length:
+      - '233'
       content-type:
-      - application/json
-      vary:
-      - Accept-Encoding
-      transfer-encoding:
-      - chunked
-    body: ! '{"totalNumEntries":1,"accountList":[{"id":"","state":"","response":{"message":"UserName
-      is required.","code":400},"status":"","firstName":"","lastName":"","address1":"","city":"","businessName":"","phone":"","zipCode":""}]}'
+      - text/html; charset=iso-8859-1
+    body: ! '<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+
+      <html><head>
+
+      <title>404 Not Found</title>
+
+      </head><body>
+
+      <h1>Not Found</h1>
+
+      <p>The requested URL /accounts/account/v2/customer/mutate was not found on this
+      server.</p>
+
+      </body></html>
+
+'
     http_version: '1.1'

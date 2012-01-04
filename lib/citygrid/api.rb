@@ -100,7 +100,8 @@ class CityGrid
           req = HTTParty::Request.new http_method, path, req_options
           error = nil
 
-          begin 
+          begin
+            
             response = req.perform
           rescue => ex
             puts "Something went wrong with Request.perform"

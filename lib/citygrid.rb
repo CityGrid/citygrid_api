@@ -17,6 +17,14 @@ class CityGrid
       @publisher
     end
 
+    def use_vcr= v
+      @use_vcr = v
+    end
+    
+    def use_vcr?
+      defined?(VCR) && defined?(@use_vcr) && @use_vcr
+    end
+    
     def search opts = {}
       Search.new opts
     end

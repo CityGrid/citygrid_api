@@ -2,7 +2,7 @@
 - !ruby/struct:VCR::HTTPInteraction
   request: !ruby/struct:VCR::Request
     method: :post
-    uri: http://api.qa.citygrid.com:80/advertising/campaign/v2/mutate
+    uri: http://sandbox-api.citygrid.com:80/advertising/campaign/v2/mutate
     body: ! '{"mutateOperationListResource":[{"operator":"ADD","operand":{"name":"PleaseWork6","startDate":"20111231","endDate":"20120109","product":"PERFORMANCE","budget":{"amount":30000},"mopId":386742}}]}'
     headers:
       accept:
@@ -10,14 +10,14 @@
       content-type:
       - Application/JSON
       authtoken:
-      - bbe02eb5c9b9cdff85a96996af85af26
+      - ea42560cc6365e5ad550e61bc6059471
   response: !ruby/struct:VCR::Response
     status: !ruby/struct:VCR::ResponseStatus
       code: 200
       message: OK
     headers:
       date:
-      - Fri, 30 Dec 2011 19:53:12 GMT
+      - Sat, 31 Dec 2011 01:12:50 GMT
       server:
       - Apache-Coyote/1.1
       content-type:
@@ -26,5 +26,5 @@
       - Accept-Encoding
       transfer-encoding:
       - chunked
-    body: ! '{"campaigns":[{"name":"PleaseWork6","id":3667432,"response":{"message":"OK","code":200},"budgetAmount":"30000","startDate":"","endDate":"20120109","externalId":"","servingStatus":"PENDING"}]}'
+    body: ! '{"campaigns":[{"name":"PleaseWork6","id":3668442,"response":{"message":"OK","code":200},"budgetAmount":"30000","startDate":"","endDate":"20120109","externalId":"","servingStatus":"PENDING"}]}'
     http_version: '1.1'
