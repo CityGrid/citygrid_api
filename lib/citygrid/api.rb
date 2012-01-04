@@ -90,12 +90,12 @@ class CityGrid
             http_method = HTTP_METHODS[http_method.to_s]
             raise "Unknown http method: #{http_method}" unless http_method
           end
-
+        
           req_options = default_options.dup
           req_options = req_options.merge(options)
           
-          vars = {:http_method => http_method, :path => path, :req_options => req_options}
-          ap vars
+          raise ConfigurationError.new "No endpoint defined" if !path || path.empty?
+          raise ConfigurationError.new "No hostname defined" if !req_options[:base_uri] || req_options[:base_uri].empty?
           
           req = HTTParty::Request.new http_method, path, req_options
           error = nil
@@ -142,7 +142,7 @@ class CityGrid
       end
 
       # ERRORS
-      class GenericError < StandardError
+      class RequestError < StandardError
         attr_reader :httparty, :message
 
         def initialize msg, response = nil
@@ -151,13 +151,7 @@ class CityGrid
         end
       end
 
-      class Error < GenericError
-        def initialize errors, response
-          super errors.first["error"], response
-        end
-      end
-
-      class InvalidResponseFormat < GenericError
+      class InvalidResponseFormat < StandardError
         attr_accessor :server_msg, :description
         def initialize response = nil
           # parse Tomcat error report
@@ -188,13 +182,15 @@ class CityGrid
         end
       end
 
-      class MissingAuthToken < GenericError
+      class MissingAuthToken < StandardError
         def initialize
-          super message
+          super "Missing authToken - token is required"
         end
-
-        def message
-          "Missing authToken - token is required"
+      end
+      
+      class ConfigurationError < StandardError
+        def initialize message = "Invalid Configuration"
+          super message
         end
       end
     end

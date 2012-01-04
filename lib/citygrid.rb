@@ -78,11 +78,13 @@ class CityGrid
             # if hostname is set, use it
             # otherwise if ssl is set then use ssl_hostname. fallback to default_hostname
             hostname = v["hostname"] || (v["ssl"] ? ssl_hostname : default_hostname)
+            throw ParseConfigurationError.new file_path, "No endpoint defined for #{k}" unless v["endpoint"]
             endpoint = v["endpoint"].start_with?("/") ? v["endpoint"] : "/#{v["endpoint"]}" 
             klass.endpoint endpoint
             klass.base_uri hostname
           else 
             # should not get here. value should be String or Hash
+            throw ParseConfigurationError.new file_path, "Invalid value type for #{k}"
           end
           
           # puts "#{klass.name} => #{klass.base_uri} : #{klass.endpoint}"
@@ -104,6 +106,13 @@ class CityGrid
       super "Endpoint is not properly configured. Run 'CityGrid.load_config'"
     end
   end
+  
+  class ParseConfigurationError < StandardError
+    def initialize path, msg = nil
+      super msg ? "#{msg} at '#{path}'" : "Error parsing configuration file at '#{path}'"
+    end
+  end
+  
 end
 
 require "citygrid/abstraction"
