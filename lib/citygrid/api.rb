@@ -94,14 +94,13 @@ class CityGrid
           req_options = default_options.dup
           req_options = req_options.merge(options)
           
-          # vars = {:http_method => http_method, :path => path, :req_options => req_options}
-          # ap vars
+          vars = {:http_method => http_method, :path => path, :req_options => req_options}
+          ap vars
           
           req = HTTParty::Request.new http_method, path, req_options
           error = nil
-
+          
           begin
-            
             response = req.perform
           rescue => ex
             puts "Something went wrong with Request.perform"
