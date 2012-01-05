@@ -98,16 +98,11 @@ class CityGrid
           raise ConfigurationError.new "No hostname defined" if !req_options[:base_uri] || req_options[:base_uri].empty?
           
           req = HTTParty::Request.new http_method, path, req_options
-          error = nil
-          
+
           begin
             response = req.perform
           rescue => ex
-            puts "Something went wrong with Request.perform"
-            error = ex
-          rescue Psych::SyntaxError => ex
-            puts "Something went wrong with Request.perform, Psych:SyntaxError"
-            error = ex
+            raise RequestError.new req, ex
           end
           
           if defined?(Rails.logger)
@@ -115,36 +110,54 @@ class CityGrid
           else
             puts req.to_curl
           end
-
-          if error 
-            puts "an error happened, curl is:"
-            puts error.message
-            puts error.backtrace
-            #raise error
+          
+          if !response.parsed_response.is_a?(Hash)
+            raise ResponseParseError.new req, response
+          elsif response["errors"]
+            raise ResponseError.new req, response["errors"], response
+          else
+            return CityGrid::API::Response.new response
           end
           
-          unless error
-            if !response.parsed_response.is_a?(Hash)
-              error = InvalidResponseFormat.new response
-            elsif response["errors"]
-              error = Error.new response["errors"], response
-            else
-              return CityGrid::API::Response.new response
-            end
-          end
-          
-          if error 
-            puts "an error happened"
-            ap error
-            #raise error
-          end
+        rescue => ex
+          raise ex if CityGrid.raise_errors?
         end
       end
 
       # ERRORS
-      class InvalidResponseFormat < StandardError
-        attr_accessor :server_msg, :description
-        def initialize response = nil
+      class APIError < StandardError
+        attr_accessor :request
+        
+        def initialize msg, request
+          super msg
+        end
+      end
+      
+      class ResponseError < APIError
+        attr_accessor :errors, :response
+        
+        def initialize request, errors, response
+          self.errors = errors
+          self.response = response
+          
+          super "API returned error message", request
+        end
+      end
+      
+      class RequestError < APIError
+        attr_accessor :inner_exception
+        
+        def initialize request, inner_exception, msg = nil
+          self.inner_exception = inner_exception
+          self.request = request
+          super msg || "Error while performing request: #{inner_exception.message}", request
+        end
+      end
+      
+      class ResponseParseError < APIError
+        attr_accessor :server_msg, :description, :raw_response
+        def initialize request, response
+          self.raw_response = response
           # parse Tomcat error report
           if response.match /<title>Apache Tomcat.* - Error report<\/title>/
             response.scan(/<p><b>(message|description)<\/b> *<u>(.*?)<\/u><\/p>/).each do |match|
@@ -162,13 +175,13 @@ class CityGrid
             Unexpected response format. Expected response to be a hash, but was instead:\n#{error_body}\n
             EOS
 
-            super msg
+            super msg, request
           else
             msg = <<-EOS
             Unexpected response format. Expected response to be a hash, but was instead:\n#{response.parsed_response}\n
             EOS
 
-            super msg
+            super msg, request
           end
         end
       end

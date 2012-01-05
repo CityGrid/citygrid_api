@@ -16,6 +16,16 @@ class CityGrid
       raise PublisherNotConfigured if !defined?(@publisher) || @publisher.nil?
       @publisher
     end
+    
+    # whether api calls will throw errors or fail silently
+    # by default, we will raise errors
+    def raise_errors= v
+      @raise_errors = v
+    end
+    
+    def raise_errors? 
+      !defined?(@raise_errors) || @raise_errors
+    end
 
     def use_vcr= v
       @use_vcr = v
