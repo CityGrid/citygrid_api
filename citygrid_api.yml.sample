@@ -36,7 +36,7 @@ api:
     image: advertising/image/v2
     offers: advertising/offer/v2
     places: content/places/v2
-    performance: advertising/performance/v2/campaign
+    performance: advertising/performance/v2
   content:
     offers:
       endpoint: content/offers/v2
