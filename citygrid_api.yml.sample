@@ -47,3 +47,6 @@ api:
     reviews:
       endpoint: content/reviews/v2
       hostname: api.citygridmedia.com
+    response:
+      endpoint: reviews/v2/response
+      hostname: lax1qatxpi5.test.cs:8080

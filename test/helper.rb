@@ -57,11 +57,11 @@ unless defined? IN_DASHBOARD
       alias_method :old_run, :run
       def run reporter
         if option(:vcr) != nil && option(:vcr) == false
-          old_run reporter
+         old_run reporter
         else
-          VCR.use_cassette self.detailed_description[0..70] do
-            old_run reporter
-          end
+         VCR.use_cassette self.detailed_description[0..70] do
+           old_run reporter
+         end
         end
       end
       
