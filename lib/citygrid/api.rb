@@ -10,7 +10,7 @@ class CityGrid
       "Accept" => "application/json",
       "Content-Type" => "Application/JSON"}
     
-    DEFAULT_DEFINE_OPTIONS = {
+    DEFAULT_ACTION_OPTIONS = {
       :auth_token => false,
       :format     => true,
       :publisher  => false,
@@ -25,7 +25,7 @@ class CityGrid
         #    ip: pass IP, needed for content
         #    format: pass JSON flag 
         
-        define_options = DEFAULT_DEFINE_OPTIONS.merge define_options
+        define_options = DEFAULT_ACTION_OPTIONS.merge define_options
 
         define_singleton_method name.intern do |*args|
           options = args.first.clone || {}
@@ -142,15 +142,6 @@ class CityGrid
       end
 
       # ERRORS
-      class RequestError < StandardError
-        attr_reader :httparty, :message
-
-        def initialize msg, response = nil
-          @message  = msg
-          @httparty = response
-        end
-      end
-
       class InvalidResponseFormat < StandardError
         attr_accessor :server_msg, :description
         def initialize response = nil
@@ -171,13 +162,13 @@ class CityGrid
             Unexpected response format. Expected response to be a hash, but was instead:\n#{error_body}\n
             EOS
 
-            super msg, error_body
+            super msg
           else
             msg = <<-EOS
             Unexpected response format. Expected response to be a hash, but was instead:\n#{response.parsed_response}\n
             EOS
 
-            super msg, response
+            super msg
           end
         end
       end

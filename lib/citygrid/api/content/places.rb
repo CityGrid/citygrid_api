@@ -2,7 +2,7 @@ class CityGrid
   class API
     class Content
       class Places < Content
-        extend CityGrid::API::Mutatable
+        include CityGrid::API::Mutable
         
         define_action :detail, :get, "detail", :auth_token => false, :publisher => true, :client_ip => true
         define_action :search, :get, "search/where", :auth_token => false, :publisher => true, :client_ip => true

@@ -2,8 +2,8 @@ class CityGrid
   class API
     class Advertising
       class AdGroupGeo < Advertising
-        extend Mutatable
-        extend Searchable
+        include CityGrid::API::Mutable
+        include CityGrid::API::Searchable
       end
     end
   end

@@ -2,8 +2,8 @@ class CityGrid
   class API
     class Accounts
       class Account < Accounts
-        extend CityGrid::API::Mutatable
-        extend CityGrid::API::Searchable
+        include CityGrid::API::Mutable
+        include CityGrid::API::Searchable
         
         # Adds new customer account to existing user
         # http://docs.prod.cs/display/citygridv2/Internal+-+Account#Internal-Account-AddNewCustomerAccounttoExistingUser

@@ -119,7 +119,7 @@ require "citygrid/abstraction"
 require "citygrid/api"
 require "yaml"
 
-require "citygrid/api/mutatable"
+require "citygrid/api/mutable"
 require "citygrid/api/searchable"
 
 require "citygrid/search"

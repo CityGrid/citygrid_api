@@ -2,8 +2,8 @@ class CityGrid
   class API
     class Accounts
       class User < Accounts
-        extend CityGrid::API::Mutatable
-        extend CityGrid::API::Searchable
+        include CityGrid::API::Mutable
+        include CityGrid::API::Searchable
         
         def self.login options = {}
           request_and_handle :post,
