@@ -115,6 +115,8 @@ class CityGrid
             raise ResponseParseError.new req, response
           elsif response["errors"]
             raise ResponseError.new req, response["errors"], response
+          elsif response["message"] && response["message"] == "Invalid Token or Expired"
+            raise InvalidAuthToken.new
           else
             return CityGrid::API::Response.new response
           end
@@ -183,6 +185,12 @@ class CityGrid
 
             super msg, request
           end
+        end
+      end
+
+      class InvalidAuthToken < StandardError
+        def initialize message = "Invalid Token or Expired"
+          super message
         end
       end
 
