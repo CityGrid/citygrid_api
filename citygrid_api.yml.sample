@@ -29,7 +29,9 @@ api:
     ad_group_geo: advertising/adgroupgeo/v2  
     budget: advertising/budget/v2/recommend
     billing: advertising/billing/v2
-    call_detail: advertising/calldetail/v2
+    call_detail:
+      endpoint: report/calldetail/v2
+      hostname: lax1qatxpi4.test.cs:8080
     campaign: advertising/campaign/v2
     category: content/category/v2
     geo_location: content/places/v2/geocode
