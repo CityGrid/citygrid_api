@@ -31,6 +31,24 @@ context "Adding a place" do
   should("return message OK") { topic.resources.first.response.message }.equals("OK")  
 end
 
+context "Getting a place" do
+  setup do
+    begin
+      run_with_rescue do
+        SessionHelper.sales_coord.call_api CityGrid::API::Advertising::Places,
+          :search,
+          :placeId => 628554020
+      end
+    rescue
+      puts "An error occurred while fetching 628554020 details"
+    end
+  end
+  
+  should "return a single Details object" do
+    !topic['placeGetResponseResource'].nil?
+  end
+end
+
 # 
 # context "Adding a place" do
 #   setup do
