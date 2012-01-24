@@ -30,8 +30,11 @@ unless defined? IN_DASHBOARD
   def run_with_rescue
     begin
       yield
-    rescue CityGrid::API::InvalidResponseFormat => ex
-      x = {"description" => ex.description, "server_msg" => ex.server_msg}
+    # TODO: fix?
+    #rescue CityGrid::API::InvalidResponseFormat => ex
+    rescue StandardError => ex
+      x = {"description" => ex.message, "server_msg" => "blank"}
+      #x = {"description" => ex.description, "server_msg" => ex.server_msg}
       puts "======= ERROR ======="
       ap x
       false
@@ -56,13 +59,14 @@ unless defined? IN_DASHBOARD
     class Context
       alias_method :old_run, :run
       def run reporter
-        if option(:vcr) != nil && option(:vcr) == false
+        # TODO: does it make any sense for API gem to use vcr?
+        #if option(:vcr) != nil && option(:vcr) == false
          old_run reporter
-        else
-         VCR.use_cassette self.detailed_description[0..70] do
-           old_run reporter
-         end
-        end
+        # else
+        #  VCR.use_cassette self.detailed_description[0..70] do
+        #    old_run reporter
+        #  end
+        # end
       end
       
     end

@@ -99,16 +99,17 @@ class CityGrid
           
           req = HTTParty::Request.new http_method, path, req_options
 
+
           begin
             response = req.perform
           rescue => ex
             raise RequestError.new req, ex
-          end
-          
-          if defined?(Rails.logger)
-            Rails.logger.info req.to_curl
-          else
-            puts req.to_curl
+          ensure
+            if defined?(Rails.logger)
+              Rails.logger.info req.to_curl
+            else
+              puts req.to_curl
+            end
           end
           
           if !response.parsed_response.is_a?(Hash)
