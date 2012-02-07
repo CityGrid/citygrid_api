@@ -13,9 +13,9 @@ class CityGrid
             :body => {"mutateOperationListResource" => [
               {
                 "operand" => {
-                	"image_type" => type,
-                	"image_name" => name,
-                	"image_format" => format,
+                	"imageType" => type,
+                	"imageName" => name,
+                	"imageFormat" => format,
                 	"image" => image_data
                   },
                 "operator" => "ADD",
