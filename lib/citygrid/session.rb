@@ -29,16 +29,12 @@ class CityGrid
       res = CityGrid::API::Accounts::User.login :username => username, :password => password
       self.username = username
 
-      case res.code
-      when 201
-        self.auth_token = res.authToken
+
+      self.auth_token = res.authToken
+      if !auth_token.nil? && auth_token != ""
         self.logged_in = true
-        # puts "logged in ok"
-      when 400
-        # puts "error"
-      else
-        # puts "unexpected response code"  
       end
+
     end
     
     def call_api klass, action, options = {}

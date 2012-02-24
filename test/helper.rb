@@ -37,6 +37,7 @@ unless defined? IN_DASHBOARD
       #x = {"description" => ex.description, "server_msg" => ex.server_msg}
       puts "======= ERROR ======="
       ap x
+      ap ex.backtrace
       false
     rescue => ex
       ap ex

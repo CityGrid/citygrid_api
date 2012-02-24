@@ -8,7 +8,8 @@ class CityGrid
         def self.login options = {}
           request_and_handle :post,
             "#{endpoint}/login",
-            :query => options
+            :query => options,
+            :headers => merge_headers()
         end
         
         # login behaves weird right now - expects string as body, not json encoded. 
