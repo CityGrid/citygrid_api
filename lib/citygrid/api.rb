@@ -116,13 +116,13 @@ class CityGrid
         flattened_response = response_hash.values
         flattened_response.each do |value|
           puts "now doing: #{value}"
-          if value.is_a?(Hash) && response_hash[key]["response"]
+          if value.instance_of?(Hash) && response_hash[key]["response"]
             puts "found it!  returning.. #{[response_hash[key]["response"]["code"], response_hash[key]["response"]["message"]]}"
             return [response_hash[key]["response"]["code"], response_hash[key]["response"]["message"]]
-          elsif value.is_a?(Hash) && !response_hash[key]["response"]
+          elsif value.instance_of?(Hash) && !response_hash[key]["response"]
             puts "looping again using #{value}"
             parse_nested_hashes value
-          elsif !value.is_a(Hash) && flattened_response.index(value) < (flattened_response.length -1)
+          elsif !value.instance_of?(Hash) && flattened_response.index(value) < (flattened_response.length -1)
             # We should figure out a better way to do this
             raise Exceptions::APIError.new "Received a JSON error code but it could not be parsed: #{response_hash}"
           end
