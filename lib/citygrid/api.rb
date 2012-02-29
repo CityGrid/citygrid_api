@@ -1,6 +1,6 @@
 require "httparty"
 require "json"
-#require "exceptions"
+load "exceptions.rb"
 
 class CityGrid
   class API 

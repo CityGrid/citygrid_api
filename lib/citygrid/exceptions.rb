@@ -186,7 +186,7 @@ module Exceptions
   "ENTITY_LIMIT" => EntityLimitError, "ENTITY_ALREADY_IN_USE" => EntityAlreadyInUseError,
   "ENTITY_EXPIRED" => EntityExpiredError, "ENTITY_INACTIVE" => EntityInactiveError,
   "ENTITY_NOT_ELIGIBLE" => EntityNotEligibleError, "ENTITY_NOT_MODIFIED" => EntityNotModifiedError,
-  "ENTITY_STATE_INVALID" => EntityStateInvalidError, "ENTITY_MISSING_DATA" => EntityMissingDataError
+  "ENTITY_STATE_INVALID" => EntityStateInvalidError, "ENTITY_MISSING_DATA" => EntityMissingDataError,
   "DATA_NOT_FOUND" => DataNotFoundError, "ASSOCIATION_EXISTS" => AssociationExistsError,
   "NO_ASSOCIATION_EXISTS" =>  NoAssociationExistsError, "DUPLICATE" =>  DuplicateError,
   "DATE_BEFORE_DATE" => DateBeforeDateError, "REMOVE_NOT_ALLOWED" => RemoveNotAllowedError,
