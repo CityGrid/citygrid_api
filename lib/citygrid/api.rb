@@ -87,11 +87,41 @@ class CityGrid
 
       def strip_unsafe_params options
         puts "OPTIONS: #{options}"
-        unsafe_params = { "password" => "[FILTERED]", "securityCode" => "[FILTERED]",
-                        "cardNumber" => "[FILTERED]", "expirationMonth" => "[FILTERED]",
-                        "expirationYear" => "[FILTERED]"
+        unsafe_params = { :password => "[FILTERED]", :securityCode => "[FILTERED]",
+                          :cardNumber => "[FILTERED]", :expirationMonth => "[FILTERED]",
+                          :expirationYear => "[FILTERED]"
                         }
-        return options.merge(unsafe_params.select { |k| options.keys.include? k })
+        return options.merge({ :query=> unsafe_params.select { |k| options.keys.include? k }})
+      end
+
+      # 
+      def parse_multiple_responses response
+        parsing = response.values.select{ |x| x.is_a? Array }.first
+        puts "now we have #{parsing}"
+        if parsing.nil? || parsing == []
+          # now we know it's a nested nash - proceeed to parse that
+          return parse_nested_hashes(response)
+        elsif parsing != nil && parsing != []
+          parsing = [parsing[0]["response"]["code"], parsing[0]["response"]["message"]]
+          return parsing
+        else
+          # We should figure out a better way to do this
+          raise Exceptions::APIError.new "Received a JSON error code but it could not be parsed: #{response}"
+        end
+      end
+
+      def parse_nested_hashes response_hash
+        # at this point we know that the response is a hash
+        response_hash.each do |key, value|
+          if value.is_a?(Hash) && response_hash[key]["response"]
+            return [response_hash[key]["response"]["code"], response_hash[key]["response"]["message"]]
+          elsif value.is_a?(Hash) && !response_hash[key]["response"]
+            parse_nested_hashes value
+          else
+            # We should figure out a better way to do this
+            raise Exceptions::APIError.new "Received a JSON error code but it could not be parsed: #{response}"
+          end
+        end
       end
 
         # Transform response into API::Response object
@@ -154,35 +184,6 @@ class CityGrid
           end
         rescue => ex
           raise ex if CityGrid.raise_errors?
-        end
-      end
-
-      def parse_multiple_responses response
-        parsing = response.values.select{ |x| x.is_a? Array }.first
-        puts "now we have #{parsing}"
-        if parsing.nil? || parsing == []
-          # now we know it's a nested nash - proceeed to parse that
-          return parse_nested_hashes(response)
-        elsif parsing != nil && parsing != []
-          parsing = [parsing[0]["response"]["code"], parsing[0]["response"]["message"]]
-          return parsing
-        else
-          # We should figure out a better way to do this
-          raise Exceptions::APIError.new "Received a JSON error code but it could not be parsed: #{response}"
-        end
-      end
-
-      def parse_nested_hashes response_hash
-        # at this point we know that the response is a hash
-        response_hash.each do |key, value|
-          if value.is_a?(Hash) && response_hash[key]["response"]
-            return [response_hash[key]["response"]["code"], response_hash[key]["response"]["message"]]
-          elsif value.is_a?(Hash) && !response_hash[key]["response"]
-            parse_nested_hashes value
-          else
-            # We should figure out a better way to do this
-            raise Exceptions::APIError.new "Received a JSON error code but it could not be parsed: #{response}"
-          end
         end
       end
 
