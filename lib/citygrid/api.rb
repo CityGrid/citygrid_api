@@ -1,11 +1,11 @@
 require "httparty"
 require "json"
-require "exceptions"
+#require "exceptions"
 
 class CityGrid
   class API 
     include HTTParty
-    include Exceptions
+    #include Exceptions
     #debug_output $stderr
 
     DEFAULT_HEADERS = {
@@ -125,8 +125,7 @@ class CityGrid
             raise Exceptions::ResponseError.new req, response["errors"], response
 
           # Parse and handle new response codes 
-          elsif (response["response"] && response["response"]["code"] != "SUCCESS") && 
-            (response["response"] && response["response"]["code"] != 200)
+          elsif (response["response"] && response["response"]["code"] != "SUCCESS") && (response["response"] && response["response"]["code"] != 200)
             error_code = response["response"]["code"]
             puts "got a first level 'response' response. that was not a success"
             raise Exceptions::appropriate_error(error_code).new req, response["response"]["message"] + " " + print_superclasses(error_code)
@@ -168,7 +167,7 @@ class CityGrid
         # at this point we know that the response is a hash
         response_hash.each do |key, value|
           if value.is_a?(Hash) && response_hash[key]["response"]
-            return [response_hash[key]["response"]["code"], response_hash[key]["response"]["message"]
+            return [response_hash[key]["response"]["code"], response_hash[key]["response"]["message"]]
           elsif value.is_a?(Hash) && !response_hash[key]["response"]
             parse_nested_hashes value
           else
