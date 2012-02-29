@@ -1,4 +1,11 @@
 module Exceptions
+  def appropriate_error error_code
+    if possible_errors.include?(error_code)
+      return possible_errors[error_code]
+    else
+      raise APIError.new "The API returned an unrecognized error code: #{error_code}"
+    end
+  end
 
   def print_superclasses error_code
     begin
@@ -7,14 +14,6 @@ module Exceptions
       class_hierarchy = ex.class.ancestors
       class_hierarchy.slice!(class_hierarchy.index(StandardError)..-1)
       return class_hierarchy.reverse.join("::")
-    end
-  end
-
-  def appropriate_error error_code
-    if possible_errors.include?(error_code)
-      return possible_errors[error_code]
-    else
-      raise APIError.new "The API returned an unrecognized error code: #{error_code}"
     end
   end
 
