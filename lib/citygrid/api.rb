@@ -119,7 +119,7 @@ class CityGrid
             parse_nested_hashes value
           else
             # We should figure out a better way to do this
-            raise Exceptions::APIError.new "Received a JSON error code but it could not be parsed: #{response}"
+            raise Exceptions::APIError.new "Received a JSON error code but it could not be parsed: #{response_hash}"
           end
         end
       end
