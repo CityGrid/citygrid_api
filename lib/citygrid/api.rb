@@ -117,22 +117,28 @@ class CityGrid
           
           # catch unparsable responses (html etc)
           if !response.parsed_response.is_a?(Hash)
+            puts "the response was unparsable [gem]"
             raise Exceptions::ResponseParseError.new req, response
           # catch responses not in new response format
           elsif response["errors"]
+            puts "an error in the old format was caught [gem]"
             raise Exceptions::ResponseError.new req, response["errors"], response
 
           # Parse and handle new response codes 
           elsif (response["response"] && response["response"]["code"] != "SUCCESS") && 
             (response["response"] && response["response"]["code"] != 200)
             error_code = response["response"]["code"]
+            puts "got a first level 'response' response. that was not a success"
             raise Exceptions::appropriate_error(error_code).new req, response["response"]["message"] + " " + print_superclasses(error_code)
           # if the response is a nested hash/nested hash containing arrays
           elsif response["totalNumEntries"] && response["response"].nil?
+            puts "now parsing a nested hash..."
             error_code = parse_multiple_responses(response)
+            puts "the error code that came back is #{error_code}"
             if error_code[0] == "SUCCESS" || error_code[0] == 200
               return CityGrid::API::Response.new response
             else 
+              puts "we found an error and it was #{error_code[1]}"
               raise Exceptions::appropriate_error(error_code[0]).new req, error_code[1]  + " " + print_superclasses(error_code[0])
           else
             return CityGrid::API::Response.new response
@@ -173,6 +179,7 @@ class CityGrid
 
 
       def strip_unsafe_params options
+        puts "OPTIONS: #{options}"
       unsafe_params = { "password" => "[FILTERED]", "securityCode" => "[FILTERED]",
                         "cardNumber" => "[FILTERED]", "expirationMonth" => "[FILTERED]",
                         "expirationYear" => "[FILTERED]"
