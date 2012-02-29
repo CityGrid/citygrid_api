@@ -1,5 +1,5 @@
 module Exceptions
-  def appropriate_error error_code
+  def Exceptions.appropriate_error error_code
     if possible_errors.include?(error_code)
       return possible_errors[error_code]
     else
@@ -7,7 +7,7 @@ module Exceptions
     end
   end
 
-  def print_superclasses error_code
+  def Exceptions.print_superclasses error_code
     begin
       raise appropriate_error[error_code]
     rescue => ex
