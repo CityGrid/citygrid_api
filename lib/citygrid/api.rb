@@ -85,6 +85,15 @@ class CityGrid
           "options" => Net::HTTP::Options
         }
 
+      def strip_unsafe_params options
+        puts "OPTIONS: #{options}"
+        unsafe_params = { "password" => "[FILTERED]", "securityCode" => "[FILTERED]",
+                        "cardNumber" => "[FILTERED]", "expirationMonth" => "[FILTERED]",
+                        "expirationYear" => "[FILTERED]"
+                        }
+        return options.merge(unsafe_params.select { |k| options.keys.include? k })
+      end
+
         # Transform response into API::Response object
         # or throw exception if an error exists
         def request_and_handle http_method, path, options
@@ -101,7 +110,7 @@ class CityGrid
           
           # prepare request and sanitized request for logs
           req = HTTParty::Request.new http_method, path, req_options
-          req_to_output = HTTParty::Request.new http_method, path, Exceptions::strip_unsafe_params(req_options)
+          req_to_output = HTTParty::Request.new http_method, path, strip_unsafe_params(req_options)
 
           begin
             response = req.perform
@@ -175,16 +184,6 @@ class CityGrid
             raise Exceptions::APIError.new "Received a JSON error code but it could not be parsed: #{response}"
           end
         end
-      end
-
-
-      def strip_unsafe_params options
-        puts "OPTIONS: #{options}"
-      unsafe_params = { "password" => "[FILTERED]", "securityCode" => "[FILTERED]",
-                        "cardNumber" => "[FILTERED]", "expirationMonth" => "[FILTERED]",
-                        "expirationYear" => "[FILTERED]"
-                      }
-        return options.merge(unsafe_params.select { |k| options.keys.include? k })
       end
 
    # Errors
