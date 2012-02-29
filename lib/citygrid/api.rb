@@ -100,7 +100,9 @@ class CityGrid
         puts "now we have #{parsing}"
         if parsing.nil? || parsing == []
           # now we know it's a nested nash - proceeed to parse that
-          return parse_nested_hashes(response)
+          #return parse_nested_hashes(response)
+          # pass over these for now
+          return CityGrid::API::Response.new response
         elsif parsing != nil && parsing != []
           parsing = [parsing[0]["response"]["code"], parsing[0]["response"]["message"]]
           return parsing
@@ -110,24 +112,25 @@ class CityGrid
         end
       end
 
-      def parse_nested_hashes response_hash
-         puts "starting to parse nested hash #{response_hash}"
-        # at this point we know that the response is a hash
-        flattened_response = response_hash.values
-        flattened_response.each do |value|
-          puts "now doing: #{value}"
-          if value.instance_of?(Hash) && response_hash[key]["response"]
-            puts "found it!  returning.. #{[response_hash[key]["response"]["code"], response_hash[key]["response"]["message"]]}"
-            return [response_hash[key]["response"]["code"], response_hash[key]["response"]["message"]]
-          elsif value.instance_of?(Hash) && !response_hash[key]["response"]
-            puts "looping again using #{value}"
-            parse_nested_hashes value
-          elsif !value.instance_of?(Hash) && flattened_response.index(value) < (flattened_response.length) -1
-            # We should figure out a better way to do this
-            raise Exceptions::APIError.new "Received a JSON error code but it could not be parsed: #{response_hash}"
-          end
-        end
-      end
+# Commented out for now until we can 
+      # def parse_nested_hashes response_hash
+      #    puts "starting to parse nested hash #{response_hash}"
+      #   # at this point we know that the response is a hash
+      #   flattened_response = response_hash.values
+      #   flattened_response.each do |value|
+      #     puts "now doing: #{value}"
+      #     if value.instance_of?(Hash) && response_hash[key]["response"]
+      #       puts "found it!  returning.. #{[response_hash[key]["response"]["code"], response_hash[key]["response"]["message"]]}"
+      #       return [response_hash[key]["response"]["code"], response_hash[key]["response"]["message"]]
+      #     elsif value.instance_of?(Hash) && !response_hash[key]["response"]
+      #       puts "looping again using #{value}"
+      #       parse_nested_hashes value
+      #     elsif !value.instance_of?(Hash) && flattened_response.index(value) < (flattened_response.length) -1
+      #       # We should figure out a better way to do this
+      #       raise Exceptions::APIError.new "Received a JSON error code but it could not be parsed: #{response_hash}"
+      #     end
+      #   end
+      # end
 
         # Transform response into API::Response object
         # or throw exception if an error exists
