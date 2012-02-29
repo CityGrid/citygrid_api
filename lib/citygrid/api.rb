@@ -113,15 +113,16 @@ class CityGrid
       def parse_nested_hashes response_hash
          puts "starting to parse nested hash #{response_hash}"
         # at this point we know that the response is a hash
-        response_hash.each do |key, value|
-          puts "the key is #{key}"
+        flattened_response = response_hash.values
+        flattened_response.each do |value|
+          puts "now doing: #{value}"
           if value.is_a?(Hash) && response_hash[key]["response"]
             puts "found it!  returning.. #{[response_hash[key]["response"]["code"], response_hash[key]["response"]["message"]]}"
             return [response_hash[key]["response"]["code"], response_hash[key]["response"]["message"]]
           elsif value.is_a?(Hash) && !response_hash[key]["response"]
             puts "looping again using #{value}"
             parse_nested_hashes value
-          else
+          elsif !value.is_a(Hash) && flattened_response.index(value) < (flattened_response.length -1)
             # We should figure out a better way to do this
             raise Exceptions::APIError.new "Received a JSON error code but it could not be parsed: #{response_hash}"
           end
@@ -174,7 +175,7 @@ class CityGrid
             raise Exceptions::appropriate_error(error_code).new req, response["response"]["message"] + " " + Exceptions::print_superclasses(error_code)
           # if the response is a nested hash/nested hash containing arrays
           elsif response["totalNumEntries"] && response["response"].nil?
-            puts "now parsing a nested hash..."
+            puts "now parsing a response with multiple entries"
             error_code = parse_multiple_responses(response)
             puts "the error code that came back is #{error_code}"
             if error_code[0] == "SUCCESS" || error_code[0] == 200
