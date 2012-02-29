@@ -1,52 +1,5 @@
 module Exceptions
-possible_errors =
- { 
-  0 => ResponseError, nil => ResponseParseError, "" => ResponseParseError, 400 => RequestError,
-  401 => AuthenticationError, 403 => RequestError, 405 => RequestError, 406 => HeaderError, 
-  500 => ResponseError, "SYSTEM_ERROR_TRY_AGAIN" => SystemErrorTryAgainError,
-  "SYSTEM_ERROR_UNKNOWN" => SystemErrorUnknownError, "BAD_REQUEST_TYPE" => BadRequestTypeError,
-  "HEADER_CONTENT_TYPE_IS_REQUIRED" => ContentTypeRequiredError, "HEADER_CONTENT_TYPE_INVALID" => ContentTypeInvalidError,
-  "HEADER_ACCEPT_IS_REQUIRED" => AcceptRequiredError, "HEADER_ACCEPT_INVALID" => AcceptInvalidError,
-  "AUTH_TOKEN_INVALID" => AuthTokenInvalidError, "AUTH_TOKEN_EXPIRED" => AuthTokenExpiredError,
-  "AUTH_TOKEN_NONE" => AuthTokenNoneError,
-  "USERNAME_IS_REQUIRED" => UsernameRequiredError, "PASSWORD_IS_REQUIRED" => PasswordRequiredError,
-  "ACCOUNT_NOT_FOUND" => AccountNotFoundError, "PERMISSION_DENIED" => PermissionDeniedError,
-  "NO_PERMISSIONS" => NoPermissionsError, "PARAMETER_REQUIRED" => ParameterRequiredError,
-  "PARAMETER_REQUIRED_CONDITIONAL" => ParameterRequiredConditionalError, "PARAMETER_INVALID" => ParameterInvalidError,
-  "PARAMETER_FORMAT" => ParameterFormatError, "PARAMETER_NOT_SUPPORTED" => ParameterNotSupportedError,
-  "PARAMETER_RANGE_TOO_LOW" => ParameterRangeTooLowError, "PARAMETER_RANGE_TOO_HIGH" => ParameterRangeTooHighError,
-  "PARAMETER_SIZE_LIMIT_EXCEEDED" => ParameterSizeLimitExceededError, "PARAMETER_CANNOT_BE_ZERO" => ParameterCannotBeZeroError,
-  "PARAMETER_ONLY_ONE" => ParameterOnlyOne, "OPERATOR_INVALID" => OperatorInvalidError,
-  "ENTITY_NOT_FOUND" => EntityNotFoundError, "ENTITY_EXISTS" => EntityExistsError,
-  "ENTITY_LIMIT" => EntityLimitError, "ENTITY_ALREADY_IN_USE" => EntityAlreadyInUseError,
-  "ENTITY_EXPIRED" => EntityExpiredError, "ENTITY_INACTIVE" => EntityInactiveError,
-  "ENTITY_NOT_ELIGIBLE" => EntityNotEligibleError, "ENTITY_NOT_MODIFIED" => EntityNotModifiedError,
-  "ENTITY_STATE_INVALID" => EntityStateInvalidError, "ENTITY_MISSING_DATA" => EntityMissingDataError,
-  "DATA_NOT_FOUND" => DataNotFoundError, "ASSOCIATION_EXISTS" => AssociationExistsError,
-  "NO_ASSOCIATION_EXISTS" =>  NoAssociationExistsError, "DUPLICATE" =>  DuplicateError,
-  "DATE_BEFORE_DATE" => DateBeforeDateError, "REMOVE_NOT_ALLOWED" => RemoveNotAllowedError,
-  "MOP_EXPIRED" => MopExpiredError, "ACCOUNT_INACTIVE" => AccountInactiveError,
-  "ACCOUNT_DELINQUENT" => AccountDelinquentError, "MONTHLY_BUDGET_REACHED" => MonthlyBudgetReachedError,
-  "QUOTA_EXCEEDED" => QuotaExceededError,"RATE_EXCEEDED" =>  RateExceededError
-  }
-  def Exceptions.appropriate_error error_code
-    if possible_errors.include?(error_code)
-      return possible_errors[error_code]
-    else
-      raise APIError.new "The API returned an unrecognized error code: #{error_code}"
-    end
-  end
-
-  def Exceptions.print_superclasses error_code
-    begin
-      raise appropriate_error[error_code]
-    rescue => ex
-      class_hierarchy = ex.class.ancestors
-      class_hierarchy.slice!(class_hierarchy.index(StandardError)..-1)
-      return class_hierarchy.reverse.join("::")
-    end
-  end
-
+  
   # Define parent error classes
   # All errors thrown in the API should extend APIError - Level 1
   class APIError < StandardError
@@ -192,4 +145,51 @@ possible_errors =
  class QuotaExceededError        < SpecificDataError; end
  class RateExceededError         < SpecificDataError; end
 
+possible_errors =
+ { 
+  0 => ResponseError, nil => ResponseParseError, "" => ResponseParseError, 400 => RequestError,
+  401 => AuthenticationError, 403 => RequestError, 405 => RequestError, 406 => HeaderError, 
+  500 => ResponseError, "SYSTEM_ERROR_TRY_AGAIN" => SystemErrorTryAgainError,
+  "SYSTEM_ERROR_UNKNOWN" => SystemErrorUnknownError, "BAD_REQUEST_TYPE" => BadRequestTypeError,
+  "HEADER_CONTENT_TYPE_IS_REQUIRED" => ContentTypeRequiredError, "HEADER_CONTENT_TYPE_INVALID" => ContentTypeInvalidError,
+  "HEADER_ACCEPT_IS_REQUIRED" => AcceptRequiredError, "HEADER_ACCEPT_INVALID" => AcceptInvalidError,
+  "AUTH_TOKEN_INVALID" => AuthTokenInvalidError, "AUTH_TOKEN_EXPIRED" => AuthTokenExpiredError,
+  "AUTH_TOKEN_NONE" => AuthTokenNoneError,
+  "USERNAME_IS_REQUIRED" => UsernameRequiredError, "PASSWORD_IS_REQUIRED" => PasswordRequiredError,
+  "ACCOUNT_NOT_FOUND" => AccountNotFoundError, "PERMISSION_DENIED" => PermissionDeniedError,
+  "NO_PERMISSIONS" => NoPermissionsError, "PARAMETER_REQUIRED" => ParameterRequiredError,
+  "PARAMETER_REQUIRED_CONDITIONAL" => ParameterRequiredConditionalError, "PARAMETER_INVALID" => ParameterInvalidError,
+  "PARAMETER_FORMAT" => ParameterFormatError, "PARAMETER_NOT_SUPPORTED" => ParameterNotSupportedError,
+  "PARAMETER_RANGE_TOO_LOW" => ParameterRangeTooLowError, "PARAMETER_RANGE_TOO_HIGH" => ParameterRangeTooHighError,
+  "PARAMETER_SIZE_LIMIT_EXCEEDED" => ParameterSizeLimitExceededError, "PARAMETER_CANNOT_BE_ZERO" => ParameterCannotBeZeroError,
+  "PARAMETER_ONLY_ONE" => ParameterOnlyOne, "OPERATOR_INVALID" => OperatorInvalidError,
+  "ENTITY_NOT_FOUND" => EntityNotFoundError, "ENTITY_EXISTS" => EntityExistsError,
+  "ENTITY_LIMIT" => EntityLimitError, "ENTITY_ALREADY_IN_USE" => EntityAlreadyInUseError,
+  "ENTITY_EXPIRED" => EntityExpiredError, "ENTITY_INACTIVE" => EntityInactiveError,
+  "ENTITY_NOT_ELIGIBLE" => EntityNotEligibleError, "ENTITY_NOT_MODIFIED" => EntityNotModifiedError,
+  "ENTITY_STATE_INVALID" => EntityStateInvalidError, "ENTITY_MISSING_DATA" => EntityMissingDataError,
+  "DATA_NOT_FOUND" => DataNotFoundError, "ASSOCIATION_EXISTS" => AssociationExistsError,
+  "NO_ASSOCIATION_EXISTS" =>  NoAssociationExistsError, "DUPLICATE" =>  DuplicateError,
+  "DATE_BEFORE_DATE" => DateBeforeDateError, "REMOVE_NOT_ALLOWED" => RemoveNotAllowedError,
+  "MOP_EXPIRED" => MopExpiredError, "ACCOUNT_INACTIVE" => AccountInactiveError,
+  "ACCOUNT_DELINQUENT" => AccountDelinquentError, "MONTHLY_BUDGET_REACHED" => MonthlyBudgetReachedError,
+  "QUOTA_EXCEEDED" => QuotaExceededError,"RATE_EXCEEDED" =>  RateExceededError
+  }
+  def Exceptions.appropriate_error error_code
+    if possible_errors.include?(error_code)
+      return possible_errors[error_code]
+    else
+      raise APIError.new "The API returned an unrecognized error code: #{error_code}"
+    end
+  end
+
+  def Exceptions.print_superclasses error_code
+    begin
+      raise appropriate_error[error_code]
+    rescue => ex
+      class_hierarchy = ex.class.ancestors
+      class_hierarchy.slice!(class_hierarchy.index(StandardError)..-1)
+      return class_hierarchy.reverse.join("::")
+    end
+  end
 end
