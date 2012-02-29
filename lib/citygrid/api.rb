@@ -1,9 +1,11 @@
 require "httparty"
 require "json"
+require "exceptions"
 
 class CityGrid
   class API 
     include HTTParty
+    include Exceptions
     #debug_output $stderr
 
     DEFAULT_HEADERS = {
@@ -97,109 +99,106 @@ class CityGrid
           raise ConfigurationError.new "No endpoint defined" if !path || path.empty?
           raise ConfigurationError.new "No hostname defined" if !req_options[:base_uri] || req_options[:base_uri].empty?
           
+          # prepare request and sanitized request for logs
           req = HTTParty::Request.new http_method, path, req_options
-
+          req_to_output = HTTParty::Request.new http_method, path, strip_unsafe_params(req_options)
 
           begin
             response = req.perform
           rescue => ex
-            raise RequestError.new req, ex
+            raise Exceptions::RequestError.new req, ex
           ensure
             if defined?(Rails.logger)
-              Rails.logger.info req.to_curl
+              Rails.logger.info req_to_output.to_curl
             else
-              puts req.to_curl
+              puts req_to_output.to_curl
             end
           end
           
+          # catch unparsable responses (html etc)
           if !response.parsed_response.is_a?(Hash)
-            raise ResponseParseError.new req, response
+            raise Exceptions::ResponseParseError.new req, response
+          # catch responses not in new response format
           elsif response["errors"]
-            raise ResponseError.new req, response["errors"], response
-          elsif response["message"] && response["message"] == "Invalid Token or Expired"
-            raise InvalidAuthToken.new
+            raise Exceptions::ResponseError.new req, response["errors"], response
+
+          # Parse and handle new response codes 
+          elsif (response["response"] && response["response"]["code"] != "SUCCESS") && 
+            (response["response"] && response["response"]["code"] != 200)
+            error_code = response["response"]["code"]
+            raise Exceptions::appropriate_error(error_code).new req, response["response"]["message"] + " " + print_superclasses(error_code)
+          # if the response is a nested hash/nested hash containing arrays
+          elsif response["totalNumEntries"] && response["response"].nil?
+            error_code = parse_multiple_responses(response)
+            if error_code[0] == "SUCCESS" || error_code[0] == 200
+              return CityGrid::API::Response.new response
+            else 
+              raise Exceptions::appropriate_error(error_code[0]).new req, error_code[1]  + " " + print_superclasses(error_code[0])
           else
             return CityGrid::API::Response.new response
           end
-          
         rescue => ex
           raise ex if CityGrid.raise_errors?
         end
       end
 
-      # ERRORS
-      class APIError < StandardError
-        attr_accessor :request
-        
-        def initialize msg, request
-          super msg
+      def parse_multiple_responses response
+        parsing = response.values.select{ |x| x.is_a? Array }.first
+        puts "now we have #{parsing}"
+        if parsing.nil? || parsing == []
+          # now we know it's a nested nash - proceeed to parse that
+          return parse_nested_hashes(response)
+        elsif parsing != nil && parsing != []
+          parsing = [parsing[0]["response"]["code"], parsing[0]["response"]["message"]]
+          return parsing
+        else
+          # We should figure out a better way to do this
+          raise Exceptions::APIError.new "Received a JSON error code but it could not be parsed: #{response}"
         end
       end
-      
-      class ResponseError < APIError
-        attr_accessor :errors, :response
-        
-        def initialize request, errors, response
-          self.errors = errors
-          self.response = response
-          
-          super "API returned error message", request
-        end
-      end
-      
-      class RequestError < APIError
-        attr_accessor :inner_exception
-        
-        def initialize request, inner_exception, msg = nil
-          self.inner_exception = inner_exception
-          self.request = request
-          super msg || "Error while performing request: #{inner_exception.message}", request
-        end
-      end
-      
-      class ResponseParseError < APIError
-        attr_accessor :server_msg, :description, :raw_response
-        def initialize request, response
-          self.raw_response = response
-          # parse Tomcat error report
-          if response.match /<title>Apache Tomcat.* - Error report<\/title>/
-            response.scan(/<p><b>(message|description)<\/b> *<u>(.*?)<\/u><\/p>/).each do |match|
-              case match[0]
-              when "message"
-                self.server_msg = match[1]
-              when "description"
-                self.description = match[1]       
-              end
-            end
 
-            error_body = response.match(/<body>(.*?)<\/body>/m)[1]
-
-            msg = <<-EOS
-            Unexpected response format. Expected response to be a hash, but was instead:\n#{error_body}\n
-            EOS
-
-            super msg, request
+      def parse_nested_hashes response_hash
+        # at this point we know that the response is a hash
+        response_hash.each do |key, value|
+          if value.is_a?(Hash) && response_hash[key]["response"]
+            return [response_hash[key]["response"]["code"], response_hash[key]["response"]["message"]
+          elsif value.is_a?(Hash) && !response_hash[key]["response"]
+            parse_nested_hashes value
           else
-            msg = <<-EOS
-            Unexpected response format. Expected response to be a hash, but was instead:\n#{response.parsed_response}\n
-            EOS
-
-            super msg, request
+            # We should figure out a better way to do this
+            raise Exceptions::APIError.new "Received a JSON error code but it could not be parsed: #{response}"
           end
         end
       end
 
-      class InvalidAuthToken < StandardError
-        def initialize message = "Invalid Token or Expired"
+
+      def strip_unsafe_params options
+      unsafe_params = { "password" => "[FILTERED]", "securityCode" => "[FILTERED]",
+                        "cardNumber" => "[FILTERED]", "expirationMonth" => "[FILTERED]",
+                        "expirationYear" => "[FILTERED]"
+                      }
+        return options.merge(unsafe_params.select { |k| options.keys.include? k })
+      end
+
+   # Errors
+
+      class MUSHPendingChanges <StandardError
+        def initialize message = "The are currently pending changes in the mush.  Cannot update."
           super message
         end
       end
+      
+      # class InvalidAuthToken < StandardError
+      #   def initialize message = "Invalid Token or Expired"
+      #     super message
+      #   end
+      # end
 
-      class MissingAuthToken < StandardError
-        def initialize
-          super "Missing authToken - token is required"
-        end
-      end
+      # class MissingAuthToken < StandardError
+      #   def initialize
+      #     super "Missing authToken - token is required"
+      #   end
+      # end
       
       class ConfigurationError < StandardError
         def initialize message = "Invalid Configuration"
