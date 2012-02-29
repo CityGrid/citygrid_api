@@ -1,11 +1,11 @@
 require "httparty"
 require "json"
-load "exceptions.rb"
+require "citygrid/exceptions"
 
 class CityGrid
   class API 
     include HTTParty
-    #include Exceptions
+    include Exceptions
     #debug_output $stderr
 
     DEFAULT_HEADERS = {
