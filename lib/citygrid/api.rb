@@ -111,11 +111,15 @@ class CityGrid
       end
 
       def parse_nested_hashes response_hash
+         puts "starting to parse nested hash #{response_hash}"
         # at this point we know that the response is a hash
         response_hash.each do |key, value|
+          puts "the key is #{key}"
           if value.is_a?(Hash) && response_hash[key]["response"]
+            puts "found it!  returning.. #{[response_hash[key]["response"]["code"], response_hash[key]["response"]["message"]]}"
             return [response_hash[key]["response"]["code"], response_hash[key]["response"]["message"]]
           elsif value.is_a?(Hash) && !response_hash[key]["response"]
+            puts "looping again using #{value}"
             parse_nested_hashes value
           else
             # We should figure out a better way to do this
