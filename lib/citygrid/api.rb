@@ -140,6 +140,7 @@ class CityGrid
             else 
               puts "we found an error and it was #{error_code[1]}"
               raise Exceptions::appropriate_error(error_code[0]).new req, error_code[1]  + " " + print_superclasses(error_code[0])
+            end
           else
             return CityGrid::API::Response.new response
           end
