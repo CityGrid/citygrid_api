@@ -1,7 +1,7 @@
 require File.join(File.dirname(__FILE__), "auth_token")
 require File.join(File.dirname(__FILE__), "session_helper")
 
-# don't do gem setup if we're in the dashboad environment
+# don't do gem setup if we're in the dashboad environment, test check-in
 unless defined? IN_DASHBOARD
   require 'rubygems'
   require 'bundler'
