@@ -92,7 +92,9 @@ class CityGrid
                           :cardNumber => "[FILTERED]", :expirationMonth => "[FILTERED]",
                           :expirationYear => "[FILTERED]"
                         }
-        return options[:query].merge(unsafe_params.select { |k| options.keys.include? k })
+        if !options[:query].nil?
+          return options[:query].merge(unsafe_params.select { |k| options.keys.include? k })
+        end
       end
 
       # 
