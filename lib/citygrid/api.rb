@@ -93,7 +93,8 @@ class CityGrid
                           :expirationYear => "[FILTERED]"
                         }
         if !options[:query].nil?
-          return options[:query].merge(unsafe_params.select { |k| options.keys.include? k })
+          to_merge[:query] = options[:query].merge(unsafe_params.select { |k| options.keys.include? k })
+          return options.merge(to_merge)
         end
       end
 
