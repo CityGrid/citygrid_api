@@ -1,6 +1,6 @@
 require "httparty"
 require "json"
-require "citygrid/exceptions"
+require "citygrid/citygrid_exceptions"
 
 class CityGrid
   class API 
