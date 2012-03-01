@@ -183,11 +183,11 @@ class CityGrid
             puts "now parsing a response with multiple entries"
             error_code = parse_multiple_responses(response)
             puts "the error code that came back is #{error_code}"
-            if error_code[0] == "SUCCESS" || error_code[0] == 200
-              return CityGrid::API::Response.new response
-            elsif error_code.nil? || error_code == []
+            if error_code.nil? || error_code == []
               puts "passing over this for now"
               return CityGrid::API::Response.new response # pass over for now
+            elsif error_code[0] == "SUCCESS" || error_code[0] == 200
+              return CityGrid::API::Response.new response
             else 
               puts "we found an error and it was #{error_code[1]}"
               raise Exceptions.appropriate_error(error_code[0]).new req, error_code[1]  + " " + Exceptions.print_superclasses(error_code[0])
