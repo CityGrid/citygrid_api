@@ -1,4 +1,4 @@
-module CitygridExceptions
+module CityGridExceptions
 
   # Define parent error classes
   # All errors thrown in the API should extend APIError - Level 1
