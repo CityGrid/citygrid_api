@@ -103,7 +103,8 @@ class CityGrid
           #return parse_nested_hashes(response)
           puts "We're passing over this one!"
           # pass over these for now
-          return CityGrid::API::Response.new response
+          #return CityGrid::API::Response.new response
+          return parsing
         elsif parsing != nil && parsing != []
           parsing = [parsing[0]["response"]["code"], parsing[0]["response"]["message"]]
           return parsing
