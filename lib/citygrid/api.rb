@@ -173,22 +173,22 @@ class CityGrid
           
           # catch unparsable responses (html etc)
           if !response.parsed_response.is_a?(Hash)
-            puts "the response was unparsable [gem]"
+            puts "the response was unparsable [gem] TYPE 1"
             raise CityGridExceptions::ResponseParseError.new req, response
           # catch responses not in new response format
           elsif response["errors"]
-            puts "an error in the old format was caught [gem]"
+            puts "an error in the old format was caught [gem] TYPE 2"
             raise CityGridExceptions::ResponseError.new req, response["errors"], response
 
           # Parse and handle new response codes 
           elsif (response["response"] && response["response"]["code"] != "SUCCESS") && (response["response"] && response["response"]["code"] != 200)
             error_code = response["response"]["code"]
-            puts "first level code that was not a success #{error_code}"
+            puts "TYPE 3 first level code that was not a success #{error_code}"
             puts response
             raise CityGridExceptions.appropriate_error(error_code).new req, response, response["response"]["message"].to_s + " " + CityGridExceptions.print_superclasses(error_code)
           # if the response is a nested hash/nested hash containing arrays
           elsif response["totalNumEntries"] && response["response"].nil?
-            puts "now parsing a response with multiple entries"
+            puts "now parsing a response with multiple entries TYPE 4 : #{response}"
             error_code = parse_multiple_responses(response)
             puts "the error code that came back is #{error_code}"
             if error_code.nil? || error_code == []
