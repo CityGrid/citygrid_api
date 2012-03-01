@@ -168,6 +168,7 @@ class CityGrid
               Rails.logger.info req.to_curl
             else
               puts req.to_curl
+              ap response
             end
           end
           
@@ -181,7 +182,9 @@ class CityGrid
             raise CityGridExceptions::ResponseError.new req, response["errors"], response
 
           # Parse and handle new response codes 
-          elsif (response["response"] && response["response"]["code"] != "SUCCESS") && (response["response"] && response["response"]["code"] != 200)
+          elsif (response["response"] && response["response"]["code"] != "SUCCESS") && 
+                (response["response"] && response["response"]["code"] != 200) && 
+                (response["response"] && response["response"]["code"] != 400) 
             error_code = response["response"]["code"]
             puts "TYPE 3 first level code that was not a success #{error_code}"
             puts response
@@ -198,12 +201,7 @@ class CityGrid
               return CityGrid::API::Response.new response
             else 
               puts "we found an error and it was #{error_code[1]}"
-              to_throw = appropriate_error(error_code[0])
-              if !to_throw.nil?
-                raise CityGridExceptions.to_throw.new req, response, error_code[1].to_s  + " " + CityGridExceptions.print_superclasses(error_code[0])
-              else
-                raise APIError.new req, response, "The error code returned is could not be found: #{error_code[0]}"
-              end
+                raise CityGridExceptions.appropriate_error(error_code[0]).new req, response, error_code[1].to_s  + " " + CityGridExceptions.print_superclasses(error_code[0])
             end
           else
             return CityGrid::API::Response.new response
