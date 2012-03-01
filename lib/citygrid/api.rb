@@ -185,7 +185,7 @@ class CityGrid
             if error_code.nil? || error_code == []
               ap "[gem] passing over this for now"
               return CityGrid::API::Response.new response # pass over for now
-            elsif error_code[0] == "SUCCESS" || error_code[0] == 200
+            elsif error_code[0] == "SUCCESS" || error_code[0] == 200 || error_code[0] == 400
               return CityGrid::API::Response.new response
             else 
               ap "[gem] we found an error and it was #{error_code[1]}"
