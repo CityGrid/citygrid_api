@@ -152,6 +152,7 @@ class CityGrid
           raise ConfigurationError.new "No hostname defined" if !req_options[:base_uri] || req_options[:base_uri].empty?
           
           # prepare request and sanitized request for logs
+          puts "Options after strip unsafe: #{strip_unsafe_params(req_options)}"
           req = HTTParty::Request.new http_method, path, req_options
           req_to_output = HTTParty::Request.new http_method, path, strip_unsafe_params(req_options)
 
