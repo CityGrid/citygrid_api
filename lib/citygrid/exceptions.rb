@@ -1,5 +1,5 @@
 module Exceptions
-  
+
   # Define parent error classes
   # All errors thrown in the API should extend APIError - Level 1
   class APIError < StandardError
@@ -145,7 +145,7 @@ module Exceptions
  class QuotaExceededError        < SpecificDataError; end
  class RateExceededError         < SpecificDataError; end
 
-possible_errors =
+@possible_errors =
  { 
   0 => ResponseError, nil => ResponseParseError, "" => ResponseParseError, 400 => RequestError,
   401 => AuthenticationError, 403 => RequestError, 405 => RequestError, 406 => HeaderError, 
@@ -175,9 +175,10 @@ possible_errors =
   "ACCOUNT_DELINQUENT" => AccountDelinquentError, "MONTHLY_BUDGET_REACHED" => MonthlyBudgetReachedError,
   "QUOTA_EXCEEDED" => QuotaExceededError,"RATE_EXCEEDED" =>  RateExceededError
   }
+
   def Exceptions.appropriate_error error_code
-    if possible_errors.include?(error_code)
-      return possible_errors[error_code]
+    if @possible_errors.include?(error_code)
+      return @possible_errors[error_code]
     else
       raise APIError.new "The API returned an unrecognized error code: #{error_code}"
     end
