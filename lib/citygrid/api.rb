@@ -5,7 +5,7 @@ require "citygrid/exceptions"
 class CityGrid
   class API 
     include HTTParty
-    include Exceptions
+    include CityGridExceptions
     #debug_output $stderr
 
     DEFAULT_HEADERS = {
@@ -110,7 +110,7 @@ class CityGrid
           return parsing
         else
           # We should figure out a better way to do this
-          raise Exceptions::APIError.new "Received a JSON error code but it could not be parsed: #{response}"
+          raise CityGridExceptions::APIError.new "Received a JSON error code but it could not be parsed: #{response}"
         end
       end
 
@@ -129,7 +129,7 @@ class CityGrid
       #       parse_nested_hashes value
       #     elsif !value.instance_of?(Hash) && flattened_response.index(value) < (flattened_response.length) -1
       #       # We should figure out a better way to do this
-      #       raise Exceptions::APIError.new "Received a JSON error code but it could not be parsed: #{response_hash}"
+      #       raise CityGridExceptions::APIError.new "Received a JSON error code but it could not be parsed: #{response_hash}"
       #     end
       #   end
       # end
@@ -155,7 +155,7 @@ class CityGrid
           begin
             response = req.perform
           rescue => ex
-            raise Exceptions::RequestError.new req, ex
+            raise CityGridExceptions::RequestError.new req, ex
           ensure
             if defined?(Rails.logger)
               Rails.logger.info req_to_output.to_curl
@@ -167,18 +167,18 @@ class CityGrid
           # catch unparsable responses (html etc)
           if !response.parsed_response.is_a?(Hash)
             puts "the response was unparsable [gem]"
-            raise Exceptions::ResponseParseError.new req, response
+            raise CityGridExceptions::ResponseParseError.new req, response
           # catch responses not in new response format
           elsif response["errors"]
             puts "an error in the old format was caught [gem]"
-            raise Exceptions::ResponseError.new req, response["errors"], response
+            raise CityGridExceptions::ResponseError.new req, response["errors"], response
 
           # Parse and handle new response codes 
           elsif (response["response"] && response["response"]["code"] != "SUCCESS") && (response["response"] && response["response"]["code"] != 200)
             error_code = response["response"]["code"]
             puts "first level code that was not a success #{error_code}"
             puts response
-            raise Exceptions.appropriate_error(error_code).new req, response["response"]["message"].to_s + " " + Exceptions.print_superclasses(error_code)
+            raise CityGridExceptions.appropriate_error(error_code).new req, response, response["response"]["message"].to_s + " " + CityGridExceptions.print_superclasses(error_code)
           # if the response is a nested hash/nested hash containing arrays
           elsif response["totalNumEntries"] && response["response"].nil?
             puts "now parsing a response with multiple entries"
@@ -191,7 +191,7 @@ class CityGrid
               return CityGrid::API::Response.new response
             else 
               puts "we found an error and it was #{error_code[1]}"
-              raise Exceptions.appropriate_error(error_code[0]).new req, error_code[1].to_s  + " " + Exceptions.print_superclasses(error_code[0])
+              raise CityGridExceptions.appropriate_error(error_code[0]).new req, response, error_code[1].to_s  + " " + CityGridExceptions.print_superclasses(error_code[0])
             end
           else
             return CityGrid::API::Response.new response
