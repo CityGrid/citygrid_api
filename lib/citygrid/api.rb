@@ -153,11 +153,11 @@ class CityGrid
           raise ConfigurationError.new "No hostname defined" if !req_options[:base_uri] || req_options[:base_uri].empty?
           
           # prepare request and sanitized request for logs
-          puts "Options after strip unsafe: #{strip_unsafe_params(req_options)}"
-          puts "options before that: #{req_options}"
-          safe_req_options = strip_unsafe_params(req_options)
+          #puts "Options after strip unsafe: #{strip_unsafe_params(req_options)}"
+          #puts "options before that: #{req_options}"
+          #safe_req_options = strip_unsafe_params(req_options)
           req = HTTParty::Request.new http_method, path, req_options
-          req_to_output = HTTParty::Request.new http_method, path, safe_req_options
+          #req_to_output = HTTParty::Request.new http_method, path, safe_req_options
 
           begin
             response = req.perform
@@ -165,9 +165,9 @@ class CityGrid
             raise CityGridExceptions::RequestError.new req, ex
           ensure
             if defined?(Rails.logger)
-              Rails.logger.info req_to_output.to_curl
+              Rails.logger.info req.to_curl
             else
-              puts req_to_output.to_curl
+              puts req.to_curl
             end
           end
           
