@@ -101,17 +101,18 @@ class CityGrid
       # 
       def parse_multiple_responses response
         parsing = response.values.select{ |x| x.is_a? Array }.first
-        puts "now we have #{parsing}"
         if parsing.nil? || parsing == []
-          # now we know it's a nested nash - proceeed to parse that
-          #return parse_nested_hashes(response)
-          puts "We're passing over this one!"
-          # pass over these for now
-          #return CityGrid::API::Response.new response
+          ap "Response was too hard to parse... letting it through..."
           return parsing
         elsif parsing != nil && parsing != []
-          parsing = [parsing[0]["response"]["code"], parsing[0]["response"]["message"]]
-          return parsing
+          if parsing[0]["response"]
+            parsing = [parsing[0]["response"]["code"], parsing[0]["response"]["message"]]
+            return parsing
+          else
+            # this accomodates geocode response which does not contain a response node
+            ap "Response was too hard to parse... letting it through..."
+            return nil
+          end
         else
           # We should figure out a better way to do this
           raise CityGridExceptions::APIError.new "Received a JSON error code but it could not be parsed: #{response}"
@@ -158,6 +159,10 @@ class CityGrid
           #safe_req_options = strip_unsafe_params(req_options)
           req = HTTParty::Request.new http_method, path, req_options
           #req_to_output = HTTParty::Request.new http_method, path, safe_req_options
+          ap "HERE ARE THE INGREDIENTS OF THE REQUEST:"
+          ap "http_method is: #{http_method}"
+          ap "path is: #{path}"
+          ap "req_options is: #{req_options}"
 
           begin
             response = req.perform
@@ -174,11 +179,11 @@ class CityGrid
           
           # catch unparsable responses (html etc)
           if !response.parsed_response.is_a?(Hash)
-            puts "the response was unparsable [gem] TYPE 1"
+            ap "[gem] the response was unparsable (response was not a hash)"
             raise CityGridExceptions::ResponseParseError.new req, response
           # catch responses not in new response format
           elsif response["errors"]
-            puts "an error in the old format was caught [gem] TYPE 2"
+            ap "[gem] An error in the old response format was caught.  Raising a general response error..."
             raise CityGridExceptions::ResponseError.new req, response["errors"], response
 
           # Parse and handle new response codes 
@@ -186,8 +191,9 @@ class CityGrid
                 (response["response"] && response["response"]["code"] != 200) && 
                 (response["response"] && response["response"]["code"] != 400) 
             error_code = response["response"]["code"]
-            puts "TYPE 3 first level code that was not a success #{error_code}"
-            puts response
+            ap "[gem] The response was contained in the first level of the response hash.  Below:"
+            ap response
+            ap "****************************************************************************"
             raise CityGridExceptions.appropriate_error(error_code).new req, response, response["response"]["message"].to_s #+ " " + CityGridExceptions.print_superclasses(error_code)
           # if the response is a nested hash/nested hash containing arrays
           elsif response["totalNumEntries"] && response["response"].nil?
@@ -207,6 +213,7 @@ class CityGrid
             return CityGrid::API::Response.new response
           end
         rescue => ex
+          ap "The gem threw an error: #{ex}"
           raise ex if CityGrid.raise_errors?
         end
       end
