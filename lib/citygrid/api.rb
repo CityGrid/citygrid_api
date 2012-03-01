@@ -87,11 +87,12 @@ class CityGrid
 
       def strip_unsafe_params options
         puts "OPTIONS: #{options}"
-        unsafe_params = { :password => "[FILTERED]", :securityCode => "[FILTERED]",
+        unsafe_params = { 
+                          :password => "[FILTERED]", :securityCode => "[FILTERED]",
                           :cardNumber => "[FILTERED]", :expirationMonth => "[FILTERED]",
                           :expirationYear => "[FILTERED]"
                         }
-        return options.merge({ :query=> unsafe_params.select { |k| options.keys.include? k }})
+        return options[:query].merge(unsafe_params.select { |k| options.keys.include? k })
       end
 
       # 
