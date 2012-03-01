@@ -176,7 +176,7 @@ class CityGrid
           # Parse and handle new response codes 
           elsif (response["response"] && response["response"]["code"] != "SUCCESS") && (response["response"] && response["response"]["code"] != 200)
             error_code = response["response"]["code"]
-            puts "got a first level 'response' response. that was not a success"
+            puts "got a first level 'response' response. that was not a success.  It was #{error_code}"
             raise Exceptions.appropriate_error(error_code).new req, response["response"]["message"] + " " + Exceptions.print_superclasses(error_code)
           # if the response is a nested hash/nested hash containing arrays
           elsif response["totalNumEntries"] && response["response"].nil?
