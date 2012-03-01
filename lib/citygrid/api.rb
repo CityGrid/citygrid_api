@@ -119,64 +119,45 @@ class CityGrid
         end
       end
 
-# Commented out for now until we can 
-      # def parse_nested_hashes response_hash
-      #    puts "starting to parse nested hash #{response_hash}"
-      #   # at this point we know that the response is a hash
-      #   flattened_response = response_hash.values
-      #   flattened_response.each do |value|
-      #     puts "now doing: #{value}"
-      #     if value.instance_of?(Hash) && response_hash[key]["response"]
-      #       puts "found it!  returning.. #{[response_hash[key]["response"]["code"], response_hash[key]["response"]["message"]]}"
-      #       return [response_hash[key]["response"]["code"], response_hash[key]["response"]["message"]]
-      #     elsif value.instance_of?(Hash) && !response_hash[key]["response"]
-      #       puts "looping again using #{value}"
-      #       parse_nested_hashes value
-      #     elsif !value.instance_of?(Hash) && flattened_response.index(value) < (flattened_response.length) -1
-      #       # We should figure out a better way to do this
-      #       raise CityGridExceptions::APIError.new "Received a JSON error code but it could not be parsed: #{response_hash}"
-      #     end
-      #   end
-      # end
-
-        # Transform response into API::Response object
-        # or throw exception if an error exists
-        def request_and_handle http_method, path, options
-          if http_method.is_a?(String) || http_method.is_a?(Symbol)
-            http_method = HTTP_METHODS[http_method.to_s]
-            raise "Unknown http method: #{http_method}" unless http_method
-          end
+      # Transform response into API::Response object
+      # or throw exception if an error exists
+      def request_and_handle http_method, path, options
+        if http_method.is_a?(String) || http_method.is_a?(Symbol)
+          http_method = HTTP_METHODS[http_method.to_s]
+          raise "Unknown http method: #{http_method}" unless http_method
+        end
+      
+        req_options = default_options.dup
+        req_options = req_options.merge(options)
         
-          req_options = default_options.dup
-          req_options = req_options.merge(options)
-          
-          raise ConfigurationError.new "No endpoint defined" if !path || path.empty?
-          raise ConfigurationError.new "No hostname defined" if !req_options[:base_uri] || req_options[:base_uri].empty?
-          
-          # prepare request and sanitized request for logs
-          #puts "Options after strip unsafe: #{strip_unsafe_params(req_options)}"
-          #puts "options before that: #{req_options}"
-          #safe_req_options = strip_unsafe_params(req_options)
-          req = HTTParty::Request.new http_method, path, req_options
-          #req_to_output = HTTParty::Request.new http_method, path, safe_req_options
-          ap "HERE ARE THE INGREDIENTS OF THE REQUEST:"
-          ap "http_method is: #{http_method}"
-          ap "path is: #{path}"
-          ap "req_options is: #{req_options}"
+        raise ConfigurationError.new "No endpoint defined" if !path || path.empty?
+        raise ConfigurationError.new "No hostname defined" if !req_options[:base_uri] || req_options[:base_uri].empty?
+        
+        # prepare request and sanitized request for logs
+        #puts "Options after strip unsafe: #{strip_unsafe_params(req_options)}"
+        #puts "options before that: #{req_options}"
+        #safe_req_options = strip_unsafe_params(req_options)
+        req = HTTParty::Request.new http_method, path, req_options
+        #req_to_output = HTTParty::Request.new http_method, path, safe_req_options
+        # ap "HERE ARE THE INGREDIENTS OF THE REQUEST:"
+        # ap "http_method is: #{http_method}"
+        # ap "path is: #{path}"
+        # ap "req_options is: #{req_options}"
 
-          begin
-            response = req.perform
-          rescue => ex
-            raise CityGridExceptions::RequestError.new req, ex
-          ensure
-            if defined?(Rails.logger)
-              Rails.logger.info req.to_curl
-            else
-              puts req.to_curl
-              ap response
-            end
+        begin
+          response = req.perform
+        rescue => ex
+          raise CityGridExceptions::RequestError.new req, ex
+        ensure
+          if defined?(Rails.logger)
+            Rails.logger.info req.to_curl
+          else
+            puts req.to_curl
+            ap response
           end
-          
+        end
+
+        begin 
           # catch unparsable responses (html etc)
           if !response.parsed_response.is_a?(Hash)
             ap "[gem] the response was unparsable (response was not a hash)"
@@ -193,20 +174,21 @@ class CityGrid
             error_code = response["response"]["code"]
             ap "[gem] The response was contained in the first level of the response hash.  Below:"
             ap response
+            ap "found error code: #{error_code}"
             ap "****************************************************************************"
             raise CityGridExceptions.appropriate_error(error_code).new req, response, response["response"]["message"].to_s #+ " " + CityGridExceptions.print_superclasses(error_code)
           # if the response is a nested hash/nested hash containing arrays
           elsif response["totalNumEntries"] && response["response"].nil?
-            puts "now parsing a response with multiple entries TYPE 4 : #{response}"
+            ap "[gem] now parsing a response with multiple entries: #{response}"
             error_code = parse_multiple_responses(response)
-            puts "the error code that came back is #{error_code}"
+            ap "the error code that came back is #{error_code}"
             if error_code.nil? || error_code == []
-              puts "passing over this for now"
+              ap "[gem] passing over this for now"
               return CityGrid::API::Response.new response # pass over for now
             elsif error_code[0] == "SUCCESS" || error_code[0] == 200
               return CityGrid::API::Response.new response
             else 
-              puts "we found an error and it was #{error_code[1]}"
+              ap "[gem] we found an error and it was #{error_code[1]}"
                 raise CityGridExceptions.appropriate_error(error_code[0]).new req, response, error_code[1].to_s  + " "# + CityGridExceptions.print_superclasses(error_code[0])
             end
           else
@@ -245,3 +227,4 @@ class CityGrid
       end
     end
   end
+end
