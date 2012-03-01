@@ -183,7 +183,7 @@ module CityGridExceptions
     if @possible_errors.include?(error_code)
       return @possible_errors[error_code]
     else
-      raise APIError.new "The API returned an unrecognized error code: #{error_code}"
+      return nil
     end
   end
 

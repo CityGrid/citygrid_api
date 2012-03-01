@@ -198,7 +198,12 @@ class CityGrid
               return CityGrid::API::Response.new response
             else 
               puts "we found an error and it was #{error_code[1]}"
-              raise CityGridExceptions.appropriate_error(error_code[0]).new req, response, error_code[1].to_s  + " " + CityGridExceptions.print_superclasses(error_code[0])
+              to_throw = appropriate_error(error_code[0])
+              if !to_throw.nil?
+                raise CityGridExceptions.to_throw.new req, response, error_code[1].to_s  + " " + CityGridExceptions.print_superclasses(error_code[0])
+              else
+                raise APIError.new req, response, "The error code returned is could not be found: #{error_code[0]}"
+              end
             end
           else
             return CityGrid::API::Response.new response
