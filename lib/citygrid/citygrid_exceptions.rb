@@ -177,7 +177,7 @@ module CityGridExceptions
   "QUOTA_EXCEEDED" => QuotaExceededError,"RATE_EXCEEDED" =>  RateExceededError
   }
 
-  def CitygridExceptions.appropriate_error error_code
+  def CityGridExceptions.appropriate_error error_code
     if @possible_errors.include?(error_code)
       return @possible_errors[error_code]
     else
@@ -185,7 +185,7 @@ module CityGridExceptions
     end
   end
 
-  def CitygridExceptions.print_superclasses error_code
+  def CityGridExceptions.print_superclasses error_code
     begin
       raise appropriate_error[error_code]
     rescue => ex
