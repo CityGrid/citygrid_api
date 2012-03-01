@@ -178,7 +178,7 @@ class CityGrid
             error_code = response["response"]["code"]
             puts "first level code that was not a success #{error_code}"
             puts response
-            raise Exceptions.appropriate_error(error_code).new req, response["response"]["message"] + " " + Exceptions.print_superclasses(error_code)
+            raise Exceptions.appropriate_error(error_code).new req, response["response"]["message"].to_s + " " + Exceptions.print_superclasses(error_code)
           # if the response is a nested hash/nested hash containing arrays
           elsif response["totalNumEntries"] && response["response"].nil?
             puts "now parsing a response with multiple entries"
@@ -191,7 +191,7 @@ class CityGrid
               return CityGrid::API::Response.new response
             else 
               puts "we found an error and it was #{error_code[1]}"
-              raise Exceptions.appropriate_error(error_code[0]).new req, error_code[1]  + " " + Exceptions.print_superclasses(error_code[0])
+              raise Exceptions.appropriate_error(error_code[0]).new req, error_code[1].to_s  + " " + Exceptions.print_superclasses(error_code[0])
             end
           else
             return CityGrid::API::Response.new response
