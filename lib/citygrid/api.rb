@@ -153,6 +153,7 @@ class CityGrid
           
           # prepare request and sanitized request for logs
           puts "Options after strip unsafe: #{strip_unsafe_params(req_options)}"
+          puts "options before that: #{req_options}"
           safe_req_options = strip_unsafe_params(req_options)
           req = HTTParty::Request.new http_method, path, req_options
           req_to_output = HTTParty::Request.new http_method, path, safe_req_options
