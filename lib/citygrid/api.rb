@@ -86,20 +86,22 @@ class CityGrid
         }
 
       def strip_unsafe_params method, options
-        ap " strip unsafe params OPTIONS: #{options}"
+        safe_options = options
+        to_merge = {}
         unsafe_params = { 
                           :password => "[FILTERED]", :securityCode => "[FILTERED]",
                           :cardNumber => "[FILTERED]", :expirationMonth => "[FILTERED]",
                           :expirationYear => "[FILTERED]"
                         }
-        if method == :get
-          ap "Strip unsafe params got the get method"
-        elsif method == :post
-          ap "Strip unsafe params got the post method"
-          #to_merge[:query] = options[:query].merge(unsafe_params.select { |k| options.keys.include? k })
-          #return options.merge(to_merge)
+        if method == Net::HTTP::Get && !options[:body].nil?
+          to_merge = options[:body].merge(unsafe_params.select { |k| options[:body].keys.include? k })
+          return safe_options.merge({ :body => to_merge })
+        elsif method == Net::HTTP::Post && !options[:query].nil?
+          to_merge = options[:query].merge(unsafe_params.select { |k| options[:query].keys.include? k })
+          return safe_options.merge({ :query => to_merge })
+        else
+          return options
         end
-        return "this is a test!"
       end
 
       def parse_multiple_responses response
@@ -137,12 +139,9 @@ class CityGrid
         raise ConfigurationError.new "No hostname defined" if !req_options[:base_uri] || req_options[:base_uri].empty?
         
         # prepare request and sanitized request for logs
-        ap "Options before strip unsafe: #{req_options}"
-        ap "Options after strip unsafe: #{strip_unsafe_params(req_options)}"
-
         safe_req_options = strip_unsafe_params(http_method, req_options)
         req = HTTParty::Request.new http_method, path, req_options
-        #req_to_output = HTTParty::Request.new http_method, path, safe_req_options
+        req_to_output = HTTParty::Request.new http_method, path, safe_req_options
 
         begin
           response = req.perform
@@ -150,9 +149,9 @@ class CityGrid
           raise CityGridExceptions::RequestError.new req, ex
         ensure
           if defined?(Rails.logger)
-            Rails.logger.info req.to_curl
+            Rails.logger.info req_to_output.to_curl
           else
-            puts req.to_curl
+            puts req_to_output.to_curl
           end
         end
 
