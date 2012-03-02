@@ -85,24 +85,27 @@ class CityGrid
           "options" => Net::HTTP::Options
         }
 
-      def strip_unsafe_params options
-        puts "OPTIONS: #{options}"
+      def strip_unsafe_params method, options
+        ap " strip unsafe params OPTIONS: #{options}"
         unsafe_params = { 
                           :password => "[FILTERED]", :securityCode => "[FILTERED]",
                           :cardNumber => "[FILTERED]", :expirationMonth => "[FILTERED]",
                           :expirationYear => "[FILTERED]"
                         }
-        if !options[:query].nil?
-          to_merge[:query] = options[:query].merge(unsafe_params.select { |k| options.keys.include? k })
-          return options.merge(to_merge)
+        if method == :get
+          ap "Strip unsafe params got the get method"
+        elsif method == :post
+          ap "Strip unsafe params got the post method"
+          #to_merge[:query] = options[:query].merge(unsafe_params.select { |k| options.keys.include? k })
+          #return options.merge(to_merge)
         end
+        return "this is a test!"
       end
 
-      # 
       def parse_multiple_responses response
         parsing = response.values.select{ |x| x.is_a? Array }.first
         if parsing.nil? || parsing == []
-          ap "Response was too hard to parse... letting it through..."
+          #ap "Response was too hard to parse... letting it through..."
           return parsing
         elsif parsing != nil && parsing != []
           if parsing[0]["response"]
@@ -110,7 +113,7 @@ class CityGrid
             return parsing
           else
             # this accomodates geocode response which does not contain a response node
-            ap "Response was too hard to parse... letting it through..."
+            #ap "Response was too hard to parse... letting it through..."
             return nil
           end
         else
@@ -134,15 +137,12 @@ class CityGrid
         raise ConfigurationError.new "No hostname defined" if !req_options[:base_uri] || req_options[:base_uri].empty?
         
         # prepare request and sanitized request for logs
-        #puts "Options after strip unsafe: #{strip_unsafe_params(req_options)}"
-        #puts "options before that: #{req_options}"
-        #safe_req_options = strip_unsafe_params(req_options)
+        ap "Options before strip unsafe: #{req_options}"
+        ap "Options after strip unsafe: #{strip_unsafe_params(req_options)}"
+
+        safe_req_options = strip_unsafe_params(http_method, req_options)
         req = HTTParty::Request.new http_method, path, req_options
         #req_to_output = HTTParty::Request.new http_method, path, safe_req_options
-        # ap "HERE ARE THE INGREDIENTS OF THE REQUEST:"
-        # ap "http_method is: #{http_method}"
-        # ap "path is: #{path}"
-        # ap "req_options is: #{req_options}"
 
         begin
           response = req.perform
@@ -153,18 +153,17 @@ class CityGrid
             Rails.logger.info req.to_curl
           else
             puts req.to_curl
-            ap response
           end
         end
 
         begin 
           # catch unparsable responses (html etc)
           if !response.parsed_response.is_a?(Hash)
-            ap "[gem] the response was unparsable (response was not a hash)"
+            #ap "[gem] the response was unparsable (response was not a hash)"
             raise CityGridExceptions::ResponseParseError.new req, response
           # catch responses not in new response format
           elsif response["errors"]
-            ap "[gem] An error in the old response format was caught.  Raising a general response error..."
+            #ap "[gem] An error in the old response format was caught.  Raising a general response error..."
             raise CityGridExceptions::ResponseError.new req, response["errors"], response
 
           # Parse and handle new response codes 
@@ -172,24 +171,24 @@ class CityGrid
                 (response["response"] && response["response"]["code"] != 200) && 
                 (response["response"] && response["response"]["code"] != 400) 
             error_code = response["response"]["code"]
-            ap "[gem] The response was contained in the first level of the response hash.  Below:"
-            ap response
-            ap "found error code: #{error_code}"
-            ap "****************************************************************************"
-            raise CityGridExceptions.appropriate_error(error_code).new req, response, response["response"]["message"].to_s #+ " " + CityGridExceptions.print_superclasses(error_code)
+            #ap "[gem] The response was contained in the first level of the response hash.  Below:"
+            #ap response
+            #ap "found error code: #{error_code}"
+            #ap "****************************************************************************"
+            return CityGridExceptions.appropriate_error(error_code).new req, response, response["response"]["message"].to_s #+ " " + CityGridExceptions.print_superclasses(error_code)
           # if the response is a nested hash/nested hash containing arrays
           elsif response["totalNumEntries"] && response["response"].nil?
-            ap "[gem] now parsing a response with multiple entries: #{response}"
+            #ap "[gem] now parsing a response with multiple entries: #{response}"
             error_code = parse_multiple_responses(response)
-            ap "the error code that came back is #{error_code}"
+            #ap "the error code that came back is #{error_code}"
             if error_code.nil? || error_code == []
-              ap "[gem] passing over this for now"
+              #ap "[gem] passing over this for now"
               return CityGrid::API::Response.new response # pass over for now
             elsif error_code[0] == "SUCCESS" || error_code[0] == 200 || error_code[0] == 400
               return CityGrid::API::Response.new response
             else 
-              ap "[gem] we found an error and it was #{error_code[1]}"
-                raise CityGridExceptions.appropriate_error(error_code[0]).new req, response, error_code[1].to_s  + " "# + CityGridExceptions.print_superclasses(error_code[0])
+              #ap "[gem] we found an error and it was #{error_code[1]}"
+                return CityGridExceptions.appropriate_error(error_code[0]).new req, response, error_code[1].to_s  + " "# + CityGridExceptions.print_superclasses(error_code[0])
             end
           else
             return CityGrid::API::Response.new response
