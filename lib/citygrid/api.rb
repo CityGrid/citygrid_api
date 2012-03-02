@@ -89,9 +89,9 @@ class CityGrid
         safe_options = options
         to_merge = {}
         unsafe_params = { 
-                          :password => "[FILTERED]", :securityCode => "[FILTERED]",
-                          :cardNumber => "[FILTERED]", :expirationMonth => "[FILTERED]",
-                          :expirationYear => "[FILTERED]"
+                          :password => "FILTERED", :securityCode => "FILTERED",
+                          :cardNumber => "FILTERED", :expirationMonth => "FILTERED",
+                          :expirationYear => "FILTERED"
                         }
         if method == Net::HTTP::Get && !options[:body].nil?
           to_merge = options[:body].merge(unsafe_params.select { |k| options[:body].keys.include? k })
