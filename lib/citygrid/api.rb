@@ -86,18 +86,39 @@ class CityGrid
         }
 
       def strip_unsafe_params method, options
-        safe_options = options
+        safe_options = options.dup
         to_merge = {}
         unsafe_params = { 
-                          :password => "FILTERED", :securityCode => "FILTERED",
-                          :cardNumber => "FILTERED", :expirationMonth => "FILTERED",
-                          :expirationYear => "FILTERED"
+                          :password => "FILTERED", "securityCode" => "FILTERED",
+                          "cardNumber" => "FILTERED", "expirationMonth" => "FILTERED",
+                          "expirationYear" => "FILTERED"
                         }
-        if method == Net::HTTP::Get && !options[:body].nil?
-          to_merge = options[:body].merge(unsafe_params.select { |k| options[:body].keys.include? k })
-          return safe_options.merge({ :body => to_merge })
-        elsif method == Net::HTTP::Post && !options[:query].nil?
-          to_merge = options[:query].merge(unsafe_params.select { |k| options[:query].keys.include? k })
+        # If the parameters are contained in the :body node of the options hash
+        if options[:body] && !options[:body].nil?
+          # Convert the inner JSON before doing any work
+          safe_options[:body] = JSON.parse(safe_options[:body])
+
+          # This handles the mop query format
+          if safe_options[:body]["mutateOperationListResource"] && 
+             safe_options[:body]["mutateOperationListResource"][0] &&
+             safe_options[:body]["mutateOperationListResource"][0]["operand"]
+            # All the sensitive fields are located in this path
+            target_hash = safe_options[:body]["mutateOperationListResource"][0]["operand"]
+            # Strip any elements from the unsafe params hash that aren't in options and merge
+            to_merge = target_hash.merge(unsafe_params.select { |k| target_hash.keys.include?(k) })
+            # Merge the clean operand hash back into the body
+            safe_options[:body]["mutateOperationListResource"][0]["operand"].merge!(to_merge)
+            # Convert the body key back to json before returning
+            safe_options[:body] = safe_options[:body].to_json
+            return safe_options
+          # Any other format with :body node 
+          else
+            to_merge = safe_options[:body].merge(unsafe_params.select { |k| safe_options[:body].keys.include? k })
+            return safe_options.merge({ :body => to_merge })
+          end
+        # If the parameters are contained in the :query node of the options hash
+        elsif options[:query] && !options[:query].nil?
+          to_merge = safe_options[:query].merge(unsafe_params.select { |k| safe_options[:query].keys.include? k })
           return safe_options.merge({ :query => to_merge })
         else
           return options
@@ -138,9 +159,11 @@ class CityGrid
         raise ConfigurationError.new "No endpoint defined" if !path || path.empty?
         raise ConfigurationError.new "No hostname defined" if !req_options[:base_uri] || req_options[:base_uri].empty?
         
-        # prepare request and sanitized request for logs
-        safe_req_options = strip_unsafe_params(http_method, req_options)
+        # prepare request
         req = HTTParty::Request.new http_method, path, req_options
+
+        # Sanitized request for logs
+        safe_req_options = strip_unsafe_params(http_method, req_options)
         req_to_output = HTTParty::Request.new http_method, path, safe_req_options
 
         begin
