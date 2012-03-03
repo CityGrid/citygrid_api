@@ -197,7 +197,7 @@ class CityGrid
             #ap response
             #ap "found error code: #{error_code}"
             #ap "****************************************************************************"
-            return CityGridExceptions.appropriate_error(error_code).new req, response, response["response"]["message"].to_s #+ " " + CityGridExceptions.print_superclasses(error_code)
+            raise CityGridExceptions.appropriate_error(error_code).new req, response, response["response"]["message"].to_s #+ " " + CityGridExceptions.print_superclasses(error_code)
           # if the response is a nested hash/nested hash containing arrays
           elsif response["totalNumEntries"] && response["response"].nil?
             #ap "[gem] now parsing a response with multiple entries: #{response}"
@@ -205,15 +205,15 @@ class CityGrid
             #ap "the error code that came back is #{error_code}"
             if error_code.nil? || error_code == []
               #ap "[gem] passing over this for now"
-              return CityGrid::API::Response.new response # pass over for now
+              raise CityGrid::API::Response.new response # pass over for now
             elsif error_code[0] == "SUCCESS" || error_code[0] == 200 || error_code[0] == 400
-              return CityGrid::API::Response.new response
+              raise CityGrid::API::Response.new response
             else 
               #ap "[gem] we found an error and it was #{error_code[1]}"
-                return CityGridExceptions.appropriate_error(error_code[0]).new req, response, error_code[1].to_s  + " "# + CityGridExceptions.print_superclasses(error_code[0])
+                raise CityGridExceptions.appropriate_error(error_code[0]).new req, response, error_code[1].to_s  + " "# + CityGridExceptions.print_superclasses(error_code[0])
             end
           else
-            return CityGrid::API::Response.new response
+            raise CityGrid::API::Response.new response
           end
         rescue => ex
           ap "The gem threw an error: #{ex}"
