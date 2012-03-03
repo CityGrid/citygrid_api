@@ -205,15 +205,15 @@ class CityGrid
             #ap "the error code that came back is #{error_code}"
             if error_code.nil? || error_code == []
               #ap "[gem] passing over this for now"
-              raise CityGrid::API::Response.new response # pass over for now
+              return CityGrid::API::Response.new response # pass over for now
             elsif error_code[0] == "SUCCESS" || error_code[0] == 200 || error_code[0] == 400
-              raise CityGrid::API::Response.new response
+              return CityGrid::API::Response.new response
             else 
               #ap "[gem] we found an error and it was #{error_code[1]}"
                 raise CityGridExceptions.appropriate_error(error_code[0]).new req, response, error_code[1].to_s  + " "# + CityGridExceptions.print_superclasses(error_code[0])
             end
           else
-            raise CityGrid::API::Response.new response
+            return CityGrid::API::Response.new response
           end
         rescue => ex
           ap "The gem threw an error: #{ex}"
