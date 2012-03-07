@@ -12,13 +12,16 @@ api:
   accounts:
     account:
       ssl: true
-      endpoint: accounts/account/v2      
+      endpoint: accounts/account/v2     
     method_of_payment:
       ssl: true
       endpoint: accounts/mop/v2
     user: 
       ssl: true
       endpoint: accounts/user/v2
+    temp_impersonation:
+      endpoint: accounts/user/v2
+      hostname: qa-prdmirror.citygrid.com 
   advertising:
     account_manager:
       ssl: true

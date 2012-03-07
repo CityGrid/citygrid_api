@@ -14,3 +14,10 @@ context "user log in with session" do
   should("have an auth_token"){ topic.auth_token }
   should("be logged in"){ topic.logged_in? }
 end
+
+context "impersonate user" do
+	setup do
+		SessionHelper.gary_test.call_api CityGrid::API::Accounts::User, :impersonate, :customerId => 125902
+	end
+	should("have a different auth token"){ap topic.authToken}
+end
