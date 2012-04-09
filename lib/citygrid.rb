@@ -143,6 +143,7 @@ require "citygrid/api/response"
 
 require "citygrid/api/accounts"
 require "citygrid/api/advertising"
+require "citygrid/api/ads"
 require "citygrid/api/content"
 
 require "request_ext"
