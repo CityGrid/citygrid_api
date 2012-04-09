@@ -9,6 +9,8 @@ defaults:
 #   endpoint: endpoint
 
 api:
+  ads:
+    custom: ads/custom/v2
   accounts:
     account:
       ssl: true
