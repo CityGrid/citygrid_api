@@ -2,7 +2,7 @@ class CityGrid
   class API
     class Ads
       class Custom < Ads
-        define_action :where, :get, "search/where",
+        define_action :where, :get, "where",
           :auth_token => false, 
           :publisher => true, 
           :client_ip => true, 
