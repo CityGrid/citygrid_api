@@ -4,7 +4,7 @@ class CityGrid
   class API
     class Advertising
       class Image < Advertising
-        def self.upload user_id, name, type, image_path, options = {}
+        def self.upload name, type, image_path, options = {}
           token = extract_auth_token options
           image_data = Base64.encode64(File.open(image_path).read.to_s).gsub(/\n/, "")
           format = options[:format] || image_path.split(".").last
@@ -18,8 +18,7 @@ class CityGrid
                 	"imageFormat" => format,
                 	"image" => image_data
                   },
-                "operator" => "ADD",
-                "userId" => user_id
+                "operator" => "ADD"
               }
             ]}.to_json,
             :headers => merge_headers("authToken" => token)
