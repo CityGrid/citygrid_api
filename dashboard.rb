@@ -1,6 +1,5 @@
 require 'rubygems'
 require 'sinatra'
-require "awesome_print"
 require "riot"
 require "haml"
 require 'stringio'
