@@ -1,5 +1,6 @@
 require File.join(File.dirname(__FILE__), "auth_token")
 require File.join(File.dirname(__FILE__), "session_helper")
+require "pp"
 
 # don't do gem setup if we're in the dashboad environment
 unless defined? IN_DASHBOARD
