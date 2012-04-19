@@ -2,7 +2,6 @@ GEM
   remote: http://rubygems.org/
   specs:
     addressable (2.2.6)
-    awesome_print (0.4.0)
     crack (0.3.1)
     git (1.2.5)
     haml (3.1.4)
@@ -38,8 +37,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  awesome_print (~> 0.4.0)
-  bundler (~> 1.0.0)
   haml
   httparty (~> 0.8.1)
   jeweler (~> 1.6.2)

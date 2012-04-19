@@ -1,5 +1,6 @@
 require File.join(File.dirname(__FILE__), "auth_token")
 require File.join(File.dirname(__FILE__), "session_helper")
+require "pp"
 
 # don't do gem setup if we're in the dashboad environment
 unless defined? IN_DASHBOARD
@@ -12,7 +13,6 @@ unless defined? IN_DASHBOARD
     $stderr.puts "Run `bundle install` to install missing gems"
     exit e.status_code
   end
-  require "ap"
   require "riot"
 
   $LOAD_PATH.unshift(File.join(File.dirname(__FILE__), '..', 'lib'))
@@ -36,11 +36,11 @@ unless defined? IN_DASHBOARD
       x = {"description" => ex.message, "server_msg" => "blank"}
       #x = {"description" => ex.description, "server_msg" => ex.server_msg}
       puts "======= ERROR ======="
-      ap x
-      ap ex.backtrace
+      pp x
+      pp ex.backtrace
       false
     rescue => ex
-      ap ex
+      pp ex
       puts ex.backtrace.join("\n")
       false # return false
     end

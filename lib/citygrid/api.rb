@@ -1,6 +1,7 @@
 require "httparty"
 require "json"
 require "citygrid/citygrid_exceptions"
+require "pp"
 
 class CityGrid
   class API 
@@ -128,7 +129,7 @@ class CityGrid
       def parse_multiple_responses response
         parsing = response.values.select{ |x| x.is_a? Array }.first
         if parsing.nil? || parsing == []
-          #ap "Response was too hard to parse... letting it through..."
+          #pp "Response was too hard to parse... letting it through..."
           return parsing
         elsif parsing != nil && parsing != []
           if parsing[0]["response"]
@@ -136,7 +137,7 @@ class CityGrid
             return parsing
           else
             # this accomodates geocode response which does not contain a response node
-            #ap "Response was too hard to parse... letting it through..."
+            #pp "Response was too hard to parse... letting it through..."
             return nil
           end
         else
@@ -181,11 +182,11 @@ class CityGrid
         begin 
           # catch unparsable responses (html etc)
           if !response.parsed_response.is_a?(Hash)
-            #ap "[gem] the response was unparsable (response was not a hash)"
+            #pp "[gem] the response was unparsable (response was not a hash)"
             raise CityGridExceptions::ResponseParseError.new req, response
           # catch responses not in new response format
           elsif response["errors"]
-            #ap "[gem] An error in the old response format was caught.  Raising a general response error..."
+            #pp "[gem] An error in the old response format was caught.  Raising a general response error..."
             raise CityGridExceptions::ResponseError.new req, response["errors"], response
 
           # Parse and handle new response codes 
@@ -193,30 +194,30 @@ class CityGrid
                 (response["response"] && response["response"]["code"] != 200) && 
                 (response["response"] && response["response"]["code"] != 400) 
             error_code = response["response"]["code"]
-            #ap "[gem] The response was contained in the first level of the response hash.  Below:"
-            #ap response
-            #ap "found error code: #{error_code}"
-            #ap "****************************************************************************"
+            #pp "[gem] The response was contained in the first level of the response hash.  Below:"
+            #pp response
+            #pp "found error code: #{error_code}"
+            #pp "****************************************************************************"
             raise CityGridExceptions.appropriate_error(error_code).new req, response, response["response"]["message"].to_s #+ " " + CityGridExceptions.print_superclasses(error_code)
           # if the response is a nested hash/nested hash containing arrays
           elsif response["totalNumEntries"] && response["response"].nil?
-            #ap "[gem] now parsing a response with multiple entries: #{response}"
+            #pp "[gem] now parsing a response with multiple entries: #{response}"
             error_code = parse_multiple_responses(response)
-            #ap "the error code that came back is #{error_code}"
+            #pp "the error code that came back is #{error_code}"
             if error_code.nil? || error_code == []
-              #ap "[gem] passing over this for now"
+              #pp "[gem] passing over this for now"
               return CityGrid::API::Response.new response # pass over for now
             elsif error_code[0] == "SUCCESS" || error_code[0] == 200 || error_code[0] == 400
               return CityGrid::API::Response.new response
             else 
-              #ap "[gem] we found an error and it was #{error_code[1]}"
+              #pp "[gem] we found an error and it was #{error_code[1]}"
                 raise CityGridExceptions.appropriate_error(error_code[0]).new req, response, error_code[1].to_s  + " "# + CityGridExceptions.print_superclasses(error_code[0])
             end
           else
             return CityGrid::API::Response.new response
           end
         rescue => ex
-          ap "The gem threw an error: #{ex}"
+          pp "The gem threw an error: #{ex}"
           raise ex if CityGrid.raise_errors?
         end
       end
