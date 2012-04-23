@@ -6,6 +6,7 @@ class CityGrid
         
         define_action :detail, :get, "detail", :auth_token => false, :publisher => true, :client_ip => true
         define_action :search, :get, "search/where", :auth_token => false, :publisher => true, :client_ip => true
+        define_action :searchlatlon, :get, "search/latlon", :auth_token => false, :publisher => true, :client_ip => true
       end
     end
   end
