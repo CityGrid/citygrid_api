@@ -28,7 +28,7 @@ class CityGrid
     end
 
     # whether the gem with print curls or not
-    # by default it will print curls
+    # by default it will not print curls
     def print_curls= v
       @print_curls = v
     end
