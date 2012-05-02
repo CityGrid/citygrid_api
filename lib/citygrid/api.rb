@@ -115,7 +115,9 @@ class CityGrid
           # Any other format with :body node 
           else
             to_merge = safe_options[:body].merge(unsafe_params.select { |k| safe_options[:body].keys.include? k })
-            return safe_options.merge({ :body => to_merge })
+            safe_options.merge!({ :body => to_merge })
+            safe_options[:body] = safe_options[:body].to_json
+            return safe_options
           end
         # If the parameters are contained in the :query node of the options hash
         elsif options[:query] && !options[:query].nil?
@@ -172,10 +174,12 @@ class CityGrid
         rescue => ex
           raise CityGridExceptions::RequestError.new req, ex
         ensure
-          if defined?(Rails.logger)
-            Rails.logger.info req_to_output.to_curl
-          else
-            puts req_to_output.to_curl
+          if CityGrid.print_curls?
+            if defined?(Rails.logger)
+              Rails.logger.info req_to_output.to_curl
+            else
+              puts req_to_output.to_curl
+            end
           end
         end
 

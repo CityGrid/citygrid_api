@@ -27,6 +27,16 @@ class CityGrid
       !defined?(@raise_errors) || @raise_errors
     end
 
+    # whether the gem with print curls or not
+    # by default it will print curls
+    def print_curls= v
+      @print_curls = v
+    end
+    
+    def print_curls? 
+      !defined?(@print_curls) || @print_curls
+    end
+
     def use_vcr= v
       @use_vcr = v
     end
