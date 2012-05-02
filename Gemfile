@@ -9,6 +9,7 @@ group :development do
   gem "rcov", ">= 0"
   gem "vcr"
   gem "webmock"
+  gem 'rdoc'
 end
 
 group :dashboard do
