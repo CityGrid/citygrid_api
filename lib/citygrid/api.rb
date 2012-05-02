@@ -36,7 +36,7 @@ class CityGrid
           token = options.delete :token
           
           headers = API::DEFAULT_HEADERS.clone
-          
+
           headers.merge! "authToken" => token if define_options[:auth_token] && token
 
           options.merge! "format"     => "json" if define_options[:format]
