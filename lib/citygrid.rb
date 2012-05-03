@@ -34,7 +34,7 @@ class CityGrid
     end
     
     def print_curls? 
-      !defined?(@print_curls) || @print_curls
+      defined?(@print_curls) || @print_curls
     end
 
     def use_vcr= v
