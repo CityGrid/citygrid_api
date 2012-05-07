@@ -174,7 +174,7 @@ class CityGrid
         rescue => ex
           raise CityGridExceptions::RequestError.new req, ex
         ensure
-          if CityGrid.print_curls?
+          if CityGrid.print_curls? 
             if defined?(Rails.logger)
               Rails.logger.info req_to_output.to_curl
             else
