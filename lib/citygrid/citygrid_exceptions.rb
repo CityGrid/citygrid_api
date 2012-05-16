@@ -3,9 +3,11 @@ module CityGridExceptions
   # Define parent error classes
   # All errors thrown in the API should extend APIError - Level 1
   class APIError < StandardError
-    attr_accessor :request
+    attr_accessor :request, :response
     
     def initialize request, response, msg = "An API error occurred"
+      @request = request
+      @response = response
       super msg
     end
   end
@@ -36,36 +38,26 @@ module CityGridExceptions
         Unexpected response format. Expected response to be a hash, but was instead:\n#{error_body}\n
         EOS
 
-        super msg, request
+        super request, response, msg
       else
         msg = <<-EOS
         Unexpected response format. Expected response to be a hash, but was instead:\n#{response.parsed_response}\n
         EOS
 
-        super msg, request
+        super request, response, msg
       end
     end
   end
 
   class RequestError < APIError
-    attr_accessor :inner_exception
-    
     def initialize request, response, msg = nil
-      self.inner_exception = inner_exception
-      self.request = request
-      super msg, request
-      #super msg || "Error while performing request: #{inner_exception.message}", request
+      super request, nil, msg
     end
   end
 
   class ResponseError < APIError
-    attr_accessor :errors, :response
-    
-    def initialize request, errors, response
-      self.errors = errors
-      self.response = response
-      
-      super "API returned error message", request
+    def initialize request, response, msg = nil
+      super request, response, msg
     end
   end
 
