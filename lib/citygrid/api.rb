@@ -168,11 +168,12 @@ class CityGrid
         # Sanitized request for logs
         safe_req_options = strip_unsafe_params(http_method, req_options)
         req_to_output = HTTParty::Request.new http_method, path, safe_req_options
+        req_for_airbrake = { :method => http_method, :path => path, :options => safe_req_options }
 
         begin
           response = req.perform
         rescue => ex
-          raise CityGridExceptions::RequestError.new req_to_output, ex
+          raise CityGridExceptions::RequestError.new req_for_airbrake, ex
         ensure
           if CityGrid.print_curls? 
             if defined?(Rails.logger)
@@ -183,15 +184,16 @@ class CityGrid
           end
         end
 
+ 
         begin 
           # catch unparsable responses (html etc)
           if !response.parsed_response.is_a?(Hash)
             #pp "[gem] the response was unparsable (response was not a hash)"
-            raise CityGridExceptions::ResponseParseError.new req_to_output, response
+            raise CityGridExceptions::ResponseParseError.new req_for_airbrake, response
           # catch responses not in new response format
           elsif response["errors"]
             #pp "[gem] An error in the old response format was caught.  Raising a general response error..."
-            raise CityGridExceptions::ResponseError.new req_to_output, response["errors"], response
+            raise CityGridExceptions::ResponseError.new req_for_airbrake, response["errors"], response
 
           # Parse and handle new response codes 
           elsif (response["response"] && response["response"]["code"] != "SUCCESS") && 
@@ -202,7 +204,7 @@ class CityGrid
             #pp response
             #pp "found error code: #{error_code}"
             #pp "****************************************************************************"
-            raise CityGridExceptions.appropriate_error(error_code).new req_to_output, response, response["response"]["message"].to_s #+ " " + CityGridExceptions.print_superclasses(error_code)
+            raise CityGridExceptions.appropriate_error(error_code).new req_for_airbrake, response, response["response"]["message"].to_s #+ " " + CityGridExceptions.print_superclasses(error_code)
           # if the response is a nested hash/nested hash containing arrays
           elsif response["totalNumEntries"] && response["response"].nil?
             #pp "[gem] now parsing a response with multiple entries: #{response}"
@@ -215,7 +217,7 @@ class CityGrid
               return CityGrid::API::Response.new response
             else 
               #pp "[gem] we found an error and it was #{error_code[1]}"
-                raise CityGridExceptions.appropriate_error(error_code[0]).new req_to_output, response, error_code[1].to_s  + " "# + CityGridExceptions.print_superclasses(error_code[0])
+                raise CityGridExceptions.appropriate_error(error_code[0]).new req_for_airbrake, response, error_code[1].to_s  + " "# + CityGridExceptions.print_superclasses(error_code[0])
             end
           else
             return CityGrid::API::Response.new response
