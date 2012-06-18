@@ -195,6 +195,7 @@ class CityGrid
         end
 
         response_status = parse_response_status response
+        pp "the response status was #{response_status}"
         #TODO deleter this before cutting a new gem
         if response_status.nil?
           pp "FAILED TO PARSE A RESPONSE: #{response}"
@@ -211,6 +212,7 @@ class CityGrid
               raise CityGridExceptions.appropriate_error(error_code).new req_for_airbrake, response, response_status["message"].to_s + " " + CityGridExceptions.print_superclasses(error_code)
             end
           else
+            pp "successful api call, returning response..."
             return CityGrid::API::Response.new response
           end
         rescue => ex
