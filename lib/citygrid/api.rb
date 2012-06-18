@@ -195,6 +195,10 @@ class CityGrid
         end
 
         response_status = parse_response_status response
+        #TODO deleter this before cutting a new gem
+        if response_status.nil?
+          pp "FAILED TO PARSE A RESPONSE: #{response}"
+        end
  
         begin 
           # catch unparsable responses (html etc)
