@@ -74,8 +74,9 @@ module CityGridExceptions
 
   # General Errors
   class SystemErrorTryAgainError < GeneralError; end
-  class SystemErrorUnknownError < GeneralError; end
-  class BadRequestTypeError < GeneralError; end 
+  class SystemErrorUnknownError  < GeneralError; end
+  class BadRequestTypeError      < GeneralError; end 
+  class InvalidRequestBodyError  < GeneralError; end 
 
 
 
@@ -95,19 +96,21 @@ module CityGridExceptions
 
  #Authorization Error
  class PermissionDeniedError < AuthorizationError; end
- class NoPermissionsError < AuthorizationError; end
+ class NoPermissionsError    < AuthorizationError; end
 
  # Request Error
- class ParameterRequiredError            < RequestError; end
- class ParameterRequiredConditionalError < RequestError; end
- class ParameterInvalidError             < RequestError; end
- class ParameterFormatError              < RequestError; end
- class ParameterNotSupportedError        < RequestError; end
- class ParameterRangeTooLowError         < RequestError; end
- class ParameterRangeTooHighError        < RequestError; end
- class ParameterSizeLimitExceededError   < RequestError; end
- class ParameterCannotBeZeroError        < RequestError; end
- class ParameterOnlyOne                  < RequestError; end
+ class ParameterRequiredError                       < RequestError; end
+ class ParameterRequiredConditionalError            < RequestError; end
+ class ParameterInvalidError                        < RequestError; end
+ class ParameterFormatError                         < RequestError; end
+ class ParameterNotSupportedError                   < RequestError; end
+ class ParameterRangeTooLowError                    < RequestError; end
+ class ParameterRangeTooHighError                   < RequestError; end
+ class ParameterSizeLimitExceededError              < RequestError; end
+ class ParameterCannotBeZeroError                   < RequestError; end
+ class ParameterOnlyOneError                        < RequestError; end
+ class ParameterAssociationActionNotPerformedError  < RequestError; end
+ class ParameterActionNotAllowedError               < RequestError; end
 
  # Operator Error
  class OperatorInvalidError < OperatorError; end
@@ -137,38 +140,42 @@ module CityGridExceptions
  class MonthlyBudgetReachedError < SpecificDataError; end
  class QuotaExceededError        < SpecificDataError; end
  class RateExceededError         < SpecificDataError; end
+ class BatchLimitExceededError   < SpecificDataError; end
 
 # unused errors
 #400 => RequestError,
 @possible_errors =
- { 
-  0 => ResponseError, nil => ResponseParseError, "" => ResponseParseError, 
-  401 => AuthenticationError, 403 => RequestError, 405 => RequestError, 406 => HeaderError, 
-  500 => ResponseError, "SYSTEM_ERROR_TRY_AGAIN" => SystemErrorTryAgainError,
-  "SYSTEM_ERROR_UNKNOWN" => SystemErrorUnknownError, "BAD_REQUEST_TYPE" => BadRequestTypeError,
-  "HEADER_CONTENT_TYPE_IS_REQUIRED" => ContentTypeRequiredError, "HEADER_CONTENT_TYPE_INVALID" => ContentTypeInvalidError,
-  "HEADER_ACCEPT_IS_REQUIRED" => AcceptRequiredError, "HEADER_ACCEPT_INVALID" => AcceptInvalidError,
-  "AUTH_TOKEN_INVALID" => AuthTokenInvalidError, "AUTH_TOKEN_EXPIRED" => AuthTokenExpiredError,
-  "AUTH_TOKEN_NONE" => AuthTokenNoneError,
-  "USERNAME_IS_REQUIRED" => UsernameRequiredError, "PASSWORD_IS_REQUIRED" => PasswordRequiredError,
-  "ACCOUNT_NOT_FOUND" => AccountNotFoundError, "PERMISSION_DENIED" => PermissionDeniedError,
-  "NO_PERMISSIONS" => NoPermissionsError, "PARAMETER_REQUIRED" => ParameterRequiredError,
-  "PARAMETER_REQUIRED_CONDITIONAL" => ParameterRequiredConditionalError, "PARAMETER_INVALID" => ParameterInvalidError,
-  "PARAMETER_FORMAT" => ParameterFormatError, "PARAMETER_NOT_SUPPORTED" => ParameterNotSupportedError,
-  "PARAMETER_RANGE_TOO_LOW" => ParameterRangeTooLowError, "PARAMETER_RANGE_TOO_HIGH" => ParameterRangeTooHighError,
-  "PARAMETER_SIZE_LIMIT_EXCEEDED" => ParameterSizeLimitExceededError, "PARAMETER_CANNOT_BE_ZERO" => ParameterCannotBeZeroError,
-  "PARAMETER_ONLY_ONE" => ParameterOnlyOne, "OPERATOR_INVALID" => OperatorInvalidError,
-  "ENTITY_NOT_FOUND" => EntityNotFoundError, "ENTITY_EXISTS" => EntityExistsError,
-  "ENTITY_LIMIT" => EntityLimitError, "ENTITY_ALREADY_IN_USE" => EntityAlreadyInUseError,
-  "ENTITY_EXPIRED" => EntityExpiredError, "ENTITY_INACTIVE" => EntityInactiveError,
-  "ENTITY_NOT_ELIGIBLE" => EntityNotEligibleError, "ENTITY_NOT_MODIFIED" => EntityNotModifiedError,
-  "ENTITY_STATE_INVALID" => EntityStateInvalidError, "ENTITY_MISSING_DATA" => EntityMissingDataError,
-  "DATA_NOT_FOUND" => DataNotFoundError, "ASSOCIATION_EXISTS" => AssociationExistsError,
-  "NO_ASSOCIATION_EXISTS" =>  NoAssociationExistsError, "DUPLICATE" =>  DuplicateError,
-  "DATE_BEFORE_DATE" => DateBeforeDateError, "REMOVE_NOT_ALLOWED" => RemoveNotAllowedError,
-  "MOP_EXPIRED" => MopExpiredError, "ACCOUNT_INACTIVE" => AccountInactiveError,
-  "ACCOUNT_DELINQUENT" => AccountDelinquentError, "MONTHLY_BUDGET_REACHED" => MonthlyBudgetReachedError,
-  "QUOTA_EXCEEDED" => QuotaExceededError,"RATE_EXCEEDED" =>  RateExceededError
+  { 
+    0 => ResponseError, nil => ResponseParseError, "" => ResponseParseError, 
+    401 => AuthenticationError, 403 => RequestError, 405 => RequestError, 406 => HeaderError,
+    409 => RequestError, 410 => RequestError, 415 => RequestError, 413 => RequestError, 414 => RequestError, 
+    500 => ResponseError, "SYSTEM_ERROR_TRY_AGAIN" => SystemErrorTryAgainError,
+    "SYSTEM_ERROR_UNKNOWN" => SystemErrorUnknownError, "BAD_REQUEST_TYPE" => BadRequestTypeError,
+    "INVALID_REQUEST_BODY" => InvalidRequestBodyError,
+    "HEADER_CONTENT_TYPE_IS_REQUIRED" => ContentTypeRequiredError, "HEADER_CONTENT_TYPE_INVALID" => ContentTypeInvalidError,
+    "HEADER_ACCEPT_IS_REQUIRED" => AcceptRequiredError, "HEADER_ACCEPT_INVALID" => AcceptInvalidError,
+    "AUTH_TOKEN_INVALID" => AuthTokenInvalidError, "AUTH_TOKEN_EXPIRED" => AuthTokenExpiredError,
+    "AUTH_TOKEN_NONE" => AuthTokenNoneError,
+    "USERNAME_IS_REQUIRED" => UsernameRequiredError, "PASSWORD_IS_REQUIRED" => PasswordRequiredError,
+    "ACCOUNT_NOT_FOUND" => AccountNotFoundError, "PERMISSION_DENIED" => PermissionDeniedError,
+    "NO_PERMISSIONS" => NoPermissionsError, "PARAMETER_REQUIRED" => ParameterRequiredError,
+    "PARAMETER_REQUIRED_CONDITIONAL" => ParameterRequiredConditionalError, "PARAMETER_INVALID" => ParameterInvalidError,
+    "PARAMETER_FORMAT" => ParameterFormatError, "PARAMETER_NOT_SUPPORTED" => ParameterNotSupportedError,
+    "PARAMETER_RANGE_TOO_LOW" => ParameterRangeTooLowError, "PARAMETER_RANGE_TOO_HIGH" => ParameterRangeTooHighError,
+    "PARAMETER_SIZE_LIMIT_EXCEEDED" => ParameterSizeLimitExceededError, "PARAMETER_CANNOT_BE_ZERO" => ParameterCannotBeZeroError,
+    "PARAMETER_ONLY_ONE" => ParameterOnlyOneError,  "PARAMETER_ASSOCIATION_ACTION_NOT_PERFORMED" => ParameterAssociationActionNotPerformedError,
+    "PARAMETER_ACTION_NOT_ALLOWED" => ParameterActionNotAllowedError, "OPERATOR_INVALID" => OperatorInvalidError,
+    "ENTITY_NOT_FOUND" => EntityNotFoundError, "ENTITY_EXISTS" => EntityExistsError,
+    "ENTITY_LIMIT" => EntityLimitError, "ENTITY_ALREADY_IN_USE" => EntityAlreadyInUseError,
+    "ENTITY_EXPIRED" => EntityExpiredError, "ENTITY_INACTIVE" => EntityInactiveError,
+    "ENTITY_NOT_ELIGIBLE" => EntityNotEligibleError, "ENTITY_NOT_MODIFIED" => EntityNotModifiedError,
+    "ENTITY_STATE_INVALID" => EntityStateInvalidError, "ENTITY_MISSING_DATA" => EntityMissingDataError,
+    "DATA_NOT_FOUND" => DataNotFoundError, "ASSOCIATION_EXISTS" => AssociationExistsError,
+    "NO_ASSOCIATION_EXISTS" =>  NoAssociationExistsError, "DUPLICATE" =>  DuplicateError,
+    "DATE_BEFORE_DATE" => DateBeforeDateError, "REMOVE_NOT_ALLOWED" => RemoveNotAllowedError,
+    "MOP_EXPIRED" => MopExpiredError, "ACCOUNT_INACTIVE" => AccountInactiveError,
+    "ACCOUNT_DELINQUENT" => AccountDelinquentError, "MONTHLY_BUDGET_REACHED" => MonthlyBudgetReachedError,
+    "QUOTA_EXCEEDED" => QuotaExceededError,"RATE_EXCEEDED" =>  RateExceededError, "BATCH_LIMIT_EXCEEDED" => BatchLimitExceededError
   }
 
   def CityGridExceptions.appropriate_error error_code

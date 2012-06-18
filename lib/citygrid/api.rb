@@ -128,24 +128,34 @@ class CityGrid
         end
       end
 
-      def parse_multiple_responses response
-        parsing = response.values.select{ |x| x.is_a? Array }.first
-        if parsing.nil? || parsing == []
-          #pp "Response was too hard to parse... letting it through..."
-          return parsing
-        elsif parsing != nil && parsing != []
-          if parsing[0]["response"]
-            parsing = [parsing[0]["response"]["code"], parsing[0]["response"]["message"]]
-            return parsing
-          else
-            # this accomodates geocode response which does not contain a response node
-            #pp "Response was too hard to parse... letting it through..."
-            return nil
-          end
+      def parse_response_status response_body
+        status = nil
+        if response_body["response"] || response_body["responseStatus"]
+          status = response_body["response"] || response_body["responseStatus"]
+        elsif response_body["errors"]
+          # make this throw some kind of content API error
+          errors = "" 
+          response_body["errors"].each { |e| errors += "#{e["error"]} " }
+          status = { "code" => "CONTENT_API_ERROR", "message" => errors  }
+        elsif response_body["code"] && response_body["message"]
+          status = response_body[code]
         else
-          # We should figure out a better way to do this
-          raise CityGridExceptions::APIError.new "Received a JSON error code but it could not be parsed: #{response}"
+          response_body.each_value do |value|
+            case value
+              when Array
+                value.each do |inner_value|
+                  if inner_value["response"] || inner_value["responseStatus"]
+                    status = inner_value["response"] || inner_value["responseStatus"]
+                  end
+                end
+              when Hash
+                if value["response"] || value["responseStatus"]
+                  status = value["response"] || value["responseStatus"]
+                end
+            end
+          end
         end
+        return status
       end
 
       # Transform response into API::Response object
@@ -184,46 +194,23 @@ class CityGrid
           end
         end
 
+        response_status = parse_response_status response
  
         begin 
           # catch unparsable responses (html etc)
           if !response.parsed_response.is_a?(Hash)
             #pp "[gem] the response was unparsable (response was not a hash)"
             raise CityGridExceptions::ResponseParseError.new req_for_airbrake, response
-          # catch responses not in new response format
-          elsif response["errors"]
-            #pp "[gem] An error in the old response format was caught.  Raising a general response error..."
-            raise CityGridExceptions::ResponseError.new req_for_airbrake, response["errors"], response
-
-          # Parse and handle new response codes 
-          elsif (response["response"] && response["response"]["code"] != "SUCCESS") && 
-                (response["response"] && response["response"]["code"] != 200) && 
-                (response["response"] && response["response"]["code"] != 400) 
-            error_code = response["response"]["code"]
-            #pp "[gem] The response was contained in the first level of the response hash.  Below:"
-            #pp response
-            #pp "found error code: #{error_code}"
-            #pp "****************************************************************************"
-            raise CityGridExceptions.appropriate_error(error_code).new req_for_airbrake, response, response["response"]["message"].to_s #+ " " + CityGridExceptions.print_superclasses(error_code)
-          # if the response is a nested hash/nested hash containing arrays
-          elsif response["totalNumEntries"] && response["response"].nil?
-            #pp "[gem] now parsing a response with multiple entries: #{response}"
-            error_code = parse_multiple_responses(response)
-            #pp "the error code that came back is #{error_code}"
-            if error_code.nil? || error_code == []
-              #pp "[gem] passing over this for now"
-              return CityGrid::API::Response.new response # pass over for now
-            elsif error_code[0] == "SUCCESS" || error_code[0] == 200 || error_code[0] == 400
-              return CityGrid::API::Response.new response
-            else 
-              #pp "[gem] we found an error and it was #{error_code[1]}"
-                raise CityGridExceptions.appropriate_error(error_code[0]).new req_for_airbrake, response, error_code[1].to_s  + " "# + CityGridExceptions.print_superclasses(error_code[0])
+          elsif !response_status.nil?
+            # Parse and handle new response codes 
+            if response_status["code"] != "SUCCESS" && response_status["code"] != 200 && response_status["code"] != 400
+              raise CityGridExceptions.appropriate_error(error_code).new req_for_airbrake, response, response_status["message"].to_s + " " + CityGridExceptions.print_superclasses(error_code)
             end
           else
             return CityGrid::API::Response.new response
           end
         rescue => ex
-          pp "The gem threw an error: #{ex}"
+          pp "#{CityGridExceptions.print_superclasses(error_code)}: #{ex}"
           raise ex if CityGrid.raise_errors?
         end
       end
