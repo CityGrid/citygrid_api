@@ -76,7 +76,8 @@ module CityGridExceptions
   class SystemErrorTryAgainError < GeneralError; end
   class SystemErrorUnknownError  < GeneralError; end
   class BadRequestTypeError      < GeneralError; end 
-  class InvalidRequestBodyError  < GeneralError; end 
+  class InvalidRequestBodyError  < GeneralError; end
+  class ContentApiError          < GeneralError; end # this stands in for old format content api errors
 
 
 
@@ -149,7 +150,7 @@ module CityGridExceptions
     0 => ResponseError, nil => ResponseParseError, "" => ResponseParseError, 
     401 => AuthenticationError, 403 => RequestError, 405 => RequestError, 406 => HeaderError,
     409 => RequestError, 410 => RequestError, 415 => RequestError, 413 => RequestError, 414 => RequestError, 
-    500 => ResponseError, "SYSTEM_ERROR_TRY_AGAIN" => SystemErrorTryAgainError,
+    500 => ResponseError, "CONTENT_API_ERROR" => ContentApiError, "SYSTEM_ERROR_TRY_AGAIN" => SystemErrorTryAgainError,
     "SYSTEM_ERROR_UNKNOWN" => SystemErrorUnknownError, "BAD_REQUEST_TYPE" => BadRequestTypeError,
     "INVALID_REQUEST_BODY" => InvalidRequestBodyError,
     "HEADER_CONTENT_TYPE_IS_REQUIRED" => ContentTypeRequiredError, "HEADER_CONTENT_TYPE_INVALID" => ContentTypeInvalidError,

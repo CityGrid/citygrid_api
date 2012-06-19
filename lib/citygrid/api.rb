@@ -194,30 +194,32 @@ class CityGrid
           end
         end
 
-        ap "HAAARRYYY"
         response_status = parse_response_status response
-        ap "the response status was #{response_status}"
+        ap "response status is #{response_status}"
         #TODO deleter this before cutting a new gem
         if response_status.nil?
-          ap "FAILED TO PARSE A RESPONSE: #{response}"
+          ap "response status was not present or could not be found in response:\n #{response}"
         end
- 
+        
+
         begin 
           # catch unparsable responses (html etc)
           if !response.parsed_response.is_a?(Hash)
             #pp "[gem] the response was unparsable (response was not a hash)"
             raise CityGridExceptions::ResponseParseError.new req_for_airbrake, response
-          elsif !response_status.nil?
-            # Parse and handle new response codes 
-            if response_status["code"] != "SUCCESS" && response_status["code"] != 200 && response_status["code"] != 400
-              raise CityGridExceptions.appropriate_error(error_code).new req_for_airbrake, response, response_status["message"].to_s + " " + CityGridExceptions.print_superclasses(error_code)
-            end
           else
-            ap "successful api call, returning response..."
-            return CityGrid::API::Response.new response
+            # Parse and handle new response codes 
+            if !response_status.nil? && response_status["code"] != "SUCCESS" && 
+                response_status["code"] != 200 && response_status["code"] != 400
+              raise CityGridExceptions.appropriate_error(response_status["code"]).new req_for_airbrake, response, response_status["message"].to_s #+ " " + CityGridExceptions.print_superclasses(response_status["code"])
+            else
+              ap  "returning response!"
+              return CityGrid::API::Response.new response
+            end
+            ap "YOU SHOULD NEVER SEE THIS TEXT"
           end
         rescue => ex
-          ap "#{CityGridExceptions.print_superclasses(error_code)}: #{ex}"
+          ap "API ERROR: #{ex}"
           raise ex if CityGrid.raise_errors?
         end
       end
