@@ -209,8 +209,7 @@ class CityGrid
             raise CityGridExceptions::ResponseParseError.new req_for_airbrake, response
           else
             # Parse and handle new response codes 
-            if !response_status.nil? && response_status["code"] != "SUCCESS" && 
-                response_status["code"] != 200 && response_status["code"] != 400
+            if !response_status.nil? && response_status["code"] != "SUCCESS" && response_status["code"] != 200
               raise CityGridExceptions.appropriate_error(response_status["code"]).new req_for_airbrake, response, response_status["message"].to_s #+ " " + CityGridExceptions.print_superclasses(response_status["code"])
             else
               ap  "returning response!"

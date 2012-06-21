@@ -147,7 +147,7 @@ module CityGridExceptions
 #400 => RequestError,
 @possible_errors =
   { 
-    0 => ResponseError, nil => ResponseParseError, "" => ResponseParseError, 
+    0 => ResponseError, nil => ResponseParseError, "" => ResponseParseError, 400 => RequestError,
     401 => AuthenticationError, 403 => RequestError, 405 => RequestError, 406 => HeaderError,
     409 => RequestError, 410 => RequestError, 415 => RequestError, 413 => RequestError, 414 => RequestError, 
     500 => ResponseError, "CONTENT_API_ERROR" => ContentApiError, "SYSTEM_ERROR_TRY_AGAIN" => SystemErrorTryAgainError,
