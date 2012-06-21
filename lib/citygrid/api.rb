@@ -138,7 +138,7 @@ class CityGrid
           response_body["errors"].each { |e| errors += "#{e["error"]} " }
           status = { "code" => "CONTENT_API_ERROR", "message" => errors  }
         elsif response_body["code"] && response_body["message"]
-          status = response_body[code]
+          status = response_body
         else
           response_body.each_value do |value|
             case value
