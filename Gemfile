@@ -10,7 +10,6 @@ group :development do
   gem "vcr"
   gem "webmock"
   gem 'rdoc'
-  gem 'awesome_print'
 end
 
 group :dashboard do

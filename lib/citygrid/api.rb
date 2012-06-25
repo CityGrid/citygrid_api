@@ -195,13 +195,7 @@ class CityGrid
         end
 
         response_status = parse_response_status response
-        ap "response status is #{response_status}"
-        #TODO deleter this before cutting a new gem
-        if response_status.nil?
-          ap "response status was not present or could not be found in response:\n #{response}"
-        end
         
-
         begin 
           # catch unparsable responses (html etc)
           if !response.parsed_response.is_a?(Hash)
@@ -212,13 +206,11 @@ class CityGrid
             if !response_status.nil? && response_status["code"] != "SUCCESS" && response_status["code"] != 200
               raise CityGridExceptions.appropriate_error(response_status["code"]).new req_for_airbrake, response, response_status["message"].to_s #+ " " + CityGridExceptions.print_superclasses(response_status["code"])
             else
-              ap  "returning response!"
               return CityGrid::API::Response.new response
             end
-            ap "YOU SHOULD NEVER SEE THIS TEXT"
           end
         rescue => ex
-          ap "API ERROR: #{ex}"
+          pp "API ERROR: #{ex}"
           raise ex if CityGrid.raise_errors?
         end
       end

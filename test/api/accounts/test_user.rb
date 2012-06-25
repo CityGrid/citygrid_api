@@ -19,5 +19,5 @@ context "impersonate user" do
 	setup do
 		SessionHelper.gary_test.call_api CityGrid::API::Accounts::User, :impersonate, :customerId => 125902
 	end
-	should("have a different auth token"){ap topic.authToken}
+	should("have a different auth token"){pp topic.authToken}
 end
