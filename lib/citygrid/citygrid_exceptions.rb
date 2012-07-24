@@ -136,6 +136,7 @@ module CityGridExceptions
 
 #data errors - specific
  class MopExpiredError           < SpecificDataError; end
+ class MopInvalidError           < SpecificDataError; end
  class AccountInactiveError      < SpecificDataError; end
  class AccountDelinquentError    < SpecificDataError; end
  class MonthlyBudgetReachedError < SpecificDataError; end
@@ -174,7 +175,7 @@ module CityGridExceptions
     "DATA_NOT_FOUND" => DataNotFoundError, "ASSOCIATION_EXISTS" => AssociationExistsError,
     "NO_ASSOCIATION_EXISTS" =>  NoAssociationExistsError, "DUPLICATE" =>  DuplicateError,
     "DATE_BEFORE_DATE" => DateBeforeDateError, "REMOVE_NOT_ALLOWED" => RemoveNotAllowedError,
-    "MOP_EXPIRED" => MopExpiredError, "ACCOUNT_INACTIVE" => AccountInactiveError,
+    "MOP_EXPIRED" => MopExpiredError, "MOP_INVALID" => MopInvalidError, "ACCOUNT_INACTIVE" => AccountInactiveError,
     "ACCOUNT_DELINQUENT" => AccountDelinquentError, "MONTHLY_BUDGET_REACHED" => MonthlyBudgetReachedError,
     "QUOTA_EXCEEDED" => QuotaExceededError,"RATE_EXCEEDED" =>  RateExceededError, "BATCH_LIMIT_EXCEEDED" => BatchLimitExceededError
   }
