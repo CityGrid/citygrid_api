@@ -56,3 +56,6 @@ api:
       hostname: api.citygridmedia.com
     response:
       endpoint: content/reviews/v2/response
+    profile_internal: #internal use only
+      endpoint: internal
+      hostname: internal
