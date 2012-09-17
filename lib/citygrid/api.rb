@@ -188,6 +188,7 @@ class CityGrid
           if CityGrid.print_curls? 
             if defined?(Rails.logger)
               Rails.logger.info req_to_output.to_curl
+              puts req_to_output.to_curl
             else
               puts req_to_output.to_curl
             end
