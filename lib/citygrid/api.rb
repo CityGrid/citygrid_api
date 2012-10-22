@@ -182,8 +182,14 @@ class CityGrid
 
         begin
           response = req.perform
-        rescue => ex
-          raise CityGridExceptions::RequestError.new req_for_airbrake, ex
+        rescue => ex  
+          if defined?(Rails.logger)
+            Rails.logger.error safe_req_options
+            Rails.logger.error req_to_output
+            Rails.logger.error req_for_airbrake
+            Rails.logger.error ex
+          end
+          raise CityGridExceptions::RequestError.new req_for_airbrake, nil, ex.message, req_to_output.to_curl
         ensure
           if CityGrid.print_curls? 
             if defined?(Rails.logger)
@@ -201,11 +207,11 @@ class CityGrid
           # catch unparsable responses (html etc)
           if !response.parsed_response.is_a?(Hash)
             #pp "[gem] the response was unparsable (response was not a hash)"
-            raise CityGridExceptions::ResponseParseError.new req_for_airbrake, response
+            raise CityGridExceptions::ResponseParseError.new req_for_airbrake, response, "the response was unparsable (response was not a hash)", req_to_output.to_curl
           else
             # Parse and handle new response codes 
             if !response_status.nil? && response_status["code"] != "SUCCESS" && response_status["code"] != 200
-              raise CityGridExceptions.appropriate_error(response_status["code"]).new req_for_airbrake, response, response_status["message"].to_s #+ " " + CityGridExceptions.print_superclasses(response_status["code"])
+              raise CityGridExceptions.appropriate_error(response_status["code"]).new req_for_airbrake, response, response_status["message"].to_s, req_to_output.to_curl
             else
               return CityGrid::API::Response.new response
             end

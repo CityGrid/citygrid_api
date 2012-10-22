@@ -3,11 +3,12 @@ module CityGridExceptions
   # Define parent error classes
   # All errors thrown in the API should extend APIError - Level 1
   class APIError < StandardError
-    attr_accessor :request, :response
+    attr_accessor :request, :response, :curl
     
-    def initialize request, response, msg = "An API error occurred"
+    def initialize request, response, msg = "An API error occurred", curl=nil
       @request = request
       @response = response
+      @curl = curl
       super msg
     end
   end
@@ -19,10 +20,11 @@ module CityGridExceptions
 
   class ResponseParseError < APIError
     attr_accessor :server_msg, :description, :raw_response
-    def initialize request, response, msg = nil
+    def initialize request, response, msg = nil, curl=nil
       self.raw_response = response
       # parse Tomcat error report
-      if response.match /<title>Apache Tomcat.* - Error report<\/title>/
+      Rails.logger.error response.body if defined?(Rails.logger)
+      if response.body.include?("<title>Apache Tomcat.* - Error report<\/title>")
         response.scan(/<p><b>(message|description)<\/b> *<u>(.*?)<\/u><\/p>/).each do |match|
           case match[0]
           when "message"
@@ -188,13 +190,4 @@ module CityGridExceptions
     end
   end
 
-  def CityGridExceptions.print_superclasses error_code
-    begin
-      raise appropriate_error[error_code]
-    rescue => ex
-      class_hierarchy = ex.class.ancestors
-      class_hierarchy.slice!(class_hierarchy.index(StandardError)..-1)
-      return class_hierarchy.reverse.join("::")
-    end
-  end
 end
