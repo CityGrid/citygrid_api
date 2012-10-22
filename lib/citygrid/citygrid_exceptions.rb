@@ -40,26 +40,26 @@ module CityGridExceptions
         Unexpected response format. Expected response to be a hash, but was instead:\n#{error_body}\n
         EOS
 
-        super request, response, msg
+        super request, response, msg, curl
       else
         msg = <<-EOS
         Unexpected response format. Expected response to be a hash, but was instead:\n#{response.parsed_response}\n
         EOS
 
-        super request, response, msg
+        super request, response, msg, curl
       end
     end
   end
 
   class RequestError < APIError
-    def initialize request, response, msg = nil
-      super request, nil, msg
+    def initialize request, response, msg = nil, curl = nil
+      super request, nil, msg, curl
     end
   end
 
   class ResponseError < APIError
-    def initialize request, response, msg = nil
-      super request, response, msg
+    def initialize request, response, msg = nil, curl = nil
+      super request, response, msg, curl
     end
   end
 
