@@ -10,6 +10,7 @@ group :development do
   gem "vcr"
   gem "webmock"
   gem 'rdoc'
+  gem 'rspec'
 end
 
 group :dashboard do

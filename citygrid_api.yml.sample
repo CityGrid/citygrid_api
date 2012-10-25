@@ -1,4 +1,5 @@
 defaults:
+  # QA
   hostname: api.qa.citygrid.com
   ssl_hostname: api-qassl.citygrid.com
 
@@ -47,13 +48,13 @@ api:
   content:
     offers:
       endpoint: content/offers/v2
-      hostname: api.citygridmedia.com
+      hostname: api.qa.citygridmedia.com
     places: 
       endpoint: content/places/v2
-      hostname: api.citygridmedia.com
+      hostname: api.qa.citygridmedia.com
     reviews:
       endpoint: content/reviews/v2
-      hostname: api.citygridmedia.com
+      hostname: api.qa.citygridmedia.com
     response:
       endpoint: content/reviews/v2/response
     profile_internal: #internal use only
