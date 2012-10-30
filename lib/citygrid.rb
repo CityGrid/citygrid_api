@@ -37,12 +37,16 @@ class CityGrid
       defined?(@print_curls) ? @print_curls : false
     end
 
-    def use_vcr= v
-      @use_vcr = v
+    def custom_timeout= timeout #in seconds
+      @custom_timeout = timeout
     end
-    
-    def use_vcr?
-      defined?(VCR) && defined?(@use_vcr) && @use_vcr
+
+    def custom_timeout
+      @custom_timeout
+    end
+
+    def custom_timeout_set?
+      defined?(@custom_timeout)
     end
     
     def search opts = {}

@@ -174,6 +174,7 @@ class CityGrid
         
         # prepare request
         req = HTTParty::Request.new http_method, path, req_options
+        req.options[:timeout] = CityGrid.custom_timeout if req.options && CityGrid.custom_timeout_set?
 
         # Sanitized request for logs
         safe_req_options = strip_unsafe_params(http_method, req_options)
