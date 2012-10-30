@@ -21,6 +21,12 @@ Add a file called citygrid_api.rb under config/initializers.
 Configure the gem to use your publisher code with:
 
    CityGrid.publisher = 'your_publisher_code'
+
+Additional options are available such as:
+
+   CityGrid.print_curls = true/false
+   CityGrid.custom_timeout = 20 #time in seconds
+   CityGrid.raise_errors = true/false
    
 If you don't have a publisher code, you can obtain one at http://developer.citygridmedia.com
 
