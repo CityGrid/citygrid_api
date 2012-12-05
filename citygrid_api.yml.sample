@@ -39,12 +39,14 @@ api:
       endpoint: report/calldetail/v2
       hostname: lax1qatxpi4.test.cs:8080
     campaign: advertising/campaign/v2
+    campaign_promotions: advertising/campaign/v2/promo
     category: content/category/v2
     geo_location: content/places/v2/geocode
     image: advertising/image/v2
     offers: advertising/offer/v2
     places: content/places/v2
     performance: advertising/performance/v2
+
   content:
     offers:
       endpoint: content/offers/v2
