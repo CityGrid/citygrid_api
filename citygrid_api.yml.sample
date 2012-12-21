@@ -31,6 +31,7 @@ api:
       endpoint: advertising/campaign/v2/accountmanager
     ad_group: advertising/adgroup/v2
     ad_group_ad: advertising/adgroupad/v2
+    ad_group_call_detail: advertising/performance/v2/adgroup/calldetail
     ad_group_criterion: advertising/adgroupcriterion/v2
     ad_group_geo: advertising/adgroupgeo/v2  
     budget: advertising/budget/v2/recommend
