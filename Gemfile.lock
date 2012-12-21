@@ -49,9 +49,9 @@ PLATFORMS
 
 DEPENDENCIES
   haml
-  httparty (~> 0.8.1)
+  httparty (>= 0.8.1)
   jeweler (~> 1.6.2)
-  json (= 1.5.3)
+  json (>= 1.5.3)
   rcov
   rdoc
   riot (~> 0.12.4)

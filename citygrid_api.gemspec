@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = "citygrid_api"
-  s.version = "0.0.21"
+  s.version = "0.0.22"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Elpizo Choi"]
-  s.date = "2012-10-22"
+  s.date = "2012-12-06"
   s.description = "Ruby wrapper for CityGrid APIs"
   s.email = "fu7iin@gmail.com"
   s.extra_rdoc_files = [
@@ -94,6 +94,7 @@ Gem::Specification.new do |s|
     "lib/citygrid/api/advertising/budget.rb",
     "lib/citygrid/api/advertising/call_detail.rb",
     "lib/citygrid/api/advertising/campaign.rb",
+    "lib/citygrid/api/advertising/campaign_promotions.rb",
     "lib/citygrid/api/advertising/category.rb",
     "lib/citygrid/api/advertising/geolocation.rb",
     "lib/citygrid/api/advertising/image.rb",
@@ -123,6 +124,8 @@ Gem::Specification.new do |s|
     "lib/request_ext.rb",
     "lib/string_ext.rb",
     "public/javascript/dashboard.js",
+    "spec/api_status_checks/content/listing_api_spec.rb",
+    "spec/spec_helper.rb",
     "test/api/accounts/test_account.rb",
     "test/api/accounts/test_method_of_payment.rb",
     "test/api/accounts/test_temp_impersonation.rb",
@@ -174,33 +177,36 @@ Gem::Specification.new do |s|
     s.specification_version = 3
 
     if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
-      s.add_runtime_dependency(%q<httparty>, ["~> 0.8.1"])
-      s.add_runtime_dependency(%q<json>, ["= 1.5.3"])
+      s.add_runtime_dependency(%q<httparty>, [">= 0.8.1"])
+      s.add_runtime_dependency(%q<json>, [">= 1.5.3"])
       s.add_runtime_dependency(%q<riot>, ["~> 0.12.4"])
       s.add_development_dependency(%q<jeweler>, ["~> 1.6.2"])
       s.add_development_dependency(%q<rcov>, [">= 0"])
       s.add_development_dependency(%q<vcr>, [">= 0"])
       s.add_development_dependency(%q<webmock>, [">= 0"])
       s.add_development_dependency(%q<rdoc>, [">= 0"])
+      s.add_development_dependency(%q<rspec>, [">= 0"])
     else
-      s.add_dependency(%q<httparty>, ["~> 0.8.1"])
-      s.add_dependency(%q<json>, ["= 1.5.3"])
+      s.add_dependency(%q<httparty>, [">= 0.8.1"])
+      s.add_dependency(%q<json>, [">= 1.5.3"])
       s.add_dependency(%q<riot>, ["~> 0.12.4"])
       s.add_dependency(%q<jeweler>, ["~> 1.6.2"])
       s.add_dependency(%q<rcov>, [">= 0"])
       s.add_dependency(%q<vcr>, [">= 0"])
       s.add_dependency(%q<webmock>, [">= 0"])
       s.add_dependency(%q<rdoc>, [">= 0"])
+      s.add_dependency(%q<rspec>, [">= 0"])
     end
   else
-    s.add_dependency(%q<httparty>, ["~> 0.8.1"])
-    s.add_dependency(%q<json>, ["= 1.5.3"])
+    s.add_dependency(%q<httparty>, [">= 0.8.1"])
+    s.add_dependency(%q<json>, [">= 1.5.3"])
     s.add_dependency(%q<riot>, ["~> 0.12.4"])
     s.add_dependency(%q<jeweler>, ["~> 1.6.2"])
     s.add_dependency(%q<rcov>, [">= 0"])
     s.add_dependency(%q<vcr>, [">= 0"])
     s.add_dependency(%q<webmock>, [">= 0"])
     s.add_dependency(%q<rdoc>, [">= 0"])
+    s.add_dependency(%q<rspec>, [">= 0"])
   end
 end
 
