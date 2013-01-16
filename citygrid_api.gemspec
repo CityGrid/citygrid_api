@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = "citygrid_api"
-  s.version = "0.0.22"
+  s.version = "0.0.23"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Elpizo Choi"]
-  s.date = "2012-12-06"
+  s.date = "2013-01-16"
   s.description = "Ruby wrapper for CityGrid APIs"
   s.email = "fu7iin@gmail.com"
   s.extra_rdoc_files = [
@@ -88,6 +88,7 @@ Gem::Specification.new do |s|
     "lib/citygrid/api/advertising/account_manager.rb",
     "lib/citygrid/api/advertising/ad_group.rb",
     "lib/citygrid/api/advertising/ad_group_ad.rb",
+    "lib/citygrid/api/advertising/ad_group_call_detail.rb",
     "lib/citygrid/api/advertising/ad_group_criterion.rb",
     "lib/citygrid/api/advertising/ad_group_geo.rb",
     "lib/citygrid/api/advertising/billing.rb",
@@ -170,7 +171,7 @@ Gem::Specification.new do |s|
   ]
   s.licenses = ["MIT"]
   s.require_paths = ["lib"]
-  s.rubygems_version = "1.8.24"
+  s.rubygems_version = "1.8.16"
   s.summary = "Ruby wrapper for CityGrid APIs"
 
   if s.respond_to? :specification_version then
