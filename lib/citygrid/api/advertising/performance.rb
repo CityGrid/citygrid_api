@@ -14,6 +14,8 @@ class CityGrid
         
         define_action :daily, :post, "campaign/daily", :auth_token => true, :format => false
         define_action :actions, :post, "campaign/actions", :auth_token => true, :format => false
+        define_action :places_daily, :post, "places/daily", :auth_token => true, :format => false
+        define_action :places_actions, :post, "places/actions", :auth_token => true, :format => false
       end
     end
   end
