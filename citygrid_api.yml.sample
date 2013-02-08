@@ -1,7 +1,7 @@
 defaults:
   # QA
-  hostname: api.qa.citygrid.com
-  ssl_hostname: api-qassl.citygrid.com
+  hostname: qa-prdmirror.citygrid.com
+  ssl_hostname: qa-prdmirror.citygrid.com
 
 # endpoint_name: endpoint
 # OR 
@@ -45,7 +45,9 @@ api:
     geo_location: content/places/v2/geocode
     image: advertising/image/v2
     offers: advertising/offer/v2
-    places: content/places/v2
+    places: 
+      ssl: true
+      endpoint: content/places/v2
     performance: advertising/performance/v2
 
   content:
