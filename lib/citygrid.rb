@@ -96,6 +96,7 @@ class CityGrid
             # if value is a plain String, that's the endpoint
             endpoint = v.start_with?("/") ? v : "/#{v}"
             klass.endpoint endpoint
+            klass.newendpoint endpoint
             klass.base_uri default_hostname
           elsif v.is_a? Hash
             # if value is a Hash, fetch endpoint
@@ -103,9 +104,13 @@ class CityGrid
             # otherwise if ssl is set then use ssl_hostname. fallback to default_hostname
             hostname = v["hostname"] || (v["ssl"] ? ssl_hostname : default_hostname)
             throw ParseConfigurationError.new file_path, "No endpoint defined for #{k}" unless v["endpoint"]
+             newendpoint = v["newendpoint"] ? v["newendpoint"] : v["endpoint"] 
             endpoint = v["endpoint"].start_with?("/") ? v["endpoint"] : "/#{v["endpoint"]}" 
+           
+            newendpoint = newendpoint.start_with?("/") ? newendpoint : "/#{newendpoint}" 
             klass.endpoint endpoint
             klass.base_uri hostname
+            klass.newendpoint newendpoint
           else 
             # should not get here. value should be String or Hash
             throw ParseConfigurationError.new file_path, "Invalid value type for #{k}"

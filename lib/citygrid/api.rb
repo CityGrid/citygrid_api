@@ -62,6 +62,11 @@ class CityGrid
         @endpoint = val
       end
 
+      def newendpoint val = nil
+        return @newendpoint unless val
+        @newendpoint = val
+      end
+
       def request options = {}
         method = (options.delete(:method) || :get).to_sym
         query  = options.merge :format => :json
