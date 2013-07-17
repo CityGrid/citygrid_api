@@ -70,7 +70,7 @@ class CityGrid
     end
     
     def authenticate params
-      API::Accounts::User.login params
+      API::Accounts::Login.login params
     end
     alias_method :login, :authenticate
     
