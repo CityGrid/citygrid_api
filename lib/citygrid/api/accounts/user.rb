@@ -5,12 +5,12 @@ class CityGrid
         include CityGrid::API::Mutable
         include CityGrid::API::Searchable
         
-        # def self.login options = {}
-        #   request_and_handle :post,
-        #     "#{endpoint}/login",
-        #     :query => options,
-        #     :headers => merge_headers()
-        # end
+        def self.login options = {}
+          request_and_handle :post,
+            "#{endpoint}/login",
+            :query => options,
+            :headers => merge_headers()
+        end
         
         # login behaves weird right now - expects string as body, not json encoded. 
         # define_action :login, :post, "login", :auth_token => false, :format => false        
