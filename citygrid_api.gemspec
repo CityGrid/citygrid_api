@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = "citygrid_api"
-  s.version = "0.0.27"
+  s.version = "0.0.28"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Elpizo Choi"]
-  s.date = "2013-07-18"
+  s.date = "2013-07-19"
   s.description = "Ruby wrapper for CityGrid APIs"
   s.email = "fu7iin@gmail.com"
   s.extra_rdoc_files = [
