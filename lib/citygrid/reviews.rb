@@ -5,7 +5,7 @@ class CityGrid
     end
 
     def request opts = {}
-      api.request_with_publisher opts
+      api.where opts
     end
 
     def total_hits
